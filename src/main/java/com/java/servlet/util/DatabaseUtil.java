@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.human.servlet.vo.MemberVO;
+
 import com.java.servlet.vo.MembersVO;
 
 import java.sql.DriverManager;
