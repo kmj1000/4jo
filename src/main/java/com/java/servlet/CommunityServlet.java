@@ -20,7 +20,7 @@ public class CommunityServlet extends HttpServlet {
      */
     public CommunityServlet() {
         super();
-        // TODO Auto-generated constructor checkdsfasdf
+        // TODO Auto-generated constructor checkdsfasdfdfasdfsdf바보
     }
 
 	/**
