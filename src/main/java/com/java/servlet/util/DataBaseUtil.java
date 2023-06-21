@@ -6,16 +6,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-=======
-
->>>>>>> 07634953f8469c5c84c43f6966b941e2e173ddaa
 import com.java.servlet.vo.MembersVO;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-public class DatabaseUtil {
+public class DataBaseUtil {
 	//DriverManager : driver down-> web-inf -> lib-> ojdbc8.jar copy
 			//Connection
 			//Statement , PrepareStatement
@@ -80,11 +76,9 @@ public class DatabaseUtil {
 
 				memberList.add(vo);
 
-<<<<<<< HEAD
-=======
 //				memberList.add(vo);
 
->>>>>>> 07634953f8469c5c84c43f6966b941e2e173ddaa
+
 			}
 			System.out.println(memberList);
 		
