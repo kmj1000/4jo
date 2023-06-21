@@ -49,12 +49,12 @@ public class DatabaseUtil {
 	}
 	
 	public static void main(String[] args)throws ClassNotFoundException, SQLException{
-			String id="bang0008";
-			String pwd="112233";
-			String sql="SELECT COUNT(1) FROM member\n"
-					+ "WHERE id='"+id+"'\n"
+			String email="saomi@saomi.com";
+			String pwd="saomi";
+			String sql="SELECT COUNT(1) FROM members\n"
+					+ "WHERE email='"+email+"'\n"
 							+ "AND pwd = '"+ pwd +"'\n";
-			sql="SELECT m_no, name, jumin, id from member";
+			sql="SELECT nickname, email, name, phone from members";
 			
 			
 			try(
@@ -102,8 +102,8 @@ public class DatabaseUtil {
 	public static Connection connectionDB()throws ClassNotFoundException, SQLException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		String url="jdbc:oracle:thin:@localhost:1521:XE";
-		String id="c##scott";
-		String pwd="tiger";
+		String id="c##abd";
+		String pwd="abd";
 		return DriverManager.getConnection(url,id,pwd);
 	}
 }
