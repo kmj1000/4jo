@@ -11,7 +11,7 @@ import com.java.servlet.vo.NoticeVO;
 
 public class NoticeDAOImpl implements NoticeDAO {
 
-	private final static NoticeDAO instance = new NoticeDAOImpl();
+	   private final static NoticeDAO instance = new NoticeDAOImpl();
 	   private NoticeDAOImpl() {
 	   }
 	   public static NoticeDAO getInstance() {
