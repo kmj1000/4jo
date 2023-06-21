@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.java.servlet.dao.MembersDAO;
-import com.java.servlet.util.DBCP2Util;
+import com.java.servlet.util.DatabaseUtil;
 import com.java.servlet.vo.MembersVO;
 
 public class MembersDAOImpl implements MembersDAO {
@@ -23,7 +23,7 @@ public class MembersDAOImpl implements MembersDAO {
 				+ "    FROM members"
 				;
 
-				try (Connection connection = DBCP2Util.getConnection();
+				try (Connection connection = DatabaseUtil.getConnection();
 						Statement stmt = connection.createStatement();
 						ResultSet rs = stmt.executeQuery(sql);) {
 					membersList = new ArrayList();
