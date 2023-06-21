@@ -7,10 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/kmj1000/4jo.git
 import com.java.servlet.vo.MembersVO;
 
 import java.sql.DriverManager;
@@ -78,11 +74,11 @@ public class DatabaseUtil {
 //				vo.setName(rs.getString(2));
 //				vo.setJumin(rs.getString(3));
 //				vo.setId(rs.getString(4));
-<<<<<<< HEAD
+
 				memberList.add(vo);
-=======
+
 //				memberList.add(vo);
->>>>>>> branch 'master' of https://github.com/kmj1000/4jo.git
+
 			}
 			System.out.println(memberList);
 		
