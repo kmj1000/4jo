@@ -78,17 +78,8 @@ public class DataBaseUtil {
 				memberList.add(vo);
 
 //				memberList.add(vo);
-
-<<<<<<< HEAD:src/main/java/com/java/servlet/util/DatabaseUtil.java
-=======
-
-
-
-
 //				memberList.add(vo);
 
-
->>>>>>> 888e7982159a1416bdc37682860526c46883b0bb:src/main/java/com/java/servlet/util/DataBaseUtil.java
 			}
 			System.out.println(memberList);
 		
