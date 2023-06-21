@@ -1,13 +1,12 @@
 package com.java.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+	//dsdsdsaddaad
 /**
  * Servlet implementation class CommunityServlet
  */
@@ -20,14 +19,18 @@ public class CommunityServlet extends HttpServlet {
      */
     public CommunityServlet() {
         super();
-        // TODO Auto-generated constructor checkdsfasdfdfasdfsdf바보
+
+        // TODO Auto-generated constructor checkdsfasdfdfasdfsdf바보 22
+
+        // d예지짱
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stubsdfsfsfdf
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
