@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.java.servlet.vo.MembersVO;
 
 import java.sql.DriverManager;
@@ -75,7 +74,11 @@ public class DatabaseUtil {
 //				vo.setName(rs.getString(2));
 //				vo.setJumin(rs.getString(3));
 //				vo.setId(rs.getString(4));
+
 				memberList.add(vo);
+
+//				memberList.add(vo);
+
 			}
 			System.out.println(memberList);
 		
