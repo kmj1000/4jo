@@ -19,7 +19,7 @@ public class FindServlet extends HttpServlet {
      */
     public FindServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub 나 되는가????
     }
 
 	/**

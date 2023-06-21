@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+	//dsdsdsaddaad
 /**
  * Servlet implementation class CommunityServlet abcd
  */
@@ -19,7 +19,11 @@ public class CommunityServlet extends HttpServlet {
      */
     public CommunityServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
+        // TODO Auto-generated constructor checkdsfasdfdfasdfsdf바보 22
+
+        // d예지짱
+
     }
 
 	/**
