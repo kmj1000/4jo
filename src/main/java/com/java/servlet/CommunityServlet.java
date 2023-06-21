@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-	//예찌짱ㅇㅇ
+	//예찌짱ㅇㅇddsad
 /**
  * Servlet implementation class CommunityServlet
  */
