@@ -1,9 +1,7 @@
 package com.java.servlet.vo;
-
-public class CommunityVO {
 	
 import java.util.Date;
-
+// 가보자고~~~
 public class CommunityVO {
 	private int c_no;
     private String nickname;
