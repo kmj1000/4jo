@@ -71,10 +71,10 @@ public class DatabaseUtil {
 				MembersVO vo = new MembersVO();
 				
 				
-				vo.setM_no(rs.getInt(1));
-				vo.setName(rs.getString(2));
-				vo.setJumin(rs.getString(3));
-				vo.setId(rs.getString(4));
+//				vo.setM_no(rs.getInt(1));
+//				vo.setName(rs.getString(2));
+//				vo.setJumin(rs.getString(3));
+//				vo.setId(rs.getString(4));
 				memberList.add(vo);
 			}
 			System.out.println(memberList);
