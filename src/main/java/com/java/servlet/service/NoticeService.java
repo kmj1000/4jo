@@ -1,5 +1,7 @@
 package com.java.servlet.service;
 
-public interface NoticeService {
+import com.java.servlet.vo.NoticeVO;
 
+public interface NoticeService {
+	NoticeVO getNoitce(String admin_name);
 }

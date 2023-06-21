@@ -1,5 +1,7 @@
 package com.java.servlet.dao;
 
-public interface NoticeDAO {
+import com.java.servlet.vo.NoticeVO;
 
+public interface NoticeDAO {
+	NoticeVO selectNotice(String admin);
 }
