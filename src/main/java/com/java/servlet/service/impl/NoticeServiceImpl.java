@@ -1,7 +1,26 @@
 package com.java.servlet.service.impl;
 
+import com.java.servlet.dao.NoticeDAO;
+import com.java.servlet.dao.impl.NoticeDAOImpl;
 import com.java.servlet.service.NoticeService;
+import com.java.servlet.vo.NoticeVO;
 
 public class NoticeServiceImpl implements NoticeService {
+	private static final NoticeService instance = new NoticeServiceImpl();
+	private final NoticeDAO dao = NoticeDAOImpl.getInstance();
+
+	private NoticeServiceImpl() {
+	}
+	public static NoticeService getInstance() {
+		   return instance;
+	}
+	@Override
+	public NoticeVO getNoitce(String admin_name) {
+		// TODO Auto-generated method stub
+		return dao.selectNotice(admin_name);
+	}
 
 }
+
+
+

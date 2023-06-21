@@ -12,7 +12,7 @@ import com.java.servlet.vo.MembersVO;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-public class DatabaseUtil {
+public class DataBaseUtil {
 	//DriverManager : driver down-> web-inf -> lib-> ojdbc8.jar copy
 			//Connection
 			//Statement , PrepareStatement
@@ -79,6 +79,16 @@ public class DatabaseUtil {
 
 //				memberList.add(vo);
 
+<<<<<<< HEAD:src/main/java/com/java/servlet/util/DatabaseUtil.java
+=======
+
+
+
+
+//				memberList.add(vo);
+
+
+>>>>>>> 888e7982159a1416bdc37682860526c46883b0bb:src/main/java/com/java/servlet/util/DataBaseUtil.java
 			}
 			System.out.println(memberList);
 		

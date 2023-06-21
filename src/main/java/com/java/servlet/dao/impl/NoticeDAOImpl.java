@@ -1,12 +1,13 @@
 package com.java.servlet.dao.impl;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
 import com.java.servlet.dao.NoticeDAO;
-import com.java.servlet.util.DatabaseUtil;
+import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.NoticeVO;
 
 public class NoticeDAOImpl implements NoticeDAO {
@@ -31,7 +32,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	      NoticeVO vo = null;
 	      
 	      try(
-	            Connection conn = DatabaseUtil.getConnection();// DBCP2Util
+	            Connection conn = DataBaseUtil.getConnection();// DBCP2Util
 	            PreparedStatement pstmt = conn.prepareStatement(sql);
 	            ){
 	            

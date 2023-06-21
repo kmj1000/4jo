@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 import com.java.servlet.dao.CommunityDAO;
 import com.java.servlet.dao.NoticeDAO;
-import com.java.servlet.util.DatabaseUtil;
+import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.CommunityVO;
 import com.java.servlet.vo.NoticeVO;
 
@@ -30,7 +30,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		      CommunityVO vo = null;
 		      
 		      try(
-		            Connection conn = DatabaseUtil.getConnection();// DBCP2Util
+		            Connection conn = DataBaseUtil.getConnection();// DBCP2Util
 		            PreparedStatement pstmt = conn.prepareStatement(sql);
 		            ){
 		            
