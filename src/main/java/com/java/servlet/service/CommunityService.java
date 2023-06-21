@@ -1,5 +1,7 @@
 package com.java.servlet.service;
 
-public interface CommunityService {
+import com.java.servlet.vo.CommunityVO;
 
+public interface CommunityService {
+	CommunityVO getCommunity(int c_no);
 }

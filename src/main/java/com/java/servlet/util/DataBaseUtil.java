@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.java.servlet.vo.MembersVO;
 
 import java.sql.DriverManager;
@@ -75,6 +76,12 @@ public class DataBaseUtil {
 //				vo.setId(rs.getString(4));
 
 				memberList.add(vo);
+
+//				memberList.add(vo);
+
+
+
+
 
 //				memberList.add(vo);
 
