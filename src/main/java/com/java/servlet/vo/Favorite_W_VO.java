@@ -1,6 +1,8 @@
 package com.java.servlet.vo;
 
 
+import java.util.Date;
+
 
 public class Favorite_W_VO {
 	private int favorite_with_pet_no;

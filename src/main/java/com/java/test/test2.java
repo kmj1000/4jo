@@ -19,8 +19,9 @@ public class test2 {
          
          DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
          InputStream inputStream = url.openStream();
-         
+        
          try {
+        	
         	    byte[] buffer = new byte[1024];
         	    int bytesRead;
         	    StringBuilder stringBuilder = new StringBuilder();
@@ -31,6 +32,7 @@ public class test2 {
 
         	    String result = stringBuilder.toString();
         	    System.out.println(result);
+        	 
          }catch(Exception e) {
         	 e.printStackTrace();
          }
