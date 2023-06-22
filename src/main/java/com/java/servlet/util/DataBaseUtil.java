@@ -78,13 +78,7 @@ public class DataBaseUtil {
 				memberList.add(vo);
 
 //				memberList.add(vo);
-
-
-
-
-
 //				memberList.add(vo);
-
 
 			}
 			System.out.println(memberList);
