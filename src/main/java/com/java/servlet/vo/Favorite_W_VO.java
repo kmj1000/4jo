@@ -1,14 +1,5 @@
 package com.java.servlet.vo;
 
-<<<<<<< HEAD
-public class Favorite_W_VO {
-	private int favorite_with_pet_no;
-	private int with_pet_no;
-	private String nickname;
-	private String w_name;
-	private String tel;
-	private String road;
-=======
 import java.util.Date;
 
 public class Favorite_W_VO {
@@ -19,7 +10,6 @@ public class Favorite_W_VO {
     private String tel;
     private String road;
     
->>>>>>> 01cfa58eae289a86c31ef8a0b6561ed17187694b
 	public int getFavorite_with_pet_no() {
 		return favorite_with_pet_no;
 	}
@@ -59,7 +49,6 @@ public class Favorite_W_VO {
 	
 	@Override
 	public String toString() {
-<<<<<<< HEAD
 		return "Favorite_W_VO["
 				+"favorite_with_pet_no"+favorite_with_pet_no
 				+"with_pet_no"+with_pet_no
@@ -69,11 +58,5 @@ public class Favorite_W_VO {
 				+"road"+road+"]"
 				;
 	}
-=======
-		return "Favorite_W_VO [favorite_with_pet_no=" + favorite_with_pet_no + ", with_pet_no=" + with_pet_no
-				+ ", nickname=" + nickname + ", w_name=" + w_name + ", tel=" + tel + ", road=" + road + "]";
-	}
-    
-    
->>>>>>> 01cfa58eae289a86c31ef8a0b6561ed17187694b
+
 }

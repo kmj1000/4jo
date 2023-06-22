@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.java.servlet.dao.Favorite_S_DAO;
-import com.java.servlet.util.DatabaseUtil;
+import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.Favorite_S_VO;
 
 public class Favorite_S_DAOImpl implements Favorite_S_DAO {
@@ -30,7 +30,7 @@ public class Favorite_S_DAOImpl implements Favorite_S_DAO {
 		Favorite_S_VO vo = null;
 		
 		try(
-				Connection conn = DatabaseUtil.getConnection();
+				Connection conn = DataBaseUtil.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 				pstmt.setInt(1, favorite_shelter_no);

@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.java.servlet.dao.Favorite_W_DAO;
-import com.java.servlet.util.DatabaseUtil;
+import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.Favorite_W_VO;
 
 public class Favorite_W_DAOImpl implements Favorite_W_DAO {
@@ -29,7 +29,7 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
 				+ "FROM Favorite_with_pet WHERE favorite_with_pet_no=?;";
 		Favorite_W_VO vo = null;
 		try(
-				Connection conn = DatabaseUtil.getConnection();
+				Connection conn = DataBaseUtil.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 				pstmt.setInt(1, favorite_with_pet_no);
@@ -37,11 +37,11 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
 				
 				if(rs.next()) {
 					vo=new Favorite_W_VO();
-					vo.setFavorite_with_pet_no(rs.getInt("favorite_with_pet_no"));
-					vo.setWith_pet_no(rs.getInt("with_pet_no"));
-					vo.setW_name(rs.getString("w_name"));
-					vo.setTel(rs.getString("tes"));
-					vo.setRoad(rs.getString("road"));
+//					vo.setFavorite_with_pet_no(rs.getInt("favorite_with_pet_no"));
+//					vo.setWith_pet_no(rs.getInt("with_pet_no"));
+//					vo.setW_name(rs.getString("w_name"));
+//					vo.setTel(rs.getString("tes"));
+//					vo.setRoad(rs.getString("road"));
 				}
 				rs.close();
 		}catch(Exception e) {
