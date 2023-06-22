@@ -1,10 +1,8 @@
 package com.java.servlet.dao.impl;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 
 import com.java.servlet.dao.NoticeDAO;
 import com.java.servlet.util.DataBaseUtil;
