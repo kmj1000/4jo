@@ -48,6 +48,14 @@ public class DataBaseUtil {
 		}
 	}
 	
+	public static Connection connectionDB()throws ClassNotFoundException, SQLException {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url="jdbc:oracle:thin:@localhost:1521:XE";
+		String id="c##abd";
+		String pwd="abd";
+		return DriverManager.getConnection(url,id,pwd);
+	}
+	
 	public static void main(String[] args)throws ClassNotFoundException, SQLException{
 			String email="saomi@saomi.com";
 			String pwd="saomi";
@@ -83,6 +91,10 @@ public class DataBaseUtil {
 
 //				memberList.add(vo);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 115cf84c73ae473b8112a4f232b59be0335b1ec8
 			}
 			System.out.println(memberList);
 		
@@ -101,13 +113,5 @@ public class DataBaseUtil {
 			e.printStackTrace();
 		}
 		
-			
-		}
-	public static Connection connectionDB()throws ClassNotFoundException, SQLException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url="jdbc:oracle:thin:@localhost:1521:XE";
-		String id="c##abd";
-		String pwd="abd";
-		return DriverManager.getConnection(url,id,pwd);
 	}
 }
