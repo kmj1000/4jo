@@ -19,7 +19,11 @@ public class test2 {
          
          DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
          InputStream inputStream = url.openStream();
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> 28900f2c83f991ebc4e1b779cfe698d6b7d9f7f3
          try {
         	
         	    byte[] buffer = new byte[1024];

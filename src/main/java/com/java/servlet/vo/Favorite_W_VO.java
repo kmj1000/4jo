@@ -1,6 +1,8 @@
 package com.java.servlet.vo;
 
+
 import java.util.Date;
+
 
 public class Favorite_W_VO {
 	private int favorite_with_pet_no;
@@ -49,6 +51,7 @@ public class Favorite_W_VO {
 	
 	@Override
 	public String toString() {
+
 		return "Favorite_W_VO["
 				+"favorite_with_pet_no"+favorite_with_pet_no
 				+"with_pet_no"+with_pet_no
