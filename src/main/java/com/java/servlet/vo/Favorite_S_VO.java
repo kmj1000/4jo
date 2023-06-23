@@ -3,10 +3,10 @@ package com.java.servlet.vo;
 public class Favorite_S_VO {
 	private int favorite_shelter_no;
 	private int shelter_no;
-    private String nickname;
-    private String careNmShelter;
-    private String careAddrShelter;
-    private String careTelShelter;
+	private String nickname;
+	private String careNmShelter;
+	private String careAddrShelter;
+	private String careTelShelter;
     
 	public int getFavorite_shelter_no() {
 		return favorite_shelter_no;
@@ -47,10 +47,16 @@ public class Favorite_S_VO {
 	
 	@Override
 	public String toString() {
-		return "Favorite_S_VO [favorite_shelter_no=" + favorite_shelter_no + ", shelter_no=" + shelter_no
-				+ ", nickname=" + nickname + ", careNmShelter=" + careNmShelter + ", careAddrShelter=" + careAddrShelter
-				+ ", careTelShelter=" + careTelShelter + "]";
+
+		return "Favorite_S_VO["
+				+"favorite_shelter_no"+favorite_shelter_no
+				+"shelter_no"+shelter_no
+				+"nickname"+nickname
+				+"careNmShelter"+careNmShelter
+				+"careAddrShelter"+careAddrShelter
+				+"careTelShelter"+careTelShelter+"]"
+				;
 	}
-    
-    
+	 
+   
 }

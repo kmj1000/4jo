@@ -4,5 +4,5 @@ import com.java.servlet.vo.MembersVO;
 
 public interface MypageDAO {
 	
-	List <MembersVO> selectMembers();
+	List<MembersVO> selectMembers(String email);
 }

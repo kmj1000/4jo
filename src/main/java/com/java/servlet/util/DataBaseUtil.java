@@ -78,7 +78,11 @@ public class DataBaseUtil {
 				memberList.add(vo);
 
 //				memberList.add(vo);
+<<<<<<< HEAD
 
+=======
+//				memberList.add(vo);
+>>>>>>> 28900f2c83f991ebc4e1b779cfe698d6b7d9f7f3
 
 			}
 			System.out.println(memberList);
