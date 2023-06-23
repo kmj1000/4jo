@@ -2,6 +2,7 @@ package com.java.servlet.vo;
 
 public class Favorite_S_VO {
 	private int favorite_shelter_no;
+<<<<<<< HEAD
     private String nickname;
     private String careNm;
     private String careAddr;
@@ -9,6 +10,14 @@ public class Favorite_S_VO {
     
 	
 	
+=======
+	private int shelter_no;
+	private String nickname;
+	private String careNmShelter;
+	private String careAddrShelter;
+	private String careTelShelter;
+    
+>>>>>>> ed81ee7ca8f32029becf6c345ad661fa3f8c0644
 	public int getFavorite_shelter_no() {
 		return favorite_shelter_no;
 	}
@@ -80,6 +89,11 @@ public class Favorite_S_VO {
 				+"careTel = "+careTel+"]"
 				;
 	}
+<<<<<<< HEAD
 	
 
+=======
+	 
+   
+>>>>>>> ed81ee7ca8f32029becf6c345ad661fa3f8c0644
 }

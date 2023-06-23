@@ -1,13 +1,19 @@
 package com.java.servlet.dao.impl;
 
 import java.sql.Connection;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ed81ee7ca8f32029becf6c345ad661fa3f8c0644
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.java.servlet.dao.Favorite_W_DAO;
+<<<<<<< HEAD
 import com.java.servlet.util.DBCP2Util;
+=======
+>>>>>>> ed81ee7ca8f32029becf6c345ad661fa3f8c0644
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.Favorite_W_VO;
 
@@ -31,8 +37,12 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
 				;
 		Favorite_W_VO vo = null;
 		try(
+<<<<<<< HEAD
 				Connection conn = DBCP2Util.getConnection();
 				//Connection conn = DataBaseUtil.getConnection();
+=======
+				Connection conn = DataBaseUtil.getConnection();
+>>>>>>> ed81ee7ca8f32029becf6c345ad661fa3f8c0644
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 				pstmt.setInt(1, favorite_with_pet_no);
@@ -40,12 +50,20 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
 				
 				if(rs.next()) {
 					vo=new Favorite_W_VO();
+<<<<<<< HEAD
 					vo.setFavorite_with_pet_no(rs.getInt("favorite_with_pet_no"));
 					vo.setNickname(rs.getString("nickname"));
 					vo.set전화번호(rs.getString("전화번호"));
 					vo.set시설명(rs.getString("시설명"));
 					vo.set도로명주소(rs.getString("도로명주소"));
 					
+=======
+//					vo.setFavorite_with_pet_no(rs.getInt("favorite_with_pet_no"));
+//					vo.setWith_pet_no(rs.getInt("with_pet_no"));
+//					vo.setW_name(rs.getString("w_name"));
+//					vo.setTel(rs.getString("tes"));
+//					vo.setRoad(rs.getString("road"));
+>>>>>>> ed81ee7ca8f32029becf6c345ad661fa3f8c0644
 				}
 				rs.close();
 		}catch(Exception e) {
