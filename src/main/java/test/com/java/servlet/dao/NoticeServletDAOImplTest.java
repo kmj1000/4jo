@@ -4,11 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class NoticeServletDAOImplTest {
+import com.java.servlet.dao.CommunityDAO;
+import com.java.servlet.dao.NoticeDAO;
+import com.java.servlet.dao.impl.CommunityDAOImpl;
+import com.java.servlet.dao.impl.NoticeDAOImpl;
 
+class NoticeServletDAOImplTest {
+	private final NoticeDAO dao = NoticeDAOImpl.getInstance();
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testSelectNotice() {
+		String admin_name="관리자";
+		assertNotEquals(null, dao.selectNotice(admin_name));
+		System.out.println(dao.selectNotice(admin_name));
+		// 조깥내 ㅋ
 	}
 
 }

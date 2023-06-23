@@ -21,11 +21,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public NoticeVO selectNotice(String admin_name) {
 		
 		String sql = "SELECT notice_no\r\n"
-				+ "        ,admin_name\r\n"
 	            + "        ,notice_title\r\n"
 	            + "        ,notice_content\r\n"
 	            + "        ,notice_reg_date\r\n"
-	            + "    FROM notice"
+	            + "        ,(select admin_name from admin) as admin_name\r\n"
+	            + "     FROM notice WHERE admin_name = ?"
 	            ;
 	      NoticeVO vo = null;
 	      
