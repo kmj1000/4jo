@@ -21,18 +21,18 @@ public class CommunityDAOImpl implements CommunityDAO {
 	public CommunityVO selectCommunity(int c_no) {
 		
 		String sql = "SELECT c_no\r\n"
-					+ "        ,nickname\r\n"
 		            + "        ,title\r\n"
 		            + "        ,content\r\n"
 		            + "        ,reg_date\r\n"
-		            + "    FROM community"
+		            + "        ,(SELECT nickname FROM members) as nickname\r\n"
+		            + "    FROM community WHERE c_no = ?"
 		            ;
 		      CommunityVO vo = null;
 		      
-		      try(
+		      try {
 		            Connection conn = DataBaseUtil.getConnection();// DBCP2Util
 		            PreparedStatement pstmt = conn.prepareStatement(sql);
-		            ){
+		            
 		            
 					pstmt.setInt(1, c_no);
 		         
