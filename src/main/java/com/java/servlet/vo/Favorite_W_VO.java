@@ -1,17 +1,12 @@
 package com.java.servlet.vo;
 
-<<<<<<< HEAD
-public class Favorite_W_VO {
-	private int favorite_with_pet_no;
-=======
+
 
 import java.util.Date;
 
 
 public class Favorite_W_VO {
 	private int favorite_with_pet_no;
-	private int with_pet_no;
->>>>>>> ed81ee7ca8f32029becf6c345ad661fa3f8c0644
     private String nickname;
     private String 시설명;
     private String 전화번호;
@@ -65,8 +60,5 @@ public class Favorite_W_VO {
 				+"도로명주소 = "+도로명주소+"]"
 				;
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> ed81ee7ca8f32029becf6c345ad661fa3f8c0644
 }
