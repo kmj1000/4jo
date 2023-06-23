@@ -38,7 +38,7 @@
     <script>
     window.onload = function() {
     	
-        init();
+       
         getPublicData(1, 100);
         
       };
@@ -96,11 +96,11 @@
   
 
   const field={
-		  happenDt :"happenDt"
-			,happenPlace:"happenPlace"
-			,kindCd:"kindCd"
-            ,colorCd : "colorCd"
-            ,age : "age"
+		  happenDt : "happenDt"
+		  ,happenPlace : "happenPlace"
+		  ,kindCd : "kindCd"
+		  ,colorCd : "colorCd"
+		  ,age : "age"
             ,weight : "weight"
             ,noticeNo:"noticeNo"
             ,noticeSdt: "noticeSdt"
@@ -157,7 +157,7 @@
               url: url,
               async: true,
               contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-              type: "GET",
+              type: "POST",
               data: param,
               dataType: "json",
               success: function(data, textStatus) {

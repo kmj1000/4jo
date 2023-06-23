@@ -15,10 +15,11 @@ public class Favorite_W_ServiceImpl implements Favorite_W_Service {
 	public static Favorite_W_Service getInstance() {
 		return instance;
 	}
+	
 	@Override
 	public Favorite_W_VO getFavorite_with_pet(int favortite_with_pet_no) {
-		
-		return dao.selectedFavorite_W(favortite_with_pet_no);
+		// TODO Auto-generated method stub
+		return dao.selectFavorite_with_pet(favortite_with_pet_no);
 	}
 
 }

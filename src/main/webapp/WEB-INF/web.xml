@@ -6,14 +6,26 @@
 <servlet-mapping>
 	<servlet-name>mainServlet</servlet-name>
 	<url-pattern>/main</url-pattern>
+	<servlet-name>Pet_noticeServlet</servlet-name>
+    <url-pattern>/save-api-data</url-pattern>
 </servlet-mapping>
 
-<servlet>
-	<servlet-name>mainServlet</servlet-name>
+    
+
+
+
+	
+  <servlet>
+    <servlet-name>Pet_noticeServlet</servlet-name>
+    <servlet-class>com.java.servlet.Pet_noticeServlet</servlet-class>
+    <servlet-name>mainServlet</servlet-name>
 	<servlet-class>com.java.servlet.MainServlet</servlet-class>
+    
 </servlet>
   -->
-  
+
+
+
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -23,3 +35,5 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
 </web-app>
+
+
