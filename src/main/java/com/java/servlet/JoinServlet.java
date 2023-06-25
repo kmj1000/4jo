@@ -1,11 +1,19 @@
 package com.java.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+import com.java.servlet.service.JoinService;
+import com.java.servlet.service.impl.JoinServiceImpl;
+import com.java.servlet.util.SHAEncodeUtil;
+import com.java.servlet.vo.MembersVO;
 
 /**
  * Servlet implementation class JoinServlet
@@ -26,16 +34,35 @@ public class JoinServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/join.jsp" );
+		dispatcher.forward(request, response);
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		MembersVO vo = new MembersVO();
+		vo.setNickname( request.getParameter("nickname") );
+		vo.setEmail( request.getParameter("email") );
+		vo.setPwd( request.getParameter("pwd") );
+		vo.setName( request.getParameter("name") );
+		vo.setPhone( request.getParameter("phone") );
+		
+		
+		int isOk = 1;
+		String msg = null;
+		if( service.registerMember(vo) == isOk) {
+			msg = "success";
+		}else {
+			msg = "fail, try again";
+		}
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.sendRedirect(request.getContextPath() 
+									+	 "/login?msg="+msg);	
 	}
 
 }
