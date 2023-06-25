@@ -16,7 +16,6 @@ class NoticeServletDAOImplTest {
 		String admin_name="관리자";
 		assertNotEquals(null, dao.selectNotice(admin_name));
 		System.out.println(dao.selectNotice(admin_name));
-		// 조깥내 ㅋ
 	}
 
 }
