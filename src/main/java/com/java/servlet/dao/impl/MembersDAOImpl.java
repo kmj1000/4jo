@@ -32,8 +32,10 @@ public class MembersDAOImpl implements MembersDAO {
 						MembersVO vo = new MembersVO();
 						vo.setNickname(rs.getString(1));
 						vo.setEmail(rs.getString(2));
-						vo.setName(rs.getString(3));
-						vo.setPhone(rs.getInt(4));
+						vo.setPwd(rs.getString(3));
+						vo.setName(rs.getString(4));
+						vo.setPhone(rs.getInt(5));
+
 						membersList.add(vo);
 					}
 

@@ -6,6 +6,6 @@ public interface LoginDAO {
 
 	int selectCountMember(MembersVO vo);
 
-	void selectMemberByIdAndPwd(MembersVO vo);
+	void selectMembersByIdAndPwd(MembersVO vo);
 
 }
