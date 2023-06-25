@@ -1,64 +1,63 @@
 package com.java.servlet.vo;
 
 
+
 import java.util.Date;
 
 
 public class Favorite_W_VO {
 	private int favorite_with_pet_no;
-	private int with_pet_no;
     private String nickname;
-    private String w_name;
-    private String tel;
-    private String road;
+    private String 시설명;
+    private String 전화번호;
+    private String 도로명주소;
     
 	public int getFavorite_with_pet_no() {
 		return favorite_with_pet_no;
 	}
+
 	public void setFavorite_with_pet_no(int favorite_with_pet_no) {
 		this.favorite_with_pet_no = favorite_with_pet_no;
 	}
-	public int getWith_pet_no() {
-		return with_pet_no;
-	}
-	public void setWith_pet_no(int with_pet_no) {
-		this.with_pet_no = with_pet_no;
-	}
+
 	public String getNickname() {
 		return nickname;
 	}
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getW_name() {
-		return w_name;
+
+	public String get시설명() {
+		return 시설명;
 	}
-	public void setW_name(String w_name) {
-		this.w_name = w_name;
+
+	public void set시설명(String 시설명) {
+		this.시설명 = 시설명;
 	}
-	public String getTel() {
-		return tel;
+
+	public String get전화번호() {
+		return 전화번호;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+
+	public void set전화번호(String 전화번호) {
+		this.전화번호 = 전화번호;
 	}
-	public String getRoad() {
-		return road;
+	public String get도로명주소() {
+		return 도로명주소;
 	}
-	public void setRoad(String road) {
-		this.road = road;
+	public void set도로명주소(String 도로명주소) {
+		this.도로명주소 = 도로명주소;
 	}
-	
 	@Override
 	public String toString() {
 
 		return "Favorite_W_VO["
-				+"favorite_with_pet_no"+favorite_with_pet_no
-				+"with_pet_no"+with_pet_no
-				+"nickname"+nickname
-				+"w_name"+w_name
-				+"tel"+tel
-				+"road"+road+"]"
+				+"favorite_with_pet_no = "+favorite_with_pet_no+", "
+				+"nickname = "+nickname+", "
+				+"시설명 = "+시설명+", "
+				+"전화번호 = "+전화번호+", "
+				+"도로명주소 = "+도로명주소+"]"
 				;
 	}
 

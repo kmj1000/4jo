@@ -8,7 +8,8 @@ public class CommunityVO {
     private String title;
     private String content;
     private Date reg_date;
-	public int getC_no() {
+	
+    public int getC_no() {
 		return c_no;
 	}
 	public void setC_no(int c_no) {
@@ -41,7 +42,10 @@ public class CommunityVO {
 	
 	@Override
 	public String toString() {
-		return "CommunityVO [c_no=" + c_no + ", nickname=" + nickname + ", title=" + title + ", content=" + content
+		return "CommunityVO [c_no=" + c_no 
+				+ ", nickname=" + nickname 
+				+ ", title=" + title 
+				+ ", content=" + content
 				+ ", reg_date=" + reg_date + "]";
 	}
     
