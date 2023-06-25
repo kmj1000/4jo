@@ -13,6 +13,6 @@ class MypageServletDAOImplTest {
 		String nickname ="민주";
 		assertNotEquals(null, dao.selectMypage(nickname));
 		System.out.println(dao.selectMypage(nickname));
-
+//
 	}
 }
