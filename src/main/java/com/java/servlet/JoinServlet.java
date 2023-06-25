@@ -21,6 +21,7 @@ import com.java.servlet.vo.MembersVO;
 @WebServlet("/JoinServlet")
 public class JoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private final JoinService service=JoinServiceImpl.getInstance();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -49,7 +50,7 @@ public class JoinServlet extends HttpServlet {
 		vo.setEmail( request.getParameter("email") );
 		vo.setPwd( request.getParameter("pwd") );
 		vo.setName( request.getParameter("name") );
-		vo.setPhone( request.getParameter("phone") );
+		vo.setPhone( Integer.parseInt(request.getParameter("phone")) );
 		
 		
 		int isOk = 1;
