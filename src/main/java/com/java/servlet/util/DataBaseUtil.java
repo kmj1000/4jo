@@ -1,6 +1,5 @@
 package com.java.servlet.util;
 
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,41 +12,41 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 public class DataBaseUtil {
-	//DriverManager : driver down-> web-inf -> lib-> ojdbc8.jar copy
-			//Connection
-			//Statement , PrepareStatement
-			//ResultSet
-	
+	// DriverManager : driver down-> web-inf -> lib-> ojdbc8.jar copy
+	// Connection
+	// Statement , PrepareStatement
+	// ResultSet
+
 	private static Connection connection;
 	static {
 		try {
-			Connection conn=connectionDB();	
-		}catch(ClassNotFoundException  e) {
+			Connection conn = connectionDB();
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		
-		if(connection==null || connection.isClosed()) {
+
+		if (connection == null || connection.isClosed()) {
 			connection = connectionDB();
 		}
 		return connection;
 	}
-	
+
 	public static void destroyConnection() {
-		if(connection!=null) {
+		if (connection != null) {
 			try {
 				connection.close();
-				connection=null;
-			}catch(SQLException e) {
+				connection = null;
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
+
 	public static void main(String[] args)throws ClassNotFoundException, SQLException{
 			String email="saomi@saomi.com";
 			String pwd="saomi";
@@ -78,13 +77,9 @@ public class DataBaseUtil {
 				memberList.add(vo);
 
 //				memberList.add(vo);
-<<<<<<< HEAD
 
-=======
 //				memberList.add(vo);
->>>>>>> 28900f2c83f991ebc4e1b779cfe698d6b7d9f7f3
 
-			}
 			System.out.println(memberList);
 		
 			/*
@@ -98,17 +93,19 @@ public class DataBaseUtil {
 			}
 			System.out.println(sql);
 			*/
-		}catch(Exception e) {
+		} 
+			}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 			
 		}
-	public static Connection connectionDB()throws ClassNotFoundException, SQLException {
+
+	public static Connection connectionDB() throws ClassNotFoundException, SQLException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url="jdbc:oracle:thin:@localhost:1521:XE";
-		String id="c##abd";
-		String pwd="abd";
-		return DriverManager.getConnection(url,id,pwd);
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+		String id = "c##abd";
+		String pwd = "abd";
+		return DriverManager.getConnection(url, id, pwd);
 	}
 }

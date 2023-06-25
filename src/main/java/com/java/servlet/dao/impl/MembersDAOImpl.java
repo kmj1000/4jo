@@ -19,6 +19,7 @@ public class MembersDAOImpl implements MembersDAO {
 				+ "        ,email\r\n"
 				+ "        ,name\r\n"
 				+ "        ,phone \r\n"
+				+ "			,pwd \r\n"
 				+ "    FROM members"
 				;
 
