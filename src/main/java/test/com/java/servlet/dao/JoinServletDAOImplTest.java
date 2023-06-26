@@ -16,12 +16,14 @@ class JoinServletDAOImplTest {
 	@Test
 	void testInsertMember() {
 		MembersVO vo = new MembersVO();
-		vo.setNickname("갱미");
-		vo.setEmail("gang@mi.com");
+		vo.setNickname("갱미45");
+		vo.setEmail("gang45@mi.com");
 		vo.setPwd("gangmi");
 		vo.setName("김경미");
-		vo.setPhone(01023232323);
+		vo.setPhone(Integer.parseInt("01012144677"));
 		assertEquals(1, dao.insertMembers(vo));
-	}
 
+	}
+	
+	
 }

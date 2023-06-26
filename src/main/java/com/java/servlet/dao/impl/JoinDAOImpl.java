@@ -22,11 +22,11 @@ public class JoinDAOImpl implements JoinDAO {
 		
 		String sql = "INSERT INTO members(nickname, email, pwd, name, phone)\r\n"
 				+ "        VALUES(\r\n"
-				+ "               ?\r\n"
+				+ "                ?\r\n"
 				+ "                ,?\r\n"
 				+ "                ,?\r\n"
-				+ "                ,?\r\n"
-				+ "                ,?\r\n"
+				+ "                ,?\r\n" 
+				+ "                ,?\r\n" 
 				+ "        )";
 		
 		try(
