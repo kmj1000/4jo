@@ -119,8 +119,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 		String sql = "SELECT \r\n" + "        * \r\n" + "    FROM (\r\n"
 	            + "            SELECT /*+ INDEX ( index_noticeno_pk) */\r\n"
 	            + "                    ROWNUM as rn\r\n" + "                    ,notice_no\r\n"
-	            + "                    ,title\r\n" + "                    ,content\r\n"
-	            + "                    ,reg_date\r\n"
+	            + "                    ,notice_title\r\n" + "                    ,notice_content\r\n"
+	            + "                    ,notice_reg_date\r\n"
 	            + "                    ,(select admin_name from admin where admin_name='관리자') as admin_name\r\n"
 	            + "                FROM notice\r\n"
 	            + "                WHERE ROWNUM <= ( ? * ? )   -- page 1=10, 2=20, 3=30  page * 10, 10: 페이지당 게시글 갯수\r\n"
@@ -143,7 +143,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	         while (rs.next()) {
 	            NoticeVO vo = new NoticeVO();
 	            vo.setNotice_no(rs.getInt("notice_no"));
-	            vo.setNotice_title(rs.getString("title"));
+	            vo.setNotice_title(rs.getString("notice_title"));
 	            vo.setAdmin_name(rs.getString("admin_name"));
 	            vo.setNotice_reg_date(rs.getDate("notice_reg_date"));
 

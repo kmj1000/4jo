@@ -38,8 +38,9 @@ public class CommunityServlet extends HttpServlet {
     */
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-      HttpSession session= request.getSession(false);
-      boolean SESS_AUTH = false;
+      HttpSession session= request.getSession(true);
+      boolean SESS_AUTH = true;
+      // 둘다 원래 false
       System.out.println(session);
       if(session == null){
          String msg = "You are Not allowed, Plz login!";
@@ -55,7 +56,8 @@ public class CommunityServlet extends HttpServlet {
       if( SESS_AUTH ) {
          
          request.setCharacterEncoding("utf-8");
-         request.setAttribute("SESS_AUTH", false);
+         request.setAttribute("SESS_AUTH", true);
+         // 원래 false
          
          // pagesetting
          String pageNo = request.getParameter("pageNo");
