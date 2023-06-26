@@ -13,7 +13,7 @@
         <title>Tables - SB Admin</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
         <link href="${ pageContext.servletContext.contextPath }/bootstrap/css/mypageStyles.css" rel="stylesheet" />
-          <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${ pageContext.servletContext.contextPath }/bootstrap/js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
@@ -29,6 +29,14 @@
 
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
                 <div class="input-group">
+                	<input type="button" class="btn btn-outline-primary" onclick="location='favorite_shelter.jsp'">Primary</button>
+					<button type="button" class="btn btn-outline-secondary">Secondary</button>
+					<button type="button" class="btn btn-outline-success">Success</button>
+					<button type="button" class="btn btn-outline-info">Info</button>
+					<button type="button" class="btn btn-outline-warning">Warning</button>
+					<button type="button" class="btn btn-outline-danger">Danger</button>
+					<button type="button" class="btn btn-outline-light">Light</button>
+					<button type="button" class="btn btn-outline-dark">Dark</button>
                    <input type = "button" value = "로그아웃" onclick="location='favorite_shelter.jsp'" /> 
                     <input type = "button" value = "마이페이지" onclick="location='favorite_with_pet.jsp'" /> 
                 </div>
@@ -121,6 +129,6 @@
                 </footer>
             </div>
         </div>
-    
+    	
     </body>
 </html>
