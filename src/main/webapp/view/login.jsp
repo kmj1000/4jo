@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,6 +11,47 @@
         <title>옥독캣 - 로그인</title>
        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" /> 
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+         <script>
+    	var msg = '<%= request.getParameter("msg")%>';
+    	
+    	window.onload = function(){
+    		showMsg();
+    	}
+    	
+    	function showMsg(){
+    		
+    		
+	    	if( msg != null && msg != 'null' && msg != '' ){
+	    		alert(msg);
+	    	}
+    	}
+    	
+        function verifyField(){
+            let element = document.getElementById("id");
+            let msg = '아이디 를 입력하세요.';
+            if( !isValid (element,msg) ){
+                return false;
+            }
+            element  = document.getElementById("pwd");
+            msg = "비밀번호 를 입력하세요.";
+            if( !isValid (element,msg) ){
+                return false;
+            }
+           
+            return true;
+        }
+        function isValid(element, msg){
+            let result = false;
+            if(element.value == ''){
+                alert(msg);
+                element.focus();
+                result = false;
+            }else{
+                result = true;
+            }
+            return result;
+        }
+    </script>
     </head>
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -22,7 +63,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">로그인</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form action="${ pageContext.servletContext.contextPath }/login" method="post">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
                                                 <label for="inputEmail">Email address</label>

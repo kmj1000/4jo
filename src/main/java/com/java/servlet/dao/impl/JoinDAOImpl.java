@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import com.java.servlet.dao.JoinDAO;
+import com.java.servlet.util.DBCP2Util;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.MembersVO;
 
@@ -38,6 +39,7 @@ public class JoinDAOImpl implements JoinDAO {
 				pstmt.setString(3, member.getPwd());
 				pstmt.setString(4, member.getName());
 				pstmt.setInt(5, member.getPhone());
+				
 			
 				result = pstmt.executeUpdate();
 				System.out.println("result - "+result);

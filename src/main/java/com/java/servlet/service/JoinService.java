@@ -4,6 +4,5 @@ import com.java.servlet.vo.MembersVO;
 
 public interface JoinService {
 
-	int registerMember(MembersVO member);
-
+	int registerMembers(MembersVO member);
 }
