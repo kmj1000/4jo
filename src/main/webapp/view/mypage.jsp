@@ -29,20 +29,18 @@
 
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
                 <div class="input-group">
-                	<input type="button" class="btn btn-outline-primary" onclick="location='favorite_shelter.jsp'">Primary</button>
-					<button type="button" class="btn btn-outline-secondary">Secondary</button>
+                	<button type="button" class="btn btn-outline-primary" onclick="location='favorite_shelter.jsp'">로그아웃</button>
+					<!-- <button type="button" class="btn btn-outline-secondary">Secondary</button>
 					<button type="button" class="btn btn-outline-success">Success</button>
 					<button type="button" class="btn btn-outline-info">Info</button>
 					<button type="button" class="btn btn-outline-warning">Warning</button>
 					<button type="button" class="btn btn-outline-danger">Danger</button>
-					<button type="button" class="btn btn-outline-light">Light</button>
-					<button type="button" class="btn btn-outline-dark">Dark</button>
-                   <input type = "button" value = "로그아웃" onclick="location='favorite_shelter.jsp'" /> 
-                    <input type = "button" value = "마이페이지" onclick="location='favorite_with_pet.jsp'" /> 
+					<button type="button" class="btn btn-outline-light">Light</button> -->
+					<button type="button" class="btn btn-outline-danger" onclick="location='favorite_with_pet.jsp'">마이페이지</button>
                 </div>
             </form>
         </nav>
-        	
+        
          <nav class="sb-topnav navbar navbar-expand; navbar-dark bg-yellow" >
            <!--   <nav class="nav nav-pills flex-column flex-sm-row justify-content-evenly"> -->
               <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#"><b>공고</b></a>
