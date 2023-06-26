@@ -182,7 +182,7 @@
    <body class="sb-nav-fixed"> 
           
         <nav class=" ps-5 sb-topnav navbar navbar-expand; navbar-dark bg-yellow" >
-        <img class = "ps-5 img_main" src="../dogfoot.png" style="width: 120px; height: 70px;"/><br/>
+        <img class = "ps-5 img_main" src="dogfoot.png" style="width: 120px; height: 70px;"/><br/>
              <a class="navbar-brand ps-1 pe-5" href="index.html" ><h1>옥독캣</h1></a>
               
 

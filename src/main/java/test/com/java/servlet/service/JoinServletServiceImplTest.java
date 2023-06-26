@@ -22,6 +22,6 @@ class JoinServletServiceImplTest {
 		vo.setName( "강수연" );
 		vo.setPhone(Integer.parseInt("01012844677"));
 		
-		assertEquals(1, service.registerMember(vo));  
+		assertEquals(1, service.registerMembers(vo));  
 	}
 }

@@ -18,35 +18,35 @@ private static final LoginDAO instance = new LoginDAOImpl();
 		return instance;
 	}
 	
-//	@Override
-//	public int selectCountMember(MembersVO vo) {
-//		// 여기는 selectMember 하는 자리, 나중에 적기
-//		int result = 0;
-//		
-//		String sql = "SELECT COUNT(1) FROM  members\r\n"
-//						+ "    WHERE (email, pwd) IN ( (?, ?) )"
-//						;
-//		
-//		try(
-//				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
-//				PreparedStatement pstmt = conn.prepareStatement(sql);
-//				){
-//				System.out.println(pstmt);
-//				pstmt.setString(1, vo.getEmail());
-//				pstmt.setString(2, vo.getPwd());
-//			
-//				ResultSet rs = pstmt.executeQuery();
-//				if( rs.next() ) {
-//					result = rs.getInt(1);
-//				}
-//				System.out.println("result - "+result);
-//				
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return result;
-//	}
+	@Override
+	public int selectCountMember(MembersVO vo) {
+		// 여기는 selectMember 하는 자리, 나중에 적기
+		int result = 0;
+		
+		String sql = "SELECT COUNT(1) FROM  members\r\n"
+						+ "    WHERE (email, pwd) IN ( (?, ?) )"
+						;
+		
+		try(
+				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+				System.out.println(pstmt);
+				pstmt.setString(1, vo.getEmail());
+				pstmt.setString(2, vo.getPwd());
+			
+				ResultSet rs = pstmt.executeQuery();
+				if( rs.next() ) {
+					result = rs.getInt(1);
+				}
+				System.out.println("result - "+result);
+				
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
 	@Override
 	public void selectMembersByIdAndPwd(MembersVO vo) {
