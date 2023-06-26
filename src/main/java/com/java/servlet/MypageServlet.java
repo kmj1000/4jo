@@ -57,30 +57,15 @@ public class MypageServlet extends HttpServlet {
          
          request.setCharacterEncoding("utf-8");
          request.setAttribute("SESS_AUTH", true);
-         
-         // pagesetting
-         String pageNo = request.getParameter("pageNo");
-         String perAmount = request.getParameter("perAmount");
-         String displayNo = request.getParameter("displayNo");
-         
-         int currPageNo = (pageNo == null || pageNo.equals("")) ? 1 : Integer.parseInt(pageNo);
-         int currAmount = (perAmount == null || perAmount.equals("")) ? 10 : Integer.parseInt(perAmount);
-         int disPlayPageNum = (displayNo == null || displayNo.equals("")) ? 10 : Integer.parseInt(displayNo);
-         
-         int totalCount = service.getCountAllBoard();
-         
-         Criteria cri = new Criteria(currPageNo, currAmount); //현재페이지, 한페이지당 출력갯수
-         PageMaker pageMaker = new PageMaker(cri, totalCount); // cri, totalCount=100
-         pageMaker.setDisplayPageAmount(disPlayPageNum);
-         System.out.println(pageMaker);
+
          
          // allboard 가져와야 함.
-         List<MembersVO> boardList =service.getAllBoardByPage(pageMaker);//getAllBoardByPage
-         //List<BoardVO> boardList =service.getAllBoard();//getAllBoardByPage
+       
+         List<MembersVO> boardList =service.getAllBoard();//getAllBoardByPage
          System.out.println(boardList);
          request.setAttribute("boardList", boardList);
          
-         request.setAttribute("pageMaker", pageMaker);
+   
          RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/mypage.jsp");
          dispatcher.forward(request, response);
       }else {

@@ -8,8 +8,4 @@ import com.java.servlet.vo.MembersVO;
 
 public interface MypageDAO {
 	List<MembersVO> selectAllBoard();
-	int seletCountAllBoard();
-	List<MembersVO> selectAllBoardByPage(PageMaker pageMaker);
-	
-
 }

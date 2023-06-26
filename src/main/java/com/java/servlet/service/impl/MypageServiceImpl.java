@@ -28,18 +28,5 @@ public class MypageServiceImpl implements MypageService {
 		return dao.selectAllBoard();
 	}
 	
-
-	@Override
-	public int getCountAllBoard() {
-		return dao.seletCountAllBoard();
-	}
-	
-	@Override
-	public List<MembersVO> getAllBoardByPage(PageMaker pageMaker) {
-		return dao.selectAllBoardByPage(pageMaker);
-	}
-	
-	
-	
 	
 }

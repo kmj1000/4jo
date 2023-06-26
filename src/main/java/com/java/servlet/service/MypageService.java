@@ -7,10 +7,6 @@ import com.java.servlet.vo.MembersVO;
 
 public interface MypageService {
 
-
-	List<MembersVO> getAllBoard();
-	int getCountAllBoard();
-	List<MembersVO> getAllBoardByPage(PageMaker pageMaker);
-	
+	List<MembersVO> getAllBoard();	
 	
 }
