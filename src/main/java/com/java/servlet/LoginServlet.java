@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 			service.getMembersByIdAndPwd(vo); 
 			
 			HttpSession session = request.getSession(false);
-			session.setAttribute("SESS_AUTH", true);
+			session.setAttribute("SESS_AUTH", false);
 			session.setAttribute("SESS_EMAIL", vo.getEmail());
 			session.setAttribute("SESS_USERNAME", vo.getName());
 			
@@ -66,8 +66,6 @@ public class LoginServlet extends HttpServlet {
 			
 			System.out.println("session - " + session);
 		}else {
-			// 로그인 실패 
-			// 로그인 ;
 			request.getRequestDispatcher( "/view/login.jsp?msg=login failed, plz try again!")
 					.forward(request, response);
 		}

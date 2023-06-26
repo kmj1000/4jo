@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class MainServlet
  */
-@WebServlet("/main1")
+@WebServlet("/main")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,8 +30,8 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session= request.getSession(true);
-	      boolean SESS_AUTH = true;
+		HttpSession session= request.getSession(false);
+	      boolean SESS_AUTH = false;
 	      System.out.println(session);
 	      if(session == null){
 	         String msg = "You are Not allowed, Plz login!";
@@ -47,7 +47,7 @@ public class MainServlet extends HttpServlet {
 	      if( SESS_AUTH ) {
 	         
 	         request.setCharacterEncoding("utf-8");
-	         request.setAttribute("SESS_AUTH", true);
+	         request.setAttribute("SESS_AUTH", false);
  
 	
 	         RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/main.jsp");
