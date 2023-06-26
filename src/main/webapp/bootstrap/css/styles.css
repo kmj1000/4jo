@@ -6807,12 +6807,10 @@ textarea.form-control-lg {
 }
 
 .fixed-top, .sb-nav-fixed #layoutSidenav #layoutSidenav_nav, .sb-nav-fixed .sb-topnav {
-<<<<<<< HEAD
+
   position: relative;
-=======
  /*  position: fixed; */
   /*  position: fixed; */
->>>>>>> branch 'master' of https://github.com/kmj1000/4jo.git
   top: 0;
   right: 0;
   left: 0;
@@ -10985,11 +10983,6 @@ body {
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-topnav.navbar-light #sidebarToggle {
-  color: #212529;
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/kmj1000/4jo.git
   color: #d9e3f1;
 }
 

@@ -251,12 +251,12 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    	<C:forEach var="CommunityVO" items="${CommunityList}" varStatus="status">
+                                    	<C:forEach var="communityVO" items="${communityList}" varStatus="status">
                                         <tr>
-                                            <td>${CommunityVO.c_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/community?method=get&c_no=${CommunityVO.c_no}">${CommunityVO.title}</a></td>
-                                            <td>${CommunityVO.reg_date}</td>
-                                            <td>${CommunityVO.nickname}</td>
+                                            <td>${communityVO.c_no}</td>
+                                            <td><a href="${pageContext.servletContext.contextPath}/community?method=get&c_no=${communityVO.c_no}">${communityVO.title}</a></td>
+                                            <td>${communityVO.reg_date}</td>
+                                            <td>${communityVO.nickname}</td>
                                         </tr>
                                         </C:forEach>
                                     </tbody>

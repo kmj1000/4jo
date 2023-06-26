@@ -76,10 +76,10 @@ public class CommunityServlet extends HttpServlet {
          System.out.println(pageMaker);
          
          // allboard 가져와야 함.
-         List<CommunityVO> CommunityList =service.getAllCommunityByPage(pageMaker);//getAllBoardByPage
+         List<CommunityVO> communityList =service.getAllCommunityByPage(pageMaker);//getAllBoardByPage
          //List<BoardVO> boardList =service.getAllBoard();//getAllBoardByPage
-         System.out.println(CommunityList);
-         request.setAttribute("CommunityList", CommunityList);
+         System.out.println(communityList);
+         request.setAttribute("communityList", communityList);
          
          request.setAttribute("pageMaker", pageMaker);
          RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/community.jsp");

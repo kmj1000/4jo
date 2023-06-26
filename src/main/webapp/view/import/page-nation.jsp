@@ -16,7 +16,7 @@
 						    		<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="status">
 					    			<c:choose>
 					    				<c:when test="${ status.index == pageMaker.cri.pageNum }">
-					    					<c:set scope="page" var="selectedBgColor" value="style='background-color:aqua;'"></c:set>
+					    					<c:set scope="page" var="selectedBgColor" value="style='background-color:tomato;'"></c:set>
 					    				</c:when>
 					    				<c:otherwise>
 					    					<c:set scope="page" var="selectedBgColor" value=""></c:set>
