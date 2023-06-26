@@ -18,7 +18,7 @@ import com.java.servlet.vo.MembersVO;
 /**
  * Servlet implementation class JoinServlet
  */
-@WebServlet("/JoinServlet")
+@WebServlet("/join")
 public class JoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final JoinService service=JoinServiceImpl.getInstance();
@@ -44,14 +44,13 @@ public class JoinServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MembersVO vo = new MembersVO();
 		vo.setNickname( request.getParameter("nickname") );
 		vo.setEmail( request.getParameter("email") );
-		vo.setPwd( request.getParameter("pwd") );
+		vo.setPwd( SHAEncodeUtil.encodeSha( request.getParameter("pwd") ));
 		vo.setName( request.getParameter("name") );
 		vo.setPhone( Integer.parseInt(request.getParameter("phone")) );
-		
 		
 		int isOk = 1;
 		String msg = null;

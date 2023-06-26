@@ -19,22 +19,21 @@ public class MembersDAOImpl implements MembersDAO {
 				+ "        ,email\r\n"
 				+ "        ,name\r\n"
 				+ "        ,phone \r\n"
-				+ "			,pwd \r\n"
 				+ "    FROM members"
 				;
 
 				try (Connection connection = DataBaseUtil.getConnection();
 						Statement stmt = connection.createStatement();
-						ResultSet rs = stmt.executeQuery(sql);) {
+						ResultSet rs = stmt.executeQuery(sql);
+						) {
 					membersList = new ArrayList();
 
 					while (rs.next()) {
 						MembersVO vo = new MembersVO();
 						vo.setNickname(rs.getString(1));
 						vo.setEmail(rs.getString(2));
-						vo.setPwd(rs.getString(3));
-						vo.setName(rs.getString(4));
-						vo.setPhone(rs.getInt(5));
+						vo.setName(rs.getString(3));
+						vo.setPhone(rs.getInt(4));
 
 						membersList.add(vo);
 					}
