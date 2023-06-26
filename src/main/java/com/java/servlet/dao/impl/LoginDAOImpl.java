@@ -23,7 +23,7 @@ private static final LoginDAO instance = new LoginDAOImpl();
 		// 여기는 selectMember 하는 자리, 나중에 적기
 		int result = 0;
 		
-		String sql = "SELECT COUNT(1) FROM  member\r\n"
+		String sql = "SELECT COUNT(1) FROM  members\r\n"
 						+ "    WHERE (email, pwd) IN ( (?, ?) )"
 						;
 		
@@ -49,9 +49,9 @@ private static final LoginDAO instance = new LoginDAOImpl();
 	}
 
 	@Override
-	public void selectMemberByIdAndPwd(MembersVO vo) {
+	public void selectMembersByIdAndPwd(MembersVO vo) {
 		
-		String sql = "SELECT * FROM  member\r\n"
+		String sql = "SELECT * FROM  members\r\n"
 				+ "    WHERE (Email, pwd) IN ( (?, ?) )"
 				;
 
@@ -74,4 +74,6 @@ private static final LoginDAO instance = new LoginDAOImpl();
 			e.printStackTrace();
 		}
 	}
+
+
 }

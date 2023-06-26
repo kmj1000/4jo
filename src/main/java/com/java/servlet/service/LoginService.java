@@ -6,6 +6,7 @@ public interface LoginService {
 
 	int getCountMember(MembersVO vo);
 
-	void getMemberByIdAndPwd(MembersVO vo);
+
+	void getMembersByIdAndPwd(MembersVO vo);
 
 }

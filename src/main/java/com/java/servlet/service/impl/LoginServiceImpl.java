@@ -22,8 +22,8 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public void getMemberByIdAndPwd(MembersVO vo) {
-		dao.selectMemberByIdAndPwd(vo);
+	public void getMembersByIdAndPwd(MembersVO vo) {
+		dao.selectMembersByIdAndPwd(vo);
 	}
 
 	
