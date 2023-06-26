@@ -11,4 +11,5 @@ public interface NoticeService {
 	int getCountAllNotice();
 
 	List<NoticeVO> getAllNoticeByPage(PageMaker pageMaker);
+	List<NoticeVO> getAllNotice();
 }
