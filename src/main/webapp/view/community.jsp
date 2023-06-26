@@ -254,7 +254,7 @@
                                     	<C:forEach var="communityVO" items="${communityList}" varStatus="status">
                                         <tr>
                                             <td>${communityVO.c_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/community?method=get&c_no=${communityVO.c_no}">${communityVO.title}</a></td>
+                                            <td><a href="${pageContext.servletContext.contextPath}/communitycontent?method=get&c_no=${communityVO.c_no}">${communityVO.title}</a></td>
                                             <td>${communityVO.reg_date}</td>
                                             <td>${communityVO.nickname}</td>
                                         </tr>

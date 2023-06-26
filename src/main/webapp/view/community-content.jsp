@@ -217,7 +217,7 @@
     </div>
     	<input type="hidden" name="method" value="${param.method }">
         <input type="hidden" name="b_no" value="${param.c_no }">
-   		<input type="hidden" name="id" value="${communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname  }">
+   		<!-- <input type="hidden" name="id" value="${communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname  }">  -->
   </form>
 </div>
 
