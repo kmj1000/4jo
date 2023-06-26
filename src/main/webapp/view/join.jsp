@@ -59,12 +59,12 @@
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">가입 완료</a></div>
+                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.jsp">가입 완료</a></div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.html">로그인 하러 가기</a></div>
+                                        <div class="small"><a href="login.jsp">로그인 하러 가기</a></div>
                                     </div>
                                 </div>
                             </div>
