@@ -16,7 +16,6 @@ public class JoinDAOImpl implements JoinDAO {
 		return instance;
 	}
 	
-	@Override
 	public int insertMembers(MembersVO member)  {
 		int result = 0;
 		

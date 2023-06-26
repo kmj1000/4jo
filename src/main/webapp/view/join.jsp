@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,7 +10,84 @@
         <meta name="author" content="" />
         <title>옥독캣 - 회원가입</title>
        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
+           <style>
+        </style>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+          <script>
+        function verifyField(){
+            let element = document.getElementById("name");
+            let msg = "이름을 입력하세요";
+            if( !isValid (element,msg) ){
+                return false;
+            }
+            element  = document.getElementById("email");
+            msg = "이메일을 입력하세요.";
+            if( !isValid (element,msg) ){
+                return false;
+            }
+            element  = document.getElementById("nickname");
+            msg = "닉네임을 입력하세요.";
+            if( !isValid (element,msg) ){
+                return false;
+            }
+            element  = document.getElementById("phone");
+            msg = "핸드폰 번호를 입력하세요.";
+            if( !isValid (element,msg) ){
+                return false;
+            }
+            
+            element  = document.getElementById("pwd");
+            msg = "비밀번호를 입력하세요.";
+            if( !isValid (element,msg) ){
+                return false;
+            }
+            
+            element  = document.getElementById("passwordConfirm");
+            msg = "비밀번호를 한 번 더 입력하세요.";
+            if( !isValid (element,msg) ){
+                return false;
+            }
+
+            // 전송하기전에 불일치를 확인하여야함.
+            let originObj = document.getElementById("pwd");
+            let checkObj = document.getElementById("passwordConfirm");
+            if(originObj.value != checkObj.value){
+                alert("비밀번호가 불일치 합니다.");
+                checkObj.focus();
+                return false;
+            }
+
+
+            return true;
+        }
+        function isValid(element, msg){
+            let result = false;
+            if(element.value == ''){
+                alert(msg);
+                element.focus();
+                result = false;
+            }else{
+                result = true;
+            }
+            return result;
+        }
+        function doubleCheck(value){
+            let origin = document.getElementById("pwd").value;
+            let boxSpan = document.getElementById("box-span");
+            
+            if(origin == value){
+                //일치함
+                boxSpan.className = "box-span-on";
+                boxSpan.textContent = "일치함";
+                
+            }else{
+                //불일치
+                boxSpan.className = "box-span-off";
+                boxSpan.textContent = "불일치함";
+            }
+
+        }
+    </script>
     </head>
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -22,44 +99,46 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">회원가입</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form action="${pageContext.servletContext.contextPath } /join" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Name</label>
+                                                <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name" />
+                                                <label for="name">Name</label>
                                             </div>
 
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email</label>
+                                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" />
+                                                <label for="email">Email</label>
                                             </div>
 
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">NickName</label>
+                                                 <input class="form-control" name="nickname" id="nickname" type="text" placeholder="Enter your nickname" />
+                                                <label for="nickname">NickName</label>
                                             </div>
 
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Phone</label>
+                                                <input class="form-control" name="phone" id="phone" type="number" placeholder="01012341234" />
+                                                <label for="phone">Phone</label>
                                             </div>
 
                                          
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword">Password</label>
+                                                        <input class="form-control" id="password" type="password" placeholder="Create a password" />
+                                                        
+                                                        <label for="password">Password</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">Confirm Password</label>
+                                                        <input class="form-control" id="pwd-double-check" type="password" placeholder="Confirm password" onkeyup="doubleCheck(this.value);" />
+                                                        <span id="box-span" class="box-span-on"></span>
+                                                        <label for="pwd-double-check">Confirm Password</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.jsp">가입 완료</a></div>
+                                                <div class="d-grid"><a class="btn btn-primary btn-block" onclick="return verifyField()" >가입 완료</a></div>
                                             </div>
                                         </form>
                                     </div>
@@ -89,5 +168,6 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        
     </body>
 </html>
