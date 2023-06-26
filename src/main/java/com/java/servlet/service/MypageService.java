@@ -7,4 +7,6 @@ public interface MypageService {
 
 	MembersVO getMypage(String nickname);
 
+
+
 }
