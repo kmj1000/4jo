@@ -31,14 +31,16 @@ public class MembersVO {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
+	}	
+
 	public int getPhone() {
 		return phone;
 	}
+
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "MembersVO [nickname=" + nickname 

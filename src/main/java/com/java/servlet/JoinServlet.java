@@ -18,11 +18,10 @@ import com.java.servlet.vo.MembersVO;
 /**
  * Servlet implementation class JoinServlet
  */
-@WebServlet("/JoinServlet")
+@WebServlet("/join")
 public class JoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final JoinService service=JoinServiceImpl.getInstance();
-       
+	private final JoinService service=JoinServiceImpl.getInstance();   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -38,28 +37,30 @@ public class JoinServlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/join.jsp" );
 		dispatcher.forward(request, response);
-	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		MembersVO vo = new MembersVO();
 		vo.setNickname( request.getParameter("nickname") );
 		vo.setEmail( request.getParameter("email") );
-		vo.setPwd( request.getParameter("pwd") );
+		vo.setPwd( SHAEncodeUtil.encodeSha( request.getParameter("pwd") ));
 		vo.setName( request.getParameter("name") );
 		vo.setPhone( Integer.parseInt(request.getParameter("phone")) );
 		
+		System.out.println(vo);
 		
 		int isOk = 1;
 		String msg = null;
-		if( service.registerMember(vo) == isOk) {
+		if( service.registerMembers(vo) == isOk) {
 			msg = "success";
 		}else {
 			msg = "fail, try again";
 		}
+		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.sendRedirect(request.getContextPath() 

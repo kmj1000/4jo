@@ -177,104 +177,49 @@
      <style type="text/css">* {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol336.cur), auto !important;}</style>   
      <style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
         
-    </head>
-    
-   <body class="sb-nav-fixed"> 
-          
-        <nav class=" ps-5 sb-topnav navbar navbar-expand; navbar-dark bg-yellow" >
-        <img class = "ps-5 img_main" src="dogfoot.png" style="width: 120px; height: 70px;"/><br/>
-             <a class="navbar-brand ps-1 pe-5" href="index.html" ><h1>옥독캣</h1></a>
-              
+</head>
+<body>
 
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-                <div class="input-group">
-                	<button type="button" class="btn btn-outline-primary" onclick="location='favorite_shelter.jsp'">로그아웃</button>
-					<!-- <button type="button" class="btn btn-outline-secondary">Secondary</button>
-					<button type="button" class="btn btn-outline-success">Success</button>
-					<button type="button" class="btn btn-outline-info">Info</button>
-					<button type="button" class="btn btn-outline-warning">Warning</button>
-					<button type="button" class="btn btn-outline-danger">Danger</button>
-					<button type="button" class="btn btn-outline-light">Light</button> -->
-					<button type="button" class="btn btn-outline-danger" onclick="location='favorite_with_pet.jsp'">마이페이지</button>
-                </div>
-            </form>
-        </nav>
-        
-         <nav class="sb-topnav navbar navbar-expand; navbar-dark bg-yellow" >
-           <!--   <nav class="nav nav-pills flex-column flex-sm-row justify-content-evenly"> -->
-              <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="#"><b>공고</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="#" ><b>보호소</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="#" ><b>위드펫</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="#"><b>커뮤니티</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="#"><b>공지사항</b></a>
-        <!--  </nav> -->
-            </nav>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-10 pt-10">
-                        <h1 class="mt-1" >마이페이지</h1>
-                        <ol class="breadcrumb mb-4">
- 
-                        </ol>
-                        
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                               개인정보조회
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>공지 번호</th>
-                                            <th>공지 제목</th>
-                                            <th>공지 작성일</th>
-                                            <th>공지 작성자</th>
-                                            <!-- <th>조회수</th>  -->
-                                        </tr>
-                                        <button type="button" class="btn btn-outline-primary">Primary</button>
-										<button type="button" class="btn btn-outline-secondary">Secondary</button>
-										<button type="button" class="btn btn-outline-success">Success</button>
-									<button type="button" class="btn btn-outline-info">Info</button>
-									<button type="button" class="btn btn-outline-warning">Warning</button>
-									<button type="button" class="btn btn-outline-danger">Danger</button>
-									<button type="button" class="btn btn-outline-light">Light</button>
-									<button type="button" class="btn btn-outline-dark">Dark</button>
-                                    </thead>
-                                    <tfoot>
-                                    </tfoot>
-                                    <tbody>
-                                    	<C:forEach var="noticeVO" items="${noticeList}" varStatus="status">
-                                        <tr>
-                                            <td>${noticeVO.notice_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/notice?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
-                                            <td>${noticeVO.notice_reg_date}</td>
-                                            <td>${noticeVO.admin_name}</td>
-                                        </tr>
-                                        </C:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <%@ include file="/view/import/page-nation.jsp" %>
-                           <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 
-                        	<C:import url="/view/import/page-nation.jsp"></C:import> --%>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+<div class="container mt-3">
+  <h2 style="text-align: center;">게시글 작성</h2>  
+  <form action="/action_page.php">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="mt-3 col p-3">
+            <label for="reg_date">작성일:</label>
+            <p class="form-control" id="reg_date" name="reg_date">${ requestScope.communityVO.reg_date }</p>
         </div>
         
-    </body>
+    </div>
+    
+    <div class="row">
+        <div class="mb-3 mt-3 col p-3">
+           <label for="title">글제목:</label>
+           <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title" value="${ requestScope.communityVO.title }">
+        </div>
+        <div class="mb-3 mt-3 col p-3">
+            <label for="title">작성자:</label>
+            <div class="form-control" id="nickname" name="nickname">${ requestScope.communityVO.nickname }</div>
+        </div> 
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="content">글내용:</label>
+        <textarea class="form-control" rows="5" id="content" name="text" >${ communityVO.content }</textarea>
+     	</div>
+    	<div class="row">
+       	<button type="button" class="get col p-3 btn btn-outline-warning" onclick="history.back();">뒤로</button>
+       	<div class="col p-3"></div>
+       	<button type="submit" class="register col p-3 btn btn-outline-warning">전송</button>
+         	<div class="col p-3"></div>
+       	<button type="button"  class="modify col p-3 btn btn-outline-warning" onclick="adoptMethod('modify');">수정</button>
+   			
+    </div>
+    	<input type="hidden" name="method" value="${param.method }">
+        <input type="hidden" name="b_no" value="${param.c_no }">
+   		<!-- <input type="hidden" name="id" value="${communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname  }">  -->
+  </form>
+</div>
+
+</body>
 </html>

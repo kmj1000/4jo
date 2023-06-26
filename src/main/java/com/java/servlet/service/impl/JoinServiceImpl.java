@@ -19,7 +19,7 @@ public class JoinServiceImpl implements JoinService {
 	}
 	
 	@Override
-	public int registerMember(MembersVO member) {
+	public int registerMembers(MembersVO member) {
 		return dao.insertMembers(member);
 	}
 

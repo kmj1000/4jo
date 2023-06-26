@@ -20,7 +20,7 @@ private static final LoginDAO instance = new LoginDAOImpl();
 	
 	@Override
 	public int selectCountMember(MembersVO vo) {
-		// 여기는 selectMember 하는 자리, 나중에 적기
+		// �ш린�� selectMember ���� ��由�, ��以��� ��湲�
 		int result = 0;
 		
 		String sql = "SELECT COUNT(1) FROM  members\r\n"
