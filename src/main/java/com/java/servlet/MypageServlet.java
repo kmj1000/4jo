@@ -20,7 +20,7 @@ import com.java.servlet.util.PageMaker;
 import com.java.servlet.vo.MembersVO;
 
 /**
- * Servlet implementation class MainServlet
+ * Servlet implementation class MainServlet a
  */
 @WebServlet("/mypage")
 public class MypageServlet extends HttpServlet {
