@@ -1,6 +1,8 @@
 package com.java.servlet;
 
 import java.io.IOException;
+
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,66 +17,84 @@ import com.java.servlet.service.MypageService;
 import com.java.servlet.service.impl.MypageServiceImpl;
 import com.java.servlet.util.Criteria;
 import com.java.servlet.util.PageMaker;
-
+import com.java.servlet.vo.MembersVO;
 
 /**
- * Servlet implementation class MypageServlet
+ * Servlet implementation class MainServlet
  */
 @WebServlet("/mypage")
 public class MypageServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private final MypageService service = MypageServiceImpl.getInstance();
+   private static final long serialVersionUID = 1L;
+   private final MypageService service = MypageServiceImpl.getInstance();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
     public MypageServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 HttpSession session= request.getSession(true);
-	      boolean SESS_AUTH = true;
-	      System.out.println(session);
-	      if(session == null){
-	         String msg = "You are Not allowed, Plz login!";
-	         response.sendRedirect(request.getContextPath() 
-	                           + "/login?msg="+msg);
-	         return;
-	      }
-	      
-	      try {
-	    	  Object sessAuthObj = session.getAttribute("SESS_AUTH");
-	    	  if (sessAuthObj instanceof Boolean) {
-	    	      SESS_AUTH = ((Boolean) sessAuthObj).booleanValue();
-	    	  }
-	      }catch(Exception e) {}
-	      
-	      if( SESS_AUTH ) {
-	         
-	         request.setCharacterEncoding("utf-8");
-	         request.setAttribute("SESS_AUTH", true);
-	         
-	         
-	         RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/mypage.jsp");
-	         dispatcher.forward(request, response);
-	      }else {
-	         String msg = "You are Not allowed, Plz login!";
-	         response.sendRedirect(request.getContextPath() + "/login?msg="+msg);
-	      }
-	      
-	   
-	}
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      
+      HttpSession session= request.getSession(true);
+      boolean SESS_AUTH = true;
+      System.out.println(session);
+      if(session == null){
+         String msg = "You are Not allowed, Plz login!";
+         response.sendRedirect(request.getContextPath() 
+                           + "/login?msg="+msg);
+         return;
+      }
+      
+      try {
+         SESS_AUTH = (boolean)session.getAttribute("SESS_AUTH");
+      }catch(Exception e) {}
+      
+      if( SESS_AUTH ) {
+         
+         request.setCharacterEncoding("utf-8");
+         request.setAttribute("SESS_AUTH", true);
+         
+         // pagesetting
+         String pageNo = request.getParameter("pageNo");
+         String perAmount = request.getParameter("perAmount");
+         String displayNo = request.getParameter("displayNo");
+         
+         int currPageNo = (pageNo == null || pageNo.equals("")) ? 1 : Integer.parseInt(pageNo);
+         int currAmount = (perAmount == null || perAmount.equals("")) ? 10 : Integer.parseInt(perAmount);
+         int disPlayPageNum = (displayNo == null || displayNo.equals("")) ? 10 : Integer.parseInt(displayNo);
+         
+         int totalCount = service.getCountAllBoard();
+         
+         Criteria cri = new Criteria(currPageNo, currAmount); //현재페이지, 한페이지당 출력갯수
+         PageMaker pageMaker = new PageMaker(cri, totalCount); // cri, totalCount=100
+         pageMaker.setDisplayPageAmount(disPlayPageNum);
+         System.out.println(pageMaker);
+         
+         // allboard 가져와야 함.
+         List<MembersVO> boardList =service.getAllBoardByPage(pageMaker);//getAllBoardByPage
+         //List<BoardVO> boardList =service.getAllBoard();//getAllBoardByPage
+         System.out.println(boardList);
+         request.setAttribute("boardList", boardList);
+         
+         request.setAttribute("pageMaker", pageMaker);
+         RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/mypage.jsp");
+         dispatcher.forward(request, response);
+      }else {
+         String msg = "You are Not allowed, Plz login!";
+         response.sendRedirect(request.getContextPath() + "/login?msg="+msg);
+      }
+      
+   }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doGet(request, response);
+   }
 
 }

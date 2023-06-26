@@ -1,9 +1,15 @@
 package com.java.servlet.dao;
 
+import java.util.List;
+
+
+import com.java.servlet.util.PageMaker;
 import com.java.servlet.vo.MembersVO;
 
 public interface MypageDAO {
-
-	MembersVO selectMypage(String nickname);
+	List<MembersVO> selectAllBoard();
+	int seletCountAllBoard();
+	List<MembersVO> selectAllBoardByPage(PageMaker pageMaker);
+	
 
 }
