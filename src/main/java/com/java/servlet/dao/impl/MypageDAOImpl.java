@@ -33,7 +33,7 @@ public class MypageDAOImpl implements MypageDAO {
                + "        ,pwd\r\n"
                + "        ,phone\r\n"
                + "        ,nickname\r\n"
-               + "    FROM members WHERE nickname = ?"
+               + "    FROM members"
                ;
       List<MembersVO> list = null;
       
@@ -67,5 +67,27 @@ public class MypageDAOImpl implements MypageDAO {
       return list;
    }
 
-   
+   @Override
+	public int updatePwd(MembersVO vo) {
+		int result = 0;
+		String sql = "UPDATE members\r\n"
+				+ "    SET pwd = ?\r\n"
+				+ "    WHERE email = ?"
+				;
+		try(
+				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+				PreparedStatement ps = conn.prepareStatement(sql);
+				){
+				
+				ps.setString(1, vo.getPwd());
+				ps.setString(2, vo.getEmail());
+				
+				result = ps.executeUpdate();
+				
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
