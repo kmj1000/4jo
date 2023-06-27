@@ -19,9 +19,9 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
         <style> 
-        
+
        a:hover{
-                background-color: #fbde7b;
+                background-color: #feeaa5;
             }
             .main{
             padding-top: 0.7cm;
@@ -32,7 +32,7 @@
             }         
             .bg-yellow {
 				  --bs-bg-opacity: 1;
-				  background-color: #fbde7b !important;
+				  background-color: #feeaa5 !important;
 			}
 			.main1{
 			border-bottom : 1px solid #645326;
@@ -51,6 +51,9 @@
 		    margin: 0px auto;
 		    display: block;
 		    width: 250px; height: 90px;
+		    }
+		    .bgcolor{
+		   background-color: #f9f8f3;
 		    }
 		    
         </style>

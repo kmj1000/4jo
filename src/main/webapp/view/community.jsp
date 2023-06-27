@@ -177,41 +177,48 @@
      	<style type="text/css">* {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol336.cur), auto !important;}</style>   
      	<style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
         <style> 
-	       a:hover{
-	                background-color: #fbde7b;
-	            }
-	            .main{
-	            padding-top: 0.7cm;
-	            padding-left: 1.0cm;
-	            padding-right : 1.5cm;
-	            padding-bottom : 3cm;
-	            height: 120px;
-	            }         
-	            .bg-yellow {
-					  --bs-bg-opacity: 1;
-					  background-color: #fbde7b !important;
-				}
-				.main1{
+	    <style> 
+        
+       a:hover{
+                background-color: #feeaa5;
+            }
+            .main{
+            padding-top: 0.7cm;
+            padding-left: 1.0cm;
+            padding-right : 1.5cm;
+            padding-bottom : 3cm;
+            height: 120px;
+            }         
+            .bg-yellow {
+				  --bs-bg-opacity: 1;
+				  background-color: #feeaa5 !important;
+			}
+			.main1{
+			border-bottom : 1px solid #645326;
+			 padding-bottom : 2px;
+			 padding-top : 2px;
+			}
+			.tab{
+				 padding-bottom : 0;
+				 padding-top : 0;
 				border-bottom : 1px solid #645326;
-				 padding-bottom : 2px;
-				 padding-top : 2px;
-				}
-				.tab{
-					 padding-bottom : 0;
-					 padding-top : 0;
-					border-bottom : 1px solid #645326;
-					border-top : 1px solid #645326;
-				}
-				
-				.img_main{
-				width: 60%;
-			    margin: 0px auto;
-			    display: block;
-			    width: 250px; height: 90px;
-			    }
+				border-top : 1px solid #645326;
+			}
+			
+			.img_main{
+			width: 60%;
+		    margin: 0px auto;
+		    display: block;
+		    width: 250px; height: 90px;
+		    }
+		    .bgcolor{
+		   background-color: #f9f8f3;
+		    }
+		    
         </style>
+        
     </head>
-   	<body class="sb-nav-fixed"> 
+   <body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
                 <div class="input-group">
@@ -236,6 +243,7 @@
 			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/notice.jsp"><b>공지사항</b></a>
    
             </nav>
+  
                 <main>
                     <div class="container-fluid px-10 pt-10">
                         <h1 class="mt-1" >마이페이지</h1>
@@ -258,24 +266,9 @@
                                             <th>작성자</th>
                                             <!-- <th>조회수</th>  -->
                                         </tr>
-                                        <button type="button" class="btn btn-outline-primary">Primary</button>
-										<button type="button" class="btn btn-outline-secondary">Secondary</button>
-										<button type="button" class="btn btn-outline-success">Success</button>
-									<button type="button" class="btn btn-outline-info">Info</button>
-									<button type="button" class="btn btn-outline-warning">Warning</button>
-									<button type="button" class="btn btn-outline-danger">Danger</button>
-									<button type="button" class="btn btn-outline-light">Light</button>
-									<button type="button" class="btn btn-outline-dark">Dark</button>
+                                       
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                         	<th>글번호</th>
-                                            <th>제목</th>
-                                            <th>작성일</th>
-                                            <th>작성자</th>
-                                            <!-- <th>조회수</th>  -->
-                                        </tr>
-                                    </tfoot>
+                                   
                                     <tbody>
                                     	<C:forEach var="communityVO" items="${communityList}" varStatus="status">
                                         <tr>
@@ -306,8 +299,7 @@
                         </div>
                     </div>
                 </footer>
-            </div>
-        </div>
+        
         
     </body>
 </html>
