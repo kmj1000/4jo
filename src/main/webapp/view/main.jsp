@@ -24,9 +24,10 @@
                 background-color: #fbde7b;
             }
             .main{
-            margin-top: 1cm;
+            padding-top: 0.7cm;
+            padding-left: 1.0cm;
             padding-right : 1.5cm;
-            padding-bottom : 0;
+            padding-bottom : 3cm;
             height: 120px;
             }         
             .bg-yellow {
@@ -51,7 +52,9 @@
 		    display: block;
 		    width: 250px; height: 90px;
 		    }
+		    
         </style>
+        
     </head>
    <body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
@@ -65,7 +68,7 @@
             
          <!-- 로고 -->              
         <nav class="main bg-white" >
-         <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main" >
+         <a class="mainlogo" href="http://localhost:8080/4jo/view/main.jsp"<%-- ${pageContext.servletContext.contextPath}/main --%> >
          <img class = "img_main" src="../logo.png" style="width: 250px; height: 90px;"/>
          </a>
         </nav>
@@ -76,7 +79,7 @@
 			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/with_pet.jsp"><b>위드펫</b></a>
 			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/community.jsp"><b>커뮤니티</b></a>
 			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/notice.jsp"><b>공지사항</b></a>
-        <!--  </nav> -->
+   
             </nav>
             <main>
     			<div id="photomain">
@@ -87,7 +90,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">OkDogCat &copy; Happy Project</div>
 
                         </div>
                     </div>

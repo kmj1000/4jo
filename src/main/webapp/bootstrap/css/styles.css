@@ -15,7 +15,7 @@
  }
 :root {
   --bs-blue: #0d6efd;
-  --bs-indigo: #684d1a;
+  --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
   --bs-pink: #d63384;
   --bs-red: #dc3545;
@@ -8241,7 +8241,11 @@ textarea.form-control-lg {
 
 .bg-yellow {
   --bs-bg-opacity: 1;
-  background-color: #fbde7b!important;
+  background-color: #f9e171!important;
+}
+.bg-skyblue {
+  --bs-bg-opacity: 1;
+  background-color: #fae689!important;
 }
 
 .bg-black {
