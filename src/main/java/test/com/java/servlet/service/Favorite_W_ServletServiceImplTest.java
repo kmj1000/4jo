@@ -2,19 +2,60 @@ package test.com.java.servlet.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+
+
+
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 import com.java.servlet.service.Favorite_W_Service;
 import com.java.servlet.service.impl.Favorite_W_ServiceImpl;
+import com.java.servlet.util.Criteria;
+
+import com.java.servlet.util.PageMaker;
+import com.java.servlet.vo.Favorite_W_VO;
 
 class Favorite_W_ServletServiceImplTest {
-	private final Favorite_W_Service service = Favorite_W_ServiceImpl.getInstance();
-	@Test@Ignore
-	void testgetFavorite_with_pet() {
-		int favorite_with_pet_no=1;
-		assertNotEquals(null, service.getFavorite_with_pet(favorite_with_pet_no));
-		System.out.println(service.getFavorite_with_pet(favorite_with_pet_no));
+	
+private Favorite_W_Service service = Favorite_W_ServiceImpl.getInstance();
+	
+	@Test  @Ignore
+	void testGetSelectWithPetBoard() {
+		List<Favorite_W_VO> list = service.getWithPetBoard();
+		
+		assertNotEquals(null, list);
+		System.out.println("service test");
+		System.out.println(list);
 	}
 
+	@Test @Ignore
+	void testGetCountWithPetBoard() {
+		int result = service.getCountWithPetBoard();
+		assertNotEquals(0, result);
+		
+		System.out.println("totalCount : "+result);
+	}
+	
+	
+	@Test @Ignore
+	void testGetWithPetBoardByPage() {
+		Criteria cri = new Criteria(1, 10); //현재페이지, 한페이지당 출력갯수
+		PageMaker pageMaker = new PageMaker(cri, 101); // cri, totalCount=100
+		pageMaker.setDisplayPageAmount(10);
+		System.out.println(pageMaker);
+		
+		List<Favorite_W_VO> boardList  = service.getWithPetBoardByPage(pageMaker);
+		System.out.println(boardList);
+		assertNotEquals(null, boardList);
+		
+		System.out.println("boardList per Page : "+boardList);
+	}
+	
+	//---------------------------------------------------------------
+	
+	
+	
 }

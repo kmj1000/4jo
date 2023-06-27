@@ -26,7 +26,6 @@ public class DBCP2Util {
 	public static Connection getConnection() throws SQLException {
 		return ds.getConnection();
 	}
-	
 	public static void distroyConnection() throws SQLException {
 		ds.close();
 	}

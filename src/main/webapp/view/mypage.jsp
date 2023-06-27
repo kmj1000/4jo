@@ -76,7 +76,7 @@
                                         </tr>
                                         <tr>
                                     <td align="center">비밀번호</td>
-                                <%-- <td>${MembersVO.pwd}</td> --%>
+                                 <td>${MembersVO.pwd}</td> 
                                     <%-- <td><%= vo.getEmail() %> --%>
                                     <input type = "button" value = "변경" onclick="location='login.jsp'" align = "end"/>
                                     </td>
@@ -84,17 +84,17 @@
                                     <tr>
                                  <td>이메일</td>                                
                               <%--    <td><%= vo.getEmail() %></td>    --%>
-                                <%--  <td>${membersVO.email}</td>  --%>                           
+                                 <td>${MembersVO.email}</td>                     
                               </tr>
                               <tr>
                                  <td>이름</td>
                                <%--  <td><%= vo.getName() %></td> --%>
-                                 <%-- <td>${membersVO.name}</td>     --%>                        
+                                 <td>${MembersVO.name}</td>                         
                               </tr>
                               <tr>
                                  <td>전화번호</td>
                                 <%--  <td><%= vo.getPhone() %> --%>
-                                <%--  <td>${membersVO.phone}</td> --%>
+                                 <td>${MembersVO.phone}</td> 
                                  <input type = "button" value = "변경" onclick="location='login.jsp'"/>
                                  </td>
                               </tr>
