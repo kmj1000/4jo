@@ -8,6 +8,7 @@ import com.java.servlet.vo.NoticeVO;
 
 public interface NoticeService {
 	NoticeVO getNotice(String admin_name);
+	NoticeVO getNotice(int notice_no);
 	int getCountAllNotice();
 
 	List<NoticeVO> getAllNoticeByPage(PageMaker pageMaker);

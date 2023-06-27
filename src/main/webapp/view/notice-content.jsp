@@ -176,112 +176,131 @@
 		</script>
      <style type="text/css">* {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol336.cur), auto !important;}</style>   
      <style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
-        
-    </head>
-    
-   <body class="sb-nav-fixed"> 
-          
-        <nav class=" ps-5 sb-topnav navbar navbar-expand; navbar-dark bg-yellow" >
-        <img class = "ps-5 img_main" src="../dogfoot.png" style="width: 120px; height: 70px;"/><br/>
-             <a class="navbar-brand ps-1 pe-5" href="${pageContext.servletContext.contextPath}/main" ><h1>옥독캣</h1></a>
-              
+        <script>
+        window.onload = function(){
+  		initClass();
+  	}
+  	
+  	function adoptMethod(type){
+  		$("input[name='method']").val(type);
+  		initClass();
+  	}
+  	
+  	function initClass(){
+  		
+  		// modify
+  		$("textarea").removeClass("modify");
+  		$("input[type='text']").removeClass("modify");
+  		
+  		// register
+  		$("textarea").removeClass("register");
+  		$("input[type='text']").removeClass("register");
+  		
+  		// get
+  		$("textarea").removeClass("get");
+  		$("input[type='text']").removeClass("get");
+  		
+  		const method = $("input[name='method']").val();
+  		$("textarea").addClass(method);
+  		$("input[type='text']").addClass(method);
+  		
+  		switch(method){
+  			case "get" : 
+  				$(".get").attr("readonly", true);
+  				break;
+  			case "modify" : 
+  				$(".modify").attr("readonly", false);
+  				break;
+  			case "register" : 
+  				$(".register").attr("readonly", false);
+  				break;
+  		}
+  		
+  	}
+  	function goSubmit(){
+  		 //const data = { opKey : 123 };
+  		const data = $("form").serialize();
+  		console.log(data);
+         $.ajax(
+                 {
+                     url: "/project/api/bd"
+                     ,async:true // 비동기 쓰레드,false : 동기식(응답 받을때까지 대기함)
+                     ,contentType: 'application/x-www-form-urlencoded; charset=UTF-8' // 전송타입
+                     ,type:"POST" //method
+                     ,data : data
+                     ,dataType:"json" // 수신타입
+                     ,success:function(data, textStatus){
+                     	console.log(data);
+                     	
+                     	if(data.result == 1){
+                     		var msg ='';
+                     		switch(data.method){
+                     		case 'modify': msg = data.result +'건 수정되었습니다.'; break;
+                     		case 'register': msg = data.result +'건 등록되었습니다.';break;
+                     		case 'remove': msg = data.result +'건 삭제되었습니다.';
+                     			location.href = "${pageContext.servletContext.contextPath }/notice";
+                     			break;
+                     		}
+                     		alert( msg );
+                     	}else{
+                     		aelrt(data.result + '건 수정실패입니다. \n다시시도하세요.');
+                     	}
+                     }
+                     ,error:function(jqXHR, textStatus, errorThrown){
+                         console.log(jqXHR);
+                         console.log(textStatus);
+                         console.log(errorThrown);
+                     }
+                 }
+             );
+			  		
+  		
+  		return false;
+  	}
+  </script>
+</head>
+<body>
 
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-                <div class="input-group">
-                	<button type="button" class="btn btn-outline-primary" onclick="location='main.jsp'">로그아웃</button>
-					<!-- <button type="button" class="btn btn-outline-secondary">Secondary</button>
-					<button type="button" class="btn btn-outline-success">Success</button>
-					<button type="button" class="btn btn-outline-info">Info</button>
-					<button type="button" class="btn btn-outline-warning">Warning</button>
-					<button type="button" class="btn btn-outline-danger">Danger</button>
-					<button type="button" class="btn btn-outline-light">Light</button> -->
-					<button type="button" class="btn btn-outline-danger" onclick="location='mypage.jsp'">마이페이지</button>
-                </div>
-            </form>
-        </nav>
-        
-         <nav class="sb-topnav navbar navbar-expand; navbar-light bg-yellow" >
-           <!--   <nav class="nav nav-pills flex-column flex-sm-row justify-content-evenly"> -->
-              <a class="flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/pet_notice"><b>공고</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter" ><b>보호소</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/with_pet" ><b>위드펫</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></a>
-              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-outline-light" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></a>
-        <!--  </nav> -->
-            </nav>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-10 pt-10">
-                        <h1 class="mt-1" >마이페이지</h1>
-                        <ol class="breadcrumb mb-4">
- 
-                        </ol>
-                        
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                               개인정보조회
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>글번호</th>
-                                            <th>제목</th>
-                                            <th>작성일</th>
-                                            <th>작성자</th>
-                                            <!-- <th>조회수</th>  -->
-                                        </tr>
-                                        <button type="button" class="btn btn-outline-primary">Primary</button>
-										<button type="button" class="btn btn-outline-secondary">Secondary</button>
-										<button type="button" class="btn btn-outline-success">Success</button>
-									<button type="button" class="btn btn-outline-info">Info</button>
-									<button type="button" class="btn btn-outline-warning">Warning</button>
-									<button type="button" class="btn btn-outline-danger">Danger</button>
-									<button type="button" class="btn btn-outline-light">Light</button>
-									<button type="button" class="btn btn-outline-dark">Dark</button>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                         	<th>글번호</th>
-                                            <th>제목</th>
-                                            <th>작성일</th>
-                                            <th>작성자</th>
-                                            <!-- <th>조회수</th>  -->
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    	<C:forEach var="communityVO" items="${communityList}" varStatus="status">
-                                        <tr>
-                                            <td>${communityVO.c_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/communitycontent?method=get&c_no=${communityVO.c_no}">${communityVO.title}</a></td>
-                                            <td>${communityVO.reg_date}</td>
-                                            <td>${communityVO.nickname}</td>
-                                        </tr>
-                                        </C:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <%@ include file="/view/import/page-community.jsp" %>
-                           <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 
-                        	<C:import url="/view/import/page-nation.jsp"></C:import> --%>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+<div class="container mt-3">
+  <h2 style="text-align: center;">게시글 작성</h2>  
+  <form action="/notice-content.jsp">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="mt-3 col p-3">
+            <label for="reg_date">작성일:</label>
+            <p class="form-control" id="notice_reg_date" name="notice_reg_date">${ requestScope.noticeVO.notice_reg_date }</p>
         </div>
         
-    </body>
+    </div>
+    
+    <div class="row">
+        <div class="mb-3 mt-3 col p-3">
+           <label for="title">글제목:</label>
+           <input type="text" class="form-control" id="notice_title" placeholder="Enter Title" name="notice_title" value="${ requestScope.noticeVO.notice_title }">
+        </div>
+        <div class="mb-3 mt-3 col p-3">
+            <label for="title">작성자:</label>
+            <div class="form-control" id="admin_name" name="admin_name">${ requestScope.noticeVO.admin_name == null ? sessionScope.SESS_ID : requestScope.noticeVO.admin_name }</div>
+        </div> 
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="content">글내용:</label>
+        <textarea class="form-control" rows="5" id="notice_content" name="text" >${ noticeVO.notice_content }</textarea>
+     	</div>
+    	<div class="row">
+       	<button type="button" class="get col p-3 btn btn-outline-warning" onclick="history.back();">뒤로</button>
+       	<div class="col p-3"></div>
+       	<button type="submit" class="register col p-3 btn btn-outline-warning">전송</button>
+         	<div class="col p-3"></div>
+       	<button type="button"  class="modify col p-3 btn btn-outline-warning" onclick="adoptMethod('modify');">수정</button>
+   			
+    </div>
+    	<input type="hidden" name="method" value="${param.method }">
+        <input type="hidden" name="c_no" value="${param.notice_no }">
+		<input type="hidden" name="id" value="${noticeVO.admin_name == null ? sessionScope.SESS_ID : requestScope.noticeVO.admin_name  }">
+  </form>
+</div>
+
+</body>
 </html>
