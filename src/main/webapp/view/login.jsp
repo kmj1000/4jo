@@ -28,12 +28,12 @@
     	
         function verifyField(){
             let element = document.getElementById("id");
-            let msg = '아이디 를 입력하세요.';
+            let msg = '아이디를 입력하세요.';
             if( !isValid (element,msg) ){
                 return false;
             }
             element  = document.getElementById("pwd");
-            msg = "비밀번호 를 입력하세요.";
+            msg = "비밀번호를 입력하세요.";
             if( !isValid (element,msg) ){
                 return false;
             }
@@ -78,12 +78,12 @@
                                             </div> -->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="find.jsp">비밀번호 찾기</a>
-                                                <a class="btn btn-primary" href="index.html">로그인</a>
+                                                <a class="btn btn-primary" href="${pageContext.servletContext.contextPath}/view/main.jsp">로그인</a>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="join.jsp">회원가입 하러 가기</a></div>
+                                        <div class="small"><a href="${pageContext.servletContext.contextPath}/view/join.jsp">회원가입 하러 가기</a></div>
                                     </div>
                                 </div>
                             </div>

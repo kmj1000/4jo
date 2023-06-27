@@ -1,63 +1,113 @@
 package com.java.servlet.vo;
 
-
-
-import java.util.Date;
-
+import java.sql.Date;
 
 public class Favorite_W_VO {
-	private int favorite_with_pet_no;
+	private int favoritew_no;
     private String nickname;
-    private String 시설명;
-    private String 전화번호;
-    private String 도로명주소;
-    
-	public int getFavorite_with_pet_no() {
-		return favorite_with_pet_no;
+    private Date favoritew_reg_date;
+    private int with_pet_no;
+    private String building;
+    private String road;
+    private String tel;
+
+
+
+	public int getFavoritew_no() {
+		return favoritew_no;
 	}
 
-	public void setFavorite_with_pet_no(int favorite_with_pet_no) {
-		this.favorite_with_pet_no = favorite_with_pet_no;
+
+
+	public void setFavoritew_no(int favoritew_no) {
+		this.favoritew_no = favoritew_no;
 	}
+
+
 
 	public String getNickname() {
 		return nickname;
 	}
 
+
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 
-	public String get시설명() {
-		return 시설명;
+
+
+	public Date getFavoritew_reg_date() {
+		return favoritew_reg_date;
 	}
 
-	public void set시설명(String 시설명) {
-		this.시설명 = 시설명;
+
+
+	public void setFavoritew_reg_date(Date favoritew_reg_date) {
+		this.favoritew_reg_date = favoritew_reg_date;
 	}
 
-	public String get전화번호() {
-		return 전화번호;
+
+
+	public int getWith_pet_no() {
+		return with_pet_no;
 	}
 
-	public void set전화번호(String 전화번호) {
-		this.전화번호 = 전화번호;
+
+
+	public void setWith_pet_no(int with_pet_no) {
+		this.with_pet_no = with_pet_no;
 	}
-	public String get도로명주소() {
-		return 도로명주소;
+
+
+
+	public String getBuilding() {
+		return building;
 	}
-	public void set도로명주소(String 도로명주소) {
-		this.도로명주소 = 도로명주소;
+
+
+
+	public void setBuilding(String building) {
+		this.building = building;
 	}
+
+
+
+	public String getRoad() {
+		return road;
+	}
+
+
+
+	public void setRoad(String road) {
+		this.road = road;
+	}
+
+
+
+	public String getTel() {
+		return tel;
+	}
+
+
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+
+
 	@Override
 	public String toString() {
+		
+	    String withpetInfo = "문화시설 정보: [문화시설이름 = " + building + ",전화번호 = " + tel+", 주소 = " + road  + "]";
 
-		return "Favorite_W_VO["
-				+"favorite_with_pet_no = "+favorite_with_pet_no+", "
+		return "FavoriteVO["
+				+"favoritew_no = "+favoritew_no+", "
 				+"nickname = "+nickname+", "
-				+"시설명 = "+시설명+", "
-				+"전화번호 = "+전화번호+", "
-				+"도로명주소 = "+도로명주소+"]"
+				+"favoritew_reg_date = "+favoritew_reg_date+"\n"
+				+"with_pet_no = "+with_pet_no+"\n"
+				+withpetInfo +"]"
 				;
 	}
 

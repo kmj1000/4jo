@@ -139,7 +139,7 @@
                                          </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.jsp">로그인 하러 가기</a></div>
+                                        <div class="small"><a href="${pageContext.servletContext.contextPath}/view/login.jsp">로그인 하러 가기</a></div>
                                     </div>
                                    
                                 </div>

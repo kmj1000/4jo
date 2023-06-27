@@ -1,27 +1,40 @@
 package com.java.servlet.vo;
 
-public class Favorite_S_VO {
-	private int favorite_shelter_no;
+import java.sql.Date;
 
+public class Favorite_S_VO {
+	private int favorites_no;
     private String nickname;
+    private Date favorites_reg_date;
+    private int shelter_no;
     private String careNm;
     private String careAddr;
     private String careTel;
-    
-	
+  
+
 	
 
-    
-
-	public int getFavorite_shelter_no() {
-		return favorite_shelter_no;
+	public int getFavorites_no() {
+		return favorites_no;
 	}
 
 
 
-	public void setFavorite_shelter_no(int favorite_shelter_no) {
-		this.favorite_shelter_no = favorite_shelter_no;
+
+
+
+
+
+
+	public void setFavorites_no(int favorites_no) {
+		this.favorites_no = favorites_no;
 	}
+
+
+
+
+
+
 
 
 
@@ -31,9 +44,92 @@ public class Favorite_S_VO {
 
 
 
+
+
+
+
+
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
+
+
+
+
+
+
+
+
+	public Date getFavorites_reg_date() {
+		return favorites_reg_date;
+	}
+
+
+
+
+
+
+
+
+
+	public void setFavorites_reg_date(Date favorites_reg_date) {
+		this.favorites_reg_date = favorites_reg_date;
+	}
+
+
+
+
+
+
+
+
+
+	public int getShelter_no() {
+		return shelter_no;
+	}
+
+
+
+
+
+
+
+
+
+	public void setShelter_no(int shelter_no) {
+		this.shelter_no = shelter_no;
+	}
+
+
+
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		String shelterInfo = "보호소 정보: [보호소이름 = " + careNm + ", 전화번호 = " + careTel + ", 주소 = " + careAddr + "]";
+	    
+
+		return "FavoriteVO["
+				+"favorites_no = "+favorites_no+", "
+				+"nickname = "+nickname+", "
+				+"favorites_reg_date = "+favorites_reg_date+"\n"
+				+"shelter_no = "+shelter_no
+				+shelterInfo + "\n" 
+				
+				;
+	}
+
+
+
+
+
+
 
 
 
@@ -43,9 +139,21 @@ public class Favorite_S_VO {
 
 
 
+
+
+
+
+
+
 	public void setCareNm(String careNm) {
 		this.careNm = careNm;
 	}
+
+
+
+
+
+
 
 
 
@@ -55,9 +163,21 @@ public class Favorite_S_VO {
 
 
 
+
+
+
+
+
+
 	public void setCareAddr(String careAddr) {
 		this.careAddr = careAddr;
 	}
+
+
+
+
+
+
 
 
 
@@ -67,23 +187,24 @@ public class Favorite_S_VO {
 
 
 
+
+
+
+
+
+
 	public void setCareTel(String careTel) {
 		this.careTel = careTel;
 	}
 
 
 
-	@Override
-	public String toString() {
 
-		return "Favorite_S_VO["
-				+"favorite_shelter_no = "+favorite_shelter_no+", "
-				+"nickname = "+nickname+", "
-				+"careNm = "+careNm+", "
-				+"careAddr = "+careAddr+", "
-				+"careTel = "+careTel+"]"
-				;
-	}
+
+
+
+
+
 
 
 
