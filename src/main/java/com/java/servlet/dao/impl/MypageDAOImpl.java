@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.java.servlet.dao.MembersDAO;
 import com.java.servlet.dao.MypageDAO;
 
 import com.java.servlet.util.DBCP2Util;
@@ -81,13 +82,15 @@ public class MypageDAOImpl implements MypageDAO {
 				
 				ps.setString(1, vo.getPwd());
 				ps.setString(2, vo.getEmail());
-				
+				System.out.println(result);
 				result = ps.executeUpdate();
 				
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		return result;
+		
 	}
+
 }
+
