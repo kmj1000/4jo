@@ -12,12 +12,14 @@
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
              <script>
+             
         function verifyField(){
             let element = document.getElementById("name");
             let msg = "이름을 입력하세요";
             if( !isValid (element,msg) ){
                 return false;
             }
+            console.log("1");
             element  = document.getElementById("phone");
             msg = "핸드폰 번호를 입력하세요.";
             if( !isValid (element,msg) ){
@@ -33,8 +35,10 @@
             if( !number (element,msg) ){
                 return false;
             } 
+            console.log("2");
             return true;
         }
+   
         
         function number(element, msg) {
             let result = false;
@@ -44,8 +48,10 @@
             } else {
                 result = true;
             }
+            console.log("3");
             return result;
         }
+        
         function isValid(element, msg){
             let result = false;
             if(element.value == ''){
@@ -55,9 +61,9 @@
             }else{
                 result = true;
             }
+            console.log("4");
             return result;
         }
-        
         
     </script>
     </head>

@@ -9,9 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>옥독캣 - 회원가입</title>
-       <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
-           <style>
-        </style>
+        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
           <script>
         function verifyField(){

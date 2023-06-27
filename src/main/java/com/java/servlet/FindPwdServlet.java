@@ -17,7 +17,9 @@ import com.java.servlet.service.impl.JoinServiceImpl;
 import com.java.servlet.util.Define;
 import com.java.servlet.util.SHAEncodeUtil;
 import com.java.servlet.vo.MembersVO;
+import com.java.servlet.dao.FindPwdDAO;
 import com.java.servlet.dao.MembersDAO;
+import com.java.servlet.dao.impl.FindPwdDAOImpl;
 
 /**
  * Servlet implementation class FindServlet
@@ -25,45 +27,52 @@ import com.java.servlet.dao.MembersDAO;
 @WebServlet("/findPwd")
 public class FindPwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final FindService service=FindPwdServiceImpl.getInstance();  
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FindPwdServlet() {
-        super();
-        // TODO Auto-generated constructor stub �� ����媛�????
-    }
+	private static FindService service = FindPwdServiceImpl.getInstance();
+	private static FindPwdDAO instance = FindPwdDAOImpl.getInstance();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public FindPwdServlet() {
+		super();
+		// TODO Auto-generated constructor stub �� ����媛�????
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/findPwd.jsp"	);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/findPwd.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		System.out.println("d");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		
 		MembersVO vo = new MembersVO();
+	    vo.setName(name);
+        vo.setPhone(Integer.parseInt(phone));
+        vo.setEmail(email);
 		
-		String pwd = null;
-		
-		vo.setName(request.getParameter("name"));
-		vo.setPhone( Integer.parseInt(request.getParameter("phone")) );
-		vo.setEmail(request.getParameter("email"));
-		
-		if(pwd !=null) { 
-			//새 창 넘어가기? 새 창에서 아이디 띄워주기
-			
-		}else {
-			request.getRequestDispatcher( "/view/findPwd.jsp?msg=없는 정보입니다.")
-			.forward(request, response);
-}
+//		String pwd = instance.selectFindPwd(vo);
+        String pwd = service.getFindPwd(vo);
+//		SHAEncodeUtil.encodeSha( request.getParameter("pwd");
+
+		if (pwd != null) {
+			request.getRequestDispatcher("/view/findPwd.jsp?msg=있는 정보입니다.").forward(request, response);
+
+		} else {
+			request.getRequestDispatcher("/view/findPwd.jsp?msg=없는 정보입니다.").forward(request, response);
+		}
 	}
-
-
 
 }
