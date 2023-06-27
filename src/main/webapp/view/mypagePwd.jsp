@@ -29,6 +29,11 @@
 	<script
 		src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
 	<script>
+	String pwd=request.getParameter("pwd");
+	String uppwd=request.getParameter("uppwd");
+	String checkpwd=request.getParameter("checkpwd");
+	MembersDAO dao=new MembersDAO()
+	
 	function doubleCheck(value) {
         let uppwd=document.getElementById("uppwd").value;
         //let uppwd=document.getElementById("checkpwd").value;
@@ -71,6 +76,7 @@
         .btn:hover {
         	cursor:grab;
         }
+
     </style>
 </head>
 <body class="sb-nav-fixed bg-primary">
@@ -79,7 +85,7 @@
 		class=" ps-5 sb-topnav navbar navbar-expand; navbar-dark bg-yellow">
 		<img class="ps-5 img_main" src="../dogfoot.png"
 			style="width: 120px; height: 70px;" /><br /> <a
-			class="navbar-brand ps-1 pe-5" href="index.html"><h1>옥독캣</h1></a>
+			class="navbar-brand ps-1 pe-5" href="${pageContext.servletContext.contextPath}/main"><h1>옥독캣</h1></a>
 
 		<form
 			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
@@ -107,9 +113,9 @@
 			<div class="container-fluid px-10 pt-10">
 				<h1 class="mt-1">마이페이지</h1>
 				<br>
-		
+			<!-- form-control : 녹색 빨ㅅ간색 설정  -->
 				<%-- <c:forEach var="MembersVO" items="${requestScope.boardList}" varStatus="status"> </c:forEach> --%>
-					<!-- form-control : 녹색 빨ㅅ간색 설정  -->
+					
 					<div class="form-group">
 						  <label class="form-label mt-4" for="inputValid">현재 비밀번호</label>
 						  <input type="text" class="form-control" id="pwd" placeholder="현재 비밀번호를 입력하세요.">
@@ -127,18 +133,16 @@
 					</div>
 					<br>
 					<input type="submit" value="비밀번호 변경" onclick="return check()">
-				<!-- 	String pwd=request.getParameter("pwd");
-					String uppwd=request.getParameter("uppwd");
-					String checkpwd=request.getParameter("checkpwd"); -->
+				<!-- 	 -->
 					
 					<br>
 					<br>
 					<div>
-							<td colspan="2" align="center"><input type="submit"
-								value="내가쓴글" onclick="location='login.jsp'" /> &nbsp; <input
-								type="submit" value="보호소 즐겨찾기" onclick="location='login.jsp'" />
-								&nbsp; <input type="submit" value="위드펫 즐겨찾기"
-								onclick="location='login.jsp'" /></td>
+							<td colspan="2" align="center">
+							<input type="submit" value="내가쓴글" onclick="location='login.jsp'" /> &nbsp; 
+							<input type="submit" value="보호소 즐겨찾기" onclick="location='login.jsp'" />&nbsp; 
+							<input type="submit" value="위드펫 즐겨찾기" onclick="location='login.jsp'" />
+							</td>
 							<a href="#">회원탈퇴</a>
 				</div>
 				

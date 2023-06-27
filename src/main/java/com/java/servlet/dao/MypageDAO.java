@@ -10,4 +10,5 @@ public interface MypageDAO {
 	List<MembersVO> selectAllBoard();
 
 	int updatePwd(MembersVO vo);
+
 }
