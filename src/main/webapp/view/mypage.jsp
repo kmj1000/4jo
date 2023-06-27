@@ -55,7 +55,6 @@ window.onload = function(){
 			style="width: 120px; height: 70px;" /><br /> <a
 			class="navbar-brand ps-1 pe-5" href="index.html"><h1>옥독캣</h1></a>
 
-
 		<form
 			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
 			<div class="input-group">

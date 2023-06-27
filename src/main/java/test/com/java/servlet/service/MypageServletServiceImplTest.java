@@ -29,32 +29,6 @@ private MypageService service = MypageServiceImpl.getInstance();
 		System.out.println(slist);
 	}
 
-	@Test @Ignore
-	void testGetCountAllBoard() {
-		int sresult = service.getCountAllBoard();
-		assertNotEquals(0, sresult);
-		
-		System.out.println("totalCount : "+sresult);
-	}
-	
-	
-	@Test @Ignore
-	void testGetAllBoardByPage() {
-		Criteria cri = new Criteria(1, 10); //현재페이지, 한페이지당 출력갯수
-		PageMaker pageMaker = new PageMaker
-				(cri, 101); // cri, totalCount=100
-		pageMaker.setDisplayPageAmount(10);
-		System.out.println(pageMaker);
-		
-		List<MembersVO> boardList  = service.getAllBoardByPage(pageMaker);
-		System.out.println(boardList);
-		assertNotEquals(null, boardList);
-		
-		System.out.println("boardList per Page : "+boardList);
-	}
-	
-	//---------------------------------------------------------------
-	
-	
+
 	
 }
