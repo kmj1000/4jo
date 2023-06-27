@@ -11,7 +11,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>공지사항</title>
+<title>Tables - SB Admin</title>
 <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
 <link
 	href="${ pageContext.servletContext.contextPath }/bootstrap/css/mypageStyles.css"
@@ -115,58 +115,52 @@ window.onload = function(){
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="${pageContext.servletContext.contextPath}/pet_notice"><b>공고</b></a> 
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter"><b>보호소</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/with_pet"><b>위드펫</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></a>
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="http://localhost:8080/4jo/view/pet_notice.jsp"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/shelter.jsp"><b>보호소</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/with_pet.jsp"><b>위드펫</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/community.jsp"><b>커뮤니티</b></a>
+			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/notice.jsp"><b>공지사항</b></a>
    
             </nav>
 	<div id="layoutSidenav_content">
 		<main>
-                    <div class="container-fluid px-3 pt-3">
-                        <h1 class="mt-1" >커뮤니티 페이지</h1>
-                        
+                    <div class="container-fluid px-10 pt-10">
+                        <h1 class="mt-1" >내가 쓴 글</h1>
+                        <ol class="breadcrumb mb-4">
+ 
+                        </ol>
                         
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                               커뮤니티 글 목록
+                               개인정보조회
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>공지 번호</th>
-                                            <th>공지 제목</th>
-                                            <th>공지 작성일</th>
-                                            <th>공지 작성자</th>
+                                            <th>글번호</th>
+                                            <th>제목</th>
+                                            <th>작성일</th>
+                                            <th>작성자</th>
                                             <!-- <th>조회수</th>  -->
                                         </tr>
-                                        <button type="button" class="btn btn-outline-primary">Primary</button>
-										<button type="button" class="btn btn-outline-secondary">Secondary</button>
-										<button type="button" class="btn btn-outline-success">Success</button>
-									<button type="button" class="btn btn-outline-info">Info</button>
-									<button type="button" class="btn btn-outline-warning">Warning</button>
-									<button type="button" class="btn btn-outline-danger">Danger</button>
-									<button type="button" class="btn btn-outline-light">Light</button>
-									<button type="button" class="btn btn-outline-dark">Dark</button>
+                                       
                                     </thead>
-                                    <tfoot>
-                                    </tfoot>
+                                   
                                     <tbody>
-                                    	<C:forEach var="noticeVO" items="${noticeList}" varStatus="status">
+                                    	<C:forEach var="communityVO" items="${communityList}" varStatus="status">
                                         <tr>
-                                            <td>${noticeVO.notice_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/notice?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
-                                            <td>${noticeVO.notice_reg_date}</td>
-                                            <td>${noticeVO.admin_name}</td>
+                                            <td>${communityVO.c_no}</td>
+                                            <td><a href="${pageContext.servletContext.contextPath}/communitycontent?method=get&c_no=${communityVO.c_no}">${communityVO.title}</a></td>
+                                            <td>${communityVO.reg_date}</td>
+                                            <td>${communityVO.nickname}</td>
                                         </tr>
                                         </C:forEach>
                                     </tbody>
                                 </table>
                             </div>
-                            <%@ include file="/view/import/page-notice.jsp" %>
+                            <%@ include file="/view/import/page-paper.jsp" %>
                            <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 
                         	<C:import url="/view/import/page-nation.jsp"></C:import> --%>
                         </div>
