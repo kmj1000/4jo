@@ -202,11 +202,11 @@
         
          <nav class="sb-topnav navbar navbar-expand; navbar-light bg-yellow" >
            <!--   <nav class="nav nav-pills flex-column flex-sm-row justify-content-evenly"> -->
-              <a class="flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/pet_notice"><b>공고</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter" ><b>보호소</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/with_pet" ><b>위드펫</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></a>
-              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-outline-light" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></a>
+              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-lg btn-outline-light" href="${pageContext.servletContext.contextPath}/pet_notice"><b>공고</b></button>
+              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-lg btn-outline-light" href="${pageContext.servletContext.contextPath}/shelter" ><b>보호소</b></button>
+              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-lg btn-outline-light" href="${pageContext.servletContext.contextPath}/with_pet" ><b>위드펫</b></button>
+              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-lg btn-outline-light" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></button>
+              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-light" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></button>
         <!--  </nav> -->
             </nav>
             <div id="layoutSidenav_content">
