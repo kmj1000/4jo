@@ -10,7 +10,7 @@ public interface CommunityDAO {
 	List<CommunityVO> selectAllCommunity();
 
 	int selectCountAllCommunity();
-
+//
 	List<CommunityVO> selectAllCommunityByPage(PageMaker pageMaker);
 	
 	List<CommunityVO> selectMyCommunity(String nickname);
