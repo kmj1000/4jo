@@ -44,6 +44,7 @@
 				border-bottom : 1px solid #645326;
 				border-top : 1px solid #645326;
 			}
+			
 			.img_main{
 			width: 60%;
 		    margin: 0px auto;
