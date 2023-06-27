@@ -8,15 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.java.servlet.service.FindService;
 import com.java.servlet.service.JoinService;
 import com.java.servlet.service.impl.FindPwdServiceImpl;
 import com.java.servlet.service.impl.JoinServiceImpl;
+import com.java.servlet.util.Define;
 import com.java.servlet.util.SHAEncodeUtil;
 import com.java.servlet.vo.MembersVO;
-import com.java.servlet.dao.FindPwdDAO;
-import com.java.servlet.dao.FindPwdDAOImpl;
+import com.java.servlet.dao.MembersDAO;
 
 /**
  * Servlet implementation class FindServlet
@@ -45,29 +46,24 @@ public class FindPwdServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MembersVO vo = new MembersVO();
+		
+		String pwd = null;
+		
 		vo.setName(request.getParameter("name"));
 		vo.setPhone( Integer.parseInt(request.getParameter("phone")) );
 		vo.setEmail(request.getParameter("email"));
 		
-		FindPwdDAO fpdao = FindPwdDAO();
-		String pwd = fpdao.findPwd(fpdao);
-		
-		 if(pwd != null) {//결과가 있으면(정보가 맞다면)
-			 response.sendRedirect("find_id_result.jsp?member_id="+pwd);
-	            
-			 request.getSession().setAttribute("member_id", pwd);
-	            response.sendRedirect("find_id_result.jsp");
-	         }
-	         else {//결과가 없으면(정보가 맞지 않으면)
-	        	 response.sendRedirect("find_id.jsp?error");
-	         }
-	      }
-	      catch(Exception e) {
-	         e.printStackTrace();
-	      }
-		
+		if(pwd !=null) { 
+			//새 창 넘어가기? 새 창에서 아이디 띄워주기
+			
+		}else {
+			request.getRequestDispatcher( "/view/findPwd.jsp?msg=없는 정보입니다.")
+			.forward(request, response);
+}
 	}
+
+
 
 }

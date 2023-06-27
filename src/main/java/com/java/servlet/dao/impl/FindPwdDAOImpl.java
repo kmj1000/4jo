@@ -49,11 +49,6 @@ public class FindPwdDAOImpl implements FindPwdDAO {
 		return pwd;
 	}
 
-	@Override
-	public String findPwd(FindPwdDAO fpdao) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 

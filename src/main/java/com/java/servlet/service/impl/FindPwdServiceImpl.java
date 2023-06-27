@@ -20,5 +20,11 @@ public class FindPwdServiceImpl implements FindService {
 	public static FindService getInstance() {
 		return instance;
 	}
+
+	@Override
+	public String getFindPwd(MembersVO vo) {
+		// TODO Auto-generated method stub
+		return dao.selectFindPwd(vo);
+	}
 	
 }
