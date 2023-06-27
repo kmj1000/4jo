@@ -21,30 +21,36 @@
         <style> 
         
        a:hover{
-                background-color: #f9e171;
+                background-color: #fbde7b;
             }
- 
             .main{
-            padding-left : 5cm;
-            height: 170px;
+            margin-top: 1cm;
+            padding-right : 1.5cm;
+            padding-bottom : 0;
+            height: 120px;
             }         
             .bg-yellow {
 				  --bs-bg-opacity: 1;
-				  background-color: #f9e171 !important;
+				  background-color: #fbde7b !important;
 			}
 			.main1{
-			border-bottom : 1px solid #825e09;
+			border-bottom : 1px solid #645326;
 			 padding-bottom : 2px;
 			 padding-top : 2px;
 			}
 			.tab{
 				 padding-bottom : 0;
 				 padding-top : 0;
-				border-bottom : 1px solid #825e09;
-				border-top : 1px solid #825e09;
+				border-bottom : 1px solid #645326;
+				border-top : 1px solid #645326;
 			}
 			.img_main{
-			position : center;}
+			
+			width: 60%;
+		    margin: 0px auto;
+		    display: block;
+		    width: 250px; height: 90px;
+		    }
         </style>
     </head>
    <body class="sb-nav-fixed"> 
@@ -58,24 +64,24 @@
             </nav>
             
          <!-- 로고 -->              
-        <nav class="main ps-2 sb-topnav3 navbar navbar-expand; navbar-dark bg-white" >
+        <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main" >
-         <img class = "img_main" src="../okdogcat.png" style="width: 200px; height: 75px;"/>
+         <img class = "img_main" src="../logo.png" style="width: 250px; height: 90px;"/>
          </a>
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#"><b>공고</b></a> 
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="#"><b>보호소</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="#"><b>위드펫</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="#"><b>커뮤니티</b></a>
-			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="#"><b>공지사항</b></a>
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="http://localhost:8080/4jo/view/pet_notice.jsp"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/shelter.jsp"><b>보호소</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/with_pet.jsp"><b>위드펫</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/community.jsp"><b>커뮤니티</b></a>
+			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/notice.jsp"><b>공지사항</b></a>
         <!--  </nav> -->
             </nav>
             <main>
     			<div id="photomain">
     			
-				<img class = "img_main" src="../main-banner.jpg" style="width: 1300px;"/>
+				<img class = "mainbanner" src="../mainimg.png" style="width: 1300px;"/>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
