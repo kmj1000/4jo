@@ -174,42 +174,76 @@
 						}
 					// ]]>
 		</script>
-     <style type="text/css">* {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol336.cur), auto !important;}</style>   
-     <style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
+     	<style type="text/css">* {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol336.cur), auto !important;}</style>   
+     	<style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
+        <style> 
+	    <style> 
+        
+       a:hover{
+                background-color: #feeaa5;
+            }
+            .main{
+            padding-top: 0.7cm;
+            padding-left: 1.0cm;
+            padding-right : 1.5cm;
+            padding-bottom : 3cm;
+            height: 120px;
+            }         
+            .bg-yellow {
+				  --bs-bg-opacity: 1;
+				  background-color: #feeaa5 !important;
+			}
+			.main1{
+			border-bottom : 1px solid #645326;
+			 padding-bottom : 2px;
+			 padding-top : 2px;
+			}
+			.tab{
+				 padding-bottom : 0;
+				 padding-top : 0;
+				border-bottom : 1px solid #645326;
+				border-top : 1px solid #645326;
+			}
+			
+			.img_main{
+			width: 60%;
+		    margin: 0px auto;
+		    display: block;
+		    width: 250px; height: 90px;
+		    }
+		    .bgcolor{
+		   background-color: #f9f8f3;
+		    }
+		    
+        </style>
         
     </head>
-    
    <body class="sb-nav-fixed"> 
-          
-        <nav class=" ps-5 sb-topnav navbar navbar-expand; navbar-dark bg-yellow" >
-        <img class = "ps-5 img_main" src="../dogfoot.png" style="width: 120px; height: 70px;"/><br/>
-             <a class="navbar-brand ps-1 pe-5" href="${pageContext.servletContext.contextPath}/main" ><h1>옥독캣</h1></a>
-              
-
+           <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
                 <div class="input-group">
-                	<button type="button" class="btn btn-outline-primary" onclick="location='main.jsp'">로그아웃</button>
-					<!-- <button type="button" class="btn btn-outline-secondary">Secondary</button>
-					<button type="button" class="btn btn-outline-success">Success</button>
-					<button type="button" class="btn btn-outline-info">Info</button>
-					<button type="button" class="btn btn-outline-warning">Warning</button>
-					<button type="button" class="btn btn-outline-danger">Danger</button>
-					<button type="button" class="btn btn-outline-light">Light</button> -->
-					<button type="button" class="btn btn-outline-danger" onclick="location='mypage.jsp'">마이페이지</button>
+                	<button type="button" class="btn" onclick="location='login.jsp'" style="font-size: 14px;">로그아웃</button>					
+					<button type="button" class="btn" onclick="location='mypage.jsp'" style="font-size: 14px;">마이페이지</button>
                 </div>
-            </form>
+            </form>     
+            </nav>
+            
+         <!-- 로고 -->              
+        <nav class="main bg-white" >
+         <a class="mainlogo" href="http://localhost:8080/4jo/view/main.jsp"<%-- ${pageContext.servletContext.contextPath}/main --%> >
+         <img class = "img_main" src="../logo.png" style="width: 250px; height: 90px;"/>
+         </a>
         </nav>
         
-         <nav class="sb-topnav navbar navbar-expand; navbar-light bg-yellow" >
-           <!--   <nav class="nav nav-pills flex-column flex-sm-row justify-content-evenly"> -->
-              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-lg btn-outline-light" href="${pageContext.servletContext.contextPath}/pet_notice"><b>공고</b></button>
-              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-lg btn-outline-light" href="${pageContext.servletContext.contextPath}/shelter" ><b>보호소</b></button>
-              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-lg btn-outline-light" href="${pageContext.servletContext.contextPath}/with_pet" ><b>위드펫</b></button>
-              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-lg btn-outline-light" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></button>
-              <button type="button" class="flex-sm-fill text-sm-center nav-link btn btn-light" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></button>
-        <!--  </nav> -->
+         <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="http://localhost:8080/4jo/view/pet_notice.jsp"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/shelter.jsp"><b>보호소</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/with_pet.jsp"><b>위드펫</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/community.jsp"><b>커뮤니티</b></a>
+			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/notice.jsp"><b>공지사항</b></a>
+   
             </nav>
-            <div id="layoutSidenav_content">
+  
                 <main>
                     <div class="container-fluid px-10 pt-10">
                         <h1 class="mt-1" >마이페이지</h1>
@@ -232,24 +266,9 @@
                                             <th>작성자</th>
                                             <!-- <th>조회수</th>  -->
                                         </tr>
-                                        <button type="button" class="btn btn-outline-primary">Primary</button>
-										<button type="button" class="btn btn-outline-secondary">Secondary</button>
-										<button type="button" class="btn btn-outline-success">Success</button>
-									<button type="button" class="btn btn-outline-info">Info</button>
-									<button type="button" class="btn btn-outline-warning">Warning</button>
-									<button type="button" class="btn btn-outline-danger">Danger</button>
-									<button type="button" class="btn btn-outline-light">Light</button>
-									<button type="button" class="btn btn-outline-dark">Dark</button>
+                                       
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                         	<th>글번호</th>
-                                            <th>제목</th>
-                                            <th>작성일</th>
-                                            <th>작성자</th>
-                                            <!-- <th>조회수</th>  -->
-                                        </tr>
-                                    </tfoot>
+                                   
                                     <tbody>
                                     	<C:forEach var="communityVO" items="${communityList}" varStatus="status">
                                         <tr>
@@ -280,8 +299,7 @@
                         </div>
                     </div>
                 </footer>
-            </div>
-        </div>
+        
         
     </body>
 </html>

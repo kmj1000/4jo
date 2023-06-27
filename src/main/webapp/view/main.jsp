@@ -19,31 +19,45 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
         <style> 
-        
+
        a:hover{
-                background-color: #f9e171;
+                background-color: #feeaa5;
             }
-  
             .main{
-            padding-left : 5cm;
-            height: 170px;
+            padding-top: 0.7cm;
+            padding-left: 1.0cm;
+            padding-right : 1.5cm;
+            padding-bottom : 3cm;
+            height: 120px;
             }         
             .bg-yellow {
 				  --bs-bg-opacity: 1;
-				  background-color: #f9e171 !important;
+				  background-color: #feeaa5 !important;
 			}
 			.main1{
-			border-bottom : 1px solid #825e09;
+			border-bottom : 1px solid #645326;
 			 padding-bottom : 2px;
 			 padding-top : 2px;
 			}
 			.tab{
 				 padding-bottom : 0;
 				 padding-top : 0;
-				border-bottom : 1px solid #825e09;
-				border-top : 1px solid #825e09;
+				border-bottom : 1px solid #645326;
+				border-top : 1px solid #645326;
 			}
+			
+			.img_main{
+			width: 60%;
+		    margin: 0px auto;
+		    display: block;
+		    width: 250px; height: 90px;
+		    }
+		    .bgcolor{
+		   background-color: #f9f8f3;
+		    }
+		    
         </style>
+        
     </head>
    <body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
@@ -56,30 +70,30 @@
             </nav>
             
          <!-- 로고 -->              
-        <nav class="main ps-2 sb-topnav3 navbar navbar-expand; navbar-dark bg-white" >
-         <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main" >
-         <img class = "img_main" src="../okdogcat.png" style="width: 200px; height: 75px;"/>
+        <nav class="main bg-white" >
+         <a class="mainlogo" href="http://localhost:8080/4jo/view/main.jsp"<%-- ${pageContext.servletContext.contextPath}/main --%> >
+         <img class = "img_main" src="../logo.png" style="width: 250px; height: 90px;"/>
          </a>
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#"><b>공고</b></a> 
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="#"><b>보호소</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="#"><b>위드펫</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="#"><b>커뮤니티</b></a>
-			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="#"><b>공지사항</b></a>
-        <!--  </nav> -->
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="http://localhost:8080/4jo/view/pet_notice.jsp"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/shelter.jsp"><b>보호소</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/with_pet.jsp"><b>위드펫</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/community.jsp"><b>커뮤니티</b></a>
+			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/notice.jsp"><b>공지사항</b></a>
+   
             </nav>
             <main>
     			<div id="photomain">
     			
-				<img class = "img_main" src="../main-banner.jpg" style="width: 1300px;"/>
+				<img class = "mainbanner" src="../mainimg.png" style="width: 1300px;"/>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">OkDogCat &copy; Happy Project</div>
 
                         </div>
                     </div>
