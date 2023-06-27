@@ -43,6 +43,8 @@
 				border-bottom : 1px solid #825e09;
 				border-top : 1px solid #825e09;
 			}
+			.img_main{
+			position : center;}
         </style>
     </head>
    <body class="sb-nav-fixed"> 
