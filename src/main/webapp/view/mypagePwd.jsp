@@ -108,32 +108,20 @@ window.onload = function(){
 						<table id="datatablesSimple" >
 							<c:forEach var="MembersVO" items="${requestScope.boardList}" varStatus="status">
 								<tr>
-									<td>닉네임</td>
-									<td>${MembersVO.nickname}</td>
+									<td>현재비밀번호</td>
+									<td>현재비밀번호</td>
 								</tr>
 								<tr>
 								
-									<td >비밀번호</td>
-									<td>${MembersVO.pwd}
-										<button type="button" class="modify col p-3 btn btn-warning"
-											onclick="location='notice.jsp'">변경</button>
-										<div class="col p-3"></div> <!--   </div> -->
-									</td>
+									<td >변경비밀번호</td>
+									<td>현재비밀번호</td>
+								
 								</tr>
 								<tr>
-									<td>이메일</td>
-									<td>${MembersVO.email}</td>
+									<td>비밀번호확인</td>
+									<td>현재비밀번호</td>
 								</tr>
-								<tr>
-									<td>이름</td>
-									<td>${MembersVO.name}</td>
-								</tr>
-								<tr>
-									<td>전화번호</td>
-									<td>${MembersVO.phone}<button type="button" class="modify" 
-										onclick="location='login.jsp'" >변경</button>
-									</td>
-								</tr>
+							
 							</c:forEach>
 						</table>
 

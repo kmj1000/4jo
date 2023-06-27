@@ -70,6 +70,8 @@ public class MypageServlet extends HttpServlet {
    
          RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/mypage.jsp");
          dispatcher.forward(request, response);
+         
+       
       }else {
          String msg = "You are Not allowed, Plz login!";
          response.sendRedirect(request.getContextPath() + "/login?msg="+msg);
