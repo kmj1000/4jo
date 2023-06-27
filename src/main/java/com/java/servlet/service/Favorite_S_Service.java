@@ -1,7 +1,18 @@
 package com.java.servlet.service;
 
+import java.util.List;
+
+
+
+import com.java.servlet.util.PageMaker;
 import com.java.servlet.vo.Favorite_S_VO;
 
 public interface Favorite_S_Service {
-	Favorite_S_VO getFavorite_shelter(int favortite_shelter_no);
+
+
+	List<Favorite_S_VO> getShelterBoard();
+	int getCountShelterBoard();
+	List<Favorite_S_VO> getShelterBoardByPage(PageMaker pageMaker);
+	
+	
 }

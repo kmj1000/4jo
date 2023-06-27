@@ -169,71 +169,45 @@
 	                                <table id="datatablesSimple">
 	                                    <thead>
 	                                        <tr>
-	                                            
-	                                            <th>문화시설 이름</th>
-	                                            <th>문화시설 유형 </th>
-	                                            <th>도로명 주소</th>
-	                                            <th>전화번호 </th>
-	                                            <th>홈페이지</th>
-	                                            <th>휴무일 </th>
-	                                            <th>운영시간 </th>
-	                                            <th>주차가능여부 </th>
-	                                            <th>반려동물 동반 가능정보 </th>
-	                                            <th>반려동물 전용 정보 </th>
-	                                            <th>입장 가능 동물 크기 </th>
-	                                            <th>장소(실내)여부 </th>
-	                                            <th>장소(실외)여부 </th>
-	                                            <th>애견동반추가요금 </th>
-	                                            
+	                                            <th>즐겨찾기번호</th>
+	                                            <th>닉네임</th>
+	                                            <th>보호소 번호</th>
+	                                            <th>보호소 이름</th>
+	                                            <th>보호소 주소</th>
+	                                            <th>보호소 전화번호</th>
+	                                            <th>즐겨찾기 등록일</th>
 	                                            <!-- <th>조회수</th> -->
 	                                        </tr>
 	                                    </thead>
 	                                    <tfoot>
 	                                        <tr>
-	                                           	
-	                                            <th>문화시설 이름</th>
-	                                            <th>문화시설 유형 </th>
-	                                            <th>도로명 주소</th>
-	                                            <th>전화번호 </th>
-	                                            <th>홈페이지</th>
-	                                            <th>휴무일 </th>
-	                                            <th>운영시간 </th>
-	                                            <th>주차가능여부 </th>
-	                                            <th>반려동물 동반 가능정보 </th>
-	                                            <th>반려동물 전용 정보 </th>
-	                                            <th>입장 가능 동물 크기 </th>
-	                                            <th>장소(실내)여부 </th>
-	                                            <th>장소(실외)여부 </th>
-	                                            <th>애견동반추가요금 </th>
+	                                           	<th>즐겨찾기번호</th>
+	                                            <th>닉네임</th>
+	                                            <th>보호소 번호</th>
+	                                            <th>보호소 이름</th>
+	                                            <th>보호소 주소</th>
+	                                            <th>보호소 전화번호</th>
+	                                            <th>즐겨찾기 등록일</th>
 	                                            <!-- <th>조회수</th> -->
 	                                        </tr>
 	                                    </tfoot>
 	                                    <tbody>
-	                                    	<c:forEach var="With_petVO" items="${ requestScope.boardList }" varStatus="status">
+	                                    	<c:forEach var="Favorite_S_VO" items="${ requestScope.boardList }" varStatus="status">
 											<tr>
-												<!-- pageScope에 vo가 생성되었다.  -->
-												<td>${With_petVO.building}</td>
-												<td>${With_petVO.category3}</td>
-												<td>${With_petVO.road}</td>
-												<td>${With_petVO.homepage}</td>										
-												<td>${With_petVO.day_off}</td>
-												<td>${With_petVO.hour}</td>
-												<td>${With_petVO.with_pet_info}</td>
-												<td>${With_petVO.only_pet_info}</td>
-												<td>${With_petVO.pet_size}</td>
-												<td>${With_petVO.pet_limit}</td>
-												<td>${With_petVO.inside}</td>
-												<td>${With_petVO.outside}</td>
-												<td>${With_petVO.extra}</td>
-											
+												<td>${Favorite_S_VO.favorites_no}</td><!-- pageScope에 vo가 생성되었다.  -->
+												<td>${Favorite_S_VO.nickname}</td>
+												<td>${Favorite_S_VO.shelter_no}</td>
+												<td>${Favorite_S_VO.careNm}</td>
+												<td>${Favorite_S_VO.careAddr}</td>
+												<td>${Favorite_S_VO.careTel}</td>
+												<td>${Favorite_S_VO.favorites_reg_date}</td>
 											</tr>
 											</c:forEach>
 	                                    </tbody>
 	                                </table>
 	                              
 	                            </div>
-	                            <%@ include file="/view/import/page-with_pet.jsp" %>
-	                           
+	                            <%@ include file="/view/import/page-favorites.jsp" %>
 	                          
                         </div>
                     </div>
