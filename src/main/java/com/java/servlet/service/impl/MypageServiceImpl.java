@@ -27,6 +27,11 @@ public class MypageServiceImpl implements MypageService {
 	public List<MembersVO> getAllBoard() {
 		return dao.selectAllBoard();
 	}
+
+	@Override
+	public int modifyPwd(MembersVO vo) {
+		return dao.updatePwd(vo);
+	}
 	
 	
 }

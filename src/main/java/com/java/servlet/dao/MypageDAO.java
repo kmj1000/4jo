@@ -8,4 +8,6 @@ import com.java.servlet.vo.MembersVO;
 
 public interface MypageDAO {
 	List<MembersVO> selectAllBoard();
+
+	int updatePwd(MembersVO vo);
 }

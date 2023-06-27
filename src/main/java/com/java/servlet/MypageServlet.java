@@ -41,7 +41,9 @@ public class MypageServlet extends HttpServlet {
       
       HttpSession session= request.getSession(true);
       boolean SESS_AUTH = true;
+      
       System.out.println(session);
+      
       if(session == null){
          String msg = "You are Not allowed, Plz login!";
          response.sendRedirect(request.getContextPath() 
@@ -71,8 +73,7 @@ public class MypageServlet extends HttpServlet {
       }else {
          String msg = "You are Not allowed, Plz login!";
          response.sendRedirect(request.getContextPath() + "/login?msg="+msg);
-      }
-      
+      }      
    }
 
    /**
