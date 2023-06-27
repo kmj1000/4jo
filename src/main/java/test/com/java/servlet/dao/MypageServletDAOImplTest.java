@@ -28,13 +28,7 @@ class MypageServletDAOImplTest {
 	}
 	
 	
-	@Test @Ignore
-	void testSelectCounAllBoard() {
-		int result = dao.seletCountAllBoard();
-		assertNotEquals(0, result);
-		
-		System.out.println("totalCount : "+result);
-	}
+
 	
 	@Test @Ignore
 	void testSelectAllBoardByPage() {

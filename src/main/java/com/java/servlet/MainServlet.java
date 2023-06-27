@@ -1,13 +1,14 @@
 package com.java.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
  * Servlet implementation class MainServlet
@@ -29,9 +30,34 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath()+"/view/main.jsp");
-		dispatcher.forward(request, response);
-	}
+		HttpSession session= request.getSession(false);
+	      boolean SESS_AUTH = false;
+	      System.out.println(session);
+	      if(session == null){
+	         String msg = "You are Not allowed, Plz login!";
+	         response.sendRedirect(request.getContextPath() 
+	                           + "/login?msg="+msg);
+	         return;
+	      }
+	      
+	      try {
+	         SESS_AUTH = (boolean)session.getAttribute("SESS_AUTH");
+	      }catch(Exception e) {}
+	      
+	      if( SESS_AUTH ) {
+	         
+	         request.setCharacterEncoding("utf-8");
+	         request.setAttribute("SESS_AUTH", false);
+ 
+	
+	         RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/main.jsp");
+	         dispatcher.forward(request, response);
+	      }else {
+	         String msg = "You are Not allowed, Plz login!";
+	         response.sendRedirect(request.getContextPath() + "/login?msg="+msg);
+	      }
+	      
+	   }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
