@@ -89,6 +89,7 @@ public class MypageDAOImpl implements MypageDAO {
 			e.printStackTrace();
 		}
 		return result;
+		
 	}
 
 }
