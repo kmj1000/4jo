@@ -81,8 +81,7 @@
                                                 <input class="btn btn-primary" type="submit" value="로그인" onclick="return verifyField();">
                                                 <!-- <a class="btn btn-primary" type="submit" onclick="return verifyField();">로그인</a> -->
                                                 
-            						
-            									
+
                                                 
                                                 
                                             </div>
