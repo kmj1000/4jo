@@ -52,12 +52,25 @@
                 alert("비밀번호가 불일치 합니다.");
                 checkObj.focus();
                 return false;
-            }  
-            
+            }             
+            element  = document.getElementById("phone");
+            msg = "숫자로만 핸드폰 번호를 입력하세요.";
+            if( !number (element,msg) ){
+                return false;
+            } 
             return true;
-           
         }
         
+        function number(element, msg) {
+            let result = false;
+            if (isNaN(element.value) || element.value.trim() === '') {
+                alert(msg);
+                element.focus();
+            } else {
+                result = true;
+            }
+            return result;
+        }
         function isValid(element, msg){
             let result = false;
             if(element.value == ''){
@@ -102,39 +115,42 @@
                                         <form action="${pageContext.servletContext.contextPath}/join" method="post">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="name" id="name" type="text" />
-                                                <label for="name">Name</label>
+                                                <label for="name">이름</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="email" id="email" type="email"  />
-                                                <label for="email">Email</label>
+                                                <input class="form-control" name="email" id="email" type="email" />
+                                                <label for="email">이메일</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                 <input class="form-control" name="nickname" id="nickname" type="text"  />
-                                                <label for="nickname">NickName</label>
+                                                 <input class="form-control" name="nickname" id="nickname" type="text" />
+                                                <label for="nickname">닉네임</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="phone" id="phone" type="text" />
-                                                <label for="phone">Phone</label>
+                                                <input class="form-control" name="phone" id="phone" type="tel" />
+                                                <label for="phone">핸드폰 (-없이 숫자만 입력하세요)</label>
                                             </div>
+                                            
+                                            
+                                            
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="pwd" name="pwd" type="password"  />
-                                                        <label for="pwd">Password</label>
+                                                        <label for="pwd">비밀번호</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="pwd-double-check" type="password"  onkeyup="doubleCheck(this.value);" />
+                                                        <input class="form-control" id="pwd-double-check" type="password"  onkeyup="doubleCheck(this.value);"/>
                                                         <span id="box-span" class="box-span-on"></span>
-                                                        <label for="pwd-double-check">Confirm Password</label>
+                                                        <label for="pwd-double-check">비밀번호 확인</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><!-- <a class="btn btn-primary btn-block" type="submit" onclick="return verifyField();">가입 완료
                                                 </a> -->
-                                                <input type="submit" value="전송" onclick="return verifyField();"></div>
+                                                <input class="btn btn-primary btn-block" type="submit" value="전송" onclick="return verifyField();"></div>
                                             </div>
                                          </form>
                                     </div>

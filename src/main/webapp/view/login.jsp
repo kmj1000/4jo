@@ -9,26 +9,24 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>옥독캣 - 로그인</title>
-       <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" /> 
+        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" /> 
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
          <script>
     	var msg = '<%= request.getParameter("msg")%>';
-    	
+    	console.log("Dsa");
     	window.onload = function(){
     		showMsg();
     	}
     	
     	function showMsg(){
-    		
-    		
 	    	if( msg != null && msg != 'null' && msg != '' ){
 	    		alert(msg);
 	    	}
     	}
-    	
+    	console.log("dsadsa");
         function verifyField(){
-            let element = document.getElementById("id");
-            let msg = '아이디를 입력하세요.';
+            let element = document.getElementById("email");
+            let msg = '이메일을 입력하세요.';
             if( !isValid (element,msg) ){
                 return false;
             }
@@ -65,25 +63,39 @@
                                     <div class="card-body">
                                         <form action="${ pageContext.servletContext.contextPath }/login" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email address</label>
+                                                <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" />
+                                                <label for="email">이메일</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                                <label for="inputPassword">Password</label>
+                                                <input class="form-control" id="pwd" name="pwd" type="password" placeholder="pwd" />
+                                                <label for="pwd">비밀번호</label>
                                             </div>
                                             <!-- <div class="form-check mb-3">
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div> -->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="find.jsp">비밀번호 찾기</a>
-                                                <a class="btn btn-primary" href="${pageContext.servletContext.contextPath}/view/main.jsp">로그인</a>
+                                                <a class="small" href="${pageContext.servletContext.contextPath}/view/join.jsp">회원가입</a> 
+                                                <%-- <a class="small" href="${pageContext.servletContext.contextPath}/view/findEmail.jsp">이메일 찾기</a> --%>
+                                                
+                                                <input class="btn btn-primary" type="submit" value="로그인" onclick="return verifyField();">
+                                                <!-- <a class="btn btn-primary" type="submit" onclick="return verifyField();">로그인</a> -->
+                                                
+            						
+            									
+                                                
+                                                
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="${pageContext.servletContext.contextPath}/view/join.jsp">회원가입 하러 가기</a></div>
+                                        <div class="small">
+                                        <a href="${pageContext.servletContext.contextPath}/view/findEmail.jsp">이메일 찾기</a>
+                                        <a href="${pageContext.servletContext.contextPath}/view/findPwd.jsp">비밀번호 찾기</a>
+                                        </div>
+                                        
+                                        <%-- <div class="small"><a href="${pageContext.servletContext.contextPath}/view/join.jsp">회원가입 하러 가기</a></div> --%>
+                                     
                                     </div>
                                 </div>
                             </div>
