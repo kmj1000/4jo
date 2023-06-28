@@ -33,6 +33,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 	public List<ShelterVO> selectAllBoard() {
 		
 		String sql = "SELECT      \r\n"
+				+ "              shelter_no\r\n"
 				+ "              careNm\r\n"
 				+ "               ,divisionNm\r\n"
 				+ "               ,saveTrgtAnimal\r\n"
@@ -68,7 +69,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 				
 				while( rs.next() ) {
 					ShelterVO vo = new ShelterVO();
-					
+					vo.setShelter_no(rs.getInt("shelter_no"));
 					vo.setCareNm(rs.getString("careNm"));
 					vo.setDivisionNm(rs.getString("divisionNm"));
 					vo.setSaveTrgtAnimal(rs.getString("saveTrgtAnimal"));
@@ -123,6 +124,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 				+ "				   SELECT\r\n"
 				+ "				  ROWNUM as rn\r\n"
 				+ "				  \r\n"
+				+ "				,shelter_no  \r\n"
 				+ "				,careNm  \r\n"
 				+ "				,divisionNm \r\n"
 				+ "				,saveTrgtAnimal \r\n"
@@ -159,7 +161,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 				
 				while( rs.next() ) {
 					ShelterVO vo = new ShelterVO();
-				
+					vo.setShelter_no(rs.getInt("shelter_no"));
 					vo.setCareNm(rs.getString("careNm"));
 					vo.setDivisionNm(rs.getString("divisionNm"));
 					vo.setSaveTrgtAnimal(rs.getString("saveTrgtAnimal"));

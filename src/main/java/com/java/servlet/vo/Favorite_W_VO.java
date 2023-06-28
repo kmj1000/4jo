@@ -102,7 +102,7 @@ public class Favorite_W_VO {
 		
 	    String withpetInfo = "문화시설 정보: [문화시설이름 = " + building + ",전화번호 = " + tel+", 주소 = " + road  + "]";
 
-		return "FavoriteVO["
+		return "Favorite_W_VO["
 				+"favoritew_no = "+favoritew_no+", "
 				+"nickname = "+nickname+", "
 				+"favoritew_reg_date = "+favoritew_reg_date+"\n"

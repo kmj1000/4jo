@@ -20,8 +20,6 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
       
-     	
-        
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -119,21 +117,75 @@
                     </div>
                 </nav>
             </div>
-            
+            <div id="layoutSidenav_content">
                 <main>
-                
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Tables</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Tables</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
+                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
+                                .
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                DataTable Example 
+                            </div>
+                            <div class="card-body">
+                           		
+                           		<!-- --------------------------------------- -->
+                           		<!-- <div class="card-body">
+                           	
+                                <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns"><div class="datatable-top">
+									    <div class="datatable-dropdown">
+									            <label>
+									                <select class="datatable-selector"><option value="5">5</option><option value="10" selected="">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select> entries per pageㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴ
+									            </label>
+									        </div>
+									    <div class="datatable-search">
+									            <input class="datatable-input" placeholder="Search..." type="search" title="Search within table" aria-controls="datatablesSimple">
+									        </div>
+									</div>
+									<div class="datatable-container"><table id="datatablesSimple" class="datatable-table"><thead><tr><th data-sortable="true" style="width: 16.335877862595417%;"><a href="#" class="datatable-sorter">글번호</a></th><th data-sortable="true" style="width: 45.19083969465649%;"><a href="#" class="datatable-sorter">제목</a></th><th data-sortable="true" style="width: 18.778625954198475%;"><a href="#" class="datatable-sorter">작성일</a></th><th data-sortable="true" style="width: 19.69465648854962%;"><a href="#" class="datatable-sorter">작성자</a></th></tr></thead><tbody><tr data-index="0"><td>1020</td><td><a href="/project/board?method=get&amp;b_no=1020">안녕하세요 가입인사드립니다.</a></td><td>jemminy01</td><td>2023-05-31</td></tr><tr data-index="1"><td>1051</td><td><a href="/project/board?method=get&amp;b_no=1051">제목없음1123</a></td><td>jemminy01</td><td>2023-06-12</td></tr><tr data-index="2"><td>1099</td><td><a href="/project/board?method=get&amp;b_no=1099">hello1099</a></td><td>jemminy01</td><td>2023-06-13</td></tr><tr data-index="3"><td>1060</td><td><a href="/project/board?method=get&amp;b_no=1060">hello1060</a></td><td>jemminy01</td><td>2023-06-13</td></tr><tr data-index="4"><td>1061</td><td><a href="/project/board?method=get&amp;b_no=1061">hello1061</a></td><td>jemminy01</td><td>2023-06-13</td></tr><tr data-index="5"><td>1062</td><td><a href="/project/board?method=get&amp;b_no=1062">hello1062</a></td><td>jemminy01</td><td>2023-06-13</td></tr><tr data-index="6"><td>1063</td><td><a href="/project/board?method=get&amp;b_no=1063">hello1063</a></td><td>jemminy01</td><td>2023-06-13</td></tr><tr data-index="7"><td>1064</td><td><a href="/project/board?method=get&amp;b_no=1064">hello1064</a></td><td>jemminy01</td><td>2023-06-13</td></tr><tr data-index="8"><td>1065</td><td><a href="/project/board?method=get&amp;b_no=1065">hello1065</a></td><td>jemminy01</td><td>2023-06-13</td></tr><tr data-index="9"><td>1066</td><td><a href="/project/board?method=get&amp;b_no=1066">hello1066</a></td><td>jemminy01</td><td>2023-06-13</td></tr></tbody></table></div>
+									<div class="datatable-bottom">
+									    <div class="datatable-info">Showing 1 to 10 of 100 entries</div>
+									    <nav class="datatable-pagination"><ul class="datatable-pagination-list"><li class="datatable-pagination-list-item datatable-hidden datatable-disabled"><a data-page="1" class="datatable-pagination-list-item-link">‹</a></li><li class="datatable-pagination-list-item datatable-active"><a data-page="1" class="datatable-pagination-list-item-link">1</a></li><li class="datatable-pagination-list-item"><a data-page="2" class="datatable-pagination-list-item-link">2</a></li><li class="datatable-pagination-list-item"><a data-page="3" class="datatable-pagination-list-item-link">3</a></li><li class="datatable-pagination-list-item"><a data-page="4" class="datatable-pagination-list-item-link">4</a></li><li class="datatable-pagination-list-item"><a data-page="5" class="datatable-pagination-list-item-link">5</a></li><li class="datatable-pagination-list-item"><a data-page="6" class="datatable-pagination-list-item-link">6</a></li><li class="datatable-pagination-list-item"><a data-page="7" class="datatable-pagination-list-item-link">7</a></li><li class="datatable-pagination-list-item datatable-ellipsis datatable-disabled"><a class="datatable-pagination-list-item-link">…</a></li><li class="datatable-pagination-list-item"><a data-page="10" class="datatable-pagination-list-item-link">10</a></li><li class="datatable-pagination-list-item"><a data-page="2" class="datatable-pagination-list-item-link">›</a></li></ul></nav>
+									</div></div>
+									                                <div class="datatable-bottom">
+									    <div class="datatable-info">Showing 31 to 40 of 100 entries</div>
+									    <nav class="datatable-pagination"><ul class="datatable-pagination-list"><li class="datatable-pagination-list-item"><a data-page="3" class="datatable-pagination-list-item-link">‹</a></li><li class="datatable-pagination-list-item"><a data-page="1" class="datatable-pagination-list-item-link">1</a></li><li class="datatable-pagination-list-item"><a class="datatable-pagination-list-item-link" data-page="2">2</a></li><li class="datatable-pagination-list-item"><a data-page="3" class="datatable-pagination-list-item-link">3</a></li><li class="datatable-pagination-list-item datatable-active"><a data-page="4" class="datatable-pagination-list-item-link">4</a></li><li class="datatable-pagination-list-item"><a data-page="5" class="datatable-pagination-list-item-link">5</a></li><li class="datatable-pagination-list-item"><a data-page="6" class="datatable-pagination-list-item-link">6</a></li><li class="datatable-pagination-list-item"><a data-page="7" class="datatable-pagination-list-item-link">7</a></li><li class="datatable-pagination-list-item datatable-ellipsis datatable-disabled"><a class="datatable-pagination-list-item-link">…</a></li><li class="datatable-pagination-list-item"><a data-page="10" class="datatable-pagination-list-item-link">10</a></li><li class="datatable-pagination-list-item"><a data-page="5" class="datatable-pagination-list-item-link">›</a></li></ul></nav>
+									</div>
+                            </div> -->
+                           		
+                           		
                            		<!-- ---------------------------------------- -->
                            		
 	                                <table id="datatablesSimple">
 	                                    <thead>
 	                                        <tr>
-	                                       		<th >Image </th>
+	                                       		<th>Image </th>
+	                                            <th>접수일</th>
+	                                            <th>발견장소 </th>
 	                                            <th>품종</th>
+	                                            <th>색상 </th>
 	                                            <th>나이</th>
 	                                            <th>체중 </th>
+	                                            <th>공고번호 </th>
+	                                            <th>공고시작일 </th>
+	                                            <th>공고종료일 </th>
+	                                            <th>상태 </th>
 	                                            <th>성별 </th>
+	                                            <th>중성화여부 </th>
 	                                            <th>특징 </th>
-	                                           
+	                                            <th>보호소이름 </th>
+	                                            <th>보호소전화번호 </th>
+	                                            <th>보호장소 </th>
 	                                            
 	                                            <!-- <th>조회수</th> -->
 	                                        </tr>
@@ -141,61 +193,57 @@
 	                                    <tfoot>
 	                                        <tr>
 	                                           	
-	                                            <th >Image </th>
+	                                            <th>Image </th>
+	                                            <th>접수일</th>
+	                                            <th>발견장소 </th>
 	                                            <th>품종</th>
+	                                            <th>색상 </th>
 	                                            <th>나이</th>
 	                                            <th>체중 </th>
+	                                            <th>공고번호 </th>
+	                                            <th>공고시작일 </th>
+	                                            <th>공고종료일 </th>
+	                                            <th>상태 </th>
 	                                            <th>성별 </th>
+	                                            <th>중성화여부 </th>
 	                                            <th>특징 </th>
+	                                            <th>보호소이름 </th>
+	                                            <th>보호소전화번호 </th>
+	                                            <th>보호장소 </th>
 	                                            
 	                                            <!-- <th>조회수</th> -->
 	                                        </tr>
 	                                    </tfoot>
 	                                    <tbody>
 	                                    	<c:forEach var="Pet_noticeVO" items="${ requestScope.boardList }" varStatus="status">
-											<a href ="" >
-											<tr onclick="location.href='${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}'" style="cursor:pointer" >
+											<tr>
 												<!-- pageScope에 vo가 생성되었다.  -->
-											
-												<td >
-												<a href ="${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}" >
-												<img src="${Pet_noticeVO.popfile}" alt="펫이미지" style="height:100px"/>
-												</a>
-												</td>
-												<td>
-												<a href ="${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}" >
-												${Pet_noticeVO.kindCd}
-												</a>
-												</td>
-												<td>
-												<a href ="${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}" >
-												${Pet_noticeVO.age}
-												</a>
-												</td>								
-												<td>
-												<a href ="${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}" >
-												${Pet_noticeVO.weight}
-												</a>
-												</td>
-												<td>
-												<a href ="${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}" >
-												${Pet_noticeVO.sexCd}
-												</a>
-												</td>
-												<td>
-												<a href ="${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}" >
-												${Pet_noticeVO.specialMark}
-												</a>
-												</td>
-											
+												<td><img src="${Pet_noticeVO.popfile}" alt="펫이미지" style="height:100px"/></td>
+												<td>${Pet_noticeVO.happenDt}</td>
+												<td>${Pet_noticeVO.happenPlace}</td>
+												<td>${Pet_noticeVO.kindCd}</td>
+												<td>${Pet_noticeVO.colorCd}</td>
+												<td>${Pet_noticeVO.age}</td>										
+												<td>${Pet_noticeVO.weight}</td>
+												<td>${Pet_noticeVO.noticeNo}</td>
+												<td>${Pet_noticeVO.noticeSdt}</td>
+												<td>${Pet_noticeVO.noticeEdt}</td>
+												<td>${Pet_noticeVO.processState}</td>
+												<td>${Pet_noticeVO.sexCd}</td>
+												<td>${Pet_noticeVO.neuterYn}</td>
+												<td>${Pet_noticeVO.specialMark}</td>
+												<td>${Pet_noticeVO.careNm}</td>
+												<td>${Pet_noticeVO.careAddr}</td>
+												<td>${Pet_noticeVO.careTel}</td>
+												
+												
 											</tr>
-										
 											</c:forEach>
 	                                    </tbody>
 	                                </table>
 	                              
 	                            </div>
-	                            <%@ include file="/view/import/page-pet_notice.jsp" %>
+	                            <%@ include file="/view/import/page-pet_noticedetail.jsp" %>
 	                          
 	                          
                         </div>

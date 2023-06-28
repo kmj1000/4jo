@@ -171,19 +171,11 @@
 	                                        <tr>
 	                                            
 	                                            <th>문화시설 이름</th>
-	                                            <th>문화시설 유형 </th>
 	                                            <th>도로명 주소</th>
 	                                            <th>전화번호 </th>
-	                                            <th>홈페이지</th>
-	                                            <th>휴무일 </th>
 	                                            <th>운영시간 </th>
-	                                            <th>주차가능여부 </th>
 	                                            <th>반려동물 동반 가능정보 </th>
 	                                            <th>반려동물 전용 정보 </th>
-	                                            <th>입장 가능 동물 크기 </th>
-	                                            <th>장소(실내)여부 </th>
-	                                            <th>장소(실외)여부 </th>
-	                                            <th>애견동반추가요금 </th>
 	                                            
 	                                            <!-- <th>조회수</th> -->
 	                                        </tr>
@@ -192,19 +184,12 @@
 	                                        <tr>
 	                                           	
 	                                            <th>문화시설 이름</th>
-	                                            <th>문화시설 유형 </th>
 	                                            <th>도로명 주소</th>
 	                                            <th>전화번호 </th>
-	                                            <th>홈페이지</th>
-	                                            <th>휴무일 </th>
 	                                            <th>운영시간 </th>
-	                                            <th>주차가능여부 </th>
 	                                            <th>반려동물 동반 가능정보 </th>
 	                                            <th>반려동물 전용 정보 </th>
-	                                            <th>입장 가능 동물 크기 </th>
-	                                            <th>장소(실내)여부 </th>
-	                                            <th>장소(실외)여부 </th>
-	                                            <th>애견동반추가요금 </th>
+	                                            
 	                                            <!-- <th>조회수</th> -->
 	                                        </tr>
 	                                    </tfoot>
@@ -212,19 +197,39 @@
 	                                    	<c:forEach var="With_petVO" items="${ requestScope.boardList }" varStatus="status">
 											<tr>
 												<!-- pageScope에 vo가 생성되었다.  -->
-												<td>${With_petVO.building}</td>
-												<td>${With_petVO.category3}</td>
-												<td>${With_petVO.road}</td>
-												<td>${With_petVO.homepage}</td>										
-												<td>${With_petVO.day_off}</td>
-												<td>${With_petVO.hour}</td>
-												<td>${With_petVO.with_pet_info}</td>
-												<td>${With_petVO.only_pet_info}</td>
-												<td>${With_petVO.pet_size}</td>
-												<td>${With_petVO.pet_limit}</td>
-												<td>${With_petVO.inside}</td>
-												<td>${With_petVO.outside}</td>
-												<td>${With_petVO.extra}</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&with_pet_no=${With_petVO.with_pet_no}" >
+												${With_petVO.building}
+												</a>
+												</td>
+												
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&with_pet_no=${With_petVO.with_pet_no}" >
+												${With_petVO.road}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&with_pet_no=${With_petVO.with_pet_no}" >
+												${With_petVO.tel}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&with_pet_no=${With_petVO.with_pet_no}" >
+												${With_petVO.hour}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&with_pet_no=${With_petVO.with_pet_no}" >
+												${With_petVO.with_pet_info}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&with_pet_no=${With_petVO.with_pet_no}" >
+												${With_petVO.only_pet_info}
+												</a>
+												</td>
+												
+												
 											
 											</tr>
 											</c:forEach>
