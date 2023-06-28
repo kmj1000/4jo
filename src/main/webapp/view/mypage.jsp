@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.java.servlet.vo.MembersVO"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
-<%@ page import="com.java.servlet.dao.MembersDAO" %>  
+<%@ page import="com.java.servlet.dao.MembersDAO" %> 
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -153,61 +153,41 @@
                   <i class="fas fa-table me-1"></i> 개인정보조회
                </div>
                <div class="card-body">
-      
-            <% 
-           
-        	HttpSession sessionObj = request.getSession(false);
-        
-       		 if (sessionObj != null && sessionObj.getAttribute("SESS_AUTH") != null 
-       				 && (boolean) sessionObj.getAttribute("SESS_AUTH")) {
-            // 세션에 인증 정보가 있을 경우
-            
-            String username = (String) sessionObj.getAttribute("SESS_USERNAME");
-            String email = (String) sessionObj.getAttribute("SESS_EMAIL");
-       		/* MembersDAO dao = new MembersDAOImpl(); */
-    		MembersVO vo = (MembersVO) request.getAttribute("vo");
-    		%>
+
             
     		<table id="datatablesSimple" >
-				   <c:forEach var="MembersVO" items="${requestScope.boardList}" varStatus="status">
+				  <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">
+				  
                         <tr>
                            <td>닉네임</td>
-                           <td> ${MembersVO.email} </td>
+                           <td>${MembersVO.nickname}</td>
                         </tr>
                         <tr>         
                            <td >비밀번호</td>
-                           <td><%= username %></td>
+                           <td>${MembersVO.nickname}</td>
                         </tr>
                         <tr>
                            <td>이메일</td>                 
-                          <td><%= email %></td>
+                          <td>${MembersVO.nickname}</td>
                         </tr>
                         <tr>
                            <td>이름</td>
-                           <td><%= email %></td>       
+                           <td>${MembersVO.nickname}</td>       
                         </tr>
                         <tr>
                            <td>전화번호</td>
-                           <td><%= email %></td>    
+                           <td>${MembersVO.nickname}</td>    
                         </tr>
-                        <%} %>
-                       <%--   <% 
-                         
-        } else {
-            // 세션에 인증 정보가 없을 경우
-            String errorMessage = request.getParameter("msg");
-            out.println("<p>" + errorMessage + "</p>");
-        }
-    %> --%>
-                 </c:forEach>
-                  </table>
+                         </c:forEach>
+                   </table>
+
+         
+                 
 
                   <tr>
-                     <td colspan="2" align="center"><input type="submit"
-                        value="내가쓴글" onclick="location='login.jsp'" /> &nbsp; <input
-                        type="submit" value="보호소 즐겨찾기" onclick="location='login.jsp'" />
-                        &nbsp; <input type="submit" value="위드펫 즐겨찾기"
-                        onclick="location='login.jsp'" /></td>
+                     <td colspan="2" align="center"><input type="submit" value="내가쓴글" onclick="location='login.jsp'" /> &nbsp; <input
+                        type="submit" value="보호소 즐겨찾기" onclick="location='login.jsp'" />  &nbsp; 
+                        <input type="submit" value="위드펫 즐겨찾기" onclick="location='login.jsp'" /></td>
                      <button type="button" class="remove-favorites" onclick="removeFavorites();">회원탈퇴</button>
                   </tr>
             </div>

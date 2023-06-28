@@ -1,11 +1,22 @@
 package com.java.servlet.vo;
 
 public class MembersVO {
+	private int m_no;
 	private String nickname;
 	private String email;
 	private String pwd;
 	private String name;
 	private int phone;
+
+	
+	
+	public int getM_no() {
+		return m_no;
+	}
+
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
+	}
 
 	public String getNickname() {
 		return nickname;

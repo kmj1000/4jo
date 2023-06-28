@@ -13,6 +13,7 @@ import com.java.servlet.dao.MypageDAO;
 import com.java.servlet.util.DBCP2Util;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.util.PageMaker;
+import com.java.servlet.vo.CommunityVO;
 import com.java.servlet.vo.MembersVO;
 
 public class MypageDAOImpl implements MypageDAO {
@@ -26,145 +27,122 @@ public class MypageDAOImpl implements MypageDAO {
       return instance;
    }
    
-
    @Override
-   public MembersVO selectMember(String email) {
-      MembersVO vo = new MembersVO();
-      
-	   String sql = "SELECT name\r\n"
+	public List<MembersVO> selectMypage(int m_no) {
+		
+	   String sql = "SELECT m_no\r\n"
                + "        ,email\r\n"
                + "        ,pwd\r\n"
                + "        ,phone\r\n"
-               + "        ,nickname\r\n"
-               + "    FROM members WHERE email = ?"
+               + "        ,name\r\n"      
+               + "        ,(SELECT nickname FROM members) as nickname\r\n"
+               + "    FROM members where m_no = ?"
                ;
-      
-      try{
-            Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
-            PreparedStatement psmt = conn.prepareStatement(sql);
-            
-            psmt.setString(1, email);
-			
-            ResultSet rs = psmt.executeQuery(sql);
-            
-  
-            
-            while( rs.next() ) {
-            	
-            	 vo.setName(rs.getString("name"));
-                 vo.setEmail(rs.getString("email"));
-                 vo.setPwd(rs.getString("pwd"));
-                 vo.setPhone(rs.getInt("phone"));
-                 vo.setNickname(rs.getString("nickname"));
-                 System.out.println(sql);
-
-            }
-                rs.close();
-                
-      }catch(Exception e) {
-    	  System.out.println("불러오기 실패");
-         e.printStackTrace();
-      }
-      
-      return vo;
-   }
-	public static void main(String[] args) {
-		MembersDAO dao = new MembersDAOImpl();
-		dao.PersonalInfo("a");
-	}
- 
-//원본
-   @Override
-   public List<MembersVO> selectAllBoard() {
-      
-	   String sql = "SELECT name\r\n"
-               + "        ,email\r\n"
-               + "        ,pwd\r\n"
-               + "        ,phone\r\n"
-               + "        ,nickname\r\n"
-               + "    FROM members WHERE email = ?"
-               ;
-      List<MembersVO> list = null;
-      
-      try(
-            Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
-            Statement stmt = conn.createStatement();
-            ){
-            
-            ResultSet rs = stmt.executeQuery(sql);
-            
-            list = new ArrayList<>();
-            
-            while( rs.next() ) {
-            	MembersVO vo = new MembersVO();
-            	 vo.setName(rs.getString("name"));
-                 vo.setEmail(rs.getString("email"));
-                 vo.setPwd(rs.getString("pwd"));
-                 vo.setPhone(rs.getInt("phone"));
-                 vo.setNickname(rs.getString("nickname"));
-                 
-              
-               
-               list.add(vo);
-            }
-                rs.close();
-      }catch(Exception e) {
-         e.printStackTrace();
-      }
-      
-      
-      return list;
-   }
-
-   @Override
-	public int updatePwd(MembersVO vo) {
-		int result = 0;
-		String sql = "UPDATE members\r\n"
-				+ "    SET pwd = ?\r\n"
-				+ "    WHERE email = ?"
-				;
-		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
-				PreparedStatement ps = conn.prepareStatement(sql);
-				){
-				
-				ps.setString(1, vo.getPwd());
-				ps.setString(2, vo.getEmail());
-				System.out.println(result);
-				result = ps.executeUpdate();
-				
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return result;
+	   
+	   List<MembersVO> list = null;
+		      
+	   try(
+	            Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+	            Statement stmt = conn.createStatement();
+	            ){
+	            
+	            ResultSet rs = stmt.executeQuery(sql);
+	            
+	            list = new ArrayList<>();
+		            
+		            if( rs.next() ) {
+		            	MembersVO vo = new MembersVO();
+		            	 vo.setM_no(rs.getInt("m_no"));
+		            	 vo.setEmail(rs.getString("email"));
+		            	 vo.setName(rs.getString("name"));
+		                 vo.setPwd(rs.getString("pwd"));
+		                 vo.setPhone(rs.getInt("phone"));
+		                 vo.setNickname(rs.getString("nickname"));
+		                 
+		                 list.add(vo);
+		            }
+		            rs.close();
+		            
+		      }catch(Exception e) {
+		         e.printStackTrace();
+		      }
+		      
+		      return list;
 		
 	}
+//원본
+//   @Override
+//   public MembersVO selectAllBoard(String email) {
+//	   Connection conn = null;
+//       PreparedStatement pstmt = null;
+//       ResultSet rs = null;   
+//       MembersVO vo = null;
+//	   String sql = "SELECT name\r\n"
+//               + "        ,email\r\n"
+//               + "        ,pwd\r\n"
+//               + "        ,phone\r\n"
+//               + "        ,nickname\r\n"
+//               + "    FROM members where email =?"
+//               ;
+//
+//      
+//	      try {		conn = DataBaseUtil.getConnection();
+//	      			pstmt = conn.prepareStatement(sql.toString());
+//	      			pstmt.setString(1, email);
+//	      			rs = pstmt.executeQuery();        	      		
+//	      	
+//            //회원정보 vo에 담아!!!!!!!!!!!!!
+//            if( rs.next() ) {
+//            	vo = new MembersVO();
+//            	 vo.setName(rs.getString("name"));
+//                 vo.setEmail(rs.getString("email"));
+//                 vo.setPwd(rs.getString("pwd"));
+//                 vo.setPhone(rs.getInt("phone"));
+//                 vo.setNickname(rs.getString("nickname"));
+//
+//            	}
+//               return vo;
+//	      	}
+//	      
+//	      catch (Exception sqle) {
+//	    	  throw new RuntimeException(sqle.getMessage());}
+//     
+//          finally {
+//          // Connection, PreparedStatement를 닫는다.
+//          try{
+//              if ( pstmt != null ){ pstmt.close(); pstmt=null; }
+//              if ( conn != null ){ conn.close(); conn=null;    }
+//              } catch(Exception e) {
+//                  e.printStackTrace();
+//               }
+//  
+//   }
 
-@Override
-public int deleteId(String email) {
-	int result = 0;
 
-	String sql = "DELETE from members\r\n"
-			+ "    WHERE email = ?"
-			;
-	try(
-			Connection conn = DataBaseUtil.getConnection();// DBCP2Util
-			PreparedStatement ps = conn.prepareStatement(sql);
-			){
-			ps.setString(1, email);
-			System.out.println(result);
-			result = ps.executeUpdate();
-			
-	}catch(Exception e) {
-		e.printStackTrace();
-	}
-	return result;
-	
-}
-
-
-
+//@Override
+//public int deleteId(String email) {
+//	int result = 0;
+//
+//	String sql = "DELETE from members\r\n"
+//			+ "    WHERE email = ?"
+//			;
+//	try(
+//			Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+//			PreparedStatement pstmt = conn.prepareStatement(sql);
+//			){
+//			pstmt.setString(1, email);
+//			System.out.println(result);
+//			result = pstmt.executeUpdate();
+//			
+//	}catch(Exception e) {
+//		e.printStackTrace();
+//	}
+//	return result;
+//	
+//}
 
 
-}
+
+   }
+   
 

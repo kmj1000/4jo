@@ -24,26 +24,27 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<MembersVO> getAllBoard() {
-		return dao.selectAllBoard();
+	public List<MembersVO> selectMypage(int m_no){
+		return dao.selectMypage(m_no);
 	}
 
-	@Override
-	public int modifyPwd(MembersVO vo) {
-		return dao.updatePwd(vo);
-	}
 
-	@Override
-	public MembersVO readMember(String email) {
-		// TODO Auto-generated method stub
-		return dao.selectMember(email);
-	}
-
-	@Override
-	public int removeId(String email) {
-		// TODO Auto-generated method stub
-		return dao.deleteId(email);
-	}
+//	@Override
+//	public int modifyPwd(MembersVO vo) {
+//		return dao.updatePwd(vo);
+//	}
+//
+//	@Override
+//	public MembersVO readMember(String email) {
+//		// TODO Auto-generated method stub
+//		return dao.selectMember(email);
+//	}
+//
+//	@Override
+//	public int removeId(String email) {
+//		// TODO Auto-generated method stub
+//		return dao.deleteId(email);
+//	}
 
 
 	
