@@ -146,9 +146,9 @@
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><!-- <a class="btn btn-primary btn-block" type="submit" onclick="return verifyField();">가입 완료
-                                                </a> -->
-                                                <input class="btn btn-primary btn-block" type="submit" value="전송" onclick="return verifyField();"></div>
+                                                <div class="d-grid">
+                                                <input class="btn btn-primary btn-block" type="submit" value="전송" onclick="return verifyField();">
+                                                </div>
                                             </div>
                                          </form>
                                     </div>
