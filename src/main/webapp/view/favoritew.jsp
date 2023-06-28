@@ -194,13 +194,41 @@
 	                                    <tbody>
 	                                    	<c:forEach var="Favorite_W_VO" items="${ requestScope.boardList }" varStatus="status">
 											<tr>
-												<td>${Favorite_W_VO.favoritew_no}</td><!-- pageScope에 vo가 생성되었다.  -->
-												<td>${Favorite_W_VO.nickname}</td>
-												<td>${Favorite_W_VO.with_pet_no}</td>
-												<td>${Favorite_W_VO.building}</td>
-												<td>${Favorite_W_VO.road}</td>
-												<td>${Favorite_W_VO.tel}</td>
-												<td>${Favorite_W_VO.favoritew_reg_date}</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												${Favorite_W_VO.favoritew_no}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												${Favorite_W_VO.nickname}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												${Favorite_W_VO.with_pet_no}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												${Favorite_W_VO.building}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												${Favorite_W_VO.road}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												${Favorite_W_VO.tel}
+												</a>
+												</td>
+												<td>
+												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												${Favorite_W_VO.favoritew_reg_date}
+												</a>
+												</td>
 											</tr>
 											</c:forEach>
 	                                    </tbody>
