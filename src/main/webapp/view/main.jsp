@@ -75,25 +75,19 @@
             
          <!-- 로고 -->              
         <nav class="main bg-white" >
-         <a class="mainlogo" href="http://localhost:8080/4jo/view/main.jsp"<%-- ${pageContext.servletContext.contextPath}/main --%> >
+         <a class="mainlogo" href= "${root}/main" >
          <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
          </a>
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
 
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="${root}/pet_notice"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" href="${root}/petnotice"><b>공고</b></a> 
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/shelter"><b>보호소</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/with_pet"><b>위드펫</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/withpet"><b>위드펫</b></a>
 			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="${root}/community"><b>커뮤니티</b></a>
 			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="${root}/notice"><b>공지사항</b></a>
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="http://localhost:8080/4jo/view/pet_notice.jsp"><b>공고</b></a> 
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/view/shelter.jsp"><b>보호소</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/view/with_pet.jsp"><b>위드펫</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="${root}/view/community.jsp"><b>커뮤니티</b></a>
-			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="${root}/view/notice.jsp"><b>공지사항</b></a>
 
-   
             </nav>
             <main>
     			<div id="photomain">
