@@ -43,7 +43,6 @@ public class JoinServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		MembersVO vo = new MembersVO();
 		vo.setNickname( request.getParameter("nickname") );
 		vo.setEmail( request.getParameter("email") );

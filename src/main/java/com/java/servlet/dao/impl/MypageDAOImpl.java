@@ -27,14 +27,14 @@ public class MypageDAOImpl implements MypageDAO {
    }
 
    @Override
-   public List<MembersVO> selectAllBoard() {
+   public List<MembersVO> selectAllBoard(String nickname) {
       
       String sql = "SELECT name\r\n"
                + "        ,email\r\n"
                + "        ,pwd\r\n"
                + "        ,phone\r\n"
                + "        ,nickname\r\n"
-               + "    FROM members"
+               + "    FROM members WHERE nickname = ?"
                ;
       List<MembersVO> list = null;
       
@@ -91,6 +91,8 @@ public class MypageDAOImpl implements MypageDAO {
 		return result;
 		
 	}
+
+
 
 }
 

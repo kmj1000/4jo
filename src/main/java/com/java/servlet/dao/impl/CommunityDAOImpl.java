@@ -158,5 +158,39 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 		      return list;
 		   }
+	@Override
+	public List<CommunityVO> selectMyCommunity(String nickname) {
+		String sql = "SELECT c_no\r\n" + "        "
+	            + ",title\r\n" + "        "
+	            + ",content\r\n" + "        "
+	            + ",reg_date\r\n"
+	            + ",nickname\r\n"
+	            + "    FROM community where nickname=?";
+	      List<CommunityVO> list = null;
+
+	      try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+	            Statement stmt = conn.createStatement();) {
+
+	         ResultSet rs = stmt.executeQuery(sql);
+	         list = new ArrayList<>();
+
+	         while (rs.next()) {
+	        	CommunityVO vo = new CommunityVO();
+	            vo.setC_no(rs.getInt("c_no"));
+	            vo.setNickname(rs.getString("nickname"));
+	            vo.setTitle(rs.getString("title"));
+	           // vo.setContent(rs.getString("content"));
+	            vo.setReg_date(rs.getDate("reg_date"));
+
+	            list.add(vo);
+	         }
+
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+
+	      return list;
+	   }
+
 
 }

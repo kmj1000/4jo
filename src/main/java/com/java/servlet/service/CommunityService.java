@@ -13,4 +13,5 @@ public interface CommunityService {
 	int getCountAllCommunity();
 
 	List<CommunityVO> getAllCommunityByPage(PageMaker pageMaker);
+	//List<CommunityVO> getMyCommunity();
 }

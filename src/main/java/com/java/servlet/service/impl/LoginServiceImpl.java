@@ -6,7 +6,9 @@ import com.java.servlet.service.LoginService;
 import com.java.servlet.vo.MembersVO;
 
 public class LoginServiceImpl implements LoginService {
+	
 	private final LoginDAO dao = LoginDAOImpl.getInstance();
+	
 	private static final LoginService instance = new LoginServiceImpl();
 	
 	private LoginServiceImpl() {}
