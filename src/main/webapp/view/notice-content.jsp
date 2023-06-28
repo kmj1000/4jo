@@ -297,7 +297,7 @@
    			
     </div>
     	<input type="hidden" name="method" value="${param.method }">
-        <input type="hidden" name="c_no" value="${param.notice_no }">
+        <input type="hidden" name="notice_no" value="${param.notice_no }">
 		<input type="hidden" name="id" value="${noticeVO.admin_name == null ? sessionScope.SESS_ID : requestScope.noticeVO.admin_name  }">
   </form>
 </div>

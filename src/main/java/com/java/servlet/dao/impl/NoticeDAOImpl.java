@@ -144,8 +144,9 @@ public class NoticeDAOImpl implements NoticeDAO {
 	            NoticeVO vo = new NoticeVO();
 	            vo.setNotice_no(rs.getInt("notice_no"));
 	            vo.setNotice_title(rs.getString("notice_title"));
-	            vo.setAdmin_name(rs.getString("admin_name"));
 	            vo.setNotice_reg_date(rs.getDate("notice_reg_date"));
+	            vo.setAdmin_name(rs.getString("admin_name"));
+	            
 
 	            list.add(vo);
 	         }

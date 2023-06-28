@@ -1,74 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.java.servlet.vo.MembersVO"%>
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.java.servlet.vo.CommunityVO"%>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>커뮤니티 페이지</title>
-<!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
-<link
-	href="${ pageContext.servletContext.contextPath }/bootstrap/css/mypageStyles.css"
-	rel="stylesheet" />
-	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
-	<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
-	<script
-	src="${ pageContext.servletContext.contextPath }/bootstrap/js/scripts.js"></script>
-	<script
-	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-	crossorigin="anonymous"></script>
-	<script
-	src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
-
-<style>
- tr {
- 	text-align : center;
- }
-  a:hover{
-                background-color: #feeaa5;
-            }
-            .main{
-            padding-top: 0.7cm;
-            padding-left: 1.0cm;
-            padding-right : 1.5cm;
-            padding-bottom : 3cm;
-            height: 120px;
-            }         
-            .bg-yellow {
-				  --bs-bg-opacity: 1;
-				  background-color: #feeaa5 !important;
-			}
-			.main1{
-			border-bottom : 1px solid #645326;
-			 padding-bottom : 2px;
-			 padding-top : 2px;
-			}
-			.tab{
-				 padding-bottom : 0;
-				 padding-top : 0;
-				border-bottom : 1px solid #645326;
-				border-top : 1px solid #645326;
-			}
-			
-			.img_main{
-			width: 60%;
-		    margin: 0px auto;
-		    display: block;
-		    width: 250px; height: 90px;
-		    }
-		    .bgcolor{
-		   background-color: #f9f8f3;
-		    }
-</style>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>커뮤니티 목록</title>
+        <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
+        <link href="${ pageContext.servletContext.contextPath }/bootstrap/css/mypageStyles.css" rel="stylesheet" />
+		<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+		<script src="${ pageContext.servletContext.contextPath }/bootstrap/js/scripts.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+		<script src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
+	
+		<style>
+		
+		  a:hover{
+		                background-color: #feeaa5;
+		            }
+		            .main{
+		            padding-top: 0.7cm;
+		            padding-left: 1.0cm;
+		            padding-right : 1.5cm;
+		            padding-bottom : 3cm;
+		            height: 120px;
+		            }         
+		            .bg-yellow {
+						  --bs-bg-opacity: 1;
+						  background-color: #feeaa5 !important;
+					}
+					.main1{
+					border-bottom : 1px solid #645326;
+					 padding-bottom : 2px;
+					 padding-top : 2px;
+					}
+					.tab{
+						 padding-bottom : 0;
+						 padding-top : 0;
+						border-bottom : 1px solid #645326;
+						border-top : 1px solid #645326;
+					}
+					
+					.img_main{
+					width: 60%;
+				    margin: 0px auto;
+				    display: block;
+				    width: 250px; height: 90px;
+				    }
+				    .bgcolor{
+				   background-color: #f9f8f3;
+				    }
+		</style>
 </head>
 <body class="sb-nav-fixed bgcolor"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
@@ -96,13 +85,10 @@
    
             </nav>
 	<div id="layoutSidenav_content">
-		<main>
-                    <div class="container-fluid px-10 pt-10">
+			<main>
+                    <div class="container-fluid px-3 pt-3">
                         <h1 class="mt-1" >커뮤니티 페이지</h1>
-                        <ol class="breadcrumb mb-4">
- 
-                        </ol>
-                        
+                    
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -122,7 +108,7 @@
                                     </thead>
                                    
                                     <tbody>
-                                    	<C:forEach var="communityVO" items="${communityList}" varStatus="status">
+                                    	<C:forEach var="communityVO" items="${requestScope.communityList}" varStatus="status">
                                         <tr>
                                             <td>${communityVO.c_no}</td>
                                             <td><a href="${pageContext.servletContext.contextPath}/communitycontent?method=get&c_no=${communityVO.c_no}">${communityVO.title}</a></td>
