@@ -12,6 +12,17 @@
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
              <script>
+         	var msg = '<%= request.getParameter("msg")%>';
+        	console.log("Dsa");
+        	window.onload = function(){
+        		showMsg();
+        	}
+        	
+        	function showMsg(){
+    	    	if( msg != null && msg != 'null' && msg != '' ){
+    	    		alert(msg);
+    	    	}
+        	}
              
         function verifyField(){
             let element = document.getElementById("name");
@@ -78,31 +89,32 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">비밀번호 찾기</h3></div>
                                     <div class="card-body">
                                         <div class="small mb-3 text-muted">정보를 입력해 주세요</div>
-                                        <form>
+                                        <form action="${pageContext.servletContext.contextPath}/findPwd" method="post">
                                         
                                         	<div class="form-floating mb-3">
-                                                <input class="form-control" id="name" type="text"  />
+                                                <input class="form-control" id="name" name="name" type="text"  />
                                                 <label for="name">이름</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                 
-                                                <input class="form-control" id="phone" type="tel"  />
+                                                <input class="form-control" id="phone" name="phone" type="tel"  />
                                                 <label for="phone">핸드폰 번호</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="email" type="email"  />
+                                                <input class="form-control" id="email" name="email" type="email"  />
                                                 <label for="email">이메일</label>
                                             </div>
                                             
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.jsp">로그인 하러 가기</a>
+                                                <a class="small" href="${pageContext.servletContext.contextPath}/view/login">로그인 하러 가기</a>
                                                 <%-- <a class="btn btn-warning" href="${pageContext.servletContext.contextPath}/view/login.jsp">전송</a> --%>
-                                                <input class="btn btn-warning btn-block" type="submit" value="전송" onclick="return verifyField();"></div>
+                                                <input class="btn btn-warning btn-block" type="submit" value="전송" onclick="return verifyField();">
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="${pageContext.servletContext.contextPath}/view/join.jsp">회원가입</a></div>
+                                        <div class="small"><a href="${pageContext.servletContext.contextPath}/view/join">회원가입</a></div>
                                     </div>
                                 </div>
                             </div>

@@ -4,35 +4,34 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.java.servlet.dao.FindPwdDAO;
+import com.java.servlet.dao.FindEmailDAO;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.MembersVO;
 
-public class FindPwdDAOImpl implements FindPwdDAO {
-	private static final FindPwdDAO instance = new FindPwdDAOImpl();
+public class FindEmailDAOImpl implements FindEmailDAO {
+	private static final FindEmailDAO instance = new FindEmailDAOImpl();
 
-	private FindPwdDAOImpl() {}
-	
-	public static FindPwdDAO getInstance() {
+	private FindEmailDAOImpl() {	}
+
+	public static FindEmailDAO getInstance() {
 		return instance;
 	}
-	
-	public String selectFindPwd(MembersVO vo){
-		String pwd = null;
 
-		String sql = "SELECT pwd FROM  members WHERE (name, phone,email) IN ( (?, ?, ?) )";
+	public String selectFindEmail(MembersVO vo) {
+		String email = null;
+
+		String sql = "SELECT email FROM members WHERE (name, phone) IN ( (?, ?) )";
 
 		try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);) {
 //			System.out.println(pstmt);
 			pstmt.setString(1, vo.getName());
 			pstmt.setInt(2, vo.getPhone());
-			pstmt.setString(3, vo.getEmail());
 
 			ResultSet rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
-				pwd = rs.getString("pwd");
+				email = rs.getString("email");
 			}
 //			else {
 //				pwd = null;
@@ -41,10 +40,7 @@ public class FindPwdDAOImpl implements FindPwdDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return pwd;
+		return email;
 	}
-
-
-	
 
 }
