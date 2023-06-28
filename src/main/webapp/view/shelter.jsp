@@ -160,7 +160,7 @@
 	                            </div>
 					<%-- <%@ include file="/view/import/page-community.jsp" %> --%>
                            <%-- <jsp:include page="/view/import/page-nation.jsp"></jsp:include>  --%>
-                        	<C:import url="/view/import/page-shelter.jsp"></C:import>
+                        	<c:import url="/view/import/page-shelter.jsp"></c:import>
                         </div>
                     </div>
                 </main>

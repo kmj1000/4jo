@@ -259,7 +259,7 @@
 	                            </div>
 					<%-- <%@ include file="/view/import/page-community.jsp" %> --%>
                            <%-- <jsp:include page="/view/import/page-nation.jsp"></jsp:include>  --%>
-                        	<C:import url="/view/import/page-pet_notice.jsp"></C:import>
+                        	<c:import url="/view/import/page-pet_notice.jsp"></c:import>
                         </div>
                     </div>
                 </main>
