@@ -11,7 +11,7 @@ import com.java.servlet.vo.ShelterVO;
 public interface ShelterService {
 
 
-	
+	List<ShelterVO> getShelter(int shelter_no);
 	List<ShelterVO> getAllBoard();
 	int getCountAllBoard();
 	List<ShelterVO> getAllBoardByPage(PageMaker pageMaker);

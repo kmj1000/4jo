@@ -28,10 +28,72 @@ public class With_petDAOImpl implements With_petDAO {
 	}
 
 	@Override
+	public List<With_petVO> selectWith_pet(int with_pet_no) {
+		String sql="SELECT with_pet_no\r\n"
+				+", building\r\n"
+				+", category3\r\n"
+				+", road\r\n"
+				+", tel\r\n"
+				+", homepage\r\n"
+				+", day_off\r\n"
+				+", hour\r\n"
+				+", parking\r\n"
+				+", with_pet_info\r\n"
+				+", only_pet_info\r\n"
+				+", pet_size\r\n"
+				+", pet_limit\r\n"
+				+", inside\r\n"
+				+", outside\r\n"
+				+", extra\r\n"
+				+"FROM with_pet WHERE with_pet_no=?"
+				;
+		List<With_petVO>list = null;
+				
+				try(
+					Connection conn = DataBaseUtil.getConnection();	
+					PreparedStatement pstmt = conn.prepareStatement(sql);
+						){
+					pstmt.setInt(1, with_pet_no);
+					ResultSet rs = pstmt.executeQuery();
+					list = new ArrayList<>();
+					while(rs.next()) {
+						With_petVO vo = new With_petVO();
+						vo.setWith_pet_no(rs.getInt("with_pet_no"));
+						vo.setBuilding(rs.getString("building"));
+						vo.setCategory3(rs.getString("category3"));
+						vo.setRoad(rs.getString("road"));
+						vo.setTel(rs.getString("tel"));
+						vo.setHomepage(rs.getString("homepage"));
+						vo.setDay_off(rs.getString("day_off"));
+						vo.setHour(rs.getString("hour"));
+						vo.setParking(rs.getString("parking"));
+						vo.setWith_pet_info(rs.getString("with_pet_info"));
+						vo.setOnly_pet_info(rs.getString("only_pet_info"));
+						vo.setPet_size(rs.getString("pet_size"));
+						vo.setPet_limit(rs.getString("pet_limit"));
+						vo.setInside(rs.getString("inside"));
+						vo.setOutside(rs.getString("outside"));
+						vo.setExtra(rs.getString("extra"));
+						list.add(vo);
+						
+					}
+					rs.close();
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+		
+		
+		
+		return list;
+	}
+	
+	
+	@Override
 	public List<With_petVO> selectAllBoard() {
 		
 		String sql = "SELECT  with_pet_no      \r\n"
-				+ "              building\r\n"
+				+ "  ,            building\r\n"
 				+ "               ,category3\r\n"
 				+ "               ,road\r\n"
 				+ "               ,tel\r\n"
@@ -189,6 +251,8 @@ public class With_petDAOImpl implements With_petDAO {
 		}
 		return list;
 	}
+
+	
 	
 	
 }

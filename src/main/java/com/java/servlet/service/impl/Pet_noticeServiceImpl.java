@@ -37,6 +37,12 @@ public class Pet_noticeServiceImpl implements Pet_noticeService {
 	public List<Pet_noticeVO> getAllBoardByPage(PageMaker pageMaker) {
 		return dao.selectAllBoardByPage(pageMaker);
 	}
+
+	@Override
+	public List<Pet_noticeVO> getPet_notice(int pet_notice_no) {
+		
+		return dao.selectPet_notice(pet_notice_no);
+	}
 	
 	
 	

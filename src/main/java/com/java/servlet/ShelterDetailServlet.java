@@ -4,6 +4,7 @@ import java.io.IOException;
 
 
 
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,9 +17,6 @@ import javax.servlet.http.HttpSession;
 
 import com.java.servlet.service.ShelterService;
 import com.java.servlet.service.impl.ShelterServiceImpl;
-import com.java.servlet.util.Criteria;
-import com.java.servlet.util.PageMaker;
-
 import com.java.servlet.vo.ShelterVO;
 
 /**
@@ -61,28 +59,21 @@ public class ShelterDetailServlet extends HttpServlet {
          request.setAttribute("SESS_AUTH", true);
          
          // pagesetting
-         String pageNo = request.getParameter("pageNo");
-         String perAmount = request.getParameter("perAmount");
-         String displayNo = request.getParameter("displayNo");
+     
          
-         int currPageNo = (pageNo == null || pageNo.equals("")) ? 1 : Integer.parseInt(pageNo);
-         int currAmount = (perAmount == null || perAmount.equals("")) ? 10 : Integer.parseInt(perAmount);
-         int disPlayPageNum = (displayNo == null || displayNo.equals("")) ? 10 : Integer.parseInt(displayNo);
-         
-         int totalCount = service.getCountAllBoard();
-         
-         Criteria cri = new Criteria(currPageNo, currAmount); //현재페이지, 한페이지당 출력갯수
-         PageMaker pageMaker = new PageMaker(cri, totalCount); // cri, totalCount=100
-         pageMaker.setDisplayPageAmount(disPlayPageNum);
-         System.out.println(pageMaker);
+         String shelter_no = request.getParameter("shelter_no");
+         int shelterId = Integer.parseInt(shelter_no);
+
+         List<ShelterVO> boardList = service.getShelter(shelterId);
+    
          
          // allboard 가져와야 함.
-         List<ShelterVO> boardList =service.getAllBoardByPage(pageMaker);//getAllBoardByPage
-         //List<BoardVO> boardList =service.getAllBoard();//getAllBoardByPage
+          boardList =service.getShelter(shelterId);//getAllBoardByPage
+         //List<BoardVO> boardList =service.getAllBoard(	);//getAllBoardByPage
          System.out.println(boardList);
          request.setAttribute("boardList", boardList);
          
-         request.setAttribute("pageMaker", pageMaker);
+        
          RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/shelterdetail.jsp");
          dispatcher.forward(request, response);
       }else {

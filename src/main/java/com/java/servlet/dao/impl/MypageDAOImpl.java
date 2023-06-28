@@ -1,6 +1,7 @@
 package com.java.servlet.dao.impl;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -25,30 +26,34 @@ public class MypageDAOImpl implements MypageDAO {
    public static MypageDAO getInstance() {
       return instance;
    }
-
+   
+   
+   
    @Override
-   public List<MembersVO> selectAllBoard(String nickname) {
+   public List<MembersVO> selectAllBoard() {
       
-      String sql = "SELECT name\r\n"
+      String sql = "SELECT m_no\r\n"
+      			+ ",name\r\n"
                + "        ,email\r\n"
                + "        ,pwd\r\n"
                + "        ,phone\r\n"
                + "        ,nickname\r\n"
-               + "    FROM members WHERE nickname = ?"
+               + "    FROM members "
                ;
       List<MembersVO> list = null;
       
       try(
             Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
-            Statement stmt = conn.createStatement();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
             ){
-            
-            ResultSet rs = stmt.executeQuery(sql);
+    
+            ResultSet rs = pstmt.executeQuery();
             
             list = new ArrayList<>();
             
             while( rs.next() ) {
             	MembersVO vo = new MembersVO();
+            	vo.setM_no(rs.getInt("m_no"));
             	 vo.setName(rs.getString("name"));
                  vo.setEmail(rs.getString("email"));
                  vo.setPwd(rs.getString("pwd"));
@@ -93,6 +98,28 @@ public class MypageDAOImpl implements MypageDAO {
 	}
 
 
-
+@Override
+public int getOutD(int m_no) {
+	 
+		int result=0;
+		String sql = "DELETE FROM members WHERE m_no=?+1 ";
+		
+		try(
+				Connection conn = DataBaseUtil.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+				pstmt.setInt(1, m_no);
+				result=pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
+
+
+
+
 

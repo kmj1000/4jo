@@ -40,6 +40,12 @@ public class With_petServiceImpl implements With_petService {
 	public List<With_petVO> getAllBoardByPage(PageMaker pageMaker) {
 		return dao.selectAllBoardByPage(pageMaker);
 	}
+
+	@Override
+	public List<With_petVO> getWith_pet(int with_pet_no) {
+		
+		return dao.selectWith_pet(with_pet_no);
+	}
 	
 	
 	

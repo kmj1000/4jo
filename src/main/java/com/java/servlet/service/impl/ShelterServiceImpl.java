@@ -39,6 +39,12 @@ public class ShelterServiceImpl implements ShelterService {
 	public List<ShelterVO> getAllBoardByPage(PageMaker pageMaker) {
 		return dao.selectAllBoardByPage(pageMaker);
 	}
+
+	@Override
+	public List<ShelterVO> getShelter(int shelter_no) {
+		
+		return dao.selectShelter(shelter_no);
+	}
 	
 	
 	

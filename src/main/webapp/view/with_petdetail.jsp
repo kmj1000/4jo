@@ -18,6 +18,12 @@
 		<script src="${ pageContext.servletContext.contextPath }/bootstrap/js/scripts.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 		<script src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.0.js" 
+    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" 
+    crossorigin="anonymous"></script>
+		
+		
+		
 		<script>   
  
 		function sendFavoritew() {
@@ -147,7 +153,7 @@
 			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></a>
    
             </nav>
-        
+        <div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-3 pt-3">
@@ -179,8 +185,6 @@
 	                                            <th>장소(실내)여부 </th>
 	                                            <th>장소(실외)여부 </th>
 	                                            <th>애견동반추가요금 </th>
-	                                            
-	                                            <!-- <th>조회수</th> -->
 	                                        </tr>
 	                                    </thead>
 	                                    <tfoot>
@@ -201,7 +205,6 @@
 	                                            <th>장소(실내)여부 </th>
 	                                            <th>장소(실외)여부 </th>
 	                                            <th>애견동반추가요금 </th>
-	                                            <!-- <th>조회수</th> -->
 	                                        </tr>
 	                                    </tfoot>
 	                                    <tbody>
@@ -217,6 +220,7 @@
 												<td>${With_petVO.homepage}</td>										
 												<td>${With_petVO.day_off}</td>
 												<td>${With_petVO.hour}</td>
+												<td>${With_petVO.parking}</td>
 												<td>${With_petVO.with_pet_info}</td>
 												<td>${With_petVO.only_pet_info}</td>
 												<td>${With_petVO.pet_size}</td>

@@ -22,34 +22,44 @@
 <script   src="${root}/bootstrap/js/scripts.js"></script>
 <script   src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="${root}/bootstrap/js/datatables-simple-demo.js"></script>
-<script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" 
+    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" 
+    crossorigin="anonymous"></script>
 
-window.onload = function(){
-      initClass();
-   }
-   
-   function adoptMethod(type){
-      $("input[name='method']").val(type);
-      initClass();
-   }
-   
-   function initClass(){
-      // modify
-      $("textarea").removeClass("modify");
-      $("input[type='text']").removeClass("modify");
-      $(".modify").attr("readonly", false);
-   }
-   
-   function adoptMethod(type) {
-       $("input[name='method']").val(type);
-       initClass();
-       // TODO: 정보 수정을 위한 코드를 추가하세요
-       // 예를 들어, 입력 필드를 수정 가능한 상태로 변경하거나 필요한 UI 변경을 수행할 수 있습니다.
-       $("textarea").addClass("modify");
-       $("input[type='text']").addClass("modify");
-       $(".modify").attr("readonly", false);
-   }
+<script>
+function removeNaga(m_no) {
+	  
+	$.ajax({
+		   url: "/4jo/mypage",
+		   type: "POST",
+		   data: {
+			   m_no: m_no,
+		      method: "remove"
+		   },
+		   dataType: "json",
+		   success: function(data) {
+		      if (data.result === 1) {
+		         var msg = "나가";
+		         alert(msg);
+		         var newMsgWindow = window.open("", "_blank", "width=500,height=300");
+		         newMsgWindow.document.write("<h1>" + msg + "</h1>");
+		         newMsgWindow.document.close();
+		         location.reload();
+					
+		      } else {
+		         alert("처리에 실패했습니다. 다시 시도해주세요.");
+		      }
+		   },
+		   error: function(jqXHR, textStatus, errorThrown) {
+		      console.log(jqXHR);
+		      console.log(textStatus);
+		      console.log(errorThrown);
+		      alert("오류가 발생했습니다. 다시 시도해주세요.");
+		   }
+		});
+}
 </script>
+
 <style>
  tr {
     text-align : center;
@@ -144,6 +154,13 @@ window.onload = function(){
 
                   <table id="datatablesSimple" >
                      <c:forEach var="MembersVO" items="${requestScope.boardList}" varStatus="status">
+                        
+                        <tr>
+                           <td>회원번호</td>
+                           <td>${MembersVO.m_no}</td>
+                        </tr>
+                        
+                        
                         <tr>
                            <td>닉네임</td>
                            <td>${MembersVO.nickname}</td>
@@ -180,8 +197,9 @@ window.onload = function(){
                         type="submit" value="보호소 즐겨찾기" onclick="location='login.jsp'" />
                         &nbsp; <input type="submit" value="위드펫 즐겨찾기"
                         onclick="location='login.jsp'" /></td>
-                     <a href="#">회원탈퇴</a>
+                    
                   </tr>
+                   <button type="button" class="remove-naga" onclick="removeNaga();">나가</button>
             </div>
          </div>
       </main>

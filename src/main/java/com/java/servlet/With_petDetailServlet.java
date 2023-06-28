@@ -17,8 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import com.java.servlet.service.With_petService;
 import com.java.servlet.service.impl.With_petServiceImpl;
-import com.java.servlet.util.Criteria;
-import com.java.servlet.util.PageMaker;
+import com.java.servlet.vo.ShelterVO;
 import com.java.servlet.vo.With_petVO;
 
 /**
@@ -61,28 +60,21 @@ public class With_petDetailServlet extends HttpServlet {
          request.setAttribute("SESS_AUTH", true);
          
          // pagesetting
-         String pageNo = request.getParameter("pageNo");
-         String perAmount = request.getParameter("perAmount");
-         String displayNo = request.getParameter("displayNo");
+     
          
-         int currPageNo = (pageNo == null || pageNo.equals("")) ? 1 : Integer.parseInt(pageNo);
-         int currAmount = (perAmount == null || perAmount.equals("")) ? 10 : Integer.parseInt(perAmount);
-         int disPlayPageNum = (displayNo == null || displayNo.equals("")) ? 10 : Integer.parseInt(displayNo);
-         
-         int totalCount = service.getCountAllBoard();
-         
-         Criteria cri = new Criteria(currPageNo, currAmount); //현재페이지, 한페이지당 출력갯수
-         PageMaker pageMaker = new PageMaker(cri, totalCount); // cri, totalCount=100
-         pageMaker.setDisplayPageAmount(disPlayPageNum);
-         System.out.println(pageMaker);
+         String with_pet_no = request.getParameter("with_pet_no");
+         int withpetId = Integer.parseInt(with_pet_no);
+
+         List<With_petVO> boardList = service.getWith_pet(withpetId);
+    
          
          // allboard 가져와야 함.
-         List<With_petVO> boardList =service.getAllBoardByPage(pageMaker);//getAllBoardByPage
+          boardList =service.getWith_pet(withpetId);//getAllBoardByPage
          //List<BoardVO> boardList =service.getAllBoard(	);//getAllBoardByPage
          System.out.println(boardList);
          request.setAttribute("boardList", boardList);
          
-         request.setAttribute("pageMaker", pageMaker);
+        
          RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/with_petdetail.jsp");
          dispatcher.forward(request, response);
       }else {
