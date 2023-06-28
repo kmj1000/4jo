@@ -30,7 +30,7 @@
 	src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
 <script>
 
-window.onload = function(){
+	window.onload = function(){
 		initClass();
 	}
 	
