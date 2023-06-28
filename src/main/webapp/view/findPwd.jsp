@@ -106,7 +106,7 @@
                                             </div>
                                             
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="${pageContext.servletContext.contextPath}/view/login">로그인 하러 가기</a>
+                                                <a class="small" href="${pageContext.servletContext.contextPath}/login">로그인 하러 가기</a>
                                                 <%-- <a class="btn btn-warning" href="${pageContext.servletContext.contextPath}/view/login.jsp">전송</a> --%>
                                                 <input class="btn btn-warning btn-block" type="submit" value="전송" onclick="return verifyField();">
                                                 </div>
@@ -114,7 +114,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="${pageContext.servletContext.contextPath}/view/join">회원가입</a></div>
+                                        <div class="small"><a href="${pageContext.servletContext.contextPath}/join">회원가입</a></div>
                                     </div>
                                 </div>
                             </div>
