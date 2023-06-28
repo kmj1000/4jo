@@ -50,7 +50,7 @@ public class DataBaseUtil {
    
    public static Connection connectionDB()throws ClassNotFoundException, SQLException {
       Class.forName("oracle.jdbc.driver.OracleDriver");
-      String url="jdbc:oracle:thin:@localhost:1521:XE";
+      String url="jdbc:oracle:thin:@192.168.0.69:1521:XE"; //"jdbc:oracle:thin:@localhost:1521:XE";
       String id="c##abd";
       String pwd="abd";
       return DriverManager.getConnection(url,id,pwd);
@@ -71,8 +71,7 @@ public class DataBaseUtil {
                ResultSet rs=stmt.executeQuery(sql);
                ){
          
-         
-         
+ 
          List<MembersVO> memberList=new ArrayList<>();
          while(rs.next()) {
             MembersVO vo = new MembersVO();

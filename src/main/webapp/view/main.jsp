@@ -68,7 +68,7 @@
                 <%-- <c:if logintest = "${empty session}"> --%>
                    <button type="button" class="btn" style="font-size: 14px;">로그인</button>                  
             <%-- </c:if>    --%>
-               <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;" onclick=>마이페이지</button></a>            
+               <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>            
                 </div>
             </form>      
             </nav>

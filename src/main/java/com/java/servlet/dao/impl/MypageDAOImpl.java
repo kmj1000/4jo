@@ -25,16 +25,64 @@ public class MypageDAOImpl implements MypageDAO {
    public static MypageDAO getInstance() {
       return instance;
    }
+   
 
    @Override
-   public List<MembersVO> selectAllBoard(String nickname) {
+   public MembersVO selectMember(String email) {
+      MembersVO vo = new MembersVO();
       
-      String sql = "SELECT name\r\n"
+	   String sql = "SELECT name\r\n"
                + "        ,email\r\n"
                + "        ,pwd\r\n"
                + "        ,phone\r\n"
                + "        ,nickname\r\n"
-               + "    FROM members WHERE nickname = ?"
+               + "    FROM members WHERE email = ?"
+               ;
+      
+      try{
+            Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            
+            psmt.setString(1, email);
+			
+            ResultSet rs = psmt.executeQuery(sql);
+            
+  
+            
+            while( rs.next() ) {
+            	
+            	 vo.setName(rs.getString("name"));
+                 vo.setEmail(rs.getString("email"));
+                 vo.setPwd(rs.getString("pwd"));
+                 vo.setPhone(rs.getInt("phone"));
+                 vo.setNickname(rs.getString("nickname"));
+                 System.out.println(sql);
+
+            }
+                rs.close();
+                
+      }catch(Exception e) {
+    	  System.out.println("불러오기 실패");
+         e.printStackTrace();
+      }
+      
+      return vo;
+   }
+	public static void main(String[] args) {
+		MembersDAO dao = new MembersDAOImpl();
+		dao.PersonalInfo("a");
+	}
+ 
+//원본
+   @Override
+   public List<MembersVO> selectAllBoard() {
+      
+	   String sql = "SELECT name\r\n"
+               + "        ,email\r\n"
+               + "        ,pwd\r\n"
+               + "        ,phone\r\n"
+               + "        ,nickname\r\n"
+               + "    FROM members WHERE email = ?"
                ;
       List<MembersVO> list = null;
       
@@ -91,6 +139,30 @@ public class MypageDAOImpl implements MypageDAO {
 		return result;
 		
 	}
+
+@Override
+public int deleteId(String email) {
+	int result = 0;
+
+	String sql = "DELETE from members\r\n"
+			+ "    WHERE email = ?"
+			;
+	try(
+			Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+			PreparedStatement ps = conn.prepareStatement(sql);
+			){
+			ps.setString(1, email);
+			System.out.println(result);
+			result = ps.executeUpdate();
+			
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+	return result;
+	
+}
+
+
 
 
 

@@ -1,18 +1,17 @@
 package com.java.servlet.dao;
 
 import java.util.List;
-
-
-import com.java.servlet.util.PageMaker;
 import com.java.servlet.vo.MembersVO;
 
 public interface MypageDAO {
-	List<MembersVO> selectAllBoard();
+	/* List<MembersVO> selectAllBoard(); */
 
 	int updatePwd(MembersVO vo);
 
-	
+	List<MembersVO> selectAllBoard();
 
-	List<MembersVO> selectAllBoard(String nickname);
+	MembersVO selectMember(String email);
+	
+	int deleteId(String email); 
 
 }

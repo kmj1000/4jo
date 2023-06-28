@@ -18,15 +18,31 @@ class MypageServletDAOImplTest {
 	private final MypageDAO dao = MypageDAOImpl.getInstance();
 	
 
-	@Test @Ignore
-	void testSelectAllBoard() {
-		List<MembersVO> list = dao.selectAllBoard();
-		
-		assertNotEquals(null, list);		
-		System.out.println(list);
-	}
+//	@Test @Ignore
+//	void testSelectAllBoard() {
+//		List<MembersVO> list = dao.selectAllBoard();
+//		
+//		assertNotEquals(null, list);		
+//		System.out.println(list);
+//	}
+//	
+//	@Test @Ignore
+//	void testSelectAllBoard() {
+//		String nickname = null;
+//		MembersVO vo = dao.selectMypage(nickname);
+//		
+//		assertNotEquals(null, vo);		
+//		System.out.println(vo);
+//	}
 	
-
+	@Test @Ignore
+	void testSelectMember() {
+		String email = null;
+		MembersVO vo = dao.selectMember(email);
+		
+		assertNotEquals(null, vo);		
+		System.out.println(vo);
+	}
 	
 	
 

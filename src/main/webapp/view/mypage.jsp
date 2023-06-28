@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.java.servlet.vo.MembersVO"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
-<%@ page import="com.java.servlet.dao.MembersDAO" %>    
+<%@ page import="com.java.servlet.dao.MembersDAO" %>  
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -22,34 +22,44 @@
 <script   src="${root}/bootstrap/js/scripts.js"></script>
 <script   src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="${root}/bootstrap/js/datatables-simple-demo.js"></script>
-<script>
 
-window.onload = function(){
-      initClass();
+<script src="https://code.jquery.com/jquery-3.7.0.js" 
+    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>   
+ 
+  function removeFavorites() {
+     var favorites = [];
+     $("input[name='favorite']:checked").each(function() {
+       favorites.push($(this).val());
+     });
+
+     $.ajax({
+       url: "/4jo/mypage",
+       type: "POST",
+       data: {
+         shelter_no: favorites.join(","),
+         method: "remove"
+       },
+       dataType: "json",
+       success: function(data) {
+         if (data.result === 1) {
+           var msg = favorites.length + "건 삭제되었습니다.";
+           alert(msg);
+           
+         } else {
+           alert("처리에 실패했습니다. 다시 시도해주세요.");
+         }
+       },
+       error: function(jqXHR, textStatus, errorThrown) {
+         console.log(jqXHR);
+         console.log(textStatus);
+         console.log(errorThrown);
+         alert("오류가 발생했습니다. 다시 시도해주세요.");
+       }
+     });
    }
-   
-   function adoptMethod(type){
-      $("input[name='method']").val(type);
-      initClass();
-   }
-   
-   function initClass(){
-      // modify
-      $("textarea").removeClass("modify");
-      $("input[type='text']").removeClass("modify");
-      $(".modify").attr("readonly", false);
-   }
-   
-   function adoptMethod(type) {
-       $("input[name='method']").val(type);
-       initClass();
-       // TODO: 정보 수정을 위한 코드를 추가하세요
-       // 예를 들어, 입력 필드를 수정 가능한 상태로 변경하거나 필요한 UI 변경을 수행할 수 있습니다.
-       $("textarea").addClass("modify");
-       $("input[type='text']").addClass("modify");
-       $(".modify").attr("readonly", false);
-   }
-</script>
+  </script>
+
 <style>
  tr {
     text-align : center;
@@ -96,9 +106,9 @@ window.onload = function(){
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
                 <div class="input-group">
                 <%-- <c:if logintest = "${empty session}"> --%>
-                   <button type="button" class="btn" style="font-size: 14px;">로그아웃</button>                  
+                   <a href ="${root}/logout"><button type="button" class="btn" style="font-size: 14px;">로그아웃</button></a>                 
             <%-- </c:if>    --%>
-               <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;" onclick=>마이페이지</button></a>            
+               <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>            
                 </div>
             </form>     
             </nav>
@@ -111,9 +121,9 @@ window.onload = function(){
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="${root}/pet_notice"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/petnotice"><b>공고</b></a> 
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/shelter"><b>보호소</b></a>
-          <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/with_pet"><b>위드펫</b></a>
+          <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/withpet"><b>위드펫</b></a>
           <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/community"><b>커뮤니티</b></a>
          <a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/notice"><b>공지사항</b></a>
    
@@ -125,10 +135,12 @@ window.onload = function(){
         String email = session.getAttribute("SESS_EMAIL").toString();
         
         // 세션에 저장된 아이디를 가져와서
-        // 그 아이디 해당하는 회원정보를 가져온다.
+        // 회원정보를 가져온다.
         MembersDAO dao = MembersDAO.getInstance();
         MemberBean memberBean = dao.getUserInfo(email);
-    %> --%>
+    %> --%> 
+
+   
          <div class="container-fluid px-10 pt-5">
             <h1 class="mt-1">마이페이지</h1>
             </div>
@@ -141,37 +153,53 @@ window.onload = function(){
                   <i class="fas fa-table me-1"></i> 개인정보조회
                </div>
                <div class="card-body">
-
-                  <table id="datatablesSimple" >
-                     <c:forEach var="MembersVO" items="${requestScope.boardList}" varStatus="status">
+      
+            <% 
+           
+        	HttpSession sessionObj = request.getSession(false);
+        
+       		 if (sessionObj != null && sessionObj.getAttribute("SESS_AUTH") != null 
+       				 && (boolean) sessionObj.getAttribute("SESS_AUTH")) {
+            // 세션에 인증 정보가 있을 경우
+            
+            String username = (String) sessionObj.getAttribute("SESS_USERNAME");
+            String email = (String) sessionObj.getAttribute("SESS_EMAIL");
+       		/* MembersDAO dao = new MembersDAOImpl(); */
+    		MembersVO vo = (MembersVO) request.getAttribute("vo");
+    		%>
+            
+    		<table id="datatablesSimple" >
+				   <c:forEach var="MembersVO" items="${requestScope.boardList}" varStatus="status">
                         <tr>
                            <td>닉네임</td>
-                           <td>${MembersVO.nickname}</td>
+                           <td> ${MembersVO.email} </td>
                         </tr>
-                        <tr>
-                        
+                        <tr>         
                            <td >비밀번호</td>
-                           <td>${MembersVO.pwd}
-                              <button type="button" class="modify col p-3 btn btn-warning"
-                                 onclick="location='notice.jsp'">변경</button>
-                              <div class="col p-3"></div> <!--   </div> -->
-                           </td>
+                           <td><%= username %></td>
                         </tr>
                         <tr>
-                           <td>이메일</td>
-                           <td>${MembersVO.email}</td>
+                           <td>이메일</td>                 
+                          <td><%= email %></td>
                         </tr>
                         <tr>
                            <td>이름</td>
-                           <td>${MembersVO.name}</td>
+                           <td><%= email %></td>       
                         </tr>
                         <tr>
                            <td>전화번호</td>
-                           <td>${MembersVO.phone}<button type="button" class="modify" 
-                              onclick="location='login.jsp'" >변경</button>
-                           </td>
+                           <td><%= email %></td>    
                         </tr>
-                     </c:forEach>
+                        <%} %>
+                       <%--   <% 
+                         
+        } else {
+            // 세션에 인증 정보가 없을 경우
+            String errorMessage = request.getParameter("msg");
+            out.println("<p>" + errorMessage + "</p>");
+        }
+    %> --%>
+                 </c:forEach>
                   </table>
 
                   <tr>
@@ -180,7 +208,7 @@ window.onload = function(){
                         type="submit" value="보호소 즐겨찾기" onclick="location='login.jsp'" />
                         &nbsp; <input type="submit" value="위드펫 즐겨찾기"
                         onclick="location='login.jsp'" /></td>
-                     <a href="#">회원탈퇴</a>
+                     <button type="button" class="remove-favorites" onclick="removeFavorites();">회원탈퇴</button>
                   </tr>
             </div>
          </div>
