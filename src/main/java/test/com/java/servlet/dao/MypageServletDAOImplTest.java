@@ -22,27 +22,12 @@ class MypageServletDAOImplTest {
 	void testSelectAllBoard() {
 		List<MembersVO> list = dao.selectAllBoard();
 		
-		assertNotEquals(null, list);
-		
+		assertNotEquals(null, list);		
 		System.out.println(list);
 	}
 	
-	
 
 	
-	@Test @Ignore
-	void testSelectAllBoardByPage() {
-		
-		Criteria cri = new Criteria(1, 10); //현재페이지, 한페이지당 출력갯수
-		PageMaker pageMaker = new PageMaker(cri, 101); // cri, totalCount=100
-		pageMaker.setDisplayPageAmount(10);
-		System.out.println(pageMaker);
-		
-		List<MembersVO> boardList  = dao.selectAllBoardByPage(pageMaker);
-		System.out.println(boardList);
-		assertNotEquals(null, boardList);
-		
-		System.out.println("boardList per Page : "+boardList);
-	}
+	
 
 }

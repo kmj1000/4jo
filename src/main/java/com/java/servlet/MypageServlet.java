@@ -41,7 +41,9 @@ public class MypageServlet extends HttpServlet {
       
       HttpSession session= request.getSession(true);
       boolean SESS_AUTH = true;
+      
       System.out.println(session);
+      
       if(session == null){
          String msg = "You are Not allowed, Plz login!";
          response.sendRedirect(request.getContextPath() 
@@ -60,19 +62,20 @@ public class MypageServlet extends HttpServlet {
 
          
          // allboard 가져와야 함.
-       
-         List<MembersVO> boardList =service.getAllBoard();//getAllBoardByPage
+         String nickname = null;
+         List<MembersVO> boardList =service.getAllBoard(nickname);//getAllBoardByPage
          System.out.println(boardList);
          request.setAttribute("boardList", boardList);
          
    
          RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/mypage.jsp");
          dispatcher.forward(request, response);
+         
+       
       }else {
          String msg = "You are Not allowed, Plz login!";
          response.sendRedirect(request.getContextPath() + "/login?msg="+msg);
-      }
-      
+      }      
    }
 
    /**

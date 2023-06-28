@@ -47,18 +47,14 @@ public class LoginServlet extends HttpServlet {
 		
 		MembersVO vo = new MembersVO();
 		vo.setEmail(request.getParameter("email"));
-		vo.setPwd( SHAEncodeUtil.encodeSha( request.getParameter("pwd") ) );
-		
-		/*test*/
-		//vo.setId("jemminy01");
-		//vo.setPwd("jem04");
+		vo.setPwd(  request.getParameter("pwd")  );
 		
 		if( service.getCountMember(vo) == Define.LOGIN_AUTH_SUCCESS) {
 			// session binding
 			service.getMembersByIdAndPwd(vo); 
 			
 			HttpSession session = request.getSession(false);
-			session.setAttribute("SESS_AUTH", false);
+			session.setAttribute("SESS_AUTH", true);
 			session.setAttribute("SESS_EMAIL", vo.getEmail());
 			session.setAttribute("SESS_USERNAME", vo.getName());
 			
@@ -69,6 +65,7 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher( "/view/login.jsp?msg=login failed, plz try again!")
 					.forward(request, response);
 		}
+		
 	}
 
 }

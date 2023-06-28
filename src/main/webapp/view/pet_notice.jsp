@@ -10,8 +10,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Tables - SB Admin</title>
+        <title>유기동물 공고 목록</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
+
         <link href="${ pageContext.servletContext.contextPath }/bootstrap/css/styles.css" rel="stylesheet" />
         <link href="${ pageContext.servletContext.contextPath }/bootstrap/css/page-nation.css" rel="stylesheet" />
        	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -21,34 +22,72 @@
         <script src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
       
      	
+
+        <link href="${ pageContext.servletContext.contextPath }/bootstrap/css/mypageStyles.css" rel="stylesheet" />
+		<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+		<script src="${ pageContext.servletContext.contextPath }/bootstrap/js/scripts.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+		<script src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
+	
+		<style>
+		
+		  a:hover{
+		                background-color: #feeaa5;
+		            }
+		            .main{
+		            padding-top: 0.7cm;
+		            padding-left: 1.0cm;
+		            padding-right : 1.5cm;
+		            padding-bottom : 3cm;
+		            height: 120px;
+		            }         
+		            .bg-yellow {
+						  --bs-bg-opacity: 1;
+						  background-color: #feeaa5 !important;
+					}
+					.main1{
+					border-bottom : 1px solid #645326;
+					 padding-bottom : 2px;
+					 padding-top : 2px;
+					}
+					.tab{
+						 padding-bottom : 0;
+						 padding-top : 0;
+						border-bottom : 1px solid #645326;
+						border-top : 1px solid #645326;
+					}
+					
+					.img_main{
+					width: 60%;
+				    margin: 0px auto;
+				    display: block;
+				    width: 250px; height: 90px;
+				    }
+				    .bgcolor{
+				   background-color: #f9f8f3;
+				    }
+		</style>
+      
         
     </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <body class="sb-nav-fixed bgcolor"> 
+           <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                	<button type="button" class="btn" onclick="location='login.jsp'" style="font-size: 14px;">로그아웃</button>					
+					<button type="button" class="btn" onclick="location='mypage.jsp'" style="font-size: 14px;">마이페이지</button>
                 </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
+            </form>     
+            </nav>
+            
+         <!-- 로고 -->              
+        <nav class="main bg-white" >
+         <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
+         <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
+         </a>
         </nav>
+
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -124,6 +163,29 @@
                 
                            		<!-- ---------------------------------------- -->
                            		
+
+        
+         <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/petnotice"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter"><b>보호소</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/withpet"><b>위드펫</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></a>
+   
+            </nav>
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-3 pt-3">
+                        <h1 class="mt-1">유기동물 공고</h1>
+                      
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                              
+                            </div>
+                            <div class="card-body">
+
 	                                <table id="datatablesSimple">
 	                                    <thead>
 	                                        <tr>
@@ -195,30 +257,23 @@
 	                                </table>
 	                              
 	                            </div>
-	                            <%@ include file="/view/import/page-pet_notice.jsp" %>
-	                          
-	                          
+					<%-- <%@ include file="/view/import/page-community.jsp" %> --%>
+                           <%-- <jsp:include page="/view/import/page-nation.jsp"></jsp:include>  --%>
+                        	<C:import url="/view/import/page-pet_notice.jsp"></C:import>
                         </div>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        
-        
-        
-        
-    </body>
-</html>
+		<footer class="py-4 bg-light mt-auto">
+			<div class="container-fluid px-4">
+				<div class="d-flex align-items-center justify-content-between small">
+					<div class="text-muted">Copyright &copy; Your Website 2023</div>
 
+					<div></div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	</div>
+
+</body>
+</html>

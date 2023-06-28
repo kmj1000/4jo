@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>커뮤니티 상세</title>
+        <title>공지 상세</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" />
@@ -238,7 +238,7 @@
                      		case 'modify': msg = data.result +'건 수정되었습니다.'; break;
                      		case 'register': msg = data.result +'건 등록되었습니다.';break;
                      		case 'remove': msg = data.result +'건 삭제되었습니다.';
-                     			location.href = "${pageContext.servletContext.contextPath }/community";
+                     			location.href = "${pageContext.servletContext.contextPath }/notice";
                      			break;
                      		}
                      		alert( msg );
@@ -263,13 +263,13 @@
 
 <div class="container mt-3">
   <h2 style="text-align: center;">게시글 작성</h2>  
-  <form action="/community-content.jsp">
+  <form action="/notice-content.jsp">
     <div class="row">
         <div class="col"></div>
         <div class="col"></div>
         <div class="mt-3 col p-3">
             <label for="reg_date">작성일:</label>
-            <p class="form-control" id="reg_date" name="reg_date">${ requestScope.communityVO.reg_date }</p>
+            <p class="form-control" id="notice_reg_date" name="notice_reg_date">${ requestScope.noticeVO.notice_reg_date }</p>
         </div>
         
     </div>
@@ -277,16 +277,16 @@
     <div class="row">
         <div class="mb-3 mt-3 col p-3">
            <label for="title">글제목:</label>
-           <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title" value="${ requestScope.communityVO.title }">
+           <input type="text" class="form-control" id="notice_title" placeholder="Enter Title" name="notice_title" value="${ requestScope.noticeVO.notice_title }">
         </div>
         <div class="mb-3 mt-3 col p-3">
             <label for="title">작성자:</label>
-            <div class="form-control" id="nickname" name="nickname">${ requestScope.communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname }</div>
+            <div class="form-control" id="admin_name" name="admin_name">${ requestScope.noticeVO.admin_name == null ? sessionScope.SESS_ID : requestScope.noticeVO.admin_name }</div>
         </div> 
     </div>
     <div class="mb-3 mt-3">
         <label for="content">글내용:</label>
-        <textarea class="form-control" rows="5" id="content" name="text" >${ communityVO.content }</textarea>
+        <textarea class="form-control" rows="5" id="notice_content" name="text" >${ noticeVO.notice_content }</textarea>
      	</div>
     	<div class="row">
        	<button type="button" class="get col p-3 btn btn-outline-warning" onclick="history.back();">뒤로</button>
@@ -297,8 +297,8 @@
    			
     </div>
     	<input type="hidden" name="method" value="${param.method }">
-        <input type="hidden" name="c_no" value="${param.c_no }">
-		<input type="hidden" name="id" value="${communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname  }">
+        <input type="hidden" name="notice_no" value="${param.notice_no }">
+		<input type="hidden" name="id" value="${noticeVO.admin_name == null ? sessionScope.SESS_ID : requestScope.noticeVO.admin_name  }">
   </form>
 </div>
 

@@ -13,8 +13,8 @@
         <meta name="author" content="" />
         <title>Community List</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
-        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
-        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" />
+        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/mypageStyles.css" rel="stylesheet" />
+        <%-- <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" /> --%>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${pageContext.servletContext.contextPath}/bootstrap/js/scripts.js"></script>
@@ -174,44 +174,70 @@
 						}
 					// ]]>
 		</script>
-     <style type="text/css">* {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol336.cur), auto !important;}</style>   
-     <style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
-        
+     	<style type="text/css">* {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol336.cur), auto !important;}</style>   
+     	<style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
+        <style> 
+	       a:hover{
+	                background-color: #fbde7b;
+	            }
+	            .main{
+	            padding-top: 0.7cm;
+	            padding-left: 1.0cm;
+	            padding-right : 1.5cm;
+	            padding-bottom : 3cm;
+	            height: 120px;
+	            }         
+	            .bg-yellow {
+					  --bs-bg-opacity: 1;
+					  background-color: #fbde7b !important;
+				}
+				.main1{
+				border-bottom : 1px solid #645326;
+				 padding-bottom : 2px;
+				 padding-top : 2px;
+				}
+				.tab{
+					 padding-bottom : 0;
+					 padding-top : 0;
+					border-bottom : 1px solid #645326;
+					border-top : 1px solid #645326;
+				}
+				
+				.img_main{
+				width: 60%;
+			    margin: 0px auto;
+			    display: block;
+			    width: 250px; height: 90px;
+			    }
+        </style>
     </head>
-    
-   <body class="sb-nav-fixed"> 
-          
-        <nav class=" ps-5 sb-topnav navbar navbar-expand; navbar-dark bg-yellow" >
-        <img class = "ps-5 img_main" src="dogfoot.png" style="width: 120px; height: 70px;"/><br/>
-             <a class="navbar-brand ps-1 pe-5" href="index.html" ><h1>옥독캣</h1></a>
-              
-
+   	<body class="sb-nav-fixed"> 
+           <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
                 <div class="input-group">
-                	<button type="button" class="btn btn-outline-primary" onclick="location='favorite_shelter.jsp'">로그아웃</button>
-					<!-- <button type="button" class="btn btn-outline-secondary">Secondary</button>
-					<button type="button" class="btn btn-outline-success">Success</button>
-					<button type="button" class="btn btn-outline-info">Info</button>
-					<button type="button" class="btn btn-outline-warning">Warning</button>
-					<button type="button" class="btn btn-outline-danger">Danger</button>
-					<button type="button" class="btn btn-outline-light">Light</button> -->
-					<button type="button" class="btn btn-outline-danger" onclick="location='favorite_with_pet.jsp'">마이페이지</button>
+                	<button type="button" class="btn" onclick="location='login.jsp'" style="font-size: 14px;">로그아웃</button>					
+					<button type="button" class="btn" onclick="location='mypage.jsp'" style="font-size: 14px;">마이페이지</button>
                 </div>
-            </form>
+            </form>     
+            </nav>
+            
+         <!-- 로고 -->              
+        <nav class="main bg-white" >
+         <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
+         <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
+         </a>
         </nav>
         
-         <nav class="sb-topnav navbar navbar-expand; navbar-dark bg-yellow" >
-           <!--   <nav class="nav nav-pills flex-column flex-sm-row justify-content-evenly"> -->
-              <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="#"><b>공고</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="#" ><b>보호소</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="#" ><b>위드펫</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="#"><b>커뮤니티</b></a>
-              <a class="flex-sm-fill text-sm-center nav-link" href="#"><b>공지사항</b></a>
-        <!--  </nav> -->
+         <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/petnotice"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter"><b>보호소</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/withpet"><b>위드펫</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></a>
+   
             </nav>
-            <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-10 pt-10">
+                    <div class="container-fluid px-3 pt-3">
                         <h1 class="mt-1" >마이페이지</h1>
                         <ol class="breadcrumb mb-4">
  
@@ -244,10 +270,10 @@
                                     <tfoot>
                                     </tfoot>
                                     <tbody>
-                                    	<C:forEach var="noticeVO" items="${noticeList}" varStatus="status">
+                                    	<C:forEach var="noticeVO" items="${requestScope.noticeList}" varStatus="status">
                                         <tr>
                                             <td>${noticeVO.notice_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/notice?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
+                                            <td><a href="${pageContext.servletContext.contextPath}/noticecontent?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
                                             <td>${noticeVO.notice_reg_date}</td>
                                             <td>${noticeVO.admin_name}</td>
                                         </tr>
@@ -255,7 +281,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <%@ include file="/view/import/page-nation.jsp" %>
+                            <%@ include file="/view/import/page-notice.jsp" %>
                            <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 
                         	<C:import url="/view/import/page-nation.jsp"></C:import> --%>
                         </div>

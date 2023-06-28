@@ -8,9 +8,11 @@ import com.java.servlet.vo.NoticeVO;
 
 public interface NoticeDAO {
 	NoticeVO selectNotice(String admin_name);
+	NoticeVO selectNotice(int notice_no);
 	List<NoticeVO> selectAllNotice();
 
 	int selectCountAllNotice();
 
 	List<NoticeVO> selectAllNoticeByPage(PageMaker pageMaker);
+	
 }

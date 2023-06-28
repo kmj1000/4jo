@@ -144,8 +144,9 @@ public class NoticeDAOImpl implements NoticeDAO {
 	            NoticeVO vo = new NoticeVO();
 	            vo.setNotice_no(rs.getInt("notice_no"));
 	            vo.setNotice_title(rs.getString("notice_title"));
-	            vo.setAdmin_name(rs.getString("admin_name"));
 	            vo.setNotice_reg_date(rs.getDate("notice_reg_date"));
+	            vo.setAdmin_name(rs.getString("admin_name"));
+	            
 
 	            list.add(vo);
 	         }
@@ -156,5 +157,41 @@ public class NoticeDAOImpl implements NoticeDAO {
 
 	      return list;
 	   }
+	@Override
+	public NoticeVO selectNotice(int notice_no) {
+		String sql = "SELECT notice_no\r\n"
+	            + "        ,notice_title\r\n"
+	            + "        ,notice_content\r\n"
+	            + "        ,notice_reg_date\r\n"
+	            + "        ,admin_name\r\n"
+	            + "     FROM notice"
+	            ;
+	      NoticeVO vo = null;
+	      
+	      try(
+	            Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+	            PreparedStatement pstmt = conn.prepareStatement(sql);
+	            ){
+	            
+				pstmt.setInt(1, notice_no);
+	         
+	            ResultSet rs = pstmt.executeQuery();
+	            
+	            if( rs.next() ) {
+	               vo = new NoticeVO();
+	               vo.setNotice_no(rs.getInt("Notice_no"));
+	               vo.setAdmin_name(rs.getString("admin_name"));
+	               vo.setNotice_title(rs.getString("notice_title"));
+	               vo.setNotice_content(rs.getString("notice_content"));
+	               vo.setNotice_reg_date(rs.getDate("notice_reg_date"));
+	            }
+	            rs.close();
+	            
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      return vo;
+	}
 	
 }
