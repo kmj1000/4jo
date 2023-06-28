@@ -30,13 +30,14 @@ public class With_petDAOImpl implements With_petDAO {
 	@Override
 	public List<With_petVO> selectAllBoard() {
 		
-		String sql = "SELECT       \r\n"
+		String sql = "SELECT  with_pet_no      \r\n"
 				+ "              building\r\n"
 				+ "               ,category3\r\n"
 				+ "               ,road\r\n"
 				+ "               ,tel\r\n"
 				+ "           		,homepage\r\n"
 				+ "           		,day_off\r\n"
+				+ "           		,hour\r\n"
 				+ "           		,parking \r\n"
 				+ "           		,with_pet_info \r\n"
 				+ "           		,only_pet_info  \r\n"
@@ -65,13 +66,14 @@ public class With_petDAOImpl implements With_petDAO {
 				
 				while( rs.next() ) {
 					With_petVO vo = new With_petVO();
-					
+					vo.setWith_pet_no(rs.getInt("with_pet_no"));
 					vo.setBuilding(rs.getString("building"));
 					vo.setCategory3(rs.getString("category3"));
 					vo.setRoad(rs.getString("road"));
 					vo.setTel(rs.getString("tel"));
 					vo.setHomepage(rs.getString("homepage"));
 					vo.setDay_off(rs.getString("day_off"));
+					vo.setHour(rs.getString("hour"));
 					vo.setParking(rs.getString("parking"));
 					vo.setWith_pet_info(rs.getString("with_pet_info"));
 					vo.setOnly_pet_info(rs.getString("only_pet_info"));
@@ -120,12 +122,14 @@ public class With_petDAOImpl implements With_petDAO {
 				+ "				  SELECT\r\n"
 				+ "				ROWNUM as rn\r\n"
 				+ "				\r\n"
+				+ "				,with_pet_no\r\n"
 				+ "				,building\r\n"
 				+ "				,category3\r\n"
 				+ "                ,road\r\n"
 				+ "				,tel\r\n"
 				+ "				,homepage\r\n"
 				+ "						,day_off\r\n"
+				+ "					,hour \r\n"
 				+ "					,parking \r\n"
 				+ "						,with_pet_info \r\n"
 				+ "						,only_pet_info \r\n"
@@ -157,13 +161,14 @@ public class With_petDAOImpl implements With_petDAO {
 				
 				while( rs.next() ) {
 					With_petVO vo = new With_petVO();
-					
+					vo.setWith_pet_no(rs.getInt("with_pet_no"));
 					vo.setBuilding(rs.getString("building"));
 					vo.setCategory3(rs.getString("category3"));
 					vo.setRoad(rs.getString("road"));
 					vo.setTel(rs.getString("tel"));
 					vo.setHomepage(rs.getString("homepage"));
 					vo.setDay_off(rs.getString("day_off"));
+					vo.setHour(rs.getString("hour"));
 					vo.setParking(rs.getString("parking"));
 					vo.setWith_pet_info(rs.getString("with_pet_info"));
 					vo.setOnly_pet_info(rs.getString("only_pet_info"));

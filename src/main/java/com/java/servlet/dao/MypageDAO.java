@@ -10,6 +10,6 @@ public interface MypageDAO {
 
 //	MembersVO selectAllBoard(String email);
 
-	List<MembersVO> selectMypage(int m_no);
+	MembersVO selectMypage(String email);
 
 }

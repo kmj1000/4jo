@@ -28,30 +28,29 @@ public class MypageDAOImpl implements MypageDAO {
    }
    
    @Override
-	public List<MembersVO> selectMypage(int m_no) {
+	public MembersVO selectMypage(String email) {
 		
 	   String sql = "SELECT m_no\r\n"
-               + "        ,email\r\n"
                + "        ,pwd\r\n"
                + "        ,phone\r\n"
                + "        ,name\r\n"      
-               + "        ,(SELECT nickname FROM members) as nickname\r\n"
-               + "    FROM members where m_no = ?"
+               + "        ,nickname\r\n"
+               + "    FROM members where email = ?"
                ;
 	   
-	   List<MembersVO> list = null;
+	   MembersVO vo = null;
 		      
-	   try(
-	            Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
-	            Statement stmt = conn.createStatement();
-	            ){
-	            
-	            ResultSet rs = stmt.executeQuery(sql);
-	            
-	            list = new ArrayList<>();
+	   try {
+           Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+           PreparedStatement pstmt = conn.prepareStatement(sql);
+           
+           
+			pstmt.setString(1, email);
+        
+           ResultSet rs = pstmt.executeQuery();
 		            
 		            if( rs.next() ) {
-		            	MembersVO vo = new MembersVO();
+		            	vo = new MembersVO();
 		            	 vo.setM_no(rs.getInt("m_no"));
 		            	 vo.setEmail(rs.getString("email"));
 		            	 vo.setName(rs.getString("name"));
@@ -59,7 +58,7 @@ public class MypageDAOImpl implements MypageDAO {
 		                 vo.setPhone(rs.getInt("phone"));
 		                 vo.setNickname(rs.getString("nickname"));
 		                 
-		                 list.add(vo);
+	
 		            }
 		            rs.close();
 		            
@@ -67,7 +66,7 @@ public class MypageDAOImpl implements MypageDAO {
 		         e.printStackTrace();
 		      }
 		      
-		      return list;
+		      return vo;
 		
 	}
 //원본

@@ -18,7 +18,14 @@ public class With_petVO {
 		private String inside;
 		private String outside; 
 		private String extra; 
-	
+		
+		public int getWith_pet_no() {
+			return with_pet_no;
+		}
+
+		public void setWith_pet_no(int with_pet_no) {
+			this.with_pet_no = with_pet_no;
+		}
 		public String getBuilding() {
 			return building;
 		}
@@ -142,7 +149,7 @@ public class With_petVO {
 		@Override
 		public String toString() {
 			return "With_petVO["+
-					"with_pet_no"+with_pet_no+"\n"+
+					"with_pet_no="+with_pet_no+"\n"+
 					"building"+building+"\n"+
 					"category3="+category3+"\n"+
 					"road="+road+"\n"+
@@ -162,12 +169,6 @@ public class With_petVO {
 					;
 		}
 
-		public int getWith_pet_no() {
-			return with_pet_no;
-		}
-
-		public void setWith_pet_no(int with_pet_no) {
-			this.with_pet_no = with_pet_no;
-		}
+	
 	
 }

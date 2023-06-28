@@ -9,7 +9,7 @@ public interface MypageService {
 //	int modifyPwd(MembersVO vo);
 
 
-	List<MembersVO> selectMypage(int m_no);
+	MembersVO selectMypage(String email);
 
 //MembersVO selectAllBoard(String email);
 //

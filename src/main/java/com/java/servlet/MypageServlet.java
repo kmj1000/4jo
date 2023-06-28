@@ -60,12 +60,14 @@ public class MypageServlet extends HttpServlet {
          request.setCharacterEncoding("utf-8");
          request.setAttribute("SESS_AUTH", true);
         
-        int m_no = 0;
-		List<MembersVO> memberList =service.selectMypage(m_no);
-         System.out.println(memberList);
+         MembersVO vo = new MembersVO();
+         String email=request.getParameter("email");
+         
+//        int m_no = 1;
+		 MembersVO memberList =service.selectMypage(email);
+         System.out.println(memberList); //null
          request.setAttribute("memberList", memberList);
          
-   
          RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/mypage.jsp");
          dispatcher.forward(request, response);
          

@@ -31,16 +31,15 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
    @Override
    public List<Favorite_W_VO> selectWithPetBoard() {
       
-      String sql = "SELECT favoritew_no\r\n"
-    		 
-               + "        ,favoritew_reg_date\r\n"
-
-               + "        ,with_pet_no\r\n"
-               + "        ,building\r\n"
-               + "        ,road\r\n"
-               + "        ,tel\r\n"
-               + "        ,(SELECT nickname FROM members WHERE  nickname = w.nickname) as nickname --scalar 쿼리\r\n"
-               + "    FROM favoritew w"
+      String sql = "SELECT f.favoritew_no\r\n"
+        		+ "     , f.favoritew_reg_date\r\n"
+          		+ "     , w.with_pet_no\r\n"
+          		+ "     , w.building\r\n"
+          		+ "     , w.road\r\n"
+          		+ "     , s.tel\r\n"
+          		+ "     , (SELECT nickname FROM members WHERE nickname = f.nickname) as nickname\r\n"
+          		+ "FROM favorites f\r\n"
+          		+ "JOIN with_pet w ON f.with_pet_no = w.with_pet_no\r\n"
                ;
       List<Favorite_W_VO> list = null;
       
@@ -101,23 +100,28 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
    @Override
    public List<Favorite_W_VO> selectWithPetBoardByPage(PageMaker pageMaker) {
       String sql = "SELECT \r\n"
-            + "        * \r\n"
-            + "    FROM (\r\n"
-            + "            SELECT \r\n"
-            + "                    ROWNUM as rn\r\n"
-            + "                    ,favoritew_no\r\n"
-            
-            + "                    ,favoritew_reg_date\r\n"
-      
-            + "                    ,with_pet_no\r\n"
-            + "                    ,building\r\n"
-            + "                    ,road\r\n"
-            + "                    ,tel\r\n"
-            + "                    ,(SELECT nickname FROM members WHERE nickname='aa') as nickname\r\n"
-            + "                FROM favoritew\r\n"
-            + "                WHERE ROWNUM <= ( ? * ? )   \r\n"
-            + "            )\r\n"
-            + "    WHERE rn > ( ( ? - 1 ) * ? )"
+              + "favoritew_no\r\n"
+              + ",favoritew_reg_date\r\n"
+              + ",with_pet_no\r\n"
+              + ",building\r\n"
+              + ",road\r\n"
+              + ",tel\r\n"
+              + ",(SELECT nickname FROM members WHERE nickname='aa') as nickname\r\n"
+              + "FROM (\r\n"
+              + "SELECT /*+ INDEX (favoritew index_favoritew_no_pk) */\r\n"
+              + "ROWNUM as rn\r\n"
+              +",f.favoritew_no\r\n"
+        		+ ", f.favoritew_reg_date\r\n"
+        		+ ", w.with_pet_no\r\n"
+        		+ ", w.building\r\n"
+        		+ ", w.road\r\n"
+        		+ ", w.tel\r\n"
+        		+ ", (SELECT nickname FROM members WHERE nickname = f.nickname) as nickname\r\n"
+        		+"FROM favoritew f\r\n"
+        		+"JOIN with_pet w ON f.with_pet_no = w.with_pet_no\r\n"
+        		+ "WHERE ROWNUM <= ( ? * ? )\r\n"
+        		+ "            )\r\n"
+        		+ "    WHERE rn > ( ( ? - 1 ) * ? )"
             ;
       
       List<Favorite_W_VO> list = null;

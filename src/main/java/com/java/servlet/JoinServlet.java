@@ -46,7 +46,7 @@ public class JoinServlet extends HttpServlet {
 		MembersVO vo = new MembersVO();
 		vo.setNickname( request.getParameter("nickname") );
 		vo.setEmail( request.getParameter("email") );
-		vo.setPwd( SHAEncodeUtil.encodeSha( request.getParameter("pwd") ));
+		vo.setPwd( request.getParameter("pwd"));
 		vo.setName( request.getParameter("name") );
 		vo.setPhone( Integer.parseInt(request.getParameter("phone")) );
 		

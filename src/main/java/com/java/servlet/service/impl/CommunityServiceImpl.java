@@ -37,11 +37,16 @@ public class CommunityServiceImpl implements CommunityService {
 		
 		return dao.selectAllCommunityByPage(pageMaker);
 	}
-//	@Override
-//	public List<CommunityVO> getMyCommunity() {
-//		
-//		return dao.selectMyCommunity();
-//	}
+	@Override
+	public List<CommunityVO> getMyCommunity(String nickname) {
+		
+		return dao.selectMyCommunity(nickname);
+	}
+	@Override
+	public List<CommunityVO> getMyCommunity() {
+		
+		return dao.selectMyCommunity();
+	}
 
 
 }

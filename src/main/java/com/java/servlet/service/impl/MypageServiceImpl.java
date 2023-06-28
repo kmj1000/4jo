@@ -24,8 +24,8 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<MembersVO> selectMypage(int m_no){
-		return dao.selectMypage(m_no);
+	public MembersVO selectMypage(String email){
+		return dao.selectMypage(email);
 	}
 
 

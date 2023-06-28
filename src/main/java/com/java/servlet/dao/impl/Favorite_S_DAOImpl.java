@@ -30,15 +30,15 @@ public class Favorite_S_DAOImpl implements Favorite_S_DAO {
    @Override
    public List<Favorite_S_VO> selectShelterBoard() {
       
-      String sql = "SELECT favorites_no\r\n"
-    		  	
-               + "        ,favorites_reg_date\r\n"
-               + "        ,shelter_no\r\n"
-               + "        ,careNm\r\n"
-               + "        ,careAddr\r\n"
-               + "        ,careTel\r\n"
-               + "        ,(SELECT nickname FROM members WHERE  nickname = s.nickname) as nickname --scalar 쿼리\r\n"
-               + "    FROM favorites s"
+      String sql = "SELECT f.favorites_no\r\n"
+      		+ "     , f.favorites_reg_date\r\n"
+      		+ "     , s.shelter_no\r\n"
+      		+ "     , s.careNm\r\n"
+      		+ "     , s.careAddr\r\n"
+      		+ "     , s.careTel\r\n"
+      		+ "     , (SELECT nickname FROM members WHERE nickname = f.nickname) as nickname\r\n"
+      		+ "FROM favorites f\r\n"
+      		+ "JOIN shelter s ON f.shelter_no = s.shelter_no\r\n"
                ;
       List<Favorite_S_VO> list = null;
       
@@ -99,21 +99,28 @@ public class Favorite_S_DAOImpl implements Favorite_S_DAO {
    @Override
    public List<Favorite_S_VO> selectShelterBoardByPage(PageMaker pageMaker) {
       String sql = "SELECT \r\n"
-            + "        * \r\n"
-            + "    FROM (\r\n"
-            + "            SELECT /*+ INDEX (favorites index_favorites_no_pk) */\r\n"
-            + "                    ROWNUM as rn\r\n"
-            + "                    ,favorites_no\r\n"
-            + "                    ,favorites_reg_date\r\n"
-            + "                    ,shelter_no\r\n"
-            + "                    ,careNm\r\n"
-            + "                    ,careAddr\r\n"
-            + "                    ,careTel\r\n"
-            + "                    ,(SELECT nickname FROM members WHERE nickname='aa') as nickname\r\n"
-            + "                FROM favorites\r\n"
-            + "                WHERE ROWNUM <= ( ? * ? )   -- page 1=10, 2=20, 3=30  page * 10, 10: 페이지당 게시글 갯수\r\n"
-            + "            )\r\n"
-            + "    WHERE rn > ( ( ? - 1 ) * ? )"
+              + "favorites_no\r\n"
+              + ",favorites_reg_date\r\n"
+              + ",shelter_no\r\n"
+              + ",careNm\r\n"
+              + ",careAddr\r\n"
+              + ",careTel\r\n"
+              + ",(SELECT nickname FROM members WHERE nickname='aa') as nickname\r\n"
+              + "FROM (\r\n"
+              + "SELECT /*+ INDEX (favorites index_favorites_no_pk) */\r\n"
+              + "ROWNUM as rn\r\n"
+              +",f.favorites_no\r\n"
+        		+ ", f.favorites_reg_date\r\n"
+        		+ ", s.shelter_no\r\n"
+        		+ ", s.careNm\r\n"
+        		+ ", s.careAddr\r\n"
+        		+ ", s.careTel\r\n"
+        		+ ", (SELECT nickname FROM members WHERE nickname = f.nickname) as nickname\r\n"
+        		+"FROM favorites f\r\n"
+        		+"JOIN shelter s ON f.shelter_no = s.shelter_no\r\n"
+        		+ "WHERE ROWNUM <= ( ? * ? )\r\n"
+        		+ "            )\r\n"
+        		+ "    WHERE rn > ( ( ? - 1 ) * ? )"
             ;
       
       List<Favorite_S_VO> list = null;

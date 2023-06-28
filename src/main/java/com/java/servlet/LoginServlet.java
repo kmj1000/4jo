@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 		
 		MembersVO vo = new MembersVO();
 		vo.setEmail(request.getParameter("email"));
-		vo.setPwd( SHAEncodeUtil.encodeSha( request.getParameter("pwd") ) );
+		vo.setPwd(  request.getParameter("pwd")  );
 		
 		if( service.getCountMember(vo) == Define.LOGIN_AUTH_SUCCESS) {
 			// session binding

@@ -156,27 +156,44 @@
 
             
     		<table id="datatablesSimple" >
-				  <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">
-				  
+				 
+				   <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">
                         <tr>
                            <td>닉네임</td>
+                           
                            <td>${MembersVO.nickname}</td>
                         </tr>
+                     </c:forEach>   
+                     
+                      
+                    <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">     
                         <tr>         
                            <td >비밀번호</td>
-                           <td>${MembersVO.nickname}</td>
-                        </tr>
+                           <td>${MembersVO.pwd}</td>
+                        </tr>                   
+                      </c:forEach>  
+                      
+                       
+                     <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">    
                         <tr>
                            <td>이메일</td>                 
-                          <td>${MembersVO.nickname}</td>
+                          <td>${MembersVO.email}</td>
                         </tr>
+                       </c:forEach>  
+                       
+                       
+                     <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">    
                         <tr>
                            <td>이름</td>
-                           <td>${MembersVO.nickname}</td>       
+                           <td>${MembersVO.name}</td>       
                         </tr>
+                       </c:forEach>  
+                       
+                       
+                      <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">   
                         <tr>
                            <td>전화번호</td>
-                           <td>${MembersVO.nickname}</td>    
+                           <td>${MembersVO.phone}</td>    
                         </tr>
                          </c:forEach>
                    </table>

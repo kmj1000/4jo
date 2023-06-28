@@ -15,9 +15,20 @@
     <servlet-name>CommunityContentServlet</servlet-name>
     <servlet-class>com.java.servlet.CommunityServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>FindEmailServlet</display-name>
+  	<servlet-name>FindEmailServlet</servlet-name>
+  	<servlet-class>com.java.servlet.FindEmailServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>CommunityContentServlet</servlet-name>
     <url-pattern>/CommunityContentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FindEmailServlet</servlet-name>
+  	<url-pattern>/FindEmailServlet</url-pattern>
   </servlet-mapping>
   
  <filter>
@@ -32,5 +43,7 @@
     <filter-name>SetCharEncoding</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+
   
 </web-app>
+
