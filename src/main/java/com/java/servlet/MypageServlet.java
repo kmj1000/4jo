@@ -62,8 +62,8 @@ public class MypageServlet extends HttpServlet {
 
          
          // allboard 가져와야 함.
-       
-         List<MembersVO> boardList =service.getAllBoard();//getAllBoardByPage
+         String nickname = null;
+         List<MembersVO> boardList =service.getAllBoard(nickname);//getAllBoardByPage
          System.out.println(boardList);
          request.setAttribute("boardList", boardList);
          

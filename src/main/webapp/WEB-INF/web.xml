@@ -26,8 +26,25 @@
     <servlet-name>CommunityContentServlet</servlet-name>
     <url-pattern>/CommunityContentServlet</url-pattern>
   </servlet-mapping>
+<<<<<<< HEAD
   <servlet-mapping>
   	<servlet-name>FindEmailServlet</servlet-name>
   	<url-pattern>/FindEmailServlet</url-pattern>
   </servlet-mapping>
+=======
+  
+    <filter>
+    <filter-name>SetCharEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+      <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SetCharEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+>>>>>>> 08362c237e86836b56b3b290f76edf13fd635ecc
 </web-app>

@@ -13,8 +13,8 @@
         <meta name="author" content="" />
         <title>Community List</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
-        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
-        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" />
+        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/mypageStyles.css" rel="stylesheet" />
+        <%-- <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" /> --%>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${pageContext.servletContext.contextPath}/bootstrap/js/scripts.js"></script>
@@ -223,21 +223,21 @@
             
          <!-- 로고 -->              
         <nav class="main bg-white" >
-         <a class="mainlogo" href="http://localhost:8080/4jo/view/main.jsp"<%-- ${pageContext.servletContext.contextPath}/main --%> >
-         <img class = "img_main" src="../logo.png" style="width: 250px; height: 90px;"/>
+         <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
+         <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
          </a>
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="http://localhost:8080/4jo/view/pet_notice.jsp"><b>공고</b></a> 
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/shelter.jsp"><b>보호소</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="http://localhost:8080/4jo/view/with_pet.jsp"><b>위드펫</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/community.jsp"><b>커뮤니티</b></a>
-			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="http://localhost:8080/4jo/view/notice.jsp"><b>공지사항</b></a>
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/petnotice"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter"><b>보호소</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/withpet"><b>위드펫</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></a>
+			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></a>
    
             </nav>
                 <main>
-                    <div class="container-fluid px-10 pt-10">
+                    <div class="container-fluid px-3 pt-3">
                         <h1 class="mt-1" >마이페이지</h1>
                         <ol class="breadcrumb mb-4">
  
@@ -270,10 +270,10 @@
                                     <tfoot>
                                     </tfoot>
                                     <tbody>
-                                    	<C:forEach var="noticeVO" items="${noticeList}" varStatus="status">
+                                    	<C:forEach var="noticeVO" items="${requestScope.noticeList}" varStatus="status">
                                         <tr>
                                             <td>${noticeVO.notice_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/notice?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
+                                            <td><a href="${pageContext.servletContext.contextPath}/noticecontent?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
                                             <td>${noticeVO.notice_reg_date}</td>
                                             <td>${noticeVO.admin_name}</td>
                                         </tr>

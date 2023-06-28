@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Community List</title>
+        <title>공지 상세</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" />
@@ -297,7 +297,7 @@
    			
     </div>
     	<input type="hidden" name="method" value="${param.method }">
-        <input type="hidden" name="c_no" value="${param.notice_no }">
+        <input type="hidden" name="notice_no" value="${param.notice_no }">
 		<input type="hidden" name="id" value="${noticeVO.admin_name == null ? sessionScope.SESS_ID : requestScope.noticeVO.admin_name  }">
   </form>
 </div>
