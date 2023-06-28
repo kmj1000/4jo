@@ -191,6 +191,11 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	      return list;
 	   }
+	@Override
+	public List<CommunityVO> selectMyCommunity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }

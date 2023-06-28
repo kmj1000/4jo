@@ -66,7 +66,7 @@ public class MypaperServlet extends HttpServlet {
          
          // allboard 가져와야 함.
        
-         List<CommunityVO> communityMyList =service.getAllCommunity();//getAllBoardByPage
+         List<CommunityVO> communityMyList =service.getMyCommunity();//getAllBoardByPage
          System.out.println(communityMyList);
          request.setAttribute("communityMyList", communityMyList);
          

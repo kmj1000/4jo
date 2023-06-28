@@ -28,34 +28,9 @@
 	crossorigin="anonymous"></script>
 <script
 	src="${ pageContext.servletContext.contextPath }/bootstrap/js/datatables-simple-demo.js"></script>
-<script>
 
-window.onload = function(){
-		initClass();
-	}
-	
-	function adoptMethod(type){
-		$("input[name='method']").val(type);
-		initClass();
-	}
-	
-	function initClass(){
-		// modify
-		$("textarea").removeClass("modify");
-		$("input[type='text']").removeClass("modify");
-		$(".modify").attr("readonly", false);
-	}
-	
-	function adoptMethod(type) {
-	    $("input[name='method']").val(type);
-	    initClass();
-	    // TODO: 정보 수정을 위한 코드를 추가하세요
-	    // 예를 들어, 입력 필드를 수정 가능한 상태로 변경하거나 필요한 UI 변경을 수행할 수 있습니다.
-	    $("textarea").addClass("modify");
-	    $("input[type='text']").addClass("modify");
-	    $(".modify").attr("readonly", false);
-	}
-</script>
+
+
 <style>
  tr {
  	text-align : center;
@@ -109,13 +84,13 @@ window.onload = function(){
             
          <!-- 로고 -->              
         <nav class="main bg-white" >
-         <a class="mainlogo" href="http://localhost:8080/4jo/view/main.jsp"<%-- ${pageContext.servletContext.contextPath}/main --%> >
-         <img class = "img_main" src="../logo.png" style="width: 250px; height: 90px;"/>
+         <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
+         <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
          </a>
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="${pageContext.servletContext.contextPath}/pet_notice"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/pet_notice"><b>공고</b></a> 
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter"><b>보호소</b></a>
 			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/with_pet"><b>위드펫</b></a>
 			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/community"><b>커뮤니티</b></a>
@@ -158,7 +133,7 @@ window.onload = function(){
                                     	<C:forEach var="noticeVO" items="${noticeList}" varStatus="status">
                                         <tr>
                                             <td>${noticeVO.notice_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/notice?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
+                                            <td><a href="${pageContext.servletContext.contextPath}/noticecontent?method=get&notitce_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
                                             <td>${noticeVO.notice_reg_date}</td>
                                             <td>${noticeVO.admin_name}</td>
                                         </tr>
