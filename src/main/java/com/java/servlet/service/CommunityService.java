@@ -14,6 +14,5 @@ public interface CommunityService {
 
 	List<CommunityVO> getAllCommunityByPage(PageMaker pageMaker);
 
-	List<CommunityVO> getMyCommunity();
-	List<CommunityVO> getMyCommunity(String nickname);
+
 }
