@@ -34,11 +34,7 @@ public class MypageServiceImpl implements MypageService {
 		return dao.updatePwd(vo);
 	}
 
-	@Override
-	public int getOutS(int m_no) {
-		
-		return dao.getOutD(m_no);
-	}
+	
 
 	
 	

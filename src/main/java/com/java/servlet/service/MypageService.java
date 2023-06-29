@@ -13,5 +13,5 @@ public interface MypageService {
 	/* List<MembersVO> getAllBoard(); */
 
 	/* List<MembersVO> getAllBoard(); */
-	int getOutS(int m_no); // 나가
+
 }

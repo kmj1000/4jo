@@ -98,25 +98,7 @@ public class MypageDAOImpl implements MypageDAO {
 	}
 
 
-@Override
-public int getOutD(int m_no) {
-	 
-		int result=0;
-		String sql = "DELETE FROM members WHERE nickname=? ";
-		
-		try(
-				Connection conn = DataBaseUtil.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				){
-				pstmt.setInt(1, m_no);
-				result=pstmt.executeUpdate();
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
+
 }
 
 
