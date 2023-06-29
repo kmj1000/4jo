@@ -12,10 +12,5 @@ public interface CommunityDAO {
 	int selectCountAllCommunity();
 //
 	List<CommunityVO> selectAllCommunityByPage(PageMaker pageMaker);
-	
-	int insertCommunity(CommunityVO vo);
-	int updateCommunity(CommunityVO vo);
-	int deleteCommunity(int c_no);
-
 
 }

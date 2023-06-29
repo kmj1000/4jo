@@ -224,7 +224,7 @@
   		console.log(data);
          $.ajax(
                  {
-                     url: "/project/api/bd"
+                     url: "/4jo/api/communitycontent"
                      ,async:true // 비동기 쓰레드,false : 동기식(응답 받을때까지 대기함)
                      ,contentType: 'application/x-www-form-urlencoded; charset=UTF-8' // 전송타입
                      ,type:"POST" //method
@@ -283,7 +283,7 @@
         </div>
         <div class="mb-3 mt-3 col p-3">
             <label for="title">작성자:</label>
-            <div class="form-control" id="nickname" name="nickname">${ requestScope.communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname }</div>
+            <div class="form-control" id="nickname" name="nickname">${ requestScope.communityVO.nickname == null ? sessionScope.SESS_EMAIL : requestScope.communityVO.nickname }</div>
         </div> 
     </div>
     <div class="mb-3 mt-3">
@@ -291,16 +291,19 @@
         <textarea class="form-control" rows="5" id="content" name="text" >${ communityVO.content }</textarea>
      	</div>
     	<div class="row">
-       	<button type="button" class="get col p-3 btn btn-outline-warning" onclick="history.back();">뒤로</button>
+       	<button type="button" class="get col p-3 btn btn-warning" onclick="history.back();">뒤로</button>
        	<div class="col p-3"></div>
-       	<button type="submit" class="register col p-3 btn btn-outline-warning">전송</button>
+       	<button type="submit" class="register col p-3 btn btn-warning">전송</button>
          	<div class="col p-3"></div>
-       	<button type="button"  class="modify col p-3 btn btn-outline-warning" onclick="adoptMethod('modify');">수정</button>
+       	<button type="button"  class="modify col p-3 btn btn-warning" onclick="adoptMethod('modify');">수정</button>
+       		<div class="col p-3"></div>
+	    <button type="button"  class="remove col p-3 btn btn-warning" onclick="adoptMethod('remove'); return goSubmit();">삭제</button>
+	    	<div class="col p-3"></div>
    			
     </div>
     	<input type="hidden" name="method" value="${param.method }">
         <input type="hidden" name="c_no" value="${param.c_no }">
-		<input type="hidden" name="id" value="${communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname  }">
+		<input type="hidden" name="id" value="${communityVO.nickname == null ? sessionScope.SESS_NICKNAME : requestScope.communityVO.nickname  }">
   </form>
 </div>
 
