@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.java.servlet.vo.MembersVO"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
-<%@ page import="com.java.servlet.dao.MembersDAO" %>    
+<%@ page import="com.java.servlet.dao.MypageDAO" %> 
+<%@ page import="com.java.servlet.dao.impl.MypageDAOImpl" %> 
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -22,12 +23,10 @@
 <script   src="${root}/bootstrap/js/scripts.js"></script>
 <script   src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="${root}/bootstrap/js/datatables-simple-demo.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.js" 
-    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" 
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" 
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
     crossorigin="anonymous"></script>
-
-
-
 <style>
  tr {
     text-align : center;
@@ -72,11 +71,16 @@
  <body class="sb-nav-fixed bgcolor" > 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-                <div class="input-group">
-                <%-- <c:if logintest = "${empty session}"> --%>
-                   <button type="button" class="btn" style="font-size: 14px;">로그아웃</button>                  
-            <%-- </c:if>    --%>
-               <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;" onclick=>마이페이지</button></a>            
+              <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <a href ="${root}/logout"><button type="button" class="btn" style="font-size: 14px;">로그아웃</button></a> 
+                    <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>                  
+         	<%} else{%>
+                <a href ="${root}/login"><button type="button" class="btn" style="font-size: 14px;">로그인</button></a>                 
+             
+            <%}  %>
                 </div>
             </form>     
             </nav>
@@ -89,9 +93,9 @@
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" aria-current="page" href="${root}/pet_notice"><b>공고</b></a> 
+             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/petnotice"><b>공고</b></a> 
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/shelter"><b>보호소</b></a>
-          <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/with_pet"><b>위드펫</b></a>
+          <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/withpet"><b>위드펫</b></a>
           <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/community"><b>커뮤니티</b></a>
          <a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/notice"><b>공지사항</b></a>
    
@@ -103,14 +107,16 @@
         String email = session.getAttribute("SESS_EMAIL").toString();
         
         // 세션에 저장된 아이디를 가져와서
-        // 그 아이디 해당하는 회원정보를 가져온다.
+        // 회원정보를 가져온다.
         MembersDAO dao = MembersDAO.getInstance();
         MemberBean memberBean = dao.getUserInfo(email);
-    %> --%>
-         <div class="container-fluid px-10 pt-5">
-            <h1 class="mt-1">마이페이지</h1>
+    %> --%> 
+
+   
+         <div class="container-fluid px-10 pt-5 ps-4">
+            <h1 class="mt-1"><b>마이페이지</b></h1>
             </div>
-            <ol class="breadcrumb mb-4">
+            <ol class="breadcrumb mb-4 pt-3">
 
             </ol>
 
@@ -118,56 +124,55 @@
                <div class="card-header">
                   <i class="fas fa-table me-1"></i> 개인정보조회
                </div>
+         
+           	<%	
+           		String id = (String)session.getAttribute("SESS_EMAIL"); 
+		        // 세션에 저장된 아이디를 가져와서
+		        // 그 아이디 해당하는 회원정보를 가져온다.
+		        MypageDAO dao = MypageDAOImpl.getInstance();
+		        MembersVO vo = dao.selectMypage(id);
+		    %>
+           	 
                <div class="card-body">
-
+				
                   <table id="datatablesSimple" >
-                     <c:forEach var="MembersVO" items="${requestScope.boardList}" varStatus="status">
-                        
+ 				
                         <tr>
-                           <td>회원번호</td>
-                           <td>${MembersVO.m_no}</td>
-                        </tr>
-                        
-                        
-                        <tr>
-                           <td>닉네임</td>
-                           <td>${MembersVO.nickname}</td>
-                        </tr>
-                        <tr>
-                        
+                           <td>닉네임</td>                        
+                            <td> <%=vo.getNickname() %> </td>      
+                        </tr>                    
+                      
+                        <tr>         
                            <td >비밀번호</td>
-                           <td>${MembersVO.pwd}
-                              <button type="button" class="modify col p-3 btn btn-warning"
-                                 onclick="location='notice.jsp'">변경</button>
-                              <div class="col p-3"></div> <!--   </div> -->
-                           </td>
-                        </tr>
+                            <td> <%=vo.getPwd() %> </td>
+                        </tr>                                         
+                       
                         <tr>
-                           <td>이메일</td>
-                           <td>${MembersVO.email}</td>
+                           <td>이메일</td>                 
+                         <td> <%=vo.getEmail() %> </td>
                         </tr>
+                       
                         <tr>
                            <td>이름</td>
-                           <td>${MembersVO.name}</td>
-                        </tr>
+                           <td> <%=vo.getName() %> </td>       
+                        </tr>                       
+                       
                         <tr>
                            <td>전화번호</td>
-                           <td>${MembersVO.phone}<button type="button" class="modify" 
-                              onclick="location='login.jsp'" >변경</button>
-                           </td>
+                           <td> <%=vo.getPhone() %> </td>    
                         </tr>
-                     </c:forEach>
-                  </table>
-
-                  <tr>
-                     <td colspan="2" align="center"><input type="submit"
-                        value="내가쓴글" onclick="location='login.jsp'" /> &nbsp; <input
-                        type="submit" value="보호소 즐겨찾기" onclick="location='login.jsp'" />
-                        &nbsp; <input type="submit" value="위드펫 즐겨찾기"
-                        onclick="location='login.jsp'" /></td>
+ 				
+					</table>
+				
+                
+ 					<tr>
+					<td colspan="2" align="center">
+                      <a href ="${root}/mypaper"><button type="button" class ="btn btn-warning" >내가쓴글</button></a>&nbsp; 
+                    <a href ="${root}/favorites"><button type="button" class ="btn btn-warning" >보호소 즐겨찾기</button></a> &nbsp; 
+                    <a href ="${root}/favoritew"><button type="button" class ="btn btn-warning" >위드펫 즐겨찾기</button></a>
+                   <!--   <button type="button" class="remove-favorites" onclick="removeFavorites();">회원탈퇴</button> -->
+					</tr>
                     
-                  </tr>
-                  
             </div>
          </div>
       </main>

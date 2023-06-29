@@ -9,38 +9,46 @@ import com.java.servlet.dao.MypageDAO;
 import com.java.servlet.dao.impl.MypageDAOImpl;
 import com.java.servlet.service.MypageService;
 import com.java.servlet.util.PageMaker;
-
-
+import com.java.servlet.vo.CommunityVO;
 import com.java.servlet.vo.MembersVO;
 
 public class MypageServiceImpl implements MypageService {
 
-	private static final MypageService instance = new MypageServiceImpl();
+	private static MypageService instance = new MypageServiceImpl();
 	private final MypageDAO dao = MypageDAOImpl.getInstance();
 	
 	private MypageServiceImpl() { }
 	
 	public static MypageService getInstance() {
+		
 		return instance;
 	}
 
 	@Override
-	public List<MembersVO> getAllBoard() {
-		return dao.selectAllBoard();
-	}
+	public MembersVO getMypage(String email) {
+		return dao.selectMypage(email);
 
-	@Override
-	public int modifyPwd(MembersVO vo) {
-		return dao.updatePwd(vo);
 	}
-
-	@Override
-	public int getOutS(int m_no) {
-		
-		return dao.getOutD(m_no);
-	}
-
 	
+	}
+//	@Override
+//	public int modifyPwd(MembersVO vo) {
+//		return dao.updatePwd(vo);
+//	}
+//
+//	@Override
+//	public MembersVO readMember(String email) {
+//		// TODO Auto-generated method stub
+//		return dao.selectMember(email);
+//	}
+//
+//	@Override
+//	public int removeId(String email) {
+//		// TODO Auto-generated method stub
+//		return dao.deleteId(email);
+//	}
+
+
 	
 //	public void execute(HttpServletRequest request, HttpServletResponse reponse) {
 //		String pwd=request.getParameter("pwd");
@@ -49,4 +57,3 @@ public class MypageServiceImpl implements MypageService {
 //		dao.updatePwd();
 //	}
 	
-}
