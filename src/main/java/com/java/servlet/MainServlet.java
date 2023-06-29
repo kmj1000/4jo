@@ -32,7 +32,7 @@ public class MainServlet extends HttpServlet {
 		
 		HttpSession session= request.getSession(false);
 	      boolean SESS_AUTH = false;
-	      System.out.println(session);
+//	      System.out.println(session);
 //	      if(session == null){
 //	         String msg = "You are Not allowed, Plz login!";
 //	         response.sendRedirect(request.getContextPath() 

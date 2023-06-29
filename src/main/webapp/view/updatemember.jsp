@@ -27,8 +27,18 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
     crossorigin="anonymous"></script>
+    
+    <script type = "text/javascript">
+    function cneck(){
+    	if(document.fr.pass.value == ""){
+    		alert("비밀번호를 입력하세요.");
+    		document.fr.pass.focus();
+    		return false;
+    	}
+    }
   
-<style>
+    </script>
+	<style>
 		.deleteMember{
 			color : darkgray;
 			text-align : right;
@@ -58,8 +68,8 @@
          .tab{
              padding-bottom : 0;
              padding-top : 0;
-             border-bottom : 1px solid #645326;
-             border-top : 1px solid #645326;
+            border-bottom : 1px solid #645326;
+            border-top : 1px solid #645326;
          }
          
          .img_main{
@@ -71,6 +81,10 @@
           .bgcolor {
          background-color: #f9f8f3;
           }
+          .upwd{
+          	color : darkgray;
+			text-align : center;
+          }
           
 </style>
 </head>
@@ -81,7 +95,7 @@
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
             <%  if( email != null) { %>
-                   <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="location.href='${root}/logout'" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
          	<%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
@@ -99,8 +113,8 @@
         </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/petnotice"><b>공고</b></a> 
-             <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/shelter"><b>보호소</b></a>
+           <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/petnotice"><b>공고</b></a> 
+           <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/shelter"><b>보호소</b></a>
           <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/withpet"><b>위드펫</b></a>
           <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/community"><b>커뮤니티</b></a>
          <a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/notice"><b>공지사항</b></a>
@@ -110,7 +124,7 @@
    
       <main>
          <div class="container-fluid px-10 pt-5 ps-4">
-            <h1 class="mt-1"><b>마이페이지</b></h1>
+            <h1 class="mt-1"><b>회원정보변경</b></h1>
             </div>
             <ol class="breadcrumb mb-4 pt-3">
 
@@ -118,30 +132,39 @@
 
             <div class="card mb-4">
                <div class="card-header">
-                  <i class="fas fa-table me-1"></i> 개인정보조회
+                  <i class="fas fa-table me-1"></i> 회원정보변경
                </div>
-         
+        
            	<%	
            		String id = (String)session.getAttribute("SESS_EMAIL"); 
 		        // 세션에 저장된 아이디를 가져와서
 		        // 그 아이디 해당하는 회원정보를 가져온다.
+		        
+		        if(id == null){
+           		 response.sendRedirect("login.jsp");
+		        
+		        }
+		        
 		        MypageDAO dao = MypageDAOImpl.getInstance();
 		        MembersVO vo = dao.selectMypage(id);
-		    %>
-           	 
+
+           	  %>
                <div class="card-body">
 				
                   <table id="datatablesSimple" >
  				
                         <tr>
                            <td>닉네임</td>                        
-                            <td> <%=vo.getNickname() %> </td>      
+                            <td> <%=vo.getNickname()%> </td>      
                         </tr>                    
-                      
-                        <tr>         
-                           <td >비밀번호</td>
-                            <td> <%=vo.getPwd() %> </td>
-                        </tr>                                         
+                       
+				        <tr>
+                           <td>비밀번호</td>
+                           <td><input type="text" id="upwd" value="*******" name="upwd">
+                           <button type="button" onclick="location">변경</button>
+                           </td>    
+                        </tr>
+                                                               
                        
                         <tr>
                            <td>이메일</td>                 
@@ -155,7 +178,9 @@
                        
                         <tr>
                            <td>전화번호</td>
-                           <td> <%=vo.getPhone() %> </td>    
+                           <td><input type="text" id="upwd" value="<%=vo.getPhone()%>" name="upwd">
+                           <button type="button" onclick="location">변경</button>
+                           </td>    
                         </tr>
  				
 					</table>
@@ -163,13 +188,10 @@
                 
  					
 					<div align="center">
-                     <button type="button" class ="btn btn-warning" onclick="location.href='${root}/mypaper'" >내가쓴글</button>&nbsp; 
-                     <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favorites'">보호소 즐겨찾기</button>&nbsp; 
-               		 <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favoritew'">위드펫 즐겨찾기</button>&nbsp;
-               		 <button type="button" class ="btn btn-warning" onclick="location.href='updatemember.jsp'">정보 수정</button>&nbsp;
-               		 
+                     <button type="button" class ="btn btn-warning"onclick="location.href='${root}/mypaper'" >이전</button>&nbsp; 
+                     <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favorites'">저장</button>&nbsp;      
                     </div>
-                    <a class ="deleteMember" onclick = "href.location='deletemember.jsp'" > 회원탈퇴 </a>
+          
             </div>
          </div>
       </main>
@@ -183,6 +205,7 @@
          </div>
       </footer>
    </div>
+   
 
 </body>
 </html>
