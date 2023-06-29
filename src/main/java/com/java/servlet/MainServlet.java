@@ -33,12 +33,14 @@ public class MainServlet extends HttpServlet {
 		HttpSession session= request.getSession(false);
 	      boolean SESS_AUTH = false;
 	      System.out.println(session);
-	      if(session == null){
-	         String msg = "You are Not allowed, Plz login!";
-	         response.sendRedirect(request.getContextPath() 
-	                           + "/login?msg="+msg);
-	         return;
-	      }
+//	      if(session == null){
+//	         String msg = "You are Not allowed, Plz login!";
+//	         response.sendRedirect(request.getContextPath() 
+//	                           + "/login?msg="+msg);
+//	         return;
+//	      } 
+	      RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/main.jsp");
+	         dispatcher.forward(request, response);
 	      
 	      try {
 	         SESS_AUTH = (boolean)session.getAttribute("SESS_AUTH");
@@ -50,11 +52,11 @@ public class MainServlet extends HttpServlet {
 	         request.setAttribute("SESS_AUTH", false);
  
 	
-	         RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/main.jsp");
-	         dispatcher.forward(request, response);
+//	         RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/main.jsp");
+//	         dispatcher.forward(request, response);
 	      }else {
-	         String msg = "You are Not allowed, Plz login!";
-	         response.sendRedirect(request.getContextPath() + "/login?msg="+msg);
+//	         String msg = "You are Not allowed, Plz login!";
+//	         response.sendRedirect(request.getContextPath() + "/login?msg="+msg);
 	      }
 	      
 	   }

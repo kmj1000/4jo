@@ -198,14 +198,13 @@
                          </c:forEach>
                    </table>
 
-         
-                 
 
                   <tr>
-                     <td colspan="2" align="center"><input type="submit" value="내가쓴글" onclick="location='login.jsp'" /> &nbsp; <input
-                        type="submit" value="보호소 즐겨찾기" onclick="location='login.jsp'" />  &nbsp; 
-                        <input type="submit" value="위드펫 즐겨찾기" onclick="location='login.jsp'" /></td>
-                     <button type="button" class="remove-favorites" onclick="removeFavorites();">회원탈퇴</button>
+                     <td colspan="2" align="center">
+                      <a href ="${root}/mypaper"><button type="button" class ="btn btn-warning" >내가쓴글</button></a>&nbsp; 
+                    <a href ="${root}/favorites"><button type="button" class ="btn btn-warning" >보호소 즐겨찾기</button></a> &nbsp; 
+                    <a href ="${root}/favoritew"><button type="button" class ="btn btn-warning" >위드펫 즐겨찾기</button></a>
+                   <!--   <button type="button" class="remove-favorites" onclick="removeFavorites();">회원탈퇴</button> -->
                   </tr>
             </div>
          </div>
