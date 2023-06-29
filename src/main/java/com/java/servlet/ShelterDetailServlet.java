@@ -39,8 +39,8 @@ public class ShelterDetailServlet extends HttpServlet {
     */
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-      HttpSession session= request.getSession(true);
-      boolean SESS_AUTH = true;
+      HttpSession session= request.getSession(false);
+      boolean SESS_AUTH = false;
       System.out.println(session);
       if(session == null){
          String msg = "You are Not allowed, Plz login!";
@@ -56,7 +56,7 @@ public class ShelterDetailServlet extends HttpServlet {
       if( SESS_AUTH ) {
          
          request.setCharacterEncoding("utf-8");
-         request.setAttribute("SESS_AUTH", true);
+         request.setAttribute("SESS_AUTH", false);
          
          // pagesetting
      
