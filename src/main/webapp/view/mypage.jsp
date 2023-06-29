@@ -113,10 +113,10 @@
     %> --%> 
 
    
-         <div class="container-fluid px-10 pt-5">
-            <h1 class="mt-1">마이페이지</h1>
+         <div class="container-fluid px-10 pt-5 ps-4">
+            <h1 class="mt-1"><b>마이페이지</b></h1>
             </div>
-            <ol class="breadcrumb mb-4">
+            <ol class="breadcrumb mb-4 pt-3">
 
             </ol>
 
@@ -161,8 +161,7 @@
                            <td>전화번호</td>
                            <td> <%=vo.getPhone() %> </td>    
                         </tr>
- 					
-                        
+ 				
 					</table>
 				
                 

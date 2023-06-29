@@ -59,9 +59,9 @@ public class MypageServlet extends HttpServlet {
          
          System.out.println("메롱"+email);           
          
-		 MembersVO memberList =service.getMypage(email);
-         System.out.println(memberList); 
-         request.setAttribute("memberList", memberList);
+//		 MembersVO memberList =service.getMypage(email);
+//         System.out.println(memberList); 
+//         request.setAttribute("memberList", memberList);
          
          RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/mypage.jsp");
          dispatcher.forward(request, response);

@@ -12,19 +12,17 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class logoutServlet
  */
-		@WebServlet("/Logout")
+		@WebServlet("/logout")
 		public class LogoutServlet extends HttpServlet {
 			private static final long serialVersionUID = 1L;
 			protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				System.out.println("[LogoutServiceCon]");
 				//로그아웃 : 로그인한 정보 삭제 
 				HttpSession session = request.getSession();
-//				session.invalidate();  페이지에사용되는 모든 세션 삭제 => 세션삭제
-				session.removeAttribute("info");
-				
+
+				session.invalidate();	
 				System.out.println("로그아웃 성공");
-				response.sendRedirect("main.jsp");
-		
+				response.sendRedirect("main");	
 }
 
 
