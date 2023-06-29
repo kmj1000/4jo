@@ -17,7 +17,7 @@ import com.java.servlet.vo.CommunityVO;
 
 
 /**
- * Servlet implementation class Board
+ * Servlet implementation class Board.
  */
 @WebServlet("/communitycontent")
 public class CommunityContentServlet extends HttpServlet {

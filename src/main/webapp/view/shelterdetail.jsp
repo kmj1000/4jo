@@ -60,6 +60,9 @@
 				    .bgcolor{
 				   background-color: #f9f8f3;
 				    }
+
+
+
 		</style>
 		<script>
 		function sendFavorites() {
@@ -129,9 +132,16 @@
     <body class="sb-nav-fixed bgcolor"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-                <div class="input-group">
-                	<button type="button" class="btn" onclick="location='login.jsp'" style="font-size: 14px;">로그아웃</button>					
-					<button type="button" class="btn" onclick="location='mypage.jsp'" style="font-size: 14px;">마이페이지</button>
+              <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <button type="button" class="btn" onclick="location.href='${root}/logout'" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
+            <%} else{%>
+                <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
+             
+            <%}  %>
                 </div>
             </form>     
             </nav>
@@ -162,6 +172,8 @@
                                 <i class="fas fa-table me-1"></i>
                               
                             </div>
+                            
+                            
                             <div class="card-body">
                            		
                            		 <table id="datatablesSimple">
@@ -205,7 +217,10 @@
 	                                            <th>주말분양종료시간 </th>
 	                                            <th>휴무일 </th>
 	                                        </tr>
+	                                        
 	                                    </tfoot>
+	                                    
+	                                    
 	                                    <tbody>
 	                                    	<c:forEach var="ShelterVO" items="${ requestScope.boardList }" varStatus="status">
 											<tr>
@@ -242,6 +257,8 @@
 	                            
 	                              
 	                            </div>
+	                            
+	                            
 	                            <%@ include file="/view/import/page-shelterdetail.jsp" %>
 	                          
                         </div>
