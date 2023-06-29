@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>로그아웃</title>
 <script>
-function logout() {
+<%-- function logout() {
     if (confirm("로그아웃 하시겠습니까?")) {
         location.href = "${root}/logoutProcess";
     }
@@ -23,7 +23,7 @@ function logout() {
 	    		alert(msg);
 	    		console.log("완료");
 	    	}
-    	}
+    	} --%>
 </script>
 </head>
 <body>

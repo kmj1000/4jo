@@ -90,6 +90,13 @@
                 </div>
             </form>     
             </nav>
+            <script>
+               function logout() {
+             if (confirm("로그아웃 하시겠습니까?")) {
+             location.href = "${root}/logout";
+                }
+         }
+            </script>
             
          <!-- 로고 -->              
         <nav class="main bg-white" >
