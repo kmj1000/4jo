@@ -8,8 +8,6 @@ public class MembersVO {
 	private String name;
 	private int phone;
 
-
-
 	public String getNickname() {
 		return nickname;
 	}
@@ -47,7 +45,7 @@ public class MembersVO {
 	@Override
 	public String toString() {
 		return "MembersVO ["
-				+ ",nickname=" + nickname 
+				+ "nickname=" + nickname 
 				+ ", email=" + email 
 				+ ", pwd=" + pwd 
 				+ ", name=" + name 
