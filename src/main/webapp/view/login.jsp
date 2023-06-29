@@ -75,7 +75,7 @@
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div> -->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="${pageContext.servletContext.contextPath}/view/join.jsp">회원가입</a> 
+                                                <a class="small" href="${pageContext.servletContext.contextPath}/join">회원가입</a> 
                                                 <%-- <a class="small" href="${pageContext.servletContext.contextPath}/view/findEmail.jsp">이메일 찾기</a> --%>
                                                 
                                                 <input class="btn btn-primary" type="submit" value="로그인" onclick="return verifyField();">
@@ -89,8 +89,8 @@
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <div class="small">
-                                        <a href="${pageContext.servletContext.contextPath}/view/findEmail.jsp">이메일 찾기</a>
-                                        <a href="${pageContext.servletContext.contextPath}/view/findPwd.jsp">비밀번호 찾기</a>
+                                        <a href="${pageContext.servletContext.contextPath}/findEmail">이메일 찾기</a>
+                                        <a href="${pageContext.servletContext.contextPath}/findPwd">비밀번호 찾기</a>
                                         </div>
                                         
                                         <%-- <div class="small"><a href="${pageContext.servletContext.contextPath}/view/join.jsp">회원가입 하러 가기</a></div> --%>
