@@ -15,8 +15,10 @@ import javax.servlet.http.HttpSession;
 
 import com.java.servlet.service.CommunityService;
 import com.java.servlet.service.MypageService;
+import com.java.servlet.service.MypaperService;
 import com.java.servlet.service.impl.CommunityServiceImpl;
 import com.java.servlet.service.impl.MypageServiceImpl;
+import com.java.servlet.service.impl.MypaperServiceImpl;
 import com.java.servlet.util.Criteria;
 import com.java.servlet.util.PageMaker;
 import com.java.servlet.vo.CommunityVO;
@@ -28,7 +30,7 @@ import com.java.servlet.vo.MembersVO;
 @WebServlet("/mypaper")
 public class MypaperServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
-   private final CommunityService service = CommunityServiceImpl.getInstance();
+   private final MypaperService service = MypaperServiceImpl.getInstance();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -64,9 +66,8 @@ public class MypaperServlet extends HttpServlet {
          request.setAttribute("SESS_AUTH", true);
 
          
-         // allboard 가져와야 함.
-       
-         List<CommunityVO> communityMyList =service.getMyCommunity();//getAllBoardByPage
+         // allboard 가져와야 함.    
+         List<CommunityVO> communityMyList =service.getMypaper();//getAllBoardByPage
          System.out.println(communityMyList);
          request.setAttribute("communityMyList", communityMyList);
          

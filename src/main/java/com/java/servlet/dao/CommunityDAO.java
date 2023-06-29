@@ -13,7 +13,9 @@ public interface CommunityDAO {
 //
 	List<CommunityVO> selectAllCommunityByPage(PageMaker pageMaker);
 	
-	List<CommunityVO> selectMyCommunity(String nickname);
-	List<CommunityVO> selectMyCommunity();
+	int insertCommunity(CommunityVO vo);
+	int updateCommunity(CommunityVO vo);
+	int deleteCommunity(int c_no);
+
 
 }
