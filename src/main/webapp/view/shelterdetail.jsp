@@ -60,6 +60,9 @@
 				    .bgcolor{
 				   background-color: #f9f8f3;
 				    }
+
+
+
 		</style>
 		<script>
 		function sendFavorites() {
@@ -162,6 +165,8 @@
                                 <i class="fas fa-table me-1"></i>
                               
                             </div>
+                            
+                            
                             <div class="card-body">
                            		
                            		 <table id="datatablesSimple">
@@ -205,7 +210,10 @@
 	                                            <th>주말분양종료시간 </th>
 	                                            <th>휴무일 </th>
 	                                        </tr>
+	                                        
 	                                    </tfoot>
+	                                    
+	                                    
 	                                    <tbody>
 	                                    	<c:forEach var="ShelterVO" items="${ requestScope.boardList }" varStatus="status">
 											<tr>
@@ -242,6 +250,8 @@
 	                            
 	                              
 	                            </div>
+	                            
+	                            
 	                            <%@ include file="/view/import/page-shelterdetail.jsp" %>
 	                          
                         </div>

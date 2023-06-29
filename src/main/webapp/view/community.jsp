@@ -130,7 +130,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="rihjtbtn">
+                            <div class="rightbtn">
                              	<a class="btn btn-warning" type="button" href="${pageContext.servletContext.contextPath}/communitycontent">글쓰기</a>
                              </div>
                             <%@ include file="/view/import/page-community.jsp" %>
