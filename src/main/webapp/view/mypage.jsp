@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.java.servlet.vo.MembersVO"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
-<%@ page import="com.java.servlet.dao.MembersDAO" %> 
+<%@ page import="com.java.servlet.dao.MypageDAO" %> 
+<%@ page import="com.java.servlet.dao.impl.MypageDAOImpl" %> 
 
 
 <!DOCTYPE html>
@@ -23,43 +24,9 @@
 <script   src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="${root}/bootstrap/js/datatables-simple-demo.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.7.0.js" 
-    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script>   
- 
-  function removeFavorites() {
-     var favorites = [];
-     $("input[name='favorite']:checked").each(function() {
-       favorites.push($(this).val());
-     });
-
-     $.ajax({
-       url: "/4jo/mypage",
-       type: "POST",
-       data: {
-         shelter_no: favorites.join(","),
-         method: "remove"
-       },
-       dataType: "json",
-       success: function(data) {
-         if (data.result === 1) {
-           var msg = favorites.length + "건 삭제되었습니다.";
-           alert(msg);
-           
-         } else {
-           alert("처리에 실패했습니다. 다시 시도해주세요.");
-         }
-       },
-       error: function(jqXHR, textStatus, errorThrown) {
-         console.log(jqXHR);
-         console.log(textStatus);
-         console.log(errorThrown);
-         alert("오류가 발생했습니다. 다시 시도해주세요.");
-       }
-     });
-   }
-  </script>
-
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" 
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
+    crossorigin="anonymous"></script>
 <style>
  tr {
     text-align : center;
@@ -104,11 +71,16 @@
  <body class="sb-nav-fixed bgcolor" > 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-                <div class="input-group">
-                <%-- <c:if logintest = "${empty session}"> --%>
-                   <a href ="${root}/logout"><button type="button" class="btn" style="font-size: 14px;">로그아웃</button></a>                 
-            <%-- </c:if>    --%>
-               <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>            
+              <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <a href ="${root}/logout"><button type="button" class="btn" style="font-size: 14px;">로그아웃</button></a> 
+                    <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>                  
+         	<%} else{%>
+                <a href ="${root}/login"><button type="button" class="btn" style="font-size: 14px;">로그인</button></a>                 
+             
+            <%}  %>
                 </div>
             </form>     
             </nav>
@@ -152,60 +124,56 @@
                <div class="card-header">
                   <i class="fas fa-table me-1"></i> 개인정보조회
                </div>
+         
+           	<%	
+           		String id = (String)session.getAttribute("SESS_EMAIL"); 
+		        // 세션에 저장된 아이디를 가져와서
+		        // 그 아이디 해당하는 회원정보를 가져온다.
+		        MypageDAO dao = MypageDAOImpl.getInstance();
+		        MembersVO vo = dao.selectMypage(id);
+		    %>
+           	 
                <div class="card-body">
-
-            
-    		<table id="datatablesSimple" >
-				 
-				   <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">
+				
+                  <table id="datatablesSimple" >
+ 				
                         <tr>
-                           <td>닉네임</td>
-                           
-                           <td>${MembersVO.nickname}</td>
-                        </tr>
-                     </c:forEach>   
-                     
+                           <td>닉네임</td>                        
+                            <td> <%=vo.getNickname() %> </td>      
+                        </tr>                    
                       
-                    <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">     
                         <tr>         
                            <td >비밀번호</td>
-                           <td>${MembersVO.pwd}</td>
-                        </tr>                   
-                      </c:forEach>  
-                      
+                            <td> <%=vo.getPwd() %> </td>
+                        </tr>                                         
                        
-                     <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">    
                         <tr>
                            <td>이메일</td>                 
-                          <td>${MembersVO.email}</td>
+                         <td> <%=vo.getEmail() %> </td>
                         </tr>
-                       </c:forEach>  
                        
-                       
-                     <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">    
                         <tr>
                            <td>이름</td>
-                           <td>${MembersVO.name}</td>       
-                        </tr>
-                       </c:forEach>  
+                           <td> <%=vo.getName() %> </td>       
+                        </tr>                       
                        
-                       
-                      <c:forEach var="MembersVO" items="${requestScope.memberList}" varStatus="status">   
                         <tr>
                            <td>전화번호</td>
-                           <td>${MembersVO.phone}</td>    
+                           <td> <%=vo.getPhone() %> </td>    
                         </tr>
-                         </c:forEach>
-                   </table>
-
-
-                  <tr>
-                     <td colspan="2" align="center">
+ 					
+                        
+					</table>
+				
+                
+ 					<tr>
+					<td colspan="2" align="center">
                       <a href ="${root}/mypaper"><button type="button" class ="btn btn-warning" >내가쓴글</button></a>&nbsp; 
                     <a href ="${root}/favorites"><button type="button" class ="btn btn-warning" >보호소 즐겨찾기</button></a> &nbsp; 
                     <a href ="${root}/favoritew"><button type="button" class ="btn btn-warning" >위드펫 즐겨찾기</button></a>
                    <!--   <button type="button" class="remove-favorites" onclick="removeFavorites();">회원탈퇴</button> -->
-                  </tr>
+					</tr>
+                    
             </div>
          </div>
       </main>

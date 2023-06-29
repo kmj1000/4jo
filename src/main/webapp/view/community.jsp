@@ -57,6 +57,16 @@
 				    .bgcolor{
 				   background-color: #f9f8f3;
 				    }
+			 	    .btn{
+				     width: 100px;
+				     height: 40px;
+				     float: right; 
+				     margin-right:20px;
+				     margin-bottom:20px;
+				    } 
+			
+
+			
 		</style>
 </head>
 <body class="sb-nav-fixed bgcolor"> 
@@ -116,9 +126,13 @@
                                             <td>${communityVO.nickname}</td>
                                         </tr>
                                         </C:forEach>
+                                        
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="rihjtbtn">
+                             	<a class="btn btn-warning" type="button" href="community-content.jsp">글쓰기</a>
+                             </div>
                             <%@ include file="/view/import/page-community.jsp" %>
                            <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 
                         	<C:import url="/view/import/page-nation.jsp"></C:import> --%>

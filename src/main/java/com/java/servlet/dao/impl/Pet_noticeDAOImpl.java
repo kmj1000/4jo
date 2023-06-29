@@ -29,10 +29,74 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 	}
 
 	@Override
+	public List<Pet_noticeVO> selectPet_notice(int pet_notice_no) {
+		String sql="SELECT pet_notice_no\r\n"
+				+ "              ,happenDt\r\n"
+				+ "               ,happenPlace\r\n"
+				+ "               ,kindCd\r\n"
+				+ "               ,colorCd\r\n"
+				+ "           		,age\r\n"
+				+ "           		,weight\r\n"
+				+ "           		,noticeNo \r\n"
+				+ "           		,noticeSdt \r\n"
+				+ "           		,noticeEdt  \r\n"
+				+ "           		,popfile  \r\n"
+				+ "           		,processState  \r\n"
+				+ "           		,sexCd\r\n"
+				+ "           		,neuterYn\r\n"
+				+ "           		,specialMark\r\n"
+				+ "           		,careNm\r\n"
+				+ "           		,careTel\r\n"
+				+ "           		,careAddr\r\n"
+				+ "               FROM pet_notice WHERE pet_notice_no=?  \r\n"
+				;
+		List<Pet_noticeVO> list=null;
+		try(
+				Connection conn = DataBaseUtil.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+				pstmt.setInt(1, pet_notice_no);
+				ResultSet rs = pstmt.executeQuery();
+				list =new ArrayList<>();
+				while(rs.next()) {
+					Pet_noticeVO vo = new Pet_noticeVO();
+					vo.setPet_notice_no(rs.getInt("pet_notice_no"));
+					vo.setHappenDt(rs.getString("happenDt"));
+					vo.setHappenPlace(rs.getString("happenPlace"));
+					vo.setKindCd(rs.getString("kindCd"));
+					vo.setColorCd(rs.getString("colorCd"));
+					vo.setAge(rs.getString("age"));
+					vo.setWeight(rs.getString("weight"));
+					vo.setNoticeNo(rs.getString("noticeNo"));
+					vo.setNoticeSdt(rs.getString("noticeSdt"));
+					vo.setNoticeEdt(rs.getString("noticeEdt"));
+					vo.setPopfile(rs.getString("popfile"));
+					vo.setProcessState(rs.getString("processState"));
+					vo.setSexCd(rs.getString("sexCd"));
+					vo.setNeuterYn(rs.getString("neuterYn"));
+					vo.setSpecialMark(rs.getString("specialMark"));
+					vo.setCareNm(rs.getString("careNm"));
+					vo.setCareTel(rs.getString("careTel"));
+					vo.setCareAddr(rs.getString("careAddr"));
+					
+					list.add(vo);
+					
+				}
+			rs.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
+	
+	@Override
 	public List<Pet_noticeVO> selectAllBoard() {
 		
 		String sql = "SELECT      \r\n"
-				+ "              happenDt\r\n"
+				+ "              pet_notice_no\r\n"
+				+ "              ,happenDt\r\n"
 				+ "               ,happenPlace\r\n"
 				+ "               ,kindCd\r\n"
 				+ "               ,colorCd\r\n"
@@ -65,7 +129,7 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 				
 				while( rs.next() ) {
 					Pet_noticeVO vo = new Pet_noticeVO();
-					
+					vo.setPet_notice_no(rs.getInt("pet_notice_no"));
 					vo.setHappenDt(rs.getString("happenDt"));
 					vo.setHappenPlace(rs.getString("happenPlace"));
 					vo.setKindCd(rs.getString("kindCd"));
@@ -123,6 +187,7 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 				+ "				   SELECT\r\n"
 				+ "				  ROWNUM as rn\r\n"
 				+ "				  \r\n"
+				+ "              ,pet_notice_no\r\n"
 				+ "              ,happenDt\r\n"
 				+ "               ,happenPlace\r\n"
 				+ "               ,kindCd\r\n"
@@ -163,7 +228,7 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 				
 				while( rs.next() ) {
 					Pet_noticeVO vo = new Pet_noticeVO();
-				
+					vo.setPet_notice_no(rs.getInt("pet_notice_no"));
 					vo.setHappenDt(rs.getString("happenDt"));
 					vo.setHappenPlace(rs.getString("happenPlace"));
 					vo.setKindCd(rs.getString("kindCd"));
@@ -193,6 +258,7 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 		}
 		return list;
 	}
+
 	
 	
 }

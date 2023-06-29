@@ -150,7 +150,7 @@ public class With_petVO {
 		public String toString() {
 			return "With_petVO["+
 					"with_pet_no="+with_pet_no+"\n"+
-					"building"+building+"\n"+
+					"building="+building+"\n"+
 					"category3="+category3+"\n"+
 					"road="+road+"\n"+
 					"tel="+tel+"\n"+

@@ -55,7 +55,12 @@ private ShelterService service = ShelterServiceImpl.getInstance();
 	}
 	
 	//---------------------------------------------------------------
-	
+	void testGetShelter(){
+		int shelter_no =1;
+		
+		assertNotEquals(null, service.getShelter(shelter_no));
+		System.out.println(service.getShelter(shelter_no));
+	}
 	
 	
 }

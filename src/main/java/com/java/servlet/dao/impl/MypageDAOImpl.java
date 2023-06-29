@@ -1,6 +1,7 @@
 package com.java.servlet.dao.impl;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -18,57 +19,82 @@ import com.java.servlet.vo.MembersVO;
 
 public class MypageDAOImpl implements MypageDAO {
    
-   private static final MypageDAO instance = new MypageDAOImpl();
+   private static MypageDAO instance = new MypageDAOImpl();
    
    private MypageDAOImpl() {
    }
    
    public static MypageDAO getInstance() {
+	   if(instance==null)
+           instance=new MypageDAOImpl();
       return instance;
    }
    
+   
    @Override
-	public MembersVO selectMypage(String email) {
-		
-	   String sql = "SELECT m_no\r\n"
+   public MembersVO selectMypage(String email) {
+      
+	   Connection conn = null;
+       PreparedStatement pstmt = null;
+       ResultSet rs = null;
+       MembersVO vo = null;
+       
+	   try {  
+		   String sql = "SELECT email\r\n"
                + "        ,pwd\r\n"
                + "        ,phone\r\n"
                + "        ,name\r\n"      
                + "        ,nickname\r\n"
-               + "    FROM members where email = ?"
+               + "    FROM members WHERE email = ?"
                ;
-	   
-	   MembersVO vo = null;
-		      
-	   try {
-           Connection conn = DataBaseUtil.getConnection();// DBCP2Util
-           PreparedStatement pstmt = conn.prepareStatement(sql);
-           
-           
-			pstmt.setString(1, email);
-        
-           ResultSet rs = pstmt.executeQuery();
-		            
-		            if( rs.next() ) {
-		            	vo = new MembersVO();
-		            	 vo.setM_no(rs.getInt("m_no"));
-		            	 vo.setEmail(rs.getString("email"));
-		            	 vo.setName(rs.getString("name"));
-		                 vo.setPwd(rs.getString("pwd"));
-		                 vo.setPhone(rs.getInt("phone"));
-		                 vo.setNickname(rs.getString("nickname"));
-		                 
-	
-		            }
-		            rs.close();
-		            
-		      }catch(Exception e) {
-		         e.printStackTrace();
-		      }
-		      
-		      return vo;
-		
-	}
+
+            conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+            pstmt = conn.prepareStatement(sql.toString());   
+            pstmt.setString(1, email);
+            rs = pstmt.executeQuery();
+ 
+            
+            if( rs.next() ) {
+            	 vo = new MembersVO();
+            	 vo.setName(rs.getString("name"));
+                 vo.setEmail(rs.getString("email"));
+                 vo.setPwd(rs.getString("pwd"));
+                 vo.setPhone(rs.getInt("phone"));
+                 vo.setNickname(rs.getString("nickname"));         
+
+            }
+                rs.close();
+      }catch(Exception e) {
+         e.printStackTrace();
+      }
+  
+      return vo;
+   }
+}
+
+//   @Override
+//	public int updatePwd(MembersVO vo) {
+//		int result = 0;
+//		String sql = "UPDATE members\r\n"
+//				+ "    SET pwd = ?\r\n"
+//				+ "    WHERE email = ?"
+//				;
+//		try(
+//				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+//				PreparedStatement ps = conn.prepareStatement(sql);
+//				){
+//				
+//				ps.setString(1, vo.getPwd());
+//				ps.setString(2, vo.getEmail());
+//				System.out.println(result);
+//				result = ps.executeUpdate();
+//				
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		return result;
+//		
+//	}
 //원본
 //   @Override
 //   public MembersVO selectAllBoard(String email) {
@@ -142,6 +168,6 @@ public class MypageDAOImpl implements MypageDAO {
 
 
 
-   }
-   
+
+
 

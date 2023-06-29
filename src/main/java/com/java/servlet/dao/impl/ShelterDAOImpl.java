@@ -4,6 +4,8 @@ import java.sql.Connection;
 
 
 
+
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,11 +32,73 @@ public class ShelterDAOImpl implements ShelterDAO {
 	}
 
 	@Override
+	public List<ShelterVO> selectShelter(int shelter_no) {
+		
+			String sql ="SELECT      \r\n"
+					+ "              shelter_no\r\n"
+					+ "              ,careNm\r\n"
+					+ "               ,divisionNm\r\n"
+					+ "               ,saveTrgtAnimal\r\n"
+					+ "               ,careAddr\r\n"
+					+ "           		,weekOprStime\r\n"
+					+ "           		,weekOprEtime\r\n"
+					+ "           		,weekCellStime \r\n"
+					+ "           		,weekCellEtime \r\n"
+					+ "           		,weekendOprStime  \r\n"
+					+ "           		,weekendOprEtime  \r\n"
+					+ "           		,weekendCellStime  \r\n"
+					+ "           		,weekendCellEtime\r\n"
+					+ "           		,closeDay\r\n"
+					+ "           		,careTel\r\n"
+					+ "               FROM shelter where shelter_no=?\r\n";
+			List<ShelterVO> list = null;
+			
+			try(
+					Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+					PreparedStatement pstmt = conn.prepareStatement(sql);
+					){
+					pstmt.setInt(1, shelter_no); 
+					list = new ArrayList<>();
+					ResultSet rs = pstmt.executeQuery();
+					
+					while( rs.next() ) {
+						ShelterVO vo = new ShelterVO();
+						vo.setShelter_no(rs.getInt("shelter_no"));
+						vo.setCareNm(rs.getString("careNm"));
+						vo.setDivisionNm(rs.getString("divisionNm"));
+						vo.setSaveTrgtAnimal(rs.getString("saveTrgtAnimal"));
+						vo.setCareAddr(rs.getString("careAddr"));
+						vo.setWeekOprStime(rs.getString("weekOprStime"));
+						vo.setWeekOprEtime(rs.getString("weekOprEtime"));
+						vo.setWeekCellStime(rs.getString("weekCellStime"));
+						vo.setWeekCellEtime(rs.getString("weekCellEtime"));
+						vo.setWeekendOprEtime(rs.getString("weekendOprStime"));
+						vo.setWeekendOprEtime(rs.getString("weekendOprEtime"));
+						vo.setWeekendCellStime(rs.getString("weekendCellStime"));
+						vo.setWeekendCellEtime(rs.getString("weekendCellEtime"));
+						vo.setCloseDay(rs.getString("closeDay"));
+						vo.setCareTel(rs.getString("careTel"));
+						
+						list.add(vo);
+					}
+					rs.close();
+					
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			return list;
+		}
+	
+	
+	
+	
+	@Override
 	public List<ShelterVO> selectAllBoard() {
 		
 		String sql = "SELECT      \r\n"
 				+ "              shelter_no\r\n"
-				+ "              careNm\r\n"
+				+ "              ,careNm\r\n"
 				+ "               ,divisionNm\r\n"
 				+ "               ,saveTrgtAnimal\r\n"
 				+ "               ,careAddr\r\n"
@@ -48,7 +112,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 				+ "           		,weekendCellEtime\r\n"
 				+ "           		,closeDay\r\n"
 				+ "           		,careTel\r\n"
-				+ "               FROM shelter ORDER BY shelter_no ASC \r\n"
+				+ "               FROM shelter\r\n"
 			
                ;
 				
@@ -188,6 +252,8 @@ public class ShelterDAOImpl implements ShelterDAO {
 		}
 		return list;
 	}
+
+	
 	
 	
 }

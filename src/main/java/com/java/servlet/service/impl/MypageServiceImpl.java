@@ -14,21 +14,23 @@ import com.java.servlet.vo.MembersVO;
 
 public class MypageServiceImpl implements MypageService {
 
-	private static final MypageService instance = new MypageServiceImpl();
+	private static MypageService instance = new MypageServiceImpl();
 	private final MypageDAO dao = MypageDAOImpl.getInstance();
 	
 	private MypageServiceImpl() { }
 	
 	public static MypageService getInstance() {
+		
 		return instance;
 	}
 
 	@Override
-	public MembersVO selectMypage(String email){
+	public MembersVO getMypage(String email) {
 		return dao.selectMypage(email);
+
 	}
-
-
+	
+	}
 //	@Override
 //	public int modifyPwd(MembersVO vo) {
 //		return dao.updatePwd(vo);
@@ -55,4 +57,3 @@ public class MypageServiceImpl implements MypageService {
 //		dao.updatePwd();
 //	}
 	
-}

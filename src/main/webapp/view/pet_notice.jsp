@@ -125,9 +125,7 @@
 	                                    </tfoot>
 	                                    <tbody>
 	                                    	<c:forEach var="Pet_noticeVO" items="${ requestScope.boardList }" varStatus="status">
-											<a href ="" >
-											<tr onclick="location.href='${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}'" style="cursor:pointer" >
-												<!-- pageScope에 vo가 생성되었다.  -->
+											
 											
 												<td >
 												<a href ="${pageContext.servletContext.contextPath}/petnoticedetail?method=get&pet_notice_no=${Pet_noticeVO.pet_notice_no}" >

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import com.java.servlet.dao.With_petApiDAO;
 import com.java.servlet.dao.impl.With_petApiDAOImpl;
 import com.java.servlet.vo.Favorite_W_VO;
+import com.java.servlet.vo.With_petVO;
 
 class With_petApiTestSimulator {
 
@@ -17,10 +18,10 @@ class With_petApiTestSimulator {
 	Date favoritew_reg_date = new Date(System.currentTimeMillis());
 	@Test
 	void testInsertWith_pet() {
-		Favorite_W_VO vo = new Favorite_W_VO();
-		
-		vo.setNickname("bb");
-		vo.setFavoritew_reg_date(favoritew_reg_date);
+		Favorite_W_VO vo2 = new Favorite_W_VO();
+		With_petVO vo = new With_petVO();
+		vo2.setNickname("bb");
+		vo2.setFavoritew_reg_date(favoritew_reg_date);
 		vo.setWith_pet_no(2);
 		vo.setBuilding("bb");
 		vo.setRoad("bb");

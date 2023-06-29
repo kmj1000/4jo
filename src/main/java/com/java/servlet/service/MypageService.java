@@ -6,15 +6,9 @@ import com.java.servlet.vo.MembersVO;
 
 public interface MypageService {
 
-//	int modifyPwd(MembersVO vo);
+
+	MembersVO getMypage(String email);
 
 
-	MembersVO selectMypage(String email);
-
-//MembersVO selectAllBoard(String email);
-//
-//	int removeId(String email);//탈퇴 로그아웃
-
-//MembersVO selectMypage(int m_no);
 
 }
