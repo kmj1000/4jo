@@ -19,13 +19,14 @@ import com.java.servlet.vo.MembersVO;
 
 public class MypageDAOImpl implements MypageDAO {
    
-   private static final MypageDAO instance = new MypageDAOImpl();
+   private static MypageDAO instance = new MypageDAOImpl();
    
    private MypageDAOImpl() {
    }
    
    public static MypageDAO getInstance() {
-	  
+	   if(instance==null)
+           instance=new MypageDAOImpl();
       return instance;
    }
    
@@ -69,11 +70,6 @@ public class MypageDAOImpl implements MypageDAO {
   
       return vo;
    }
-
-
- 
-
-
 }
 
 //   @Override

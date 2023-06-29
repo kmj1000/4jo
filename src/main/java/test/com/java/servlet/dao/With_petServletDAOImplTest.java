@@ -11,10 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import com.java.servlet.dao.With_petDAO;
 import com.java.servlet.dao.impl.With_petDAOImpl;
-import com.java.servlet.util.Criteria;
-import com.java.servlet.util.PageMaker;
-
-
 import com.java.servlet.vo.With_petVO;
 
 class With_petServletDAOImplTest {
@@ -23,19 +19,19 @@ class With_petServletDAOImplTest {
 	
 	@Test@Ignore
 	void testSelectWithpet() {
-		int with_pet_no=325;
+		int with_pet_no=1;
 		assertNotEquals(null, dao.selectWith_pet(with_pet_no));
 		System.out.println(dao.selectWith_pet(with_pet_no));
 	}
 	
-//	@Test @Ignore
-//	void testSelectsAllBoard() {
-//		List<With_petVO> list = dao.selectAllBoard();
-//		
-//		assertNotEquals(0, list);
-//		
-//		System.out.println(list);
-//	}
+	@Test @Ignore
+	void testSelectsAllBoard() {
+		List<With_petVO> list = dao.selectAllBoard();
+		
+		assertNotEquals(0, list);
+		
+		System.out.println(list);
+	}
 //	
 //
 //	@Test @Ignore

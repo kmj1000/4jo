@@ -9,9 +9,4 @@ public interface MypageDAO {
 	MembersVO selectMypage(String email);
 
 
-
-	
-	
-
-
 }

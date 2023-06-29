@@ -125,37 +125,37 @@
 	                                    	<c:forEach var="Favorite_W_VO" items="${ requestScope.boardList }" varStatus="status">
 											<tr>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.favoritew_no}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.nickname}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.with_pet_no}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.building}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.road}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.tel}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.favoritew_reg_date}
 												</a>
 												</td>
