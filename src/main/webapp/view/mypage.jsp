@@ -26,39 +26,7 @@
     integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" 
     crossorigin="anonymous"></script>
 
-<script>
-function removeNaga(m_no) {
-	  
-	$.ajax({
-		   url: "/4jo/mypage",
-		   type: "POST",
-		   data: {
-			   m_no: m_no,
-		      method: "remove"
-		   },
-		   dataType: "json",
-		   success: function(data) {
-		      if (data.result === 1) {
-		         var msg = "나가";
-		         alert(msg);
-		         var newMsgWindow = window.open("", "_blank", "width=500,height=300");
-		         newMsgWindow.document.write("<h1>" + msg + "</h1>");
-		         newMsgWindow.document.close();
-		         location.reload();
-					
-		      } else {
-		         alert("처리에 실패했습니다. 다시 시도해주세요.");
-		      }
-		   },
-		   error: function(jqXHR, textStatus, errorThrown) {
-		      console.log(jqXHR);
-		      console.log(textStatus);
-		      console.log(errorThrown);
-		      alert("오류가 발생했습니다. 다시 시도해주세요.");
-		   }
-		});
-}
-</script>
+
 
 <style>
  tr {
@@ -199,7 +167,7 @@ function removeNaga(m_no) {
                         onclick="location='login.jsp'" /></td>
                     
                   </tr>
-                   <button type="button" class="remove-naga" onclick="removeNaga();">나가</button>
+                  
             </div>
          </div>
       </main>

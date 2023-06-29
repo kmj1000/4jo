@@ -102,7 +102,7 @@ public class MypageDAOImpl implements MypageDAO {
 public int getOutD(int m_no) {
 	 
 		int result=0;
-		String sql = "DELETE FROM members WHERE m_no=?+1 ";
+		String sql = "DELETE FROM members WHERE nickname=? ";
 		
 		try(
 				Connection conn = DataBaseUtil.getConnection();

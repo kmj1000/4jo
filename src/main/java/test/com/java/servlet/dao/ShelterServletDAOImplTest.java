@@ -4,14 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 
+
 import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
-import com.java.servlet.dao.BoardDAO;
+
 import com.java.servlet.dao.ShelterDAO;
-import com.java.servlet.dao.impl.BoardDAOImpl;
+
 import com.java.servlet.dao.impl.ShelterDAOImpl;
 import com.java.servlet.util.Criteria;
 import com.java.servlet.util.PageMaker;

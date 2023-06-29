@@ -15,5 +15,5 @@ public interface MypageDAO {
 
 	List<MembersVO> selectAllBoard();
 	
-	int getOutD(int m_no);  //나가
+	int getOutD(int m_no );  //나가
 }

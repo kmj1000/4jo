@@ -76,43 +76,12 @@ public class MypageServlet extends HttpServlet {
       }      
    }
    
-   private static final String REMOVE = "remove";
+ 
 
    /**
     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      MembersVO vo = new MembersVO();
-      
-      String m_no = request.getParameter("m_no");
-      String phone = request.getParameter("phone");
-      
-      if (m_no == null || m_no.equals("")) {
-         m_no = "0";
-      }
-      
-      vo.setM_no(Integer.parseInt(m_no));
-      vo.setNickname(request.getParameter("nickname"));
-      vo.setEmail(request.getParameter("email"));
-      vo.setPwd(request.getParameter("pwd"));
-      vo.setName(request.getParameter("name"));
-      
-      String method = request.getParameter("method");
-      int result = 0;
-      
-      switch (method) {
-         case REMOVE:
-            result = service.getOutS(Integer.parseInt(m_no));
-            System.out.println("여기1="+result);
-            if (result == 1) {
-             
-            }
-            break;
-      }
-
-      JsonObject jsonObj = new JsonObject();
-      jsonObj.addProperty("result", result);
-      jsonObj.addProperty("method", method);
-      response.getWriter().println(new Gson().toJson(jsonObj));
+      doGet(request,response);
    }
 }
