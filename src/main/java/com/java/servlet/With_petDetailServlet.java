@@ -64,7 +64,7 @@ public class With_petDetailServlet extends HttpServlet {
          
          String with_pet_no = request.getParameter("with_pet_no");
          int withpetId = Integer.parseInt(with_pet_no);
-
+         
          List<With_petVO> boardList = service.getWith_pet(withpetId);
     
          

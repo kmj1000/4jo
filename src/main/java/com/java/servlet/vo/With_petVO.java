@@ -164,7 +164,7 @@ public class With_petVO {
 					"pet_limit="+pet_limit+"\n"+
 					"inside="+inside+"\n"+
 					"outside="+outside+"\n"+
-					"extra="+extra+"\n"
+					"extra="+extra+"\n"+"]"
 				
 					;
 		}

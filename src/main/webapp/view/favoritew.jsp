@@ -61,9 +61,16 @@
     <body class="sb-nav-fixed bgcolor"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-                <div class="input-group">
-                	<button type="button" class="btn" onclick="location='login.jsp'" style="font-size: 14px;">로그아웃</button>					
-					<button type="button" class="btn" onclick="location='mypage.jsp'" style="font-size: 14px;">마이페이지</button>
+              <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <button type="button" class="btn" onclick="location.href='${root}/logout'" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
+            <%} else{%>
+                <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
+             
+            <%}  %>
                 </div>
             </form>     
             </nav>
@@ -125,37 +132,37 @@
 	                                    	<c:forEach var="Favorite_W_VO" items="${ requestScope.boardList }" varStatus="status">
 											<tr>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.favoritew_no}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.nickname}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.with_pet_no}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.building}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.road}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.tel}
 												</a>
 												</td>
 												<td>
-												<a href ="${pageContext.servletContext.contextPath}/shelterdetail?method=get&shelter_no=${ShelterVO.shelter_no}" >
+												<a href ="${pageContext.servletContext.contextPath}/withpetdetail?method=get&amp;with_pet_no=${Favorite_W_VO.with_pet_no}" >
 												${Favorite_W_VO.favoritew_reg_date}
 												</a>
 												</td>

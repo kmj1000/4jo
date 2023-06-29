@@ -131,19 +131,19 @@
     <body class="sb-nav-fixed bgcolor"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-                <div class="input-group">
-                	<button type="button" class="btn" onclick="location='login.jsp'" style="font-size: 14px;">로그아웃</button>					
-					<button type="button" class="btn" onclick="location='mypage.jsp'" style="font-size: 14px;">마이페이지</button>
+              <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <button type="button" class="btn" onclick="location.href='${root}/logout'" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
+            <%} else{%>
+                <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
+             
+            <%}  %>
                 </div>
             </form>     
             </nav>
-            
-         <!-- 로고 -->              
-        <nav class="main bg-white" >
-         <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
-         <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
-         </a>
-        </nav>
         
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/petnotice"><b>공고</b></a> 
