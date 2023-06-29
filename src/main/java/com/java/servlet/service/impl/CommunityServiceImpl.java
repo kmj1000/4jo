@@ -37,6 +37,18 @@ public class CommunityServiceImpl implements CommunityService {
 		
 		return dao.selectAllCommunityByPage(pageMaker);
 	}
+	@Override
+	public int registerBoard(CommunityVO vo) {
+		return dao.insertCommunity(vo);
+	}
+	@Override
+	public int modifyBoard(CommunityVO vo) {
+		return dao.updateCommunity(vo);
+	}
+	@Override
+	public int removeBoard(int c_no) {
+		return dao.deleteCommunity(c_no);
+	}
 
 	
 
