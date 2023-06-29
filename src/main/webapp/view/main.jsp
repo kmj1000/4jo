@@ -33,49 +33,54 @@
             height: 120px;
             }         
             .bg-yellow {
-				  --bs-bg-opacity: 1;
-				  background-color: #feeaa5 !important;
-			}
-			.main1{
-			border-bottom : 1px solid #645326;
-			 padding-bottom : 2px;
-			 padding-top : 2px;
-			}
-			.tab{
-				 padding-bottom : 0;
-				 padding-top : 0;
-				border-bottom : 1px solid #645326;
-				border-top : 1px solid #645326;
-			}
-			
-			.img_main{
-			width: 60%;
-		    margin: 0px auto;
-		    display: block;
-		    width: 250px; height: 90px;
-		    }
-		    .bgcolor{
-		   background-color: #f9f8f3;
-		    }
-		    
+              --bs-bg-opacity: 1;
+              background-color: #feeaa5 !important;
+         }
+         .main1{
+         border-bottom : 1px solid #645326;
+          padding-bottom : 2px;
+          padding-top : 2px;
+         }
+         .tab{
+             padding-bottom : 0;
+             padding-top : 0;
+            border-bottom : 1px solid #645326;
+            border-top : 1px solid #645326;
+         }
+         
+         .img_main{
+         width: 60%;
+          margin: 0px auto;
+          display: block;
+          width: 250px; height: 90px;
+          }
+          .bgcolor{
+         background-color: #f9f8f3;
+          }
+          
         </style>
         
     </head>
    <body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
           <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-                <div class="input-group">
-                <%-- <c:if logintest = "${empty session}"> --%>
-                   <button type="button" class="btn" style="font-size: 14px;">로그인</button>                  
-            <%-- </c:if>    --%>
-               <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;" onclick=>마이페이지</button></a>            
+                 <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <a href ="${root}/logout"><button type="button" class="btn" style="font-size: 14px;">로그아웃</button></a> 
+                    <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>                  
+         <%} else{%>
+                <a href ="${root}/login"><button type="button" class="btn" style="font-size: 14px;">로그인</button></a>                 
+             
+            <%}  %>
                 </div>
             </form>      
             </nav>
             
          <!-- 로고 -->              
         <nav class="main bg-white" >
-         <a class="mainlogo" href= "${root}/main" >
+         <a class="mainlogo" href="${root}/main" >
          <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
          </a>
         </nav>
@@ -84,15 +89,15 @@
 
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link active" href="${root}/petnotice"><b>공고</b></a> 
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/shelter"><b>보호소</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/withpet"><b>위드펫</b></a>
-			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="${root}/community"><b>커뮤니티</b></a>
-			<a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="${root}/notice"><b>공지사항</b></a>
+          <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/withpet"><b>위드펫</b></a>
+          <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="${root}/community"><b>커뮤니티</b></a>
+         <a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link " href="${root}/notice"><b>공지사항</b></a>
 
             </nav>
             <main>
-    			<div id="photomain">
-    			
-				<img class = "mainbanner" src="image/mainimg.png" style="width: 1300px;"/>
+             <div id="photomain">
+             
+            <img class = "mainbanner" src="image/mainimg.png" style="width: 1300px;"/>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -103,11 +108,13 @@
                         </div>
                     </div>
                 </footer>
+
             </div>
         </div>
     
     	
     	
     	
+
     </body>
 </html>

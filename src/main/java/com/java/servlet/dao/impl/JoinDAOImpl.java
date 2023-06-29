@@ -20,10 +20,9 @@ public class JoinDAOImpl implements JoinDAO {
 	public int insertMembers(MembersVO member)  {
 		int result = 0;
 		
-		String sql = "INSERT INTO members(m_no,nickname, email, pwd, name, phone)\r\n"
+		String sql = "INSERT INTO members(nickname, email, pwd, name, phone)\r\n"
 				+ "        VALUES(\r\n"
-				+ "                seq_m_no.nextval"
-				+ "                ,?\r\n"
+				+ "                ?\r\n"
 				+ "                ,?\r\n"
 				+ "                ,?\r\n"
 				+ "                ,?\r\n" 

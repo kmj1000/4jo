@@ -6,12 +6,10 @@ import com.java.servlet.vo.MembersVO;
 
 public interface MypageService {
 
-	List<MembersVO> getAllBoard();	
-	
-	int modifyPwd(MembersVO vo);
 
-	/* List<MembersVO> getAllBoard(); */
+	MembersVO getMypage(String email);
 
-	/* List<MembersVO> getAllBoard(); */
+
+
 
 }

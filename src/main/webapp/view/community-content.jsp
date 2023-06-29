@@ -264,7 +264,8 @@
 
 <div class="container mt-3">
   <h2 style="text-align: center;">게시글 작성</h2>  
-  <form action="/community-content.jsp">
+  <form action="${pageContext.servletContext.contextPath}/communitycontent" method="post">
+  
     <div class="row">
         <div class="col"></div>
         <div class="col"></div>

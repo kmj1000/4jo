@@ -20,14 +20,31 @@ class MypageServletDAOImplTest {
 
 	@Test @Ignore
 	void testSelectAllBoard() {
-		List<MembersVO> list = dao.selectAllBoard();
+		String email="";
+		MembersVO vo = dao.selectMypage(email);
 		
-		assertNotEquals(null, list);		
-		System.out.println(list);
+		assertNotEquals(0, vo);				
+		System.out.println(vo);
 	}
+//	
+//	@Test @Ignore
+//	void testSelectAllBoard() {
+//		String nickname = null;
+//		MembersVO vo = dao.selectMypage(nickname);
+//		
+//		assertNotEquals(null, vo);		
+//		System.out.println(vo);
+//	}
 	
-
-	
+//	@Test @Ignore
+//	void testselectAllBoard() {
+//		int m_no = 0;
+//		List<MembersVO> vo = dao.selectMypage(m_no);
+//		
+//		assertNotEquals(null, vo);		
+//		System.out.println(vo);
+//	}
+//	
 	
 
 }

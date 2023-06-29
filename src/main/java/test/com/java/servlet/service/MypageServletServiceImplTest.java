@@ -22,11 +22,12 @@ private MypageService service = MypageServiceImpl.getInstance();
 	
 	@Test  @Ignore
 	void testGetSelectAllBoard() {
-		List<MembersVO> slist = service.getAllBoard();
+		int m_no= 1;
+		MembersVO vo = service.selectMypage(m_no);
 		
-		assertNotEquals(null, slist);
+		assertNotEquals(null, vo);
 		System.out.println("service test");
-		System.out.println(slist);
+		System.out.println(vo);
 	}
 
 
