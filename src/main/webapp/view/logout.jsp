@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="javax.swing.JOptionPane" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,9 @@
 	<%
 
 	session.removeAttribute("email");
-
-	response.sendRedirect("main.jsp");
+	
+	response.sendRedirect("/view/main.jsp");
+	
 	
 	%>
 	

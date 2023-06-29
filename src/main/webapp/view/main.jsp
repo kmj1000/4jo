@@ -19,7 +19,9 @@
         <script src="${root}/bootstrap/js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="${root}/bootstrap/js/datatables-simple-demo.js"></script>
-     
+     	<script>
+     	
+     	</script>
         <style> 
 
        a:hover{
@@ -68,7 +70,7 @@
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
             <%  if( email != null) { %>
-                   <a href ="${root}/logout"><button type="button" class="btn" style="font-size: 14px;">로그아웃</button></a> 
+                   <a href ="${root}/logout"><button type="button" id='btnLogout' value='로그아웃' class="btn" style="font-size: 14px;" onclick="showConfirmation()" >로그아웃</button></a> 
                     <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>                  
          <%} else{%>
                 <a href ="${root}/login"><button type="button" class="btn" style="font-size: 14px;">로그인</button></a>                 
@@ -77,7 +79,7 @@
                 </div>
             </form>      
             </nav>
-            
+     
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${root}/main" >
