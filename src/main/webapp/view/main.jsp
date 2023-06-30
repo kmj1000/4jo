@@ -59,46 +59,33 @@
           .bgcolor{
          background-color: #f9f8f3;
           }
-          .input-group{
-          align : right;
-          }
+          
         </style>
         
     </head>
- <body class="sb-nav-fixed bgcolor" > 
+   <body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-              <div class="input-group">
+          <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
+                 <div class="input-group">
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
             <%  if( email != null) { %>
-<<<<<<< HEAD
-                   <a href ="${root}/logout"><button type="button" id='btnLogout' value='로그아웃' class="btn" style="font-size: 14px;" onclick="showConfirmation()" >로그아웃</button></a> 
+                   <a href ="${root}/logout"><button type="button" id='btnLogout' value='로그아웃' class="btn" style="font-size: 14px;" onclick="logout();" >로그아웃</button></a> 
                     <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>                  
          <%} else{%>
                 <a href ="${root}/login"><button type="button" class="btn" style="font-size: 14px;">로그인</button></a>                 
-=======
-                   <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
-                   <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
-         	<%} else{%>
-                <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
->>>>>>> 2731e3c253e4d3e0fb74dfd81ace69fb9deddae6
              
             <%}  %>
                 </div>
-            </form>     
+            </form>      
             </nav>
-<<<<<<< HEAD
-     
-=======
-            <script>
-	            function logout() {
-	    		if (confirm("로그아웃 하시겠습니까?")) {
-	    		location.href = "${root}/logout";
-	   		 	}
-			}
+       <script>
+               function logout() {
+             if (confirm("로그아웃 하시겠습니까?")) {
+             location.href = "${root}/logout";
+                }
+         }
             </script>
->>>>>>> 2731e3c253e4d3e0fb74dfd81ace69fb9deddae6
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${root}/main" >

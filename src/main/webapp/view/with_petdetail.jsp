@@ -76,9 +76,7 @@
 				        var msg = favoritew.length + "건 삭제되었습니다.";
 				        alert(msg);
 				        
-				      } else {
-				        alert("처리에 실패했습니다. 다시 시도해주세요.");
-				      }
+				      } 
 				    },
 				    error: function(jqXHR, textStatus, errorThrown) {
 				      console.log(jqXHR);

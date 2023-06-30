@@ -21,7 +21,7 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.js" 
     integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" 
     crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+		
 	
 		<style>
 		
@@ -84,9 +84,7 @@
 			        var msg = favorites.length + "건 등록되었습니다.";
 			        alert(msg);
 			       
-			      } else {
-			        alert("처리에 실패했습니다. 다시 시도해주세요.");
-			      }
+			      } 
 			    },
 			    error: function(jqXHR, textStatus, errorThrown) {
 			      console.log(jqXHR);
