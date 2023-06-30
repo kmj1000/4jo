@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.java.servlet.vo.CommunityVO"%>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -214,6 +215,7 @@
    	<body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
+<<<<<<< Updated upstream
                 <div class="input-group">
                 	<button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>					
 					<button type="button" class="btn" onclick="location.href='${pageContext.servletContext.contextPath}/mypage'" style="font-size: 14px;">마이페이지</button>
@@ -227,6 +229,29 @@
                 }
          	}
             </script>
+=======
+              <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
+         	<%} else{%>
+                <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
+             
+            <%}  %>
+                </div>
+            </form>     
+            </nav>
+            <script>
+	            function logout() {
+	    		if (confirm("로그아웃 하시겠습니까?")) {
+	    		location.href = "${root}/logout";
+	   		 	}
+			}
+            </script>
+            
+>>>>>>> Stashed changes
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
@@ -276,14 +301,14 @@
                                     <tfoot>
                                     </tfoot>
                                     <tbody>
-                                    	<C:forEach var="noticeVO" items="${requestScope.noticeList}" varStatus="status">
+                                    	<c:forEach var="noticeVO" items="${requestScope.noticeList}" varStatus="status">
                                         <tr>
                                             <td>${noticeVO.notice_no}</td>
                                             <td><a href="${pageContext.servletContext.contextPath}/noticecontent?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
                                             <td>${noticeVO.notice_reg_date}</td>
                                             <td>${noticeVO.admin_name}</td>
                                         </tr>
-                                        </C:forEach>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

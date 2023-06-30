@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 		MembersVO vo = new MembersVO();
 		vo.setEmail(request.getParameter("email"));
 		vo.setPwd(  request.getParameter("pwd")  );
+		vo.setNickname(request.getParameter("nickname"));
 		
 		if( service.getCountMember(vo) == Define.LOGIN_AUTH_SUCCESS) {
 			// session binding
@@ -56,8 +57,8 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession(false);
 			session.setAttribute("SESS_AUTH", true);
 			session.setAttribute("SESS_EMAIL", vo.getEmail());
-			session.setAttribute("SESS_USERNAME", vo.getName());
-			
+			session.setAttribute("SESS_NICKNAME", vo.getNickname());
+			System.out.println("SSES_NICKNAME");
 			response.sendRedirect(request.getContextPath() +  "/main");
 			
 			System.out.println("session - " + session);

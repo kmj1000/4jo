@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.java.servlet.vo.CommunityVO"%>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -72,19 +73,42 @@
 <body class="sb-nav-fixed bgcolor"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
+<<<<<<< Updated upstream
                 <div class="input-group">
                 	<button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>					
 					<button type="button" class="btn" onclick="location.href='${pageContext.servletContext.contextPath}/mypage'" style="font-size: 14px;">마이페이지</button>
+=======
+              <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
+         	<%} else{%>
+                <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
+             
+            <%}  %>
+>>>>>>> Stashed changes
                 </div>
             </form>     
             </nav>
             <script>
+<<<<<<< Updated upstream
                function logout() {
              if (confirm("로그아웃 하시겠습니까?")) {
              location.href = '${pageContext.servletContext.contextPath}/logout';
                 }
          	}
             </script>
+=======
+	            function logout() {
+	    		if (confirm("로그아웃 하시겠습니까?")) {
+	    		location.href = "${root}/logout";
+	   		 	}
+			}
+            </script>
+            
+>>>>>>> Stashed changes
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
@@ -124,22 +148,26 @@
                                     </thead>
                                    
                                     <tbody>
-                                    	<C:forEach var="communityVO" items="${requestScope.communityList}" varStatus="status">
+                                    	<c:forEach var="communityVO" items="${requestScope.communityList}" varStatus="status">
                                         <tr>
                                             <td>${communityVO.c_no}</td>
                                             <td><a href="${pageContext.servletContext.contextPath}/communitycontent?method=get&c_no=${communityVO.c_no}">${communityVO.title}</a></td>
                                             <td>${communityVO.reg_date}</td>
                                             <td>${communityVO.nickname}</td>
                                         </tr>
-                                        </C:forEach>
+                                        </c:forEach>
                                         
                                     </tbody>
                                 </table>
                                 
                             </div>
                             <div class="rightbtn">
+<<<<<<< Updated upstream
                             
                              	<a class="btn btn-warning" type="button" href="${pageContext.servletContext.contextPath}/communitycontent">글쓰기</a>
+=======
+                             	<a class="btn btn-warning" type="button" href="view/community-content.jsp">글쓰기</a>
+>>>>>>> Stashed changes
                              </div>
                             <%@ include file="/view/import/page-community.jsp" %>
                            <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 

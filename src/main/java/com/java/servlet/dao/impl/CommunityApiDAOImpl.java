@@ -1,6 +1,7 @@
 package com.java.servlet.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -25,26 +26,27 @@ public class CommunityApiDAOImpl implements CommunityApiDAO {
 	public int insertCommunity(CommunityVO vo) {
 		int result = 0;
 		String sql = "INSERT INTO community( c_no\r\n"
+					+ "            			,nickname\r\n"
 					+ "                    ,title\r\n"
 					+ "                    ,content\r\n"
 					+ "                    ,reg_date\r\n"
-					+ "                    ,nickname\r\n"
 					+ "                    )    \r\n"
 					+ "    values(\r\n"
 					+ "            seq_c_no.NEXTVAL\r\n"
+					+ "            , nickname\r\n"
 					+ "            ,?\r\n"
 					+ "            ,?\r\n"
 					+ "            ,sysdate\r\n"
-					+ "            ,nickname  -- m_no\r\n"
 					+ "    )";
 		try(
 				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
-				
+			
+//				pstmt.setString(1, vo.getNickname());
 				pstmt.setString(1, vo.getTitle());
 				pstmt.setString(2, vo.getContent());
-				pstmt.setString(3, vo.getNickname());
+				
 				
 				result = pstmt.executeUpdate();
 				
@@ -62,7 +64,7 @@ public class CommunityApiDAOImpl implements CommunityApiDAO {
 				+ "    SET title = ?\r\n"
 				+ "    , content = ?\r\n"
 				
-				+ "    WHERE c_no = ?"
+				+ "    WHERE nickname= ?"
 				;
 		try(
 				Connection conn = DataBaseUtil.getConnection();// DBCP2Util

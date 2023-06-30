@@ -123,7 +123,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		            + "                    ROWNUM as rn\r\n" + "                    ,c_no\r\n"
 		            + "                    ,title\r\n" + "                    ,content\r\n"
 		            + "                    ,reg_date\r\n"
-		            + "                    ,(select nickname from members where nickname='민주') as nickname\r\n"
+		            + "                    ,nickname\r\n"
 		            + "                FROM community\r\n"
 		            + "                WHERE ROWNUM <= ( ? * ? )   -- page 1=10, 2=20, 3=30  page * 10, 10: 페이지당 게시글 갯수\r\n"
 		            + "            )\r\n" + "    WHERE rn > ( ( ? - 1 ) * ? )";
