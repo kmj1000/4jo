@@ -15,7 +15,7 @@
    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Tables - SB Admin</title>
+<title>옥독캣 - 정보수정</title>
 <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
 <link href="${root}/bootstrap/css/mypageStyles.css"   rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"   crossorigin="anonymous"></script>
@@ -27,17 +27,51 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
     crossorigin="anonymous"></script>
-    
-    <script type = "text/javascript">
-    function cneck(){
-    	if(document.fr.pass.value == ""){
-    		alert("비밀번호를 입력하세요.");
-    		document.fr.pass.focus();
-    		return false;
-    	}
-    }
-  
-    </script>
+    <%	
+           String id = (String)session.getAttribute("SESS_EMAIL"); 
+		    // 세션에 저장된 아이디를 가져와서
+		    // 그 아이디 해당하는 회원정보를 가져온다.
+		    MypageDAO dao = MypageDAOImpl.getInstance();
+		    MembersVO vo = dao.selectMypage(id);
+%>
+   <script src="http://code.jquery.com/jquery.js" ></script>	
+	<script>
+	function form_check() {						
+		if($('#pw').val().length == 0) {
+			alert("비밀번호를 입력하세요");
+			$('#pw').focus();
+			return;
+		}
+		
+		if($('#pw').val() != $('#pw_check').val()) {
+			alert("비밀번호가 일치하지 않습니다");
+			$('#pw').focus();
+			return;
+		}
+
+		submit_ajax();
+	}
+	
+	function submit_ajax() {
+		var queryString = $("#reg_frm").serialize();
+		$.ajax({
+            url: '/Jsp21-HW-DAO-Ajax/ModifyProcess',  
+			//url: '/Jsp21-HW-DAO-Ajax/check/modifyOk.jsp',  
+            type: 'POST',
+            data: queryString,
+            dataType: 'text',
+            success: function(json) {  //json은 걍 변수명
+                var result = JSON.parse(json);
+            	if(result.code == "success") {
+            		alert(result.desc)
+            		window.location.replace("main.jsp"); 
+            	} else {
+            		alert(result.desc);
+            	}            	
+            }
+        });
+	}
+	</script>
 	<style>
 		.deleteMember{
 			color : darkgray;
@@ -88,6 +122,7 @@
           
 </style>
 </head>
+
  <body class="sb-nav-fixed bgcolor" > 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
@@ -120,10 +155,11 @@
          <a class=" pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${root}/notice"><b>공지사항</b></a>
    
             </nav>
+ 	<form id="reg_frm">
    <div id="layoutSidenav_content">
-   
-      <main>
-         <div class="container-fluid px-10 pt-5 ps-4">
+    
+<!--       <main> --> 
+       		 <div class="container-fluid px-10 pt-5 ps-4">
             <h1 class="mt-1"><b>회원정보변경</b></h1>
             </div>
             <ol class="breadcrumb mb-4 pt-3">
@@ -136,19 +172,15 @@
                </div>
         
            	<%	
-           		String id = (String)session.getAttribute("SESS_EMAIL"); 
-		        // 세션에 저장된 아이디를 가져와서
-		        // 그 아이디 해당하는 회원정보를 가져온다.
 		        
 		        if(id == null){
            		 response.sendRedirect("login.jsp");
 		        
 		        }
-		        
-		        MypageDAO dao = MypageDAOImpl.getInstance();
-		        MembersVO vo = dao.selectMypage(id);
+
 
            	  %>
+           	 
                <div class="card-body">
 				
                   <table id="datatablesSimple" >
@@ -160,8 +192,8 @@
                        
 				        <tr>
                            <td>비밀번호</td>
-                           <td><input type="text" id="upwd" value="*******" name="upwd">
-                           <button type="button" onclick="location">변경</button>
+                           <td><input type="password" value="<%= vo.getPwd() %>" name="pass">
+                           <input type="button" value="변경" onclick="location">
                            </td>    
                         </tr>
                                                                
@@ -178,23 +210,24 @@
                        
                         <tr>
                            <td>전화번호</td>
-                           <td><input type="text" id="upwd" value="<%=vo.getPhone()%>" name="upwd">
-                           <button type="button" onclick="location">변경</button>
+                           <td><input type="text" value="<%=vo.getPhone()%>" name="phone">
+                           <input type="button" value="변경" onclick="location">
                            </td>    
                         </tr>
  				
 					</table>
-				
-                
+
  					
 					<div align="center">
-                     <button type="button" class ="btn btn-warning"onclick="location.href='${root}/mypaper'" >이전</button>&nbsp; 
-                     <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favorites'">저장</button>&nbsp;      
+					<input type="button" value="수정" onclick="form_check()"> &nbsp;&nbsp;&nbsp;
+        			<input type="reset" value="초기화" onclick="${root}/mypage">&nbsp; &nbsp; &nbsp; 
+                    <input type="button" value="이전" onclick="location.href='${root}/mypage'" >&nbsp; 
+               <%--       <button type="button" class ="btn btn-warning" onclick="location.href='${root}/mypage'">정보수정</button>&nbsp; --%> 
                     </div>
           
             </div>
          </div>
-      </main>
+     <!--  </main> -->
       <footer class="py-4 bg-light mt-auto">
          <div class="container-fluid px-4">
             <div class="d-flex align-items-center justify-content-between small">
@@ -206,6 +239,6 @@
       </footer>
    </div>
    
-
+</form>
 </body>
 </html>

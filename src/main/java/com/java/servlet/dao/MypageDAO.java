@@ -7,6 +7,5 @@ import com.java.servlet.vo.MembersVO;
 public interface MypageDAO {
 
 	MembersVO selectMypage(String email);
-
-
+	void SendUpdateMember(MembersVO vo);
 }
