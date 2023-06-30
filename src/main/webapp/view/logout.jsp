@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="javax.swing.JOptionPane" %>
-=======
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpSession" %> 
->>>>>>> 2731e3c253e4d3e0fb74dfd81ace69fb9deddae6
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,13 +33,22 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<%
+=======
+<%
+>>>>>>> 8e6c234c9f8508f50f2c20b0414983c58b049ce5
 
 	session.removeAttribute("email");
 	
 	response.sendRedirect("/view/main.jsp");
+<<<<<<< HEAD
 
 	 response.sendRedirect(request.getContextPath() + "/main");
+=======
+	
+	
+>>>>>>> 8e6c234c9f8508f50f2c20b0414983c58b049ce5
 
 	%>
 </body>

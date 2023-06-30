@@ -44,10 +44,11 @@ public class CommunityContentServlet extends HttpServlet {
 		if(c_no==null || c_no.equals("")) {
 			c_no="0";
 		}
-		
+		int cno = Integer.parseInt(c_no);
+		System.out.println(cno);
 		switch(method) {
 		case "get": 
-			CommunityVO communityVO= service.getCommunity( Integer.parseInt(c_no) );
+			CommunityVO communityVO= service.getCommunity(cno );
 			request.setAttribute("communityVO", communityVO);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/community-content.jsp");
 			dispatcher.forward(request, response);
@@ -56,7 +57,6 @@ public class CommunityContentServlet extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("/view/community-content.jsp");
 			dispatcher.forward(request, response);
 			break;
-		
 		}
 		
 	}

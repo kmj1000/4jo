@@ -41,8 +41,8 @@ public class With_petServlet extends HttpServlet {
     */
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-      HttpSession session= request.getSession(false);
-      boolean SESS_AUTH = false;
+      HttpSession session= request.getSession(true);
+      boolean SESS_AUTH = true;
       System.out.println(session);
       if(session == null){
          String msg = "You are Not allowed, Plz login!";
@@ -58,7 +58,7 @@ public class With_petServlet extends HttpServlet {
       if( SESS_AUTH ) {
          
          request.setCharacterEncoding("utf-8");
-         request.setAttribute("SESS_AUTH", false);
+         request.setAttribute("SESS_AUTH", true);
          
          // pagesetting
          String pageNo = request.getParameter("pageNo");

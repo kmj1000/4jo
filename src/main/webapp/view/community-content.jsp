@@ -244,7 +244,7 @@
                      		}
                      		alert( msg );
                      	}else{
-                     		aelrt(data.result + '건 수정실패입니다. \n다시시도하세요.');
+                     		alert(data.result + '건 수정실패입니다. \n다시시도하세요.');
                      	}
                      }
                      ,error:function(jqXHR, textStatus, errorThrown){
@@ -293,7 +293,7 @@
     	<div class="row">
        	<button type="button" class="get col p-3 btn btn-warning" onclick="history.back();">뒤로</button>
        	<div class="col p-3"></div>
-       	<button type="submit" class="register col p-3 btn btn-warning">전송</button>
+       	<button type="submit" class="register col p-3 btn btn-warning" onclick="return goSubmit();">전송</button>
          	<div class="col p-3"></div>
        	<button type="button"  class="modify col p-3 btn btn-warning" onclick="adoptMethod('modify');">수정</button>
        		<div class="col p-3"></div>
