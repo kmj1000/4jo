@@ -177,71 +177,59 @@
 		</script>
      	<style type="text/css">* {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol336.cur), auto !important;}</style>   
      	<style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
-        <style> 
-	       a:hover{
-	                background-color: #fbde7b;
-	            }
-	            .main{
-	            padding-top: 0.7cm;
-	            padding-left: 1.0cm;
-	            padding-right : 1.5cm;
-	            padding-bottom : 3cm;
-	            height: 120px;
-	            }         
-	            .bg-yellow {
-					  --bs-bg-opacity: 1;
-					  background-color: #fbde7b !important;
-				}
-				.main1{
-				border-bottom : 1px solid #645326;
-				 padding-bottom : 2px;
-				 padding-top : 2px;
-				}
-				.tab{
-					 padding-bottom : 0;
-					 padding-top : 0;
+       <style>
+		
+		  a:hover{
+		                background-color: #feeaa5;
+		            }
+		            .main{
+		            padding-top: 0.7cm;
+		            padding-left: 1.0cm;
+		            padding-right : 1.5cm;
+		            padding-bottom : 3cm;
+		            height: 120px;
+		            }         
+		            .bg-yellow {
+						  --bs-bg-opacity: 1;
+						  background-color: #feeaa5 !important;
+					}
+					.main1{
 					border-bottom : 1px solid #645326;
-					border-top : 1px solid #645326;
-				}
-				
-				.img_main{
-				width: 60%;
-			    margin: 0px auto;
-			    display: block;
-			    width: 250px; height: 90px;
-			    }
-        </style>
+					 padding-bottom : 2px;
+					 padding-top : 2px;
+					}
+					.tab{
+						 padding-bottom : 0;
+						 padding-top : 0;
+						border-bottom : 1px solid #645326;
+						border-top : 1px solid #645326;
+					}
+					
+					.img_main{
+					width: 60%;
+				    margin: 0px auto;
+				    display: block;
+				    width: 250px; height: 90px;
+				    }
+				    .bgcolor{
+				   background-color: #f9f8f3;
+				    }
+		</style>
     </head>
    	<body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-<<<<<<< Updated upstream
-                <div class="input-group">
-                	<button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>					
-					<button type="button" class="btn" onclick="location.href='${pageContext.servletContext.contextPath}/mypage'" style="font-size: 14px;">마이페이지</button>
-                </div>
-            </form>     
-            </nav>
-              <script>
-               function logout() {
-             if (confirm("로그아웃 하시겠습니까?")) {
-             location.href = '${pageContext.servletContext.contextPath}/logout';
-                }
-         	}
-            </script>
-=======
-              <div class="input-group">
+                 <div class="input-group">
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
-            <%  if( email != null) { %>
+         <%  if( email != null) { %>
                    <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
-         	<%} else{%>
+            <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
-             
             <%}  %>
                 </div>
-            </form>     
+            </form>      
             </nav>
             <script>
 	            function logout() {
@@ -249,9 +237,8 @@
 	    		location.href = "${root}/logout";
 	   		 	}
 			}
+
             </script>
-            
->>>>>>> Stashed changes
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
@@ -270,14 +257,12 @@
                 <main>
                     <div class="container-fluid px-3 pt-3">
                         <h1 class="mt-1" >공지사항</h1>
-                        <ol class="breadcrumb mb-4">
- 
-                        </ol>
-                        
+                     
+                       
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                               개인정보조회
+                             
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -319,18 +304,16 @@
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        
-    </body>
+			<div class="container-fluid px-4">
+				<div class="d-flex align-items-center justify-content-between small">
+		
+
+					<div></div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	</div>
+
+</body>
 </html>
