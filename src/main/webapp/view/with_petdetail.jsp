@@ -148,7 +148,14 @@
              location.href = "${root}/logout";
                 }
          }
+              
             </script>
+             <!-- 로고 -->              
+               <nav class="main bg-white" >
+                <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
+                <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
+                </a>
+               </nav>
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/petnotice"><b>공고</b></a> 
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter"><b>보호소</b></a>
@@ -248,16 +255,7 @@
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </footer>
             </div>
         </div>

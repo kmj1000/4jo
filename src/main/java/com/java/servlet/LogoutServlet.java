@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class logoutServlet
  */
-<<<<<<< HEAD
       @WebServlet("/logout")
       public class LogoutServlet extends HttpServlet {
          private static final long serialVersionUID = 1L;
@@ -27,31 +26,9 @@ import javax.servlet.http.HttpSession;
 
              response.sendRedirect("main");
              
-             
-             
               System.out.println("로그아웃 성공");
              
              
-=======
-
-		@WebServlet("/logout")
-		public class LogoutServlet extends HttpServlet {
-			private static final long serialVersionUID = 1L;
-			protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
-				System.out.println("[LogoutServiceCon]");
-				//로그아웃 : 로그인한 정보 삭제 
-				HttpSession session = request.getSession();
-					
-				session.invalidate();	//세션삭제
-
-				 response.sendRedirect("main");
-				 
-		        System.out.println("로그아웃 성공");
-		       
-		       
-
->>>>>>> 8e6c234c9f8508f50f2c20b0414983c58b049ce5
 }
 
 

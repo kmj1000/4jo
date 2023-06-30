@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Main</title>
+        <title>옥독캣</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
         <link href="${root}/bootstrap/css/mypageStyles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -69,39 +69,22 @@
                  <div class="input-group">
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
-<<<<<<< HEAD
          <%  if( email != null) { %>
                    <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
             <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
-=======
-            <%  if( email != null) { %>
-                   <a href ="${root}/logout"><button type="button" id='btnLogout' value='로그아웃' class="btn" style="font-size: 14px;" onclick="logout();" >로그아웃</button></a> 
-                    <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>                  
-         <%} else{%>
-                <a href ="${root}/login"><button type="button" class="btn" style="font-size: 14px;">로그인</button></a>                 
->>>>>>> 8e6c234c9f8508f50f2c20b0414983c58b049ce5
-             
             <%}  %>
                 </div>
             </form>      
             </nav>
-<<<<<<< HEAD
             <script>
 	            function logout() {
 	    		if (confirm("로그아웃 하시겠습니까?")) {
 	    		location.href = "${root}/logout";
 	   		 	}
 			}
-=======
-       <script>
-               function logout() {
-             if (confirm("로그아웃 하시겠습니까?")) {
-             location.href = "${root}/logout";
-                }
-         }
->>>>>>> 8e6c234c9f8508f50f2c20b0414983c58b049ce5
+
             </script>
          <!-- 로고 -->              
         <nav class="main bg-white" >

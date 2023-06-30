@@ -61,9 +61,9 @@ public class FindEmailServlet extends HttpServlet {
 
 		
 		if (email != null) {
-			request.getRequestDispatcher("/view/findEmail.jsp?msg=È¸¿ø´ÔÀÇ ÀÌ¸ŞÀÏÀº "+email+"ÀÔ´Ï´Ù.").forward(request, response);
+			request.getRequestDispatcher("/view/findEmail.jsp?msg=íšŒì›ë‹˜ì˜ ì´ë©”ì¼ì€ "+email+"ì…ë‹ˆë‹¤.").forward(request, response);
 		} else {
-			request.getRequestDispatcher("/view/findEmail.jsp?msg=¾ø´Â Á¤º¸ÀÔ´Ï´Ù.").forward(request, response);
+			request.getRequestDispatcher("/view/findEmail.jsp?msg=ì—†ëŠ” ì •ë³´ì…ë‹ˆë‹¤").forward(request, response);
 			
 		}
 		return;

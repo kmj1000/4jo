@@ -35,21 +35,12 @@
 <body>
 <<<<<<< HEAD
 	<%
-=======
-<%
->>>>>>> 8e6c234c9f8508f50f2c20b0414983c58b049ce5
-
 	session.removeAttribute("email");
 	
 	response.sendRedirect("/view/main.jsp");
-<<<<<<< HEAD
+
 
 	 response.sendRedirect(request.getContextPath() + "/main");
-=======
-	
-	
->>>>>>> 8e6c234c9f8508f50f2c20b0414983c58b049ce5
-
 	%>
 </body>
 </html>

@@ -253,12 +253,12 @@
 			                               </tbody>
 	                                    
 	                                </table>
-	                              <button type="button" class="send-favorites" 
-											onclick="sendFavorites();">전송</button>
-	    									<button type="button" class="remove-favorites" 
-											onclick="removeFavorites();">삭제</button>
+	       
 	                           
-	                            
+	                              <button type="button" class="send-favoritew col p-3 btn btn-primary" 
+											onclick="sendFavoritew();">전송</button>
+	    								<button type="button" class="remove-favoritew col p-3 btn btn-primary" 
+											onclick="removeFavoritew();">삭제</button>
 	                              
 	                            </div>
 	                            
@@ -269,16 +269,7 @@
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
+                  
                 </footer>
             </div>
         </div>

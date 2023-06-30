@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Community List</title>
+        <title>공지사항</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/mypageStyles.css" rel="stylesheet" />
         <%-- <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" /> --%>
@@ -244,7 +244,7 @@
             </nav>
                 <main>
                     <div class="container-fluid px-3 pt-3">
-                        <h1 class="mt-1" >마이페이지</h1>
+                        <h1 class="mt-1" >공지사항</h1>
                         <ol class="breadcrumb mb-4">
  
                         </ol>
@@ -296,7 +296,6 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
