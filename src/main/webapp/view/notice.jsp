@@ -219,21 +219,7 @@
    	<body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-<<<<<<< HEAD
-       
-            </form>     
-            </nav>
-              <script>
-               function logout() {
-             if (confirm("로그아웃 하시겠습니까?")) {
-             location.href = '${pageContext.servletContext.contextPath}/logout';
-                }
-         	}
-            </script>
-              <div class="input-group">
-=======
                  <div class="input-group">
->>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
          <%  if( email != null) { %>
@@ -253,10 +239,6 @@
 			}
 
             </script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
@@ -292,14 +274,7 @@
                                             <th>공지 작성자</th>
                                             <!-- <th>조회수</th>  -->
                                         </tr>
-                                        <button type="button" class="btn btn-outline-primary">Primary</button>
-										<button type="button" class="btn btn-outline-secondary">Secondary</button>
-										<button type="button" class="btn btn-outline-success">Success</button>
-									<button type="button" class="btn btn-outline-info">Info</button>
-									<button type="button" class="btn btn-outline-warning">Warning</button>
-									<button type="button" class="btn btn-outline-danger">Danger</button>
-									<button type="button" class="btn btn-outline-light">Light</button>
-									<button type="button" class="btn btn-outline-dark">Dark</button>
+                          
                                     </thead>
                                     <tfoot>
                                     </tfoot>

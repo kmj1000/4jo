@@ -119,14 +119,7 @@
 <body class="sb-nav-fixed bgcolor"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-<<<<<<< HEAD
-
-               
-
-              <div class="input-group">
-=======
                  <div class="input-group">
->>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
          <%  if( email != null) { %>
@@ -135,25 +128,10 @@
             <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
             <%}  %>
-<<<<<<< HEAD
-
-=======
->>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
                 </div>
             </form>      
             </nav>
             <script>
-<<<<<<< HEAD
-
-               function logout() {
-             if (confirm("로그아웃 하시겠습니까?")) {
-             location.href = '${pageContext.servletContext.contextPath}/logout';
-                }
-         	}
-            </script>
-
-
-=======
 	            function logout() {
 	    		if (confirm("로그아웃 하시겠습니까?")) {
 	    		location.href = "${root}/logout";
@@ -162,7 +140,6 @@
 
             </script>
 
->>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
@@ -217,14 +194,7 @@
                             </div>
                             <div class="rightbtn">
 
-<<<<<<< HEAD
-                            
-                             	<a class="btn btn-warning" type="button" href="${pageContext.servletContext.contextPath}/communitycontent">글쓰기</a>
-
-                             	<a class="btn btn-warning" type="button" href="view/community-content.jsp">글쓰기</a>
-=======
                              	<a class="btn write" type="button" href="view/community-content.jsp">글쓰기</a>
->>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
 
                              </div>
                             <%@ include file="/view/import/page-community.jsp" %>
