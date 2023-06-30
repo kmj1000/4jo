@@ -13,9 +13,5 @@ public interface CommunityService {
 	int getCountAllCommunity();
 
 	List<CommunityVO> getAllCommunityByPage(PageMaker pageMaker);
-	int registerBoard(CommunityVO vo);
-	int modifyBoard(CommunityVO vo);
-	int removeBoard(int parseInt);
-
 
 }

@@ -131,7 +131,7 @@
                                 </table>
                             </div>
                             <div class="rightbtn">
-                             	<a class="btn btn-warning" type="button" href="${pageContext.servletContext.contextPath}/communitycontent">글쓰기</a>
+                             	<a class="btn btn-warning" type="button" href="${pageContext.servletContext.contextPath}/api/communitycontent">글쓰기</a>
                              </div>
                             <%@ include file="/view/import/page-community.jsp" %>
                            <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 
