@@ -148,9 +148,8 @@
              location.href = "${root}/logout";
                 }
          }
-              
             </script>
-             <!-- 로고 -->              
+                 <!-- 로고 -->              
                <nav class="main bg-white" >
                 <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
                 <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
@@ -168,7 +167,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-3 pt-3">
-                        <h1 class="mt-1">유기동물 공고 상세</h1>
+                        <h1 class="mt-1">위드펫 상세</h1>
                       
                         <div class="card mb-4">
                             <div class="card-header">

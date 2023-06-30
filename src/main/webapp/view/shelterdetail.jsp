@@ -255,10 +255,10 @@
 	                                </table>
 	       
 	                           
-	                              <button type="button" class="send-favoritew col p-3 btn btn-primary" 
-											onclick="sendFavoritew();">전송</button>
-	    								<button type="button" class="remove-favoritew col p-3 btn btn-primary" 
-											onclick="removeFavoritew();">삭제</button>
+	                              <button type="button" class="send-favorites col p-3 btn btn-primary" 
+											onclick="sendFavorites();">전송</button>
+	    								<button type="button" class="remove-favorites col p-3 btn btn-primary" 
+											onclick="removeFavorites();">삭제</button>
 	                              
 	                            </div>
 	                            

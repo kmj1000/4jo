@@ -29,36 +29,36 @@
     crossorigin="anonymous"></script>
   <script>
   function withdrawMember() {
-	  $.ajax({
-	    url: "/4jo/mypage",
-	    type: "POST",
-	    dataType: "json",
-	    success: function(data) {
-	      if (data.result === 1) {
-	        alert("회원 탈퇴가 완료되었습니다.");
-	        location.href = "/4jo/logout"; // 로그아웃 페이지로 이동
-	      } else {
-	        alert("회원 탈퇴 처리에 실패했습니다. 다시 시도해주세요.");
-	      }
-	    },
-	    error: function(jqXHR, textStatus, errorThrown) {
-	      console.log(jqXHR);
-	      console.log(textStatus);
-	      console.log(errorThrown);
-	      alert("오류가 발생했습니다. 다시 시도해주세요.");
-	    }
-	  });
-	}
+     $.ajax({
+       url: "/4jo/mypage",
+       type: "POST",
+       dataType: "json",
+       success: function(data) {
+         if (data.result === 1) {
+           alert("회원 탈퇴가 완료되었습니다.");
+           location.href = "/4jo/logout"; // 로그아웃 페이지로 이동
+         } else {
+           alert("회원 탈퇴 처리에 실패했습니다. 다시 시도해주세요.");
+         }
+       },
+       error: function(jqXHR, textStatus, errorThrown) {
+         console.log(jqXHR);
+         console.log(textStatus);
+         console.log(errorThrown);
+         alert("오류가 발생했습니다. 다시 시도해주세요.");
+       }
+     });
+   }
   </script>
 <style>
-		.deleteMember{
-			color : darkgray;
-			text-align : right;
-		}
-		 tr {
-		    text-align : center;
-		 }
-  		a:hover{
+      .deleteMember{
+         color : darkgray;
+         text-align : right;
+      }
+       tr {
+          text-align : center;
+       }
+        a:hover{
                 background-color: #feeaa5;
             }
             .main{
@@ -105,7 +105,7 @@
             <%  if( email != null) { %>
                    <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
-         	<%} else{%>
+            <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
              
             <%}  %>
@@ -150,18 +150,18 @@
                   <i class="fas fa-table me-1"></i> 개인정보조회
                </div>
          
-           	<%	
-           		String id = (String)session.getAttribute("SESS_EMAIL"); 
-		        // 세션에 저장된 아이디를 가져와서
-		        // 그 아이디 해당하는 회원정보를 가져온다.
-		        MypageDAO dao = MypageDAOImpl.getInstance();
-		        MembersVO vo = dao.selectMypage(id);
-		    %>
-           	 
+              <%   
+                 String id = (String)session.getAttribute("SESS_EMAIL"); 
+              // 세션에 저장된 아이디를 가져와서
+              // 그 아이디 해당하는 회원정보를 가져온다.
+              MypageDAO dao = MypageDAOImpl.getInstance();
+              MembersVO vo = dao.selectMypage(id);
+          %>
+               
                <div class="card-body">
-				
+            
                   <table id="datatablesSimple" >
- 				
+             
                         <tr>
                            <td>닉네임</td>                        
                             <td> <%=vo.getNickname() %> </td>      
@@ -186,24 +186,18 @@
                            <td>전화번호</td>
                            <td> <%=vo.getPhone() %> </td>    
                         </tr>
- 				
-					</table>
-				
+             
+               </table>
+            
                 
- 					
-					<div align="center">
+                
+               <div align="center">
                      <button type="button" class ="btn btn-warning" onclick="location.href='${root}/mypaper'" >내가쓴글</button>&nbsp; 
                      <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favorites'">보호소 즐겨찾기</button>&nbsp; 
-               		 <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favoritew'">위드펫 즐겨찾기</button>&nbsp;
-<<<<<<< HEAD
-               		 <button type="button" class ="btn btn-warning" onclick="location.href='view/updatemember.jsp'">정보 수정</button>&nbsp;
-               		 
-=======
-               		 <button type="button" class ="btn btn-warning" onclick="location.href='updatemember.jsp'">정보 수정</button>&nbsp;
-               		 <button type="button" class="send-favorites" onclick="sendFavorites();">회원탈퇴</button>
->>>>>>> 5c3f309fd15c69d1424fea220596aa25e2365821
-                    </div>
+                      <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favoritew'">위드펫 즐겨찾기</button>&nbsp;
+                      <button type="button" class ="btn btn-warning" onclick="location.href='view/updatemember.jsp'">정보 수정</button>&nbsp;
 
+                    </div>
             </div>
          </div>
       </main>
