@@ -71,26 +71,16 @@
               <div class="input-group">
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
-            <%  if( email != null) { %>
-<<<<<<< HEAD
-                   <a href ="${root}/logout"><button type="button" id='btnLogout' value='로그아웃' class="btn" style="font-size: 14px;" onclick="showConfirmation()" >로그아웃</button></a> 
-                    <a href="${root}/mypage"><button type="button" class="btn" style="font-size: 14px;">마이페이지</button></a>                  
-         <%} else{%>
-                <a href ="${root}/login"><button type="button" class="btn" style="font-size: 14px;">로그인</button></a>                 
-=======
+         <%  if( email != null) { %>
                    <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
-         	<%} else{%>
+            <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
->>>>>>> 2731e3c253e4d3e0fb74dfd81ace69fb9deddae6
              
             <%}  %>
                 </div>
             </form>     
             </nav>
-<<<<<<< HEAD
-     
-=======
             <script>
 	            function logout() {
 	    		if (confirm("로그아웃 하시겠습니까?")) {
@@ -98,7 +88,6 @@
 	   		 	}
 			}
             </script>
->>>>>>> 2731e3c253e4d3e0fb74dfd81ace69fb9deddae6
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${root}/main" >

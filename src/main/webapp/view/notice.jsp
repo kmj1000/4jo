@@ -215,12 +215,18 @@
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
                 <div class="input-group">
-                	<button type="button" class="btn" onclick="location='login.jsp'" style="font-size: 14px;">로그아웃</button>					
-					<button type="button" class="btn" onclick="location='mypage.jsp'" style="font-size: 14px;">마이페이지</button>
+                	<button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>					
+					<button type="button" class="btn" onclick="location.href='${pageContext.servletContext.contextPath}/mypage'" style="font-size: 14px;">마이페이지</button>
                 </div>
             </form>     
             </nav>
-            
+              <script>
+               function logout() {
+             if (confirm("로그아웃 하시겠습니까?")) {
+             location.href = '${pageContext.servletContext.contextPath}/logout';
+                }
+         	}
+            </script>
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
