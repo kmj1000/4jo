@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.java.servlet.vo.CommunityVO"%>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Community List</title>
+        <title>공지사항</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/mypageStyles.css" rel="stylesheet" />
         <%-- <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" /> --%>
@@ -214,13 +215,43 @@
    	<body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
+<<<<<<< Updated upstream
                 <div class="input-group">
-                	<button type="button" class="btn" onclick="location='login.jsp'" style="font-size: 14px;">로그아웃</button>					
-					<button type="button" class="btn" onclick="location='mypage.jsp'" style="font-size: 14px;">마이페이지</button>
+                	<button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>					
+					<button type="button" class="btn" onclick="location.href='${pageContext.servletContext.contextPath}/mypage'" style="font-size: 14px;">마이페이지</button>
                 </div>
             </form>     
             </nav>
+              <script>
+               function logout() {
+             if (confirm("로그아웃 하시겠습니까?")) {
+             location.href = '${pageContext.servletContext.contextPath}/logout';
+                }
+         	}
+            </script>
+=======
+              <div class="input-group">
+                <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
+              <%System.out.println(email);%>
+            <%  if( email != null) { %>
+                   <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
+         	<%} else{%>
+                <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
+             
+            <%}  %>
+                </div>
+            </form>     
+            </nav>
+            <script>
+	            function logout() {
+	    		if (confirm("로그아웃 하시겠습니까?")) {
+	    		location.href = "${root}/logout";
+	   		 	}
+			}
+            </script>
             
+>>>>>>> Stashed changes
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
@@ -238,7 +269,7 @@
             </nav>
                 <main>
                     <div class="container-fluid px-3 pt-3">
-                        <h1 class="mt-1" >마이페이지</h1>
+                        <h1 class="mt-1" >공지사항</h1>
                         <ol class="breadcrumb mb-4">
  
                         </ol>
@@ -270,14 +301,14 @@
                                     <tfoot>
                                     </tfoot>
                                     <tbody>
-                                    	<C:forEach var="noticeVO" items="${requestScope.noticeList}" varStatus="status">
+                                    	<c:forEach var="noticeVO" items="${requestScope.noticeList}" varStatus="status">
                                         <tr>
                                             <td>${noticeVO.notice_no}</td>
                                             <td><a href="${pageContext.servletContext.contextPath}/noticecontent?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
                                             <td>${noticeVO.notice_reg_date}</td>
                                             <td>${noticeVO.admin_name}</td>
                                         </tr>
-                                        </C:forEach>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -290,7 +321,6 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Main</title>
+        <title>옥독캣</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
         <link href="${root}/bootstrap/css/mypageStyles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -19,7 +19,9 @@
         <script src="${root}/bootstrap/js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="${root}/bootstrap/js/datatables-simple-demo.js"></script>
-     
+     	<script>
+     	
+     	</script>
         <style> 
 
        a:hover{
@@ -57,27 +59,24 @@
           .bgcolor{
          background-color: #f9f8f3;
           }
-          .input-group{
-          align : right;
-          }
+          
         </style>
         
     </head>
- <body class="sb-nav-fixed bgcolor" > 
+   <body class="sb-nav-fixed"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
-              <div class="input-group">
+          <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
+                 <div class="input-group">
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
-            <%  if( email != null) { %>
+         <%  if( email != null) { %>
                    <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
-         	<%} else{%>
+            <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
-             
             <%}  %>
                 </div>
-            </form>     
+            </form>      
             </nav>
             <script>
 	            function logout() {
@@ -85,6 +84,7 @@
 	    		location.href = "${root}/logout";
 	   		 	}
 			}
+
             </script>
          <!-- 로고 -->              
         <nav class="main bg-white" >

@@ -73,7 +73,7 @@ public class ShelterApiServlet extends HttpServlet {
 		vo.setCareTel( request.getParameter("careTel"));
 		
 		
-		//{ result : 1}
+		
 		String method = request.getParameter("method");
 		int result = 0;
 		

@@ -15,7 +15,7 @@
    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Tables - SB Admin</title>
+<title>마이페이지</title>
 <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
 <link href="${root}/bootstrap/css/mypageStyles.css"   rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"   crossorigin="anonymous"></script>
@@ -27,7 +27,29 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
     crossorigin="anonymous"></script>
-  
+  <script>
+  function withdrawMember() {
+	  $.ajax({
+	    url: "/4jo/mypage",
+	    type: "POST",
+	    dataType: "json",
+	    success: function(data) {
+	      if (data.result === 1) {
+	        alert("회원 탈퇴가 완료되었습니다.");
+	        location.href = "/4jo/logout"; // 로그아웃 페이지로 이동
+	      } else {
+	        alert("회원 탈퇴 처리에 실패했습니다. 다시 시도해주세요.");
+	      }
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	      console.log(jqXHR);
+	      console.log(textStatus);
+	      console.log(errorThrown);
+	      alert("오류가 발생했습니다. 다시 시도해주세요.");
+	    }
+	  });
+	}
+  </script>
 <style>
 		.deleteMember{
 			color : darkgray;
@@ -173,8 +195,13 @@
                      <button type="button" class ="btn btn-warning" onclick="location.href='${root}/mypaper'" >내가쓴글</button>&nbsp; 
                      <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favorites'">보호소 즐겨찾기</button>&nbsp; 
                		 <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favoritew'">위드펫 즐겨찾기</button>&nbsp;
+<<<<<<< HEAD
                		 <button type="button" class ="btn btn-warning" onclick="location.href='view/updatemember.jsp'">정보 수정</button>&nbsp;
                		 
+=======
+               		 <button type="button" class ="btn btn-warning" onclick="location.href='updatemember.jsp'">정보 수정</button>&nbsp;
+               		 <button type="button" class="send-favorites" onclick="sendFavorites();">회원탈퇴</button>
+>>>>>>> 5c3f309fd15c69d1424fea220596aa25e2365821
                     </div>
 
             </div>

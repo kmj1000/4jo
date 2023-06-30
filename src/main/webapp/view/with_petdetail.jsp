@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -76,9 +76,7 @@
 				        var msg = favoritew.length + "건 삭제되었습니다.";
 				        alert(msg);
 				        
-				      } else {
-				        alert("처리에 실패했습니다. 다시 시도해주세요.");
-				      }
+				      } 
 				    },
 				    error: function(jqXHR, textStatus, errorThrown) {
 				      console.log(jqXHR);
@@ -135,7 +133,7 @@
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
             <%  if( email != null) { %>
-                   <button type="button" class="btn" onclick="location.href='${root}/logout'" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
             <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
@@ -144,7 +142,20 @@
                 </div>
             </form>     
             </nav>
-        
+        <script>
+               function logout() {
+             if (confirm("로그아웃 하시겠습니까?")) {
+             location.href = "${root}/logout";
+                }
+         }
+              
+            </script>
+             <!-- 로고 -->              
+               <nav class="main bg-white" >
+                <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
+                <img class = "img_main" src="image/logo.png" style="width: 250px; height: 90px;"/>
+                </a>
+               </nav>
          <nav class="tab sb-topnav2 navbar navbar-expand; bg-white" >
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/petnotice"><b>공고</b></a> 
              <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/shelter"><b>보호소</b></a>
@@ -244,16 +255,7 @@
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </footer>
             </div>
         </div>

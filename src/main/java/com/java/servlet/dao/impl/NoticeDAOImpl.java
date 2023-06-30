@@ -23,14 +23,14 @@ public class NoticeDAOImpl implements NoticeDAO {
 	   }
 	   
 	@Override
-	public NoticeVO selectNotice(String admin_name) {
+	public NoticeVO selectNotice(String nickname) {
 		
 		String sql = "SELECT notice_no\r\n"
 	            + "        ,notice_title\r\n"
 	            + "        ,notice_content\r\n"
 	            + "        ,notice_reg_date\r\n"
-	            + "        ,(select admin_name from admin) as admin_name\r\n"
-	            + "     FROM notice WHERE admin_name = ?"
+	            + "        ,select nickname from members where nickname='관리자' as nickname\r\n"
+	            + "     FROM notice"
 	            ;
 	      NoticeVO vo = null;
 	      
@@ -39,14 +39,14 @@ public class NoticeDAOImpl implements NoticeDAO {
 	            PreparedStatement pstmt = conn.prepareStatement(sql);
 	            ){
 	            
-				pstmt.setString(1, admin_name);
+				pstmt.setString(1, nickname);
 	         
 	            ResultSet rs = pstmt.executeQuery();
 	            
 	            if( rs.next() ) {
 	               vo = new NoticeVO();
 	               vo.setNotice_no(rs.getInt("Notice_no"));
-	               vo.setAdmin_name(rs.getString("admin_name"));
+	               vo.setNickname(rs.getString("nickname"));
 	               vo.setNotice_title(rs.getString("notice_title"));
 	               vo.setNotice_content(rs.getString("notice_content"));
 	               vo.setNotice_reg_date(rs.getDate("notice_reg_date"));
@@ -79,7 +79,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 		         while (rs.next()) {
 		        	NoticeVO vo = new NoticeVO();
 		            vo.setNotice_no(rs.getInt("notice_no"));
-		            vo.setAdmin_name(rs.getString("admin_name"));
+		            vo.setNickname(rs.getString("nickname"));
 		            vo.setNotice_title(rs.getString("notice_title"));
 		           // vo.setContent(rs.getString("content"));
 		            vo.setNotice_reg_date(rs.getDate("notice_reg_date"));
@@ -121,7 +121,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	            + "                    ROWNUM as rn\r\n" + "                    ,notice_no\r\n"
 	            + "                    ,notice_title\r\n" + "                    ,notice_content\r\n"
 	            + "                    ,notice_reg_date\r\n"
-	            + "                    ,(select admin_name from admin where admin_name='관리자') as admin_name\r\n"
+	            + "                    ,(select nickname from members where nickname='관리자') as nickname\r\n"
 	            + "                FROM notice\r\n"
 	            + "                WHERE ROWNUM <= ( ? * ? )   -- page 1=10, 2=20, 3=30  page * 10, 10: 페이지당 게시글 갯수\r\n"
 	            + "            )\r\n" + "    WHERE rn > ( ( ? - 1 ) * ? )";
@@ -145,7 +145,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	            vo.setNotice_no(rs.getInt("notice_no"));
 	            vo.setNotice_title(rs.getString("notice_title"));
 	            vo.setNotice_reg_date(rs.getDate("notice_reg_date"));
-	            vo.setAdmin_name(rs.getString("admin_name"));
+	            vo.setNickname(rs.getString("nickname"));
 	            
 
 	            list.add(vo);
@@ -163,7 +163,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	            + "        ,notice_title\r\n"
 	            + "        ,notice_content\r\n"
 	            + "        ,notice_reg_date\r\n"
-	            + "        ,admin_name\r\n"
+	            + "        ,nickname\r\n"
 	            + "     FROM notice"
 	            ;
 	      NoticeVO vo = null;
@@ -180,7 +180,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	            if( rs.next() ) {
 	               vo = new NoticeVO();
 	               vo.setNotice_no(rs.getInt("Notice_no"));
-	               vo.setAdmin_name(rs.getString("admin_name"));
+	               vo.setNickname(rs.getString("nickname"));
 	               vo.setNotice_title(rs.getString("notice_title"));
 	               vo.setNotice_content(rs.getString("notice_content"));
 	               vo.setNotice_reg_date(rs.getDate("notice_reg_date"));

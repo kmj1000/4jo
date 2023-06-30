@@ -73,7 +73,7 @@ public class FindPwdServlet extends HttpServlet {
 
 		
 		if (pwd != null) {
-			request.getRequestDispatcher("/view/findEmail.jsp?msg=회원님의 이메일은 "+pwd+"입니다.").forward(request, response);
+			request.getRequestDispatcher("/view/findEmail.jsp?msg=회원님의 비밀번호는 "+pwd+"입니다.").forward(request, response);
 			System.out.println("널");
 
 		} else {

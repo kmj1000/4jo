@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.java.servlet.vo.CommunityVO"%>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.java.servlet.dao.MypageDAO" %> 
+<%@ page import="com.java.servlet.dao.impl.MypageDAOImpl" %> 
+<%@ page import="com.java.servlet.vo.MembersVO"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -224,7 +227,7 @@
   		console.log(data);
          $.ajax(
                  {
-                     url: "/project/api/bd"
+                     url: "/4jo/api/communitycontent"
                      ,async:true // 비동기 쓰레드,false : 동기식(응답 받을때까지 대기함)
                      ,contentType: 'application/x-www-form-urlencoded; charset=UTF-8' // 전송타입
                      ,type:"POST" //method
@@ -244,7 +247,7 @@
                      		}
                      		alert( msg );
                      	}else{
-                     		aelrt(data.result + '건 수정실패입니다. \n다시시도하세요.');
+                     		alert(data.result + '건 수정실패입니다. \n다시시도하세요.');
                      	}
                      }
                      ,error:function(jqXHR, textStatus, errorThrown){
@@ -261,7 +264,13 @@
   </script>
 </head>
 <body>
-
+<%	
+           		String nickname = (String)session.getAttribute("SESS_NICKNAME"); 
+		        // 세션에 저장된 아이디를 가져와서
+		        // 그 아이디 해당하는 회원정보를 가져온다.
+		        MypageDAO dao = MypageDAOImpl.getInstance();
+		        MembersVO vo = dao.selectMypage(nickname);
+		    %>
 <div class="container mt-3">
   <h2 style="text-align: center;">게시글 작성</h2>  
   <form action="${pageContext.servletContext.contextPath}/communitycontent" method="post">
@@ -283,7 +292,7 @@
         </div>
         <div class="mb-3 mt-3 col p-3">
             <label for="title">작성자:</label>
-            <div class="form-control" id="nickname" name="nickname">${ requestScope.communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname }</div>
+            <div class="form-control" id="nickname" name="nickname">${ requestScope.communityVO.nickname == null ? sessionScope.SESS_NICKNAME : requestScope.communityVO.nickname }</div>
         </div> 
     </div>
     <div class="mb-3 mt-3">
@@ -291,16 +300,23 @@
         <textarea class="form-control" rows="5" id="content" name="text" >${ communityVO.content }</textarea>
      	</div>
     	<div class="row">
-       	<button type="button" class="get col p-3 btn btn-outline-warning" onclick="history.back();">뒤로</button>
+       	<button type="button" class="get col p-3 btn btn-warning" onclick="history.back();">뒤로</button>
        	<div class="col p-3"></div>
-       	<button type="submit" class="register col p-3 btn btn-outline-warning">전송</button>
+<<<<<<< Updated upstream
+       	<button type="submit" class="register col p-3 btn btn-warning" onclick="return goSubmit();">전송</button>
+=======
+       	<button type="submit" class="register col p-3 btn btn-warning" onclick="adoptMethod('register'); return goSubmit();">전송</button>
+>>>>>>> Stashed changes
          	<div class="col p-3"></div>
-       	<button type="button"  class="modify col p-3 btn btn-outline-warning" onclick="adoptMethod('modify');">수정</button>
+       	<button type="button"  class="modify col p-3 btn btn-warning" onclick="adoptMethod('modify'); return goSubmit();">수정</button>
+       		<div class="col p-3"></div>
+	    <button type="button"  class="remove col p-3 btn btn-warning" onclick="adoptMethod('remove'); return goSubmit();">삭제</button>
+	    	<div class="col p-3"></div>
    			
     </div>
     	<input type="hidden" name="method" value="${param.method }">
         <input type="hidden" name="c_no" value="${param.c_no }">
-		<input type="hidden" name="id" value="${communityVO.nickname == null ? sessionScope.SESS_ID : requestScope.communityVO.nickname  }">
+		<input type="hidden" name="nickname" value="${communityVO.nickname == null ? sessionScope.SESS_NICKNAME : requestScope.communityVO.nickname  }">
   </form>
 </div>
 

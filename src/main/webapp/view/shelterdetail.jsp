@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -21,7 +21,7 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.js" 
     integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" 
     crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+		
 	
 		<style>
 		
@@ -84,9 +84,7 @@
 			        var msg = favorites.length + "건 등록되었습니다.";
 			        alert(msg);
 			       
-			      } else {
-			        alert("처리에 실패했습니다. 다시 시도해주세요.");
-			      }
+			      } 
 			    },
 			    error: function(jqXHR, textStatus, errorThrown) {
 			      console.log(jqXHR);
@@ -136,7 +134,7 @@
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
             <%  if( email != null) { %>
-                   <button type="button" class="btn" onclick="location.href='${root}/logout'" style="font-size: 14px;">로그아웃</button>
+                   <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
             <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
@@ -145,7 +143,13 @@
                 </div>
             </form>     
             </nav>
-            
+            <script>
+               function logout() {
+             if (confirm("로그아웃 하시겠습니까?")) {
+             location.href = "${root}/logout";
+                }
+         }
+            </script>
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
@@ -249,12 +253,12 @@
 			                               </tbody>
 	                                    
 	                                </table>
-	                              <button type="button" class="send-favorites" 
-											onclick="sendFavorites();">전송</button>
-	    									<button type="button" class="remove-favorites" 
-											onclick="removeFavorites();">삭제</button>
+	       
 	                           
-	                            
+	                              <button type="button" class="send-favoritew col p-3 btn btn-primary" 
+											onclick="sendFavoritew();">전송</button>
+	    								<button type="button" class="remove-favoritew col p-3 btn btn-primary" 
+											onclick="removeFavoritew();">삭제</button>
 	                              
 	                            </div>
 	                            
@@ -265,16 +269,7 @@
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
+                  
                 </footer>
             </div>
         </div>

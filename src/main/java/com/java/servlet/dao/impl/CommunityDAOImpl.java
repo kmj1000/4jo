@@ -29,7 +29,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		            + "        ,title\r\n"
 		            + "        ,content\r\n"
 		            + "        ,reg_date\r\n"
-		            + "        ,(SELECT nickname FROM members) as nickname\r\n"
+		            + "        ,nickname\r\n"
 		            + "    FROM community WHERE c_no = ?"
 		            ;
 		      CommunityVO vo = null;
@@ -123,7 +123,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		            + "                    ROWNUM as rn\r\n" + "                    ,c_no\r\n"
 		            + "                    ,title\r\n" + "                    ,content\r\n"
 		            + "                    ,reg_date\r\n"
-		            + "                    ,(select nickname from members where nickname='민주') as nickname\r\n"
+		            + "                    ,nickname\r\n"
 		            + "                FROM community\r\n"
 		            + "                WHERE ROWNUM <= ( ? * ? )   -- page 1=10, 2=20, 3=30  page * 10, 10: 페이지당 게시글 갯수\r\n"
 		            + "            )\r\n" + "    WHERE rn > ( ( ? - 1 ) * ? )";
@@ -158,86 +158,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 		      return list;
 		   }
-	@Override
-	public int insertCommunity(CommunityVO vo) {
-		int result = 0;
-		String sql = "INSERT INTO community( c_no\r\n"
-					+ "                    ,title\r\n"
-					+ "                    ,content\r\n"
-					+ "                    ,reg_date\r\n"
-					+ "                    ,nickname\r\n"
-					+ "                    )    \r\n"
-					+ "    values(\r\n"
-					+ "            seq_c_no.NEXTVAL\r\n"
-					+ "            ,?\r\n"
-					+ "            ,?\r\n"
-					+ "            ,sysdate\r\n"
-					+ "            ,nickname  -- m_no\r\n"
-					+ "    )";
-		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				){
-				
-				pstmt.setString(1, vo.getTitle());
-				pstmt.setString(2, vo.getContent());
-				pstmt.setString(3, vo.getNickname());
-				
-				result = pstmt.executeUpdate();
-				
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
 	
-	@Override
-	public int updateCommunity(CommunityVO vo) {
-		int result = 0;
-		String sql = "UPDATE community\r\n"
-				+ "    SET title = ?\r\n"
-				+ "    , content = ?\r\n"
-				
-				+ "    WHERE c_no = ?"
-				;
-		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				){
-				
-				pstmt.setString(1, vo.getTitle());
-				pstmt.setString(2, vo.getContent());
-				pstmt.setInt(3, vo.getC_no());
-				
-				result = pstmt.executeUpdate();
-				
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
-	
-	@Override
-	public int deleteCommunity(int c_no) {
-		int result = 0;
-		String sql = "DELETE FROM board WHERE c_no = ?";
-		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				){
-				
-				pstmt.setInt(1, c_no);
-				
-				result = pstmt.executeUpdate();
-				System.out.println("result - " + result);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
 
 	
 }

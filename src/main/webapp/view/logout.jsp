@@ -1,5 +1,11 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="javax.swing.JOptionPane" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpSession" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +33,14 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<%
-	 response.sendRedirect(request.getContextPath() +  "/main");
+	session.removeAttribute("email");
+	
+	response.sendRedirect("/view/main.jsp");
+
+
+	 response.sendRedirect(request.getContextPath() + "/main");
 	%>
 </body>
 </html>
