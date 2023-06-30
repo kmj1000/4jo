@@ -58,39 +58,92 @@
 				    .bgcolor{
 				   background-color: #f9f8f3;
 				    }
-			 	    .btn{
-				     width: 100px;
-				     height: 40px;
-				     float: right; 
-				     margin-right:20px;
-				     margin-bottom:20px;
-				    } 
-			
+			 	    
 
 			
+		</style>
+		<style>
+		
+		  a:hover{
+		                background-color: #feeaa5;
+		            }
+		            .main{
+		            padding-top: 0.7cm;
+		            padding-left: 1.0cm;
+		            padding-right : 1.5cm;
+		            padding-bottom : 3cm;
+		            height: 120px;
+		            }         
+		            .bg-yellow {
+						  --bs-bg-opacity: 1;
+						  background-color: #feeaa5 !important;
+					}
+					.main1{
+					border-bottom : 1px solid #645326;
+					 padding-bottom : 2px;
+					 padding-top : 2px;
+					}
+					.tab{
+						 padding-bottom : 0;
+						 padding-top : 0;
+						border-bottom : 1px solid #645326;
+						border-top : 1px solid #645326;
+					}
+					
+					.img_main{
+					width: 60%;
+				    margin: 0px auto;
+				    display: block;
+				    width: 250px; height: 90px;
+				    }
+				    .bgcolor{
+				   background-color: #f9f8f3;
+				   }
+				   .write, .write:hover, .write:active{
+			 	    --bs-btn-padding-x: 0.75rem;
+  					--bs-btn-padding-y: 0.375rem;
+  						margin-right : 0.5rem;
+  						margin-bottom : 0.5rem;
+				     width: 120px;
+				     height: 40px;
+				     float: right; 
+				     cursor: pointer;
+				     text-align: center;
+				 	background-color: #feeaa5;
+				 	--bs-btn-border-color: transparent;
+				    } 
+			
+				    }
 		</style>
 </head>
 <body class="sb-nav-fixed bgcolor"> 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
+<<<<<<< HEAD
 
                
 
               <div class="input-group">
+=======
+                 <div class="input-group">
+>>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
-            <%  if( email != null) { %>
+         <%  if( email != null) { %>
                    <button type="button" class="btn" onclick="logout();" style="font-size: 14px;">로그아웃</button>
                    <button type="button" class="btn" onclick="location.href='${root}/mypage'" style="font-size: 14px;">마이페이지</button>                  
-         	<%} else{%>
+            <%} else{%>
                 <button type="button" class="btn" onclick="location.href='${root}/login'" style="font-size: 14px;">로그인</button>                 
-             
             <%}  %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
                 </div>
-            </form>     
+            </form>      
             </nav>
             <script>
+<<<<<<< HEAD
 
                function logout() {
              if (confirm("로그아웃 하시겠습니까?")) {
@@ -100,6 +153,16 @@
             </script>
 
 
+=======
+	            function logout() {
+	    		if (confirm("로그아웃 하시겠습니까?")) {
+	    		location.href = "${root}/logout";
+	   		 	}
+			}
+
+            </script>
+
+>>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
          <!-- 로고 -->              
         <nav class="main bg-white" >
          <a class="mainlogo" href="${pageContext.servletContext.contextPath}/main">
@@ -154,10 +217,14 @@
                             </div>
                             <div class="rightbtn">
 
+<<<<<<< HEAD
                             
                              	<a class="btn btn-warning" type="button" href="${pageContext.servletContext.contextPath}/communitycontent">글쓰기</a>
 
                              	<a class="btn btn-warning" type="button" href="view/community-content.jsp">글쓰기</a>
+=======
+                             	<a class="btn write" type="button" href="view/community-content.jsp">글쓰기</a>
+>>>>>>> 817391e9088dad19627b0e2ed8f5731b5ebcbc1a
 
                              </div>
                             <%@ include file="/view/import/page-community.jsp" %>
