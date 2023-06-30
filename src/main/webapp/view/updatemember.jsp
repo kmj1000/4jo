@@ -125,7 +125,8 @@
 
  <body class="sb-nav-fixed bgcolor" > 
            <nav class="main1 sb-topnav2 navbar navbar-expand; navbar-dark bg-yellow" >
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 ">
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-0 my-md-0 mt-sm-0 "
+            action="${pageContext.servletContext.contextPath}/update" method="post">
               <div class="input-group">
                 <% String email = (String)session.getAttribute("SESS_EMAIL"); %>
               <%System.out.println(email);%>
@@ -228,10 +229,6 @@
             </div>
          </div>
      <!--  </main> -->
-      <footer class="py-4 bg-light mt-auto">
-         <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-               <div class="text-muted">Copyright &copy; Your Website 2023</div>
 
                <div></div>
             </div>

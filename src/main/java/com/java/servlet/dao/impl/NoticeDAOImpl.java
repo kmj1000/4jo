@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.java.servlet.dao.NoticeDAO;
+import com.java.servlet.util.DBCP2Util;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.util.PageMaker;
 import com.java.servlet.vo.CommunityVO;
@@ -35,7 +36,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	      NoticeVO vo = null;
 	      
 	      try(
-	            Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+	            Connection conn = DBCP2Util.getConnection();// DBCP2Util
 	            PreparedStatement pstmt = conn.prepareStatement(sql);
 	            ){
 	            
@@ -69,7 +70,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 		            + "    FROM notice";
 		      List<NoticeVO> list = null;
 
-		      try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+		      try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
 		            Statement stmt = conn.createStatement();) {
 
 		         ResultSet rs = stmt.executeQuery(sql);
@@ -99,7 +100,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 		int result = 0;
 	      String sql = "SELECT COUNT(1) \r\n" + "    FROM notice ";
 	      try {
-	         Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+	         Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
 	         Statement stmt = conn.createStatement();
 	         ResultSet rs = stmt.executeQuery(sql);
 
@@ -128,7 +129,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 
 	      List<NoticeVO> list = null;
 
-	      try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+	      try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
 	            PreparedStatement pstmt = conn.prepareStatement(sql);) {
 
 	         pstmt.setInt(1, pageMaker.getCri().getPageNum());
@@ -169,7 +170,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	      NoticeVO vo = null;
 	      
 	      try(
-	            Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+	            Connection conn = DBCP2Util.getConnection();// DBCP2Util
 	            PreparedStatement pstmt = conn.prepareStatement(sql);
 	            ){
 	            

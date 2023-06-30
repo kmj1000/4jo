@@ -52,7 +52,7 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 				;
 		List<Pet_noticeVO> list=null;
 		try(
-				Connection conn = DataBaseUtil.getConnection();
+				Connection conn = DBCP2Util.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 				pstmt.setInt(1, pet_notice_no);
@@ -119,7 +119,7 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 	
 		List<Pet_noticeVO> list = null;
 		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+				Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
 				Statement stmt = conn.createStatement();
 				){
 				
@@ -165,7 +165,7 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 		String sql = "SELECT COUNT(1) \r\n"
 						+ "    FROM pet_notice "
 					;
-		try(	Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+		try(	Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				){
@@ -214,7 +214,7 @@ public class Pet_noticeDAOImpl implements Pet_noticeDAO {
 		
 		List<Pet_noticeVO> list = null;
 		ResultSet rs = null;
-		try(	Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+		try(	Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				) {
 			pstmt.setInt(1, pageMaker.getCri().getPageNum());

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.java.servlet.dao.MypaperDAO;
+import com.java.servlet.util.DBCP2Util;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.CommunityVO;
 
@@ -26,7 +27,7 @@ public class MypaperDAOImpl implements MypaperDAO {
 	            + "    FROM community where nickname=?";
 	      List<CommunityVO> list = null;
 
-	      try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+	      try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
 	            Statement stmt = conn.createStatement();) {
 
 	         ResultSet rs = stmt.executeQuery(sql);

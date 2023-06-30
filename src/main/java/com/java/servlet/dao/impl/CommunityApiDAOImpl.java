@@ -39,7 +39,7 @@ public class CommunityApiDAOImpl implements CommunityApiDAO {
 					+ "            ,sysdate\r\n"
 					+ "    )";
 		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+				Connection conn = DBCP2Util.getConnection();// DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 			
@@ -67,7 +67,7 @@ public class CommunityApiDAOImpl implements CommunityApiDAO {
 				+ "    WHERE nickname= ?"
 				;
 		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+				Connection conn = DBCP2Util.getConnection();// DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 				

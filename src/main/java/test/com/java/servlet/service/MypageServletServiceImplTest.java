@@ -20,16 +20,14 @@ class MypageServletServiceImplTest {
 	
 private MypageService service = MypageServiceImpl.getInstance();
 	
-	@Test  @Ignore
-	void testGetSelectAllBoard() {
-		int m_no= 1;
-		MembersVO vo = service.selectMypage(m_no);
-		
-		assertNotEquals(null, vo);
-		System.out.println("service test");
-		System.out.println(vo);
-	}
+//	@Test  @Ignore
+//	void testGetSelectAllBoard() {
+//		int m_no= 1;
+//		MembersVO vo = service.selectMypage(m_no);
+//		
+//		assertNotEquals(null, vo);
+//		System.out.println("service test");
+//		System.out.println(vo);
+//	}
 
-
-	
 }

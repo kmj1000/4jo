@@ -44,7 +44,7 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
       List<Favorite_W_VO> list = null;
       
       try(
-            Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+            Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
             Statement stmt = conn.createStatement();
             ){
             
@@ -81,7 +81,7 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
                   + "    FROM favoritew"
                ;
       try{
-            Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+            Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             
@@ -127,7 +127,7 @@ public class Favorite_W_DAOImpl implements Favorite_W_DAO {
       List<Favorite_W_VO> list = null;
       
       try(
-            Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+            Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ){
          

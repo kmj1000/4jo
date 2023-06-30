@@ -195,7 +195,7 @@
                      <button type="button" class ="btn btn-warning" onclick="location.href='${root}/mypaper'" >내가쓴글</button>&nbsp; 
                      <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favorites'">보호소 즐겨찾기</button>&nbsp; 
                       <button type="button" class ="btn btn-warning" onclick="location.href='${root}/favoritew'">위드펫 즐겨찾기</button>&nbsp;
-                      <button type="button" class ="btn btn-warning" onclick="location.href='view/updatemember.jsp'">정보 수정</button>&nbsp;
+                      <button type="button" class ="btn btn-warning" onclick="location.href='${root}/update'">정보 수정</button>&nbsp;
 
                     </div>
             </div>

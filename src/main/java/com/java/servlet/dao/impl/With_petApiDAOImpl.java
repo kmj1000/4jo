@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import com.java.servlet.dao.With_petApiDAO;
+import com.java.servlet.util.DBCP2Util;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.Favorite_W_VO;
 import com.java.servlet.vo.With_petVO;
@@ -64,7 +65,7 @@ public class With_petApiDAOImpl implements With_petApiDAO {
 				+ "    (SELECT extra FROM with_pet WHERE extra = ?)\r\n"
 				+ ")";
 		try(
-			Connection conn = DataBaseUtil.getConnection();
+			Connection conn = DBCP2Util.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 			
@@ -97,7 +98,7 @@ public class With_petApiDAOImpl implements With_petApiDAO {
 		String sql = "DELETE FROM favoritew WHERE with_pet_no=? ";
 		
 		try(
-				Connection conn = DataBaseUtil.getConnection();
+				Connection conn = DBCP2Util.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 				pstmt.setInt(1, favoritew_no);

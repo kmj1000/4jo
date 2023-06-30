@@ -54,7 +54,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 			List<ShelterVO> list = null;
 			
 			try(
-					Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+					Connection conn = DBCP2Util.getConnection();// DBCP2Util
 					PreparedStatement pstmt = conn.prepareStatement(sql);
 					){
 					pstmt.setInt(1, shelter_no); 
@@ -123,7 +123,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 		List<ShelterVO> list = null;
 		
 		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+				Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
 				Statement stmt = conn.createStatement();
 				){
 				
@@ -166,7 +166,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 		String sql = "SELECT COUNT(1) \r\n"
 						+ "    FROM shelter "
 					;
-		try(	Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+		try(	Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				){
@@ -211,7 +211,7 @@ public class ShelterDAOImpl implements ShelterDAO {
 		
 		List<ShelterVO> list = null;
 		ResultSet rs = null;
-		try(	Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+		try(	Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				) {
 			pstmt.setInt(1, pageMaker.getCri().getPageNum());

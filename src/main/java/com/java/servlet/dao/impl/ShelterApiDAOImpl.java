@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import com.java.servlet.dao.ShelterApiDAO;
+import com.java.servlet.util.DBCP2Util;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.Favorite_S_VO;
 import com.java.servlet.vo.ShelterVO;
@@ -65,7 +66,7 @@ public class ShelterApiDAOImpl implements ShelterApiDAO {
 						+"\r\n"
 						+ ")";
 		try(
-			Connection conn = DataBaseUtil.getConnection();
+			Connection conn = DBCP2Util.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 			pstmt.setInt(1, vo.getShelter_no());
@@ -96,7 +97,7 @@ public class ShelterApiDAOImpl implements ShelterApiDAO {
 		String sql = "DELETE FROM favorites WHERE shelter_no=? ";
 		
 		try(
-				Connection conn = DataBaseUtil.getConnection();
+				Connection conn = DBCP2Util.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 				pstmt.setInt(1, favorites_no);

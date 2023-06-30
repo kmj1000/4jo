@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.java.servlet.dao.UpdateMemberDAO;
+import com.java.servlet.util.DBCP2Util;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.MembersVO;
 
@@ -27,7 +28,7 @@ public class UpdateMemberDAOImpl implements UpdateMemberDAO{
 	        			 		+ "WHERE email = ?"
 	        			 		;
 	            
-	            conn = DataBaseUtil.getConnection();// DBCP2Util
+	            conn = DBCP2Util.getConnection();// DBCP2Util
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1,email);
 				rs = pstmt.executeQuery();
@@ -71,7 +72,7 @@ public class UpdateMemberDAOImpl implements UpdateMemberDAO{
 
 	 	 
 	 	        try {
-	 	        	conn = DataBaseUtil.getConnection();// DBCP2Util
+	 	        	conn = DBCP2Util.getConnection();// DBCP2Util
 	 	        	String sql = "UPDATE members SET name =?, pwd=? , phone=? , nickname=?" 
 	 	        			 		+ "WHERE email = ?"
 	 	        			 		;

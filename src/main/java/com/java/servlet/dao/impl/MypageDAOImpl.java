@@ -49,7 +49,7 @@ public class MypageDAOImpl implements MypageDAO {
                + "    FROM members WHERE email = ?"
                ;
 
-            conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+            conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
             pstmt = conn.prepareStatement(sql.toString());   
             pstmt.setString(1, email);
             rs = pstmt.executeQuery();
@@ -79,7 +79,7 @@ public class MypageDAOImpl implements MypageDAO {
 
  
         try {
-        	conn = DataBaseUtil.getConnection();// DBCP2Util
+        	conn = DBCP2Util.getConnection();// DBCP2Util
         	String sql = "UPDATE members SET name =?, pwd=? , phone=? , nickname=?" 
         			 		+ "WHERE email = ?"
         			 		;

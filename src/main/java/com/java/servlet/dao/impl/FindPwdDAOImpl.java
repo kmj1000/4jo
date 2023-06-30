@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.java.servlet.dao.FindPwdDAO;
+import com.java.servlet.util.DBCP2Util;
 import com.java.servlet.util.DataBaseUtil;
 import com.java.servlet.vo.MembersVO;
 
@@ -22,7 +23,7 @@ public class FindPwdDAOImpl implements FindPwdDAO {
 
 		String sql = "SELECT pwd FROM  members WHERE (name, phone,email) IN ( (?, ?, ?) )";
 
-		try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util
+		try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);) {
 //			System.out.println(pstmt);
 			pstmt.setString(1, vo.getName());

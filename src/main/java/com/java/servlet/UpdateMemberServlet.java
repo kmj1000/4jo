@@ -18,7 +18,7 @@ import com.java.servlet.vo.MembersVO;
 /**
  * Servlet implementation class UpdateMemberServlet
  */
-@WebServlet("/Update")
+@WebServlet("/update")
 public class UpdateMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,8 +34,8 @@ public class UpdateMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher( "/view/updatemember.jsp"	);
+		dispatcher.forward(request, response);
 	}
 
 	/**

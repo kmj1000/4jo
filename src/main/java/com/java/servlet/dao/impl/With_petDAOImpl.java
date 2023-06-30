@@ -50,7 +50,7 @@ public class With_petDAOImpl implements With_petDAO {
 		List<With_petVO>list = null;
 				
 				try(
-					Connection conn = DataBaseUtil.getConnection();	
+					Connection conn = DBCP2Util.getConnection();	
 					PreparedStatement pstmt = conn.prepareStatement(sql);
 						){
 					pstmt.setInt(1, with_pet_no);
@@ -118,7 +118,7 @@ public class With_petDAOImpl implements With_petDAO {
 		List<With_petVO> list = null;
 		
 		try(
-				Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+				Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
 				Statement stmt = conn.createStatement();
 				){
 				
@@ -162,7 +162,7 @@ public class With_petDAOImpl implements With_petDAO {
 		String sql = "SELECT COUNT(1) \r\n"
 						+ "    FROM with_pet "
 					;
-		try(	Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+		try(	Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				){
@@ -209,7 +209,7 @@ public class With_petDAOImpl implements With_petDAO {
 		
 		List<With_petVO> list = null;
 		ResultSet rs = null;
-		try(	Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+		try(	Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				) {
 			pstmt.setInt(1, pageMaker.getCri().getPageNum());

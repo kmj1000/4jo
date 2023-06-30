@@ -35,7 +35,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		      CommunityVO vo = null;
 		      
 		      try {
-		            Connection conn = DataBaseUtil.getConnection();// DBCP2Util
+		            Connection conn = DBCP2Util.getConnection();// DBCP2Util
 		            PreparedStatement pstmt = conn.prepareStatement(sql);
 		            
 		            
@@ -70,7 +70,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		            + "    FROM community";
 		      List<CommunityVO> list = null;
 
-		      try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+		      try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
 		            Statement stmt = conn.createStatement();) {
 
 		         ResultSet rs = stmt.executeQuery(sql);
@@ -100,7 +100,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		int result = 0;
 	      String sql = "SELECT COUNT(1) \r\n" + "    FROM community ";
 	      try {
-	         Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
+	         Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
 	         Statement stmt = conn.createStatement();
 	         ResultSet rs = stmt.executeQuery(sql);
 
@@ -130,7 +130,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 		      List<CommunityVO> list = null;
 
-		      try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
+		      try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
 		            PreparedStatement pstmt = conn.prepareStatement(sql);) {
 
 		         pstmt.setInt(1, pageMaker.getCri().getPageNum());
