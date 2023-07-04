@@ -7,10 +7,10 @@ import com.java.servlet.vo.CommunityVO;
 import com.java.servlet.vo.NoticeVO;
 
 public interface NoticeService {
-	NoticeVO getNotice(String admin_name);
-	NoticeVO getNotice(int notice_no);
+	
+	List<NoticeVO> getAllNotice();
 	int getCountAllNotice();
 
 	List<NoticeVO> getAllNoticeByPage(PageMaker pageMaker);
-	List<NoticeVO> getAllNotice();
+	
 }

@@ -27,7 +27,7 @@ public class LoginDAOImpl implements LoginDAO {
 
 		String sql = "SELECT COUNT(1) FROM  members\r\n" + "    WHERE (email, pwd) IN ( (?, ?) )";
 
-		try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util
+		try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			System.out.println(pstmt);
 			pstmt.setString(1, vo.getEmail());
@@ -51,7 +51,7 @@ public class LoginDAOImpl implements LoginDAO {
 
 		String sql = "SELECT * FROM  members\r\n" + "    WHERE (Email, pwd) IN ( (?, ?) )";
 
-		try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util
+		try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			System.out.println(pstmt);
 			pstmt.setString(1, vo.getEmail());

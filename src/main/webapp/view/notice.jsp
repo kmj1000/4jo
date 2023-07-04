@@ -254,49 +254,55 @@
 			 <a class="pt-3 pb-3 flex-sm-fill text-sm-center nav-link" href="${pageContext.servletContext.contextPath}/notice"><b>공지사항</b></a>
    
             </nav>
-                <main>
+            <div id="layoutSidenav_content">
+			<main>
                     <div class="container-fluid px-3 pt-3">
-                        <h1 class="mt-1" >공지사항</h1>
-                     
-                       
+                        <h1 class="mt-1" >커뮤니티 페이지</h1>
+                    
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                             
+                               
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>공지 번호</th>
-                                            <th>공지 제목</th>
-                                            <th>공지 작성일</th>
-                                            <th>공지 작성자</th>
+                                            <th>공지번호</th>
+                                            <th>제목</th>
+                                            <th>작성일</th>
+                                            <th>작성자</th>
                                             <!-- <th>조회수</th>  -->
                                         </tr>
-                          
+                                       
                                     </thead>
-                                    <tfoot>
-                                    </tfoot>
+                                   
                                     <tbody>
                                     	<c:forEach var="noticeVO" items="${requestScope.noticeList}" varStatus="status">
                                         <tr>
                                             <td>${noticeVO.notice_no}</td>
-                                            <td><a href="${pageContext.servletContext.contextPath}/noticecontent?method=get&c_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
+                                            <td><a href="${pageContext.servletContext.contextPath}/noticecontent?method=get&notice_no=${noticeVO.notice_no}">${noticeVO.notice_title}</a></td>
                                             <td>${noticeVO.notice_reg_date}</td>
-                                            <td>${noticeVO.admin_name}</td>
+                                            <td>${noticeVO.nickname}</td>
                                         </tr>
                                         </c:forEach>
+                                        
                                     </tbody>
                                 </table>
+                                
                             </div>
+                            <div class="rightbtn">
+
+                             	<a class="btn write" type="button" href="view/notice-content.jsp">글쓰기</a>
+								
+                             </div>
                             <%@ include file="/view/import/page-notice.jsp" %>
                            <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 
                         	<C:import url="/view/import/page-nation.jsp"></C:import> --%>
                         </div>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
+		<footer class="py-4 bg-light mt-auto">
 			<div class="container-fluid px-4">
 				<div class="d-flex align-items-center justify-content-between small">
 		
@@ -306,7 +312,7 @@
 			</div>
 		</footer>
 	</div>
-	</div>
+	
 
 </body>
 </html>

@@ -17,7 +17,7 @@
         <title>커뮤니티 상세</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
         <link href="${pageContext.servletContext.contextPath}/bootstrap/css/styles.css" rel="stylesheet" />
-        <link href="${pageContext.servletContext.contextPath}/bootstrap/css/page-nation.css" rel="stylesheet" />
+      
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${pageContext.servletContext.contextPath}/bootstrap/js/scripts.js"></script>
@@ -182,6 +182,7 @@
      <style type="text/css">.adfit__swipeable{-webkit-tap-highlight-color:transparent;cursor:default;height:100%;left:0;outline:none;position:absolute;top:0;width:100%}</style>
         <script>
         window.onload = function(){
+        
   		initClass();
   	}
   	
@@ -189,6 +190,7 @@
   		$("input[name='method']").val(type);
   		initClass();
   	}
+  	
   	
   	function initClass(){
   		
@@ -223,11 +225,12 @@
   	}
   	function goSubmit(){
   		 //const data = { opKey : 123 };
+  		 console.log("여기1");
   		const data = $("form").serialize();
   		console.log(data);
          $.ajax(
                  {
-                     url: "/4jo/api/communitycontent"
+                     url: "/4jo/communitycontentapi"
                      ,async:true // 비동기 쓰레드,false : 동기식(응답 받을때까지 대기함)
                      ,contentType: 'application/x-www-form-urlencoded; charset=UTF-8' // 전송타입
                      ,type:"POST" //method
@@ -239,14 +242,21 @@
                      	if(data.result == 1){
                      		var msg ='';
                      		switch(data.method){
-                     		case 'modify': msg = data.result +'건 수정되었습니다.'; break;
-                     		case 'register': msg = data.result +'건 등록되었습니다.';break;
+                     		case 'modify': msg = data.result +'건 수정되었습니다.';
+                     		location.href = "${pageContext.servletContext.contextPath }/community";
+                     		break;
+                     		case 'register': 
+                     			msg = data.result +'건 등록되었습니다.';
+                     		location.href = "${pageContext.servletContext.contextPath }/community";
+                     		break;
                      		case 'remove': msg = data.result +'건 삭제되었습니다.';
                      			location.href = "${pageContext.servletContext.contextPath }/community";
                      			break;
                      		}
                      		alert( msg );
                      	}else{
+                     		location.href = "${pageContext.servletContext.contextPath }/community";
+                     		
                      		alert(data.result + '건 실패입니다. \n다시시도하세요.');
                      	}
                      }
@@ -270,6 +280,8 @@
 		        // 그 아이디 해당하는 회원정보를 가져온다.
 		        MypageDAO dao = MypageDAOImpl.getInstance();
 		        MembersVO vo = dao.selectMypage(nickname);
+		        
+		      
 		    %>
 <div class="container mt-3">
   <h2 style="text-align: center;">게시글 작성</h2>  
@@ -297,21 +309,23 @@
     </div>
     <div class="mb-3 mt-3">
         <label for="content">글내용:</label>
-        <textarea class="form-control" rows="5" id="content" name="text" >${ communityVO.content }</textarea>
+        <textarea class="form-control" rows="5" id="content" name="content" >${ communityVO.content }</textarea>
      	</div>
     	<div class="row">
        	<button type="button" class="get col p-3 btn btn-warning" onclick="history.back();">뒤로</button>
        	<div class="col p-3"></div>
-       	<button type="submit" class="register col p-3 btn btn-warning" onclick="adoptMethod('register'); return goSubmit();">전송</button>
+       	<button type="submit" class="register col p-3 btn btn-warning" onclick="return goSubmit();">전송</button>
          	<div class="col p-3"></div>
-       	<button type="button"  class="modify col p-3 btn btn-warning" onclick="adoptMethod('modify'); return goSubmit();">수정</button>
+       	<button type="button"  class="modify col p-3 btn btn-warning" onclick="adoptMethod('modify');">수정</button>
        		<div class="col p-3"></div>
 	    <button type="button"  class="remove col p-3 btn btn-warning" onclick="adoptMethod('remove'); return goSubmit();">삭제</button>
 	    	<div class="col p-3"></div>
    			
     </div>
-    	<input type="hidden" name="method" value="${param.method }">
-        <input type="hidden" name="c_no" value="${param.c_no }">
+    	<input type="hidden" name="method" value="${param.method}">
+    	
+        <input type="hidden" name="c_no" value="${param.c_no}">
+  
 		<input type="hidden" name="nickname" value="${communityVO.nickname == null ? sessionScope.SESS_NICKNAME : requestScope.communityVO.nickname  }">
   </form>
 </div>

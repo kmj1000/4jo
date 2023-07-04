@@ -22,44 +22,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 	public static CommunityDAO getInstance() {
 	     return instance;
 	}
-	@Override
-	public CommunityVO selectCommunity(int c_no) {
-		
-		String sql = "SELECT c_no\r\n"
-		            + "        ,title\r\n"
-		            + "        ,content\r\n"
-		            + "        ,reg_date\r\n"
-		            + "        ,nickname\r\n"
-		            + "    FROM community WHERE c_no = ?"
-		            ;
-		      CommunityVO vo = null;
-		      
-		      try {
-		            Connection conn = DBCP2Util.getConnection();// DBCP2Util
-		            PreparedStatement pstmt = conn.prepareStatement(sql);
-		            
-		            
-					pstmt.setInt(1, c_no);
-		         
-		            ResultSet rs = pstmt.executeQuery();
-		            
-		            if( rs.next() ) {
-		               vo = new CommunityVO();
-		               vo.setC_no(rs.getInt("c_no"));
-		               vo.setNickname(rs.getString("nickname"));
-		               vo.setTitle(rs.getString("title"));
-		               vo.setContent(rs.getString("content"));
-		               vo.setReg_date(rs.getDate("reg_date"));
-		            }
-		            rs.close();
-		            
-		      }catch(Exception e) {
-		         e.printStackTrace();
-		      }
-		      
-		      return vo;
-		
-	}
+	
 	@Override
 	public List<CommunityVO> selectAllCommunity() {
 		 String sql = "SELECT c_no\r\n" + "        "
@@ -70,7 +33,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		            + "    FROM community";
 		      List<CommunityVO> list = null;
 
-		      try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
+		      try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
 		            Statement stmt = conn.createStatement();) {
 
 		         ResultSet rs = stmt.executeQuery(sql);
@@ -82,7 +45,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		            vo.setC_no(rs.getInt("c_no"));
 		            vo.setNickname(rs.getString("nickname"));
 		            vo.setTitle(rs.getString("title"));
-		           // vo.setContent(rs.getString("content"));
+		            vo.setContent(rs.getString("content"));
 		            vo.setReg_date(rs.getDate("reg_date"));
 
 		            list.add(vo);
@@ -100,7 +63,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		int result = 0;
 	      String sql = "SELECT COUNT(1) \r\n" + "    FROM community ";
 	      try {
-	         Connection conn = DBCP2Util.getConnection();// DBCP2Util, DataBaseUtil
+	         Connection conn = DataBaseUtil.getConnection();// DBCP2Util, DataBaseUtil
 	         Statement stmt = conn.createStatement();
 	         ResultSet rs = stmt.executeQuery(sql);
 
@@ -130,7 +93,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 		      List<CommunityVO> list = null;
 
-		      try (Connection conn = DBCP2Util.getConnection(); // DBCP2Util, DataBaseUtil
+		      try (Connection conn = DataBaseUtil.getConnection(); // DBCP2Util, DataBaseUtil
 		            PreparedStatement pstmt = conn.prepareStatement(sql);) {
 
 		         pstmt.setInt(1, pageMaker.getCri().getPageNum());

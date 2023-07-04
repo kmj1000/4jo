@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.java.servlet.service.CommunityService;
-import com.java.servlet.service.NoticeService;
-import com.java.servlet.service.impl.CommunityServiceImpl;
-import com.java.servlet.service.impl.NoticeServiceImpl;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.java.servlet.service.NoticeCService;
+import com.java.servlet.service.impl.NoticeCServiceImpl;
 import com.java.servlet.vo.CommunityVO;
 import com.java.servlet.vo.NoticeVO;
 
 
 /**
- * Servlet implementation class Board
+ * Servlet implementation class Board.
  */
 @WebServlet("/noticecontent")
 public class NoticeContentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private final NoticeService service = NoticeServiceImpl.getInstance(); 
+    private final NoticeCService service = NoticeCServiceImpl.getInstance(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -36,6 +36,7 @@ public class NoticeContentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String method=request.getParameter("method");
 		System.out.println("method = "+request.getParameter("method"));
 		System.out.println("notice_no = "+request.getParameter("notice_no"));
@@ -44,14 +45,19 @@ public class NoticeContentServlet extends HttpServlet {
 		if(notice_no==null || notice_no.equals("")) {
 			notice_no="0";
 		}
-		
+		int nno = Integer.parseInt(notice_no);
+		System.out.println(notice_no);
 		switch(method) {
-			case "get":
-				NoticeVO noticeVO=service.getNotice(Integer.parseInt(notice_no));
-				request.setAttribute("noticeVO", noticeVO);
-				RequestDispatcher dispatcher=request.getRequestDispatcher("/view/notice-content.jsp");
-				dispatcher.forward(request, response);
-				break;
+		case "get": 
+			NoticeVO noticeVO= service.getNotice(nno);
+			request.setAttribute("noticeVO", noticeVO);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/notice-content.jsp");
+			dispatcher.forward(request, response);
+			break;
+		case "register": // 등록완료
+			dispatcher = request.getRequestDispatcher("/view/notice-content.jsp");
+			dispatcher.forward(request, response);
+			break;
 		}
 		
 	}
@@ -59,23 +65,10 @@ public class NoticeContentServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String method=request.getParameter("method");
-		System.out.println("method = "+request.getParameter("method"));
-		System.out.println("notice_no = "+request.getParameter("notice_no"));
-		String notice_no=request.getParameter("notice_no");
-		switch(method) {
-			case "get":
-				NoticeVO noticeVO=service.getNotice(Integer.parseInt(notice_no));
-				request.setAttribute("noticeVO", noticeVO);
-				// dispatcher
-			case "modify": // 수정완료 
-				break;
-			case "register": // 등록완료 insert 
-				break;
-			case "remove": // delete -> redirect
-			break;
-		}
-	}
+		doGet(request, response);
 
+	}
 }

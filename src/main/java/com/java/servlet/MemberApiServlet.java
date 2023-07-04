@@ -2,31 +2,32 @@ package com.java.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.java.servlet.service.CommunityApiService;
-import com.java.servlet.service.impl.CommunityApiServiceImpl;
-import com.java.servlet.vo.CommunityVO;
-
+import com.java.servlet.dao.MypageDAO;
+import com.java.servlet.dao.impl.MypageDAOImpl;
+import com.java.servlet.service.MemberApiService;
+import com.java.servlet.service.impl.MemberApiServiceImpl;
+import com.java.servlet.vo.MembersVO;
 
 /**
- * Servlet implementation class Board.
+ * Servlet implementation class MemberApiServlet
  */
-@WebServlet("/communitycontentapi")
-public class CommunityApiContentServlet extends HttpServlet {
+@WebServlet("/memberapi")
+public class MemberApiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private final CommunityApiService service = CommunityApiServiceImpl.getInstance(); 
+    private final MemberApiService service = MemberApiServiceImpl.getInstance(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityApiContentServlet() {
+    public MemberApiServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,45 +36,44 @@ public class CommunityApiContentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	
-	private static final String Community_REQ_METHOD_REGISTER = "register";
-	private static final String Community_REQ_METHOD_MODIFY = "modify";
+	private static final String Community_REQ_METHOD_MODIFY_PWD = "modifypwd";
+	private static final String Community_REQ_METHOD_MODIFY_PHONE = "modifyphone";
 	private static final String Community_REQ_METHOD_REMOVE = "remove";
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CommunityVO vo = new CommunityVO();
+		MembersVO vo = new MembersVO();
 		
 		String method=request.getParameter("method");
 		System.out.println("method1 = "+request.getParameter("method"));
-		System.out.println("c_no1 = "+request.getParameter("c_no"));
-		String c_no=request.getParameter("c_no");
+		System.out.println("email = "+request.getParameter("email"));
 		
-		if(c_no==null || c_no.equals("")) {
-			c_no="0";
-		}
-		vo.setC_no(Integer.parseInt(c_no));
-		vo.setTitle(request.getParameter("title") );
-		vo.setContent( request.getParameter("content"));
-		vo.setNickname( request.getParameter("nickname"));
+		String email = request.getParameter("email");
+		
+		
+		vo.setEmail(request.getParameter("email"));
+		vo.setNickname(request.getParameter("nickname") );
+		vo.setPwd( request.getParameter("pwd"));
+		vo.setName( request.getParameter("name"));
+
 		
 		//{ result : 1}
 		int result = 0;
 		switch(method) {
-			case Community_REQ_METHOD_MODIFY:
-				result = service.modifyCommunity(vo);
+			case Community_REQ_METHOD_MODIFY_PWD:
+				result = service.modifyPwd(vo);
 				break;
-			case Community_REQ_METHOD_REGISTER:
-				result = service.registerCommunity(vo);
+			case Community_REQ_METHOD_MODIFY_PHONE:
+				result = service.modifyPhone(vo);
 				break;
 			case Community_REQ_METHOD_REMOVE:
-				result = service.removeCommunity(Integer.parseInt(c_no));
+				result = service.removeMember(email);
 				break;
 			}
 

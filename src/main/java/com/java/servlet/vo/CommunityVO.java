@@ -4,10 +4,10 @@ import java.util.Date;
 // 가보자고~~~
 public class CommunityVO {
 	private int c_no;
-    private String nickname;
     private String title;
     private String content;
     private Date reg_date;
+    private String nickname;
 	
     public int getC_no() {
 		return c_no;
@@ -15,12 +15,7 @@ public class CommunityVO {
 	public void setC_no(int c_no) {
 		this.c_no = c_no;
 	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -39,14 +34,20 @@ public class CommunityVO {
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
-	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	@Override
 	public String toString() {
-		return "CommunityVO [c_no=" + c_no 
-				+ ", nickname=" + nickname 
+		return "CommunityVO[c_no=" + c_no 
 				+ ", title=" + title 
 				+ ", content=" + content
-				+ ", reg_date=" + reg_date + "]";
+				+ ", reg_date=" + reg_date 
+				+ ", nickname=" + nickname 
+				+ "]";
 	}
     
     

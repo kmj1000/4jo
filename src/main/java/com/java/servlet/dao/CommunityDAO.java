@@ -6,7 +6,7 @@ import com.java.servlet.util.PageMaker;
 import com.java.servlet.vo.CommunityVO;
 
 public interface CommunityDAO {
-	CommunityVO selectCommunity(int c_no);
+	
 	List<CommunityVO> selectAllCommunity();
 
 	int selectCountAllCommunity();

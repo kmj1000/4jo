@@ -18,10 +18,7 @@ public class NoticeServiceImpl implements NoticeService {
 		   return instance;
 	}
 	@Override
-	public NoticeVO getNotice(String admin_name) {
-		// TODO Auto-generated method stub
-		return dao.selectNotice(admin_name);
-	}
+
 	public List<NoticeVO> getAllNotice() {
 		return dao.selectAllNotice();
 	}
@@ -34,11 +31,7 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeVO> getAllNoticeByPage(PageMaker pageMaker) {
 		return dao.selectAllNoticeByPage(pageMaker);
 	}
-	@Override
-	public NoticeVO getNotice(int notice_no) {
-		// TODO Auto-generated method stub
-		return dao.selectNotice(notice_no);
-	}
+	
 
 }
 

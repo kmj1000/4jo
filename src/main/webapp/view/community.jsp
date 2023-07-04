@@ -194,8 +194,8 @@
                             </div>
                             <div class="rightbtn">
 
-                             	<a class="btn write" type="button" href="view/community-content.jsp">글쓰기</a>
-
+                             	<a class="btn write" type="button" href="${pageContext.servletContext.contextPath}/communitycontent?method=register&c_no=${communityVO.c_no}">글쓰기</a>
+								
                              </div>
                             <%@ include file="/view/import/page-community.jsp" %>
                            <%--  <jsp:include page="/view/import/page-nation.jsp"></jsp:include> 
@@ -213,7 +213,7 @@
 			</div>
 		</footer>
 	</div>
-	</div>
+	
 
 </body>
 </html>

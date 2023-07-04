@@ -26,27 +26,26 @@ public class CommunityApiDAOImpl implements CommunityApiDAO {
 	public int insertCommunity(CommunityVO vo) {
 		int result = 0;
 		String sql = "INSERT INTO community( c_no\r\n"
-					+ "            			,nickname\r\n"
 					+ "                    ,title\r\n"
 					+ "                    ,content\r\n"
 					+ "                    ,reg_date\r\n"
+					+ "            			,nickname\r\n"
 					+ "                    )    \r\n"
 					+ "    values(\r\n"
 					+ "            seq_c_no.NEXTVAL\r\n"
-					+ "            , nickname\r\n"
 					+ "            ,?\r\n"
 					+ "            ,?\r\n"
 					+ "            ,sysdate\r\n"
+					+ "            ,(SELECT nickname FROM members WHERE nickname=?)\r\n"
 					+ "    )";
 		try(
-				Connection conn = DBCP2Util.getConnection();// DBCP2Util
+				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 			
-//				pstmt.setString(1, vo.getNickname());
 				pstmt.setString(1, vo.getTitle());
 				pstmt.setString(2, vo.getContent());
-				
+				pstmt.setString(3, vo.getNickname());
 				
 				result = pstmt.executeUpdate();
 				
@@ -63,11 +62,10 @@ public class CommunityApiDAOImpl implements CommunityApiDAO {
 		String sql = "UPDATE community\r\n"
 				+ "    SET title = ?\r\n"
 				+ "    , content = ?\r\n"
-				
-				+ "    WHERE nickname= ?"
+				+ "    WHERE c_no= ?"
 				;
 		try(
-				Connection conn = DBCP2Util.getConnection();// DBCP2Util
+				Connection conn = DataBaseUtil.getConnection();// DBCP2Util
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				){
 				

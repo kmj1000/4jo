@@ -50,8 +50,8 @@ public class DataBaseUtil {
    
    public static Connection connectionDB()throws ClassNotFoundException, SQLException {
       Class.forName("oracle.jdbc.driver.OracleDriver");
-      String url="jdbc:oracle:thin:@192.168.0.108:1521:XE";
-//    String url="jdbc:oracle:thin:@localhost:1521:XE";
+//      String url="jdbc:oracle:thin:@192.168.0.108:1521:XE";
+   String url="jdbc:oracle:thin:@localhost:1521:XE";
       String id="c##abd";
       String pwd="abd";
       return DriverManager.getConnection(url,id,pwd);

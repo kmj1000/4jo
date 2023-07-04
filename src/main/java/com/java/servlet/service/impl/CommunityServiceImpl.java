@@ -17,11 +17,7 @@ public class CommunityServiceImpl implements CommunityService {
 	public static CommunityService getInstance() {
 		   return instance;
 	}
-	@Override
-	public CommunityVO getCommunity(int c_no) {
-		// TODO Auto-generated method stub
-		return dao.selectCommunity(c_no);
-	}
+	
 	
 	@Override
 	public List<CommunityVO> getAllCommunity() {
