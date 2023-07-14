@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>JspProject</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>CommunityContentServlet</display-name>
+    <servlet-name>CommunityContentServlet</servlet-name>
+    <servlet-class>com.java.servlet.CommunityServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>FindEmailServlet</display-name>
+  	<servlet-name>FindEmailServlet</servlet-name>
+  	<servlet-class>com.java.servlet.FindEmailServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>Updatemember</display-name>
+  	<servlet-name>Updatemember</servlet-name>
+  	<servlet-class>com.java.servlet.Updatemember</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommunityContentServlet</servlet-name>
+    <url-pattern>/CommunityContentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FindEmailServlet</servlet-name>
+  	<url-pattern>/FindEmailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Updatemember</servlet-name>
+  	<url-pattern>/Updatemember</url-pattern>
+  </servlet-mapping>
+  
+ <filter>
+    <filter-name>SetCharEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+      <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SetCharEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  
+</web-app>
