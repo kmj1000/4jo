@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring.mapper.SampleMapper">
+  <select id="selectSample" resultType="com.spring.domain.sDTO">
+  		SELECT * FROM student 
+  	</select>
+  	<update id="updateSample">
+  	update student set name=SUBSTR(name, 1, 1)|| 'up'
+  	where studno=9717	
+  	</update>
+  	
+  	<delete id="deleteSample">
+  	delete student where studno=9717
+  	</delete>
+  	
+  	<insert id="insertSample">
+  	insert into student(studno, name, id, grade, jumin)
+  	values(9717, 'sam1', 'apple1', 4, '1111111231234')
+  	</insert>
+  	
+ </mapper>
+  
